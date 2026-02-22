@@ -33,36 +33,7 @@ export default function Maintenance() {
           </p>
         </div>
 
-        <div className="pt-8 w-full max-w-sm">
-          <p className="text-[10px] text-stone-400 uppercase tracking-[0.2em] mb-4">
-            Invitation to Launch
-          </p>
-          <div className="flex items-center border-b border-stone-300 pb-2 focus-within:border-stone-800 transition-colors duration-300">
-            <input 
-              type="email" 
-              placeholder="Enter your email address" 
-              className="bg-transparent w-full outline-none text-center text-stone-800 placeholder-stone-300 font-light text-sm"
-            />
-            <button className="text-[10px] md:text-xs font-medium uppercase tracking-[0.15em] text-stone-900 hover:text-stone-500 transition-colors ml-4">
-              Subscribe
-            </button>
-          </div>
-        </div>
-
       </div>
 
       <footer className="w-full mt-16 pt-8 text-center flex flex-col items-center justify-center space-y-4 pb-4">
-        <p className="text-[10px] text-stone-400 uppercase tracking-widest">
-          &copy; 2026 Blackwood & Rose
-        </p>
-        <p className="text-[10px] text-stone-500 tracking-wider font-light leading-loose max-w-md px-4">
-          Nova Phoenix Limited trading as Blackwood and Rose
-          <br className="md:hidden" /> 
-          <span className="hidden md:inline"> | </span> 
-          VAT Number: 265261504
-        </p>
-      </footer>
-
-    </div>
-  );
-}
+        <p className="text-[10px] text-stone-400 uppercase tracking-widest"></p>
