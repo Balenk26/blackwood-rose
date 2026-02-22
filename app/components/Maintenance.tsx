@@ -36,4 +36,17 @@ export default function Maintenance() {
       </div>
 
       <footer className="w-full mt-16 pt-8 text-center flex flex-col items-center justify-center space-y-4 pb-4">
-        <p className="text-[10px] text-stone-400 uppercase tracking-widest"></p>
+        <p className="text-[10px] text-stone-400 uppercase tracking-widest">
+          &copy; 2026 Blackwood & Rose
+        </p>
+        <p className="text-[10px] text-stone-500 tracking-wider font-light leading-loose max-w-md px-4">
+          Nova Phoenix Limited trading as Blackwood and Rose
+          <br className="md:hidden" /> 
+          <span className="hidden md:inline"> | </span> 
+          VAT Number: 265261504
+        </p>
+      </footer>
+
+    </div>
+  );
+}
