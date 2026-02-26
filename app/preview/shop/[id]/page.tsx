@@ -1,11 +1,11 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '../../../components/Navbar';
+import { useCart } from '../../../components/CartContext';
 
-// Our dummy database again so this page knows what to load
 const products = [
   { id: 1, name: 'The Onyx Lounge Chair', price: 1250, color: 'Black', material: 'Leather', image: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80', description: 'A masterful blend of mid-century minimalism and modern comfort. Upholstered in premium Italian leather over a sculpted matte black steel frame.' },
   { id: 2, name: 'Marble & Walnut Console', price: 890, color: 'Brown', material: 'Wood', image: 'https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=800&q=80', description: 'Carved from rich, sustainably sourced walnut and topped with a solid slab of Carrara marble. The perfect anchor for an elegant entryway.' },
@@ -23,11 +23,14 @@ const products = [
 
 export default function ProductPage() {
   const params = useParams();
-  
-  // Find the exact product based on the URL number
   const product = products.find(p => p.id === Number(params.id));
+  
+  // Connect to the brain
+  const cartContext = useCart();
+  
+  // State to manage what the button says
+  const [buttonText, setButtonText] = useState('Add to Cart');
 
-  // If someone types a fake URL, show this:
   if (!product) {
     return (
       <div className="min-h-screen bg-white flex flex-col text-black">
@@ -39,11 +42,23 @@ export default function ProductPage() {
     );
   }
 
+  // The function that runs when you click the button
+  const handleAddToCart = () => {
+    if (cartContext) {
+      cartContext.addToCart(product); // Sends to memory bank
+      setButtonText('Added to Cart ✓'); // Changes text to show success
+      
+      // Changes it back after 2 seconds
+      setTimeout(() => {
+        setButtonText('Add to Cart');
+      }, 2000);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white flex flex-col text-black">
       <Navbar />
       
-      {/* Back Button */}
       <div className="max-w-[1500px] mx-auto w-full px-6 md:px-12 pt-10">
         <Link href="/preview/shop" className="text-[10px] uppercase tracking-widest text-gray-500 hover:text-black transition-colors border-b border-transparent hover:border-black pb-1">
           &larr; Back to Collection
@@ -52,7 +67,6 @@ export default function ProductPage() {
 
       <main className="flex flex-col md:flex-row max-w-[1500px] mx-auto w-full px-6 md:px-12 py-16 gap-16 md:gap-24 items-start">
         
-        {/* Left Side: Massive High-Res Image */}
         <div className="w-full md:w-1/2 aspect-[4/5] bg-gray-100 overflow-hidden relative">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img 
@@ -62,7 +76,6 @@ export default function ProductPage() {
           />
         </div>
 
-        {/* Right Side: Product Details & Add to Cart */}
         <div className="w-full md:w-1/2 flex flex-col md:sticky md:top-32 h-fit">
           
           <div className="border-b border-gray-200 pb-10 mb-10">
@@ -89,8 +102,16 @@ export default function ProductPage() {
             </div>
           </div>
 
-          <button className="w-full bg-black text-white py-5 text-xs font-bold uppercase tracking-[0.2em] hover:bg-[#D4AF37] hover:text-black transition-all duration-500">
-            Add to Cart
+          {/* THE NEW WORKING BUTTON */}
+          <button 
+            onClick={handleAddToCart}
+            className={`w-full py-5 text-xs font-bold uppercase tracking-[0.2em] transition-all duration-500 ${
+              buttonText === 'Add to Cart' 
+                ? 'bg-black text-white hover:bg-[#D4AF37] hover:text-black' 
+                : 'bg-[#D4AF37] text-black'
+            }`}
+          >
+            {buttonText}
           </button>
           
           <p className="text-[9px] text-gray-400 tracking-widest uppercase text-center mt-6">
