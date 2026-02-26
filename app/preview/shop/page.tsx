@@ -51,12 +51,12 @@ export default function ShopPage() {
         <div className="w-16 h-[2px] bg-[#D4AF37]"></div>
       </div>
 
-      {/* FIXED: Changed lg: to md: so it stays side-by-side on your Mac */}
-      <main className="flex flex-col md:flex-row px-6 md:px-12 pb-32 max-w-[1500px] mx-auto w-full items-start">
+      {/* Changed to sm:flex-row to FORCE side-by-side even on zoomed-in Macs */}
+      <main className="flex flex-col sm:flex-row px-6 md:px-12 pb-32 max-w-[1500px] mx-auto w-full items-start relative">
         
         {/* Left Side: The Sidebar */}
-        {/* FIXED: md:sticky top-32 makes it follow you down the page */}
-        <aside className="w-full md:w-64 flex-shrink-0 md:sticky top-32 space-y-12 bg-white z-10 md:pr-10 pb-8 self-start">
+        {/* Added h-fit and max-h-[80vh] to physically prevent it from stretching, ensuring sticky works */}
+        <aside className="w-full sm:w-64 lg:w-72 flex-shrink-0 sm:sticky sm:top-32 h-fit max-h-[80vh] overflow-y-auto space-y-12 bg-white z-10 sm:pr-8 pb-8 scrollbar-hide">
           
           {/* Color Filter */}
           <div>
@@ -130,8 +130,8 @@ export default function ShopPage() {
         </aside>
         
         {/* Right Side: 3-Column Product Grid */}
-        <div className="flex-grow w-full pt-10 md:pt-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-16">
+        <div className="flex-grow w-full pt-10 sm:pt-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-8 gap-y-16">
             {filteredProducts.map((product) => (
               <div key={product.id} className="flex flex-col group cursor-pointer animate-fade-in">
                 
