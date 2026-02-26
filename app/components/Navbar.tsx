@@ -13,13 +13,12 @@ export default function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   // Calculate the total price of everything in the cart
-  const cartTotal = cart.reduce((sum, item) => sum + item.price, 0);
+  // FIXED: Told TypeScript exactly what kind of data to expect
+  const cartTotal = cart.reduce((sum: number, item: any) => sum + item.price, 0);
 
   return (
     <>
-      {/* 1. THE FIXED NAVBAR
-        Using 'fixed' instead of 'sticky' guarantees it hovers over the page no matter what.
-      */}
+      {/* 1. THE FIXED NAVBAR */}
       <nav className="w-full bg-white/95 backdrop-blur-md border-b border-gray-200 fixed top-0 left-0 z-[100] transition-all">
         <div className="max-w-[1500px] mx-auto px-6 md:px-12">
           <div className="flex justify-between items-center h-24">
@@ -46,7 +45,6 @@ export default function Navbar() {
               <button className="text-[10px] md:text-xs tracking-[0.2em] text-gray-500 hover:text-black uppercase transition-colors hidden md:block font-bold">
                 Account
               </button>
-              {/* This button now triggers the drawer to open! */}
               <button 
                 onClick={() => setIsCartOpen(true)}
                 className="text-[10px] md:text-xs tracking-[0.2em] text-black uppercase hover:text-[#D4AF37] transition-colors font-bold"
@@ -59,20 +57,16 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* 2. INVISIBLE SPACER
-        Because the nav is 'fixed' and floating, it doesn't take up physical space. 
-        This empty 24-pixel tall box pushes the rest of the website down so it doesn't hide under the nav!
-      */}
+      {/* 2. INVISIBLE SPACER */}
       <div className="h-24 w-full"></div>
 
-      {/* 3. THE SLIDE-OUT CART DRAWER 
-      */}
+      {/* 3. THE SLIDE-OUT CART DRAWER */}
       
       {/* The dark, blurry background overlay */}
       {isCartOpen && (
         <div 
           className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[110] transition-opacity"
-          onClick={() => setIsCartOpen(false)} // Clicking outside the box closes it
+          onClick={() => setIsCartOpen(false)}
         ></div>
       )}
 
@@ -84,7 +78,7 @@ export default function Navbar() {
       >
         
         {/* Cart Header */}
-        <div className="flex justify-between items-center px-8 h-24 border-b border-gray-200 shrink-0">
+        <div className="flex justify-between items-center px-8 h-24 border-b border-gray-200 shrink-0 bg-white">
           <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-black">Your Cart</h2>
           <button 
             onClick={() => setIsCartOpen(false)} 
@@ -95,7 +89,7 @@ export default function Navbar() {
         </div>
 
         {/* Cart Items List */}
-        <div className="flex-grow overflow-y-auto px-8 py-6 space-y-8">
+        <div className="flex-grow overflow-y-auto px-8 py-6 space-y-8 bg-white">
           {cart.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center space-y-6">
               <p className="text-xs text-gray-400 uppercase tracking-widest">Your collection is empty.</p>
