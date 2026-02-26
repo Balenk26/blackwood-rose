@@ -51,12 +51,12 @@ export default function ShopPage() {
         <div className="w-16 h-[2px] bg-[#D4AF37]"></div>
       </div>
 
-      {/* Changed to Flexbox. This FORCES the sidebar left on desktop. */}
-      <main className="flex flex-col lg:flex-row px-6 md:px-12 pb-32 max-w-[1500px] mx-auto w-full items-start">
+      {/* FIXED: Changed lg: to md: so it stays side-by-side on your Mac */}
+      <main className="flex flex-col md:flex-row px-6 md:px-12 pb-32 max-w-[1500px] mx-auto w-full items-start">
         
         {/* Left Side: The Sidebar */}
-        {/* 'self-start lg:sticky top-32' ensures it locks into place when scrolling */}
-        <aside className="w-full lg:w-72 flex-shrink-0 lg:sticky top-32 space-y-12 bg-white z-10 lg:pr-12 pb-8 self-start">
+        {/* FIXED: md:sticky top-32 makes it follow you down the page */}
+        <aside className="w-full md:w-64 flex-shrink-0 md:sticky top-32 space-y-12 bg-white z-10 md:pr-10 pb-8 self-start">
           
           {/* Color Filter */}
           <div>
@@ -130,7 +130,7 @@ export default function ShopPage() {
         </aside>
         
         {/* Right Side: 3-Column Product Grid */}
-        <div className="flex-grow w-full pt-10 lg:pt-0">
+        <div className="flex-grow w-full pt-10 md:pt-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-16">
             {filteredProducts.map((product) => (
               <div key={product.id} className="flex flex-col group cursor-pointer animate-fade-in">
