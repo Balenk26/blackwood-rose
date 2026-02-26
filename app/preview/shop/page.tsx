@@ -51,24 +51,27 @@ export default function ShopPage() {
         <div className="w-16 h-[2px] bg-[#D4AF37]"></div>
       </div>
 
-      {/* BRUTE FORCE LAYOUT: 
-        We are using raw CSS Grid here. 
-        '280px 1fr' strictly means: Left column is exactly 280px wide. Right column takes the rest. 
-        It cannot stack on top anymore. 
-      */}
       <main 
         className="px-6 md:px-12 pb-32 max-w-[1500px] mx-auto w-full"
         style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: '3rem', alignItems: 'start' }}
       >
         
-        {/* BRUTE FORCE STICKY: 
-          Using inline styles for position: sticky guarantees no Tailwind conflicts. 
-        */}
+        {/* Left Side: The Sidebar */}
         <aside 
-          className="space-y-12 bg-white z-10 pr-6 pb-8"
+          className="space-y-10 bg-white z-10 pr-6 pb-8"
           style={{ position: 'sticky', top: '8rem', height: 'fit-content', maxHeight: '80vh', overflowY: 'auto' }}
         >
           
+          {/* Brand Identity - This travels with the filters! */}
+          <div className="pb-2 border-b-2 border-black">
+            <h2 className="text-lg font-serif text-black tracking-[0.15em] uppercase">
+              Blackwood <span className="text-[#D4AF37]">&</span> Rose
+            </h2>
+            <p className="text-[9px] text-gray-500 uppercase tracking-[0.3em] mt-2">
+              Filter Collection
+            </p>
+          </div>
+
           {/* Color Filter */}
           <div>
             <h3 className="text-[10px] text-black font-bold uppercase tracking-[0.2em] mb-4 border-b border-gray-200 pb-2">Color</h3>
