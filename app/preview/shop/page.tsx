@@ -2,9 +2,7 @@
 
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
-import Image from 'next/image';
 
-// We now have real high-end photography linked directly from Unsplash
 const products = [
   { id: 1, name: 'The Onyx Lounge Chair', price: 1250, color: 'Black', material: 'Leather', image: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80' },
   { id: 2, name: 'Marble & Walnut Console', price: 890, color: 'Brown', material: 'Wood', image: 'https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=800&q=80' },
@@ -42,7 +40,7 @@ export default function ShopPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col relative text-black">
+    <div className="min-h-screen bg-white flex flex-col text-black">
       <Navbar />
       
       {/* Page Header */}
@@ -53,16 +51,16 @@ export default function ShopPage() {
         <div className="w-16 h-[2px] bg-[#D4AF37]"></div>
       </div>
 
-      {/* Main Content - Forced Grid to keep sidebar on the left */}
-      <main className="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-16 px-6 md:px-12 pb-32 max-w-[1500px] mx-auto w-full items-start relative">
+      {/* Changed to Flexbox. This FORCES the sidebar left on desktop. */}
+      <main className="flex flex-col lg:flex-row px-6 md:px-12 pb-32 max-w-[1500px] mx-auto w-full items-start">
         
-        {/* Left Side: STRICTLY STICKY Filter Sidebar */}
-        <aside className="w-full md:sticky top-32 h-fit space-y-12 bg-white z-10 pb-4">
+        {/* Left Side: The Sidebar */}
+        {/* 'self-start lg:sticky top-32' ensures it locks into place when scrolling */}
+        <aside className="w-full lg:w-72 flex-shrink-0 lg:sticky top-32 space-y-12 bg-white z-10 lg:pr-12 pb-8 self-start">
           
           {/* Color Filter */}
           <div>
             <h3 className="text-[10px] text-black font-bold uppercase tracking-[0.2em] mb-4 border-b border-gray-200 pb-2">Color</h3>
-            {/* Added list-none, p-0, m-0 to kill the black dots forever */}
             <ul className="flex flex-wrap gap-2 list-none p-0 m-0">
               {colors.map(color => (
                 <li key={color} className="p-0 m-0">
@@ -70,8 +68,8 @@ export default function ShopPage() {
                     onClick={() => setSelectedColor(color)}
                     className={`text-[10px] uppercase tracking-widest px-4 py-2 transition-all duration-300 border ${
                       selectedColor === color 
-                        ? 'bg-black text-[#D4AF37] border-black font-bold' 
-                        : 'bg-white text-gray-500 border-gray-200 hover:border-[#D4AF37] hover:text-black'
+                        ? 'bg-black text-white border-black font-bold shadow-sm' 
+                        : 'bg-white text-gray-500 border-gray-200 hover:border-black hover:text-black'
                     }`}
                   >
                     {color}
@@ -91,8 +89,8 @@ export default function ShopPage() {
                     onClick={() => setSelectedMaterial(material)}
                     className={`text-[10px] uppercase tracking-widest px-4 py-2 transition-all duration-300 border ${
                       selectedMaterial === material 
-                        ? 'bg-black text-[#D4AF37] border-black font-bold' 
-                        : 'bg-white text-gray-500 border-gray-200 hover:border-[#D4AF37] hover:text-black'
+                        ? 'bg-black text-white border-black font-bold shadow-sm' 
+                        : 'bg-white text-gray-500 border-gray-200 hover:border-black hover:text-black'
                     }`}
                   >
                     {material}
@@ -106,7 +104,7 @@ export default function ShopPage() {
           <div>
             <h3 className="text-[10px] text-black font-bold uppercase tracking-[0.2em] mb-4 border-b border-gray-200 pb-2 flex justify-between">
               <span>Max Price</span>
-              <span className="text-[#D4AF37]">£{maxPrice}</span>
+              <span className="text-black font-bold">£{maxPrice}</span>
             </h3>
             <input 
               type="range" 
@@ -123,7 +121,7 @@ export default function ShopPage() {
           <div className="pt-4">
             <button 
               onClick={resetFilters}
-              className="w-full text-[10px] bg-white text-black border border-black px-4 py-3 uppercase tracking-widest hover:bg-black hover:text-[#D4AF37] transition-all duration-300"
+              className="w-full text-[10px] bg-white text-black border border-black px-4 py-3 uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300"
             >
               Reset Filters
             </button>
@@ -132,12 +130,11 @@ export default function ShopPage() {
         </aside>
         
         {/* Right Side: 3-Column Product Grid */}
-        <div className="w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+        <div className="flex-grow w-full pt-10 lg:pt-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-16">
             {filteredProducts.map((product) => (
               <div key={product.id} className="flex flex-col group cursor-pointer animate-fade-in">
                 
-                {/* Real Image Rendering */}
                 <div className="w-full aspect-[4/5] bg-gray-100 mb-6 relative overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img 
@@ -148,7 +145,7 @@ export default function ShopPage() {
                   <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                 </div>
                 
-                <div className="flex flex-col text-left space-y-2 border-b border-transparent group-hover:border-[#D4AF37] transition-colors pb-2">
+                <div className="flex flex-col text-left space-y-2 border-b border-transparent group-hover:border-black transition-colors pb-2">
                   <h3 className="text-xs text-black font-bold tracking-[0.15em] uppercase">
                     {product.name}
                   </h3>
@@ -167,7 +164,7 @@ export default function ShopPage() {
               <p className="text-black tracking-widest uppercase text-xs mb-6">No pieces found matching your criteria.</p>
               <button 
                 onClick={resetFilters}
-                className="text-[10px] bg-black text-[#D4AF37] px-8 py-4 uppercase tracking-widest hover:bg-[#D4AF37] hover:text-black transition-all duration-300"
+                className="text-[10px] bg-black text-white px-8 py-4 uppercase tracking-widest hover:bg-[#D4AF37] hover:text-black transition-all duration-300"
               >
                 Clear All Filters
               </button>
