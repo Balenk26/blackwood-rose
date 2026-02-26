@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 
 const products = [
@@ -43,7 +44,6 @@ export default function ShopPage() {
     <div className="min-h-screen bg-white flex flex-col text-black">
       <Navbar />
       
-      {/* Page Header */}
       <div className="pt-20 pb-16 flex flex-col items-center">
         <h1 className="text-3xl md:text-5xl font-serif text-black tracking-[0.2em] uppercase mb-6">
           The Collection
@@ -56,13 +56,11 @@ export default function ShopPage() {
         style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: '3rem', alignItems: 'start' }}
       >
         
-        {/* Left Side: The Sidebar */}
         <aside 
           className="space-y-10 bg-white z-10 pr-6 pb-8"
           style={{ position: 'sticky', top: '8rem', height: 'fit-content', maxHeight: '80vh', overflowY: 'auto' }}
         >
           
-          {/* Brand Identity - This travels with the filters! */}
           <div className="pb-2 border-b-2 border-black">
             <h2 className="text-lg font-serif text-black tracking-[0.15em] uppercase">
               Blackwood <span className="text-[#D4AF37]">&</span> Rose
@@ -72,7 +70,6 @@ export default function ShopPage() {
             </p>
           </div>
 
-          {/* Color Filter */}
           <div>
             <h3 className="text-[10px] text-black font-bold uppercase tracking-[0.2em] mb-4 border-b border-gray-200 pb-2">Color</h3>
             <ul className="flex flex-wrap gap-2 list-none p-0 m-0">
@@ -93,7 +90,6 @@ export default function ShopPage() {
             </ul>
           </div>
 
-          {/* Material Filter */}
           <div>
             <h3 className="text-[10px] text-black font-bold uppercase tracking-[0.2em] mb-4 border-b border-gray-200 pb-2">Material</h3>
             <ul className="flex flex-wrap gap-2 list-none p-0 m-0">
@@ -114,7 +110,6 @@ export default function ShopPage() {
             </ul>
           </div>
 
-          {/* Price Range Slider */}
           <div>
             <h3 className="text-[10px] text-black font-bold uppercase tracking-[0.2em] mb-4 border-b border-gray-200 pb-2 flex justify-between">
               <span>Max Price</span>
@@ -142,11 +137,12 @@ export default function ShopPage() {
 
         </aside>
         
-        {/* Right Side: 3-Column Product Grid */}
         <div className="w-full">
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-16">
             {filteredProducts.map((product) => (
-              <div key={product.id} className="flex flex-col group cursor-pointer animate-fade-in">
+              
+              /* HERE IS THE MAGIC LINK WRAPPER */
+              <Link href={`/preview/shop/${product.id}`} key={product.id} className="flex flex-col group cursor-pointer animate-fade-in">
                 
                 <div className="w-full aspect-[4/5] bg-gray-100 mb-6 relative overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -167,7 +163,7 @@ export default function ShopPage() {
                   </p>
                 </div>
 
-              </div>
+              </Link>
             ))}
           </div>
 
