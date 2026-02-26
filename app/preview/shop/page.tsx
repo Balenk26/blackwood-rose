@@ -51,12 +51,23 @@ export default function ShopPage() {
         <div className="w-16 h-[2px] bg-[#D4AF37]"></div>
       </div>
 
-      {/* Changed to sm:flex-row to FORCE side-by-side even on zoomed-in Macs */}
-      <main className="flex flex-col sm:flex-row px-6 md:px-12 pb-32 max-w-[1500px] mx-auto w-full items-start relative">
+      {/* BRUTE FORCE LAYOUT: 
+        We are using raw CSS Grid here. 
+        '280px 1fr' strictly means: Left column is exactly 280px wide. Right column takes the rest. 
+        It cannot stack on top anymore. 
+      */}
+      <main 
+        className="px-6 md:px-12 pb-32 max-w-[1500px] mx-auto w-full"
+        style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: '3rem', alignItems: 'start' }}
+      >
         
-        {/* Left Side: The Sidebar */}
-        {/* Added h-fit and max-h-[80vh] to physically prevent it from stretching, ensuring sticky works */}
-        <aside className="w-full sm:w-64 lg:w-72 flex-shrink-0 sm:sticky sm:top-32 h-fit max-h-[80vh] overflow-y-auto space-y-12 bg-white z-10 sm:pr-8 pb-8 scrollbar-hide">
+        {/* BRUTE FORCE STICKY: 
+          Using inline styles for position: sticky guarantees no Tailwind conflicts. 
+        */}
+        <aside 
+          className="space-y-12 bg-white z-10 pr-6 pb-8"
+          style={{ position: 'sticky', top: '8rem', height: 'fit-content', maxHeight: '80vh', overflowY: 'auto' }}
+        >
           
           {/* Color Filter */}
           <div>
@@ -117,7 +128,6 @@ export default function ShopPage() {
             />
           </div>
 
-          {/* Permanent Reset Button */}
           <div className="pt-4">
             <button 
               onClick={resetFilters}
@@ -130,8 +140,8 @@ export default function ShopPage() {
         </aside>
         
         {/* Right Side: 3-Column Product Grid */}
-        <div className="flex-grow w-full pt-10 sm:pt-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-8 gap-y-16">
+        <div className="w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-16">
             {filteredProducts.map((product) => (
               <div key={product.id} className="flex flex-col group cursor-pointer animate-fade-in">
                 
@@ -158,7 +168,6 @@ export default function ShopPage() {
             ))}
           </div>
 
-          {/* Empty State message */}
           {filteredProducts.length === 0 && (
             <div className="w-full text-center py-32 bg-gray-50 border border-gray-200">
               <p className="text-black tracking-widest uppercase text-xs mb-6">No pieces found matching your criteria.</p>
