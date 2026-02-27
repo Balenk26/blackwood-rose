@@ -1,21 +1,37 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useCart } from './CartContext';
 
 export default function Navbar() {
   const cartContext = useCart();
   const cart = cartContext ? cartContext.cart : [];
+  
   const [isCartOpen, setIsCartOpen] = useState(false);
   const cartTotal = cart.reduce((sum: number, item: any) => sum + item.price, 0);
+  
+  // This helps us detect if the user clicks outside the cart to close it
+  const cartRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+        setIsCartOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <>
-      <nav className="w-full bg-white/95 backdrop-blur-md border-b border-gray-200 fixed top-0 left-0 z-[100] transition-all">
-        <div className="max-w-[1500px] mx-auto px-6 md:px-12">
+      <nav className="w-full bg-white/95 backdrop-blur-md border-b border-gray-200 fixed top-0 left-0 z-[100]">
+        {/* We wrap the Navbar content in the reference so the cart drops down perfectly inside it */}
+        <div className="max-w-[1500px] mx-auto px-6 md:px-12 relative" ref={cartRef}>
           <div className="flex justify-between items-center h-24">
             
+            {/* Left Side */}
             <div className="hidden md:flex space-x-10">
               <Link href="/preview/shop" className="text-[10px] md:text-xs tracking-[0.2em] text-gray-500 hover:text-black uppercase transition-colors font-bold">
                 Shop
@@ -25,96 +41,81 @@ export default function Navbar() {
               </Link>
             </div>
 
+            {/* Center Brand */}
             <div className="flex-shrink-0 flex items-center justify-center">
               <Link href="/preview" className="text-xl md:text-2xl font-serif tracking-[0.15em] text-black uppercase">
                 Blackwood <span className="text-[#D4AF37]">&</span> Rose
               </Link>
             </div>
 
+            {/* Right Side */}
             <div className="flex items-center space-x-8">
               <button className="text-[10px] md:text-xs tracking-[0.2em] text-gray-500 hover:text-black uppercase transition-colors hidden md:block font-bold">
                 Account
               </button>
+              {/* Toggles the mini-cart */}
               <button 
-                onClick={() => setIsCartOpen(true)}
-                className="text-[10px] md:text-xs tracking-[0.2em] text-black uppercase hover:text-[#D4AF37] transition-colors font-bold"
+                onClick={() => setIsCartOpen(!isCartOpen)}
+                className={`text-[10px] md:text-xs tracking-[0.2em] uppercase transition-colors font-bold ${isCartOpen ? 'text-[#D4AF37]' : 'text-black hover:text-[#D4AF37]'}`}
               >
                 Cart ({cart.length})
               </button>
             </div>
 
           </div>
+
+          {/* THE LUXURY FLOATING MINI-CART */}
+          {isCartOpen && (
+            <div className="absolute top-[85px] right-6 md:right-12 w-[340px] bg-white border border-black shadow-xl z-[120] flex flex-col animate-fade-in max-h-[70vh]">
+              
+              <div className="flex justify-between items-center px-6 py-4 border-b border-gray-200 shrink-0">
+                <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] text-black">Your Selection</h2>
+              </div>
+
+              <div className="flex-grow overflow-y-auto px-6 py-4 space-y-6">
+                {cart.length === 0 ? (
+                  <div className="py-10 flex flex-col items-center justify-center text-center space-y-4">
+                    <p className="text-[10px] text-gray-400 uppercase tracking-widest">Your collection is empty.</p>
+                  </div>
+                ) : (
+                  cart.map((item: any, index: number) => (
+                    <div key={index} className="flex gap-4 items-center border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                      
+                      {/* Ultra-minimal thumbnails */}
+                      <div className="w-16 h-20 bg-gray-100 shrink-0 overflow-hidden">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                      </div>
+                      
+                      <div className="flex flex-col justify-center w-full">
+                        <h3 className="text-[10px] font-bold uppercase tracking-[0.1em] text-black mb-1">{item.name}</h3>
+                        <p className="text-[9px] text-gray-400 uppercase tracking-widest mb-1">{item.color} | {item.material}</p>
+                        <p className="text-[10px] font-bold tracking-wider text-[#D4AF37]">£{item.price.toLocaleString()}</p>
+                      </div>
+
+                    </div>
+                  ))
+                )}
+              </div>
+
+              {cart.length > 0 && (
+                <div className="p-6 border-t border-gray-200 bg-gray-50 shrink-0">
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500">Subtotal</span>
+                    <span className="text-sm font-serif tracking-wider text-black">£{cartTotal.toLocaleString()}</span>
+                  </div>
+                  <button className="w-full bg-black text-white py-4 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-[#D4AF37] hover:text-black transition-all duration-300">
+                    Checkout
+                  </button>
+                </div>
+              )}
+
+            </div>
+          )}
         </div>
       </nav>
 
       <div className="h-24 w-full"></div>
-      
-      {/* FIXED CART UI: Much darker backdrop to hide the clashing website behind it */}
-      {isCartOpen && (
-        <div 
-          className="fixed inset-0 bg-stone-900/70 backdrop-blur-md z-[9998] transition-opacity"
-          onClick={() => setIsCartOpen(false)}
-        ></div>
-      )}
-
-      {/* Extreme Z-index to ensure it is always on top */}
-      <div 
-        className={`fixed top-0 right-0 h-full w-full sm:w-[450px] bg-white z-[9999] shadow-2xl transform transition-transform duration-500 ease-in-out flex flex-col ${
-          isCartOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        
-        <div className="flex justify-between items-center px-8 h-24 border-b border-gray-200 shrink-0 bg-white">
-          <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-black">Your Cart</h2>
-          <button onClick={() => setIsCartOpen(false)} className="text-3xl text-gray-400 hover:text-black transition-colors">&times;</button>
-        </div>
-
-        <div className="flex-grow overflow-y-auto px-8 py-8 space-y-10 bg-white">
-          {cart.length === 0 ? (
-            <div className="h-full flex flex-col items-center justify-center text-center space-y-6">
-              <p className="text-xs text-gray-400 uppercase tracking-widest">Your collection is empty.</p>
-              <button 
-                onClick={() => setIsCartOpen(false)}
-                className="text-xs border-b border-black text-black uppercase tracking-widest pb-1 hover:text-[#D4AF37] hover:border-[#D4AF37] transition-colors"
-              >
-                Continue Shopping
-              </button>
-            </div>
-          ) : (
-            cart.map((item: any, index: number) => (
-              <div key={index} className="flex gap-6 animate-fade-in items-center border-b border-gray-100 pb-6 last:border-0">
-                {/* FIXED: Smaller, elegant thumbnail images */}
-                <div className="w-20 h-24 bg-gray-100 shrink-0 relative overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                </div>
-                {/* FIXED: Larger text for readability */}
-                <div className="flex flex-col justify-center w-full">
-                  <h3 className="text-sm font-bold uppercase tracking-[0.1em] text-black mb-1">{item.name}</h3>
-                  <p className="text-xs text-gray-500 uppercase tracking-widest mb-2">{item.color} | {item.material}</p>
-                  <p className="text-sm font-bold tracking-wider text-[#D4AF37]">£{item.price.toLocaleString()}</p>
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-
-        {cart.length > 0 && (
-          <div className="p-8 border-t border-gray-200 bg-gray-50 shrink-0">
-            <div className="flex justify-between items-center mb-6">
-              <span className="text-xs uppercase tracking-[0.2em] font-bold text-gray-500">Subtotal</span>
-              <span className="text-xl font-serif tracking-wider text-black">£{cartTotal.toLocaleString()}</span>
-            </div>
-            <button className="w-full bg-black text-white py-5 text-xs font-bold uppercase tracking-[0.2em] hover:bg-[#D4AF37] hover:text-black transition-all duration-300">
-              Proceed to Checkout
-            </button>
-            <p className="text-[9px] text-gray-400 uppercase tracking-widest text-center mt-4">
-              Shipping & taxes calculated at checkout
-            </p>
-          </div>
-        )}
-
-      </div>
     </>
   );
 }
