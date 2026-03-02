@@ -44,7 +44,7 @@ export default function ShopPage() {
     <div className="min-h-screen bg-white flex flex-col text-black">
       <Navbar />
       
-      <div className="pt-20 pb-16 flex flex-col items-center">
+      <div className="pt-10 pb-16 flex flex-col items-center">
         <h1 className="text-3xl md:text-5xl font-serif text-black tracking-[0.2em] uppercase mb-6">
           The Collection
         </h1>
@@ -56,18 +56,17 @@ export default function ShopPage() {
         style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: '3rem', alignItems: 'start' }}
       >
         
+        {/* Left Side: The Sidebar */}
+        {/* FIXED: Pushed top to 220px to perfectly clear the tall 3-tier mega-menu */}
         <aside 
           className="space-y-10 bg-white z-10 pr-6 pb-8"
-          style={{ position: 'sticky', top: '8rem', height: 'fit-content', maxHeight: '80vh', overflowY: 'auto' }}
+          style={{ position: 'sticky', top: '220px', height: 'fit-content', maxHeight: '75vh', overflowY: 'auto' }}
         >
           
-          <div className="pb-2 border-b-2 border-black">
-            <h2 className="text-lg font-serif text-black tracking-[0.15em] uppercase">
-              Blackwood <span className="text-[#D4AF37]">&</span> Rose
+          <div className="pb-4 border-b-2 border-black">
+            <h2 className="text-sm font-bold text-black tracking-[0.2em] uppercase">
+              Refine Collection
             </h2>
-            <p className="text-[9px] text-gray-500 uppercase tracking-[0.3em] mt-2">
-              Filter Collection
-            </p>
           </div>
 
           <div>
@@ -140,8 +139,6 @@ export default function ShopPage() {
         <div className="w-full">
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-16">
             {filteredProducts.map((product) => (
-              
-              /* HERE IS THE MAGIC LINK WRAPPER */
               <Link href={`/preview/shop/${product.id}`} key={product.id} className="flex flex-col group cursor-pointer animate-fade-in">
                 
                 <div className="w-full aspect-[4/5] bg-gray-100 mb-6 relative overflow-hidden">
