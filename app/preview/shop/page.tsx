@@ -57,10 +57,10 @@ export default function ShopPage() {
       >
         
         {/* Left Side: The Sidebar */}
-        {/* FIXED: Pushed top to 220px to perfectly clear the tall 3-tier mega-menu */}
+        {/* FIXED: top is now 160px so it sits perfectly under the new 128px tall minimalist header */}
         <aside 
           className="space-y-10 bg-white z-10 pr-6 pb-8"
-          style={{ position: 'sticky', top: '220px', height: 'fit-content', maxHeight: '75vh', overflowY: 'auto' }}
+          style={{ position: 'sticky', top: '160px', height: 'fit-content', maxHeight: '75vh', overflowY: 'auto' }}
         >
           
           <div className="pb-4 border-b-2 border-black">

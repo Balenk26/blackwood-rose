@@ -25,59 +25,63 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="w-full fixed top-0 left-0 z-[100] bg-white shadow-sm flex flex-col">
+      <header className="w-full bg-white fixed top-0 left-0 z-[100] border-b border-gray-100 flex flex-col">
         
-        {/* TIER 1: Utility Bar */}
-        <div className="w-full bg-black text-white h-10 flex items-center justify-between px-6 md:px-12 text-[9px] uppercase tracking-[0.2em] font-bold">
-          <p className="hidden md:block">Complimentary White-Glove UK Delivery</p>
-          <div className="flex space-x-8 ml-auto h-full">
-            <Link href="#" className="hover:bg-white/10 h-full flex items-center px-4 transition-colors">Login / Register</Link>
-            <Link href="#" className="hover:bg-white/10 h-full flex items-center px-4 transition-colors">Wishlist</Link>
-          </div>
-        </div>
-
-        {/* TIER 2: Main Header (Search, Logo, Cart) */}
-        <div className="w-full max-w-[1500px] mx-auto px-6 md:px-12 h-24 flex items-center justify-between" ref={cartRef}>
+        {/* ROW 1: Icons & Logo (Just like the screenshot) */}
+        <div className="w-full max-w-[1600px] mx-auto px-6 h-20 flex items-center justify-between">
           
-          {/* Left: BOXED Search Bar */}
+          {/* Left: Search Icon */}
           <div className="w-1/3 flex items-center">
-            <div className="flex items-center bg-gray-50 border border-gray-200 focus-within:border-black transition-colors px-4 py-3 w-full max-w-[280px]">
-              <span className="text-gray-400 mr-3 text-lg leading-none">⚲</span>
-              <input 
-                type="text" 
-                placeholder="SEARCH..." 
-                className="bg-transparent text-[10px] text-black w-full outline-none tracking-[0.15em] uppercase placeholder-gray-400" 
-              />
-            </div>
+            <button className="text-gray-600 hover:text-black transition-colors">
+              {/* Search SVG */}
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>
+            </button>
           </div>
 
-          {/* Center: Brand Logo */}
+          {/* Center: Logo */}
           <div className="w-1/3 flex justify-center">
-            <Link href="/preview" className="text-2xl md:text-3xl font-serif tracking-[0.15em] text-black uppercase whitespace-nowrap">
+            <Link href="/preview" className="text-2xl md:text-3xl font-serif tracking-[0.1em] text-black uppercase whitespace-nowrap">
               Blackwood <span className="text-[#D4AF37]">&</span> Rose
             </Link>
           </div>
 
-          {/* Right: BOXED Cart Button & Mini Cart */}
-          <div className="w-1/3 flex justify-end space-x-4 relative">
-            <button className="text-[10px] tracking-[0.2em] text-black uppercase hover:bg-gray-50 border border-transparent hover:border-gray-200 px-6 py-3 transition-colors hidden md:block font-bold">
-              Account
+          {/* Right: Icons (Account, Wishlist, Bag) */}
+          <div className="w-1/3 flex justify-end items-center space-x-6 relative" ref={cartRef}>
+            <button className="text-gray-600 hover:text-black transition-colors hidden sm:block">
+              {/* User SVG */}
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+              </svg>
+            </button>
+            <button className="text-gray-600 hover:text-black transition-colors hidden sm:block">
+              {/* Heart SVG */}
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+              </svg>
             </button>
             
+            {/* Shopping Bag Button */}
             <button 
               onClick={() => setIsCartOpen(!isCartOpen)}
-              className={`text-[10px] tracking-[0.2em] uppercase transition-colors font-bold px-6 py-3 border ${
-                isCartOpen 
-                  ? 'bg-black text-[#D4AF37] border-black' 
-                  : 'bg-white text-black border-gray-200 hover:border-black'
-              }`}
+              className="text-gray-600 hover:text-black transition-colors relative"
             >
-              Basket ({cart.length})
+              {/* Bag SVG */}
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+              </svg>
+              {/* Notification Bubble */}
+              {cart.length > 0 && (
+                <span className="absolute -top-1 -right-2 bg-[#D4AF37] text-white text-[8px] font-bold h-4 w-4 rounded-full flex items-center justify-center">
+                  {cart.length}
+                </span>
+              )}
             </button>
 
-            {/* The Mini Cart Dropdown */}
+            {/* Floating Mini Cart */}
             {isCartOpen && (
-              <div className="absolute top-[100%] right-0 mt-6 w-[360px] bg-white shadow-2xl border border-gray-100 z-[120] flex flex-col animate-fade-in p-6 cursor-default">
+              <div className="absolute top-[100%] right-0 mt-6 w-[340px] bg-white shadow-2xl border border-gray-100 z-[120] flex flex-col animate-fade-in p-6 cursor-default text-left">
                 <div className="flex justify-between items-center border-b border-gray-100 pb-4 mb-5 shrink-0">
                   <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-black">Selection</span>
                   <span className="text-[8px] uppercase tracking-[0.2em] text-gray-400">{cart.length} Pieces</span>
@@ -88,13 +92,13 @@ export default function Navbar() {
                   ) : (
                     cart.map((item: any, index: number) => (
                       <div key={index} className="flex gap-4 items-center group">
-                        <div className="w-12 h-16 bg-gray-100 shrink-0 overflow-hidden">
+                        <div className="w-10 h-14 bg-gray-100 shrink-0 overflow-hidden">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                         </div>
                         <div className="flex flex-col flex-grow">
                           <div className="flex justify-between items-start mb-1 gap-2">
-                            <h3 className="text-[9px] font-bold uppercase tracking-[0.1em] text-black leading-tight max-w-[160px] truncate">{item.name}</h3>
+                            <h3 className="text-[9px] font-bold uppercase tracking-[0.1em] text-black leading-tight max-w-[150px] truncate">{item.name}</h3>
                             <p className="text-[9px] font-bold tracking-wider text-[#D4AF37] shrink-0">£{item.price.toLocaleString()}</p>
                           </div>
                           <p className="text-[8px] text-gray-400 uppercase tracking-[0.15em]">{item.color} | {item.material}</p>
@@ -107,9 +111,9 @@ export default function Navbar() {
                   <div className="pt-4 border-t border-gray-100 shrink-0">
                     <div className="flex justify-between items-end mb-5">
                       <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-gray-400 mb-0.5">Total</span>
-                      <span className="text-base font-serif tracking-wider text-black">£{cartTotal.toLocaleString()}</span>
+                      <span className="text-sm font-serif tracking-wider text-black">£{cartTotal.toLocaleString()}</span>
                     </div>
-                    <button className="w-full bg-black text-white py-4 text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-[#D4AF37] hover:text-black transition-all duration-300">
+                    <button className="w-full bg-black text-white py-3.5 text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-[#D4AF37] hover:text-black transition-all duration-300">
                       Checkout
                     </button>
                   </div>
@@ -120,81 +124,21 @@ export default function Navbar() {
 
         </div>
 
-        {/* TIER 3: BOXED Category Links with Mega-Menus */}
-        <div className="w-full border-t border-gray-200 bg-white h-14 flex items-center justify-center relative">
-          <ul className="flex space-x-4 h-full px-4">
-            
-            {/* LIVING Mega Menu */}
-            <li className="group h-full flex items-center">
-              <Link href="/preview/shop" className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-600 group-hover:text-black px-8 py-2.5 border border-transparent group-hover:border-gray-200 group-hover:bg-gray-50 transition-all duration-300">
-                Living
-              </Link>
-              <div className="absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-12 px-12 z-50 flex justify-center gap-24">
-                <div>
-                  <h4 className="text-[10px] font-bold text-black uppercase tracking-[0.2em] mb-4">Seating</h4>
-                  <ul className="space-y-3 text-[9px] text-gray-500 tracking-widest uppercase">
-                    <li><Link href="/preview/shop" className="hover:text-[#D4AF37]">All Sofas</Link></li>
-                    <li><Link href="/preview/shop" className="hover:text-[#D4AF37]">Armchairs</Link></li>
-                    <li><Link href="/preview/shop" className="hover:text-[#D4AF37]">Accent Chairs</Link></li>
-                    <li><Link href="/preview/shop" className="hover:text-[#D4AF37]">Footstools</Link></li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-[10px] font-bold text-black uppercase tracking-[0.2em] mb-4">Tables</h4>
-                  <ul className="space-y-3 text-[9px] text-gray-500 tracking-widest uppercase">
-                    <li><Link href="/preview/shop" className="hover:text-[#D4AF37]">Coffee Tables</Link></li>
-                    <li><Link href="/preview/shop" className="hover:text-[#D4AF37]">Console Tables</Link></li>
-                    <li><Link href="/preview/shop" className="hover:text-[#D4AF37]">Side Tables</Link></li>
-                  </ul>
-                </div>
-                <div className="w-64 aspect-[4/3] bg-gray-100 overflow-hidden relative">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80" alt="Living Feature" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                    <span className="text-white text-[10px] font-bold tracking-[0.2em] uppercase border border-white px-4 py-2 bg-black/50">Shop Living</span>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            {/* DINING Mega Menu */}
-            <li className="group h-full flex items-center">
-              <Link href="/preview/shop" className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-600 group-hover:text-black px-8 py-2.5 border border-transparent group-hover:border-gray-200 group-hover:bg-gray-50 transition-all duration-300">
-                Dining
-              </Link>
-              <div className="absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-12 px-12 z-50 flex justify-center gap-24">
-                <div>
-                  <h4 className="text-[10px] font-bold text-black uppercase tracking-[0.2em] mb-4">Furniture</h4>
-                  <ul className="space-y-3 text-[9px] text-gray-500 tracking-widest uppercase">
-                    <li><Link href="/preview/shop" className="hover:text-[#D4AF37]">Dining Tables</Link></li>
-                    <li><Link href="/preview/shop" className="hover:text-[#D4AF37]">Dining Chairs</Link></li>
-                    <li><Link href="/preview/shop" className="hover:text-[#D4AF37]">Bar Stools</Link></li>
-                    <li><Link href="/preview/shop" className="hover:text-[#D4AF37]">Sideboards</Link></li>
-                  </ul>
-                </div>
-                <div className="w-64 aspect-[4/3] bg-gray-100 overflow-hidden relative">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="https://images.unsplash.com/photo-1604578762246-41134e37f9cc?auto=format&fit=crop&w=600&q=80" alt="Dining Feature" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                    <span className="text-white text-[10px] font-bold tracking-[0.2em] uppercase border border-white px-4 py-2 bg-black/50">Shop Dining</span>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            {/* BEDROOM */}
-            <li className="h-full flex items-center">
-              <Link href="/preview/shop" className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-600 hover:text-black px-8 py-2.5 border border-transparent hover:border-gray-200 hover:bg-gray-50 transition-all duration-300">
-                Bedroom
-              </Link>
-            </li>
-
+        {/* ROW 2: The Centered Navigation Links */}
+        <div className="w-full h-12 flex justify-center items-center pb-2">
+          <ul className="flex space-x-8 md:space-x-12 text-[10px] font-bold uppercase tracking-[0.15em]">
+            <li><Link href="/preview/shop" className="text-gray-800 hover:text-[#D4AF37] transition-colors">Products</Link></li>
+            <li><Link href="/preview/shop" className="text-gray-800 hover:text-[#D4AF37] transition-colors">Living</Link></li>
+            <li><Link href="/preview/shop" className="text-gray-800 hover:text-[#D4AF37] transition-colors">Dining</Link></li>
+            <li><Link href="/preview/shop" className="text-gray-800 hover:text-[#D4AF37] transition-colors">Bedroom</Link></li>
+            <li><Link href="/preview/shop" className="text-gray-800 hover:text-[#D4AF37] transition-colors">Upholstery</Link></li>
+            <li><Link href="/preview/shop" className="text-[#D4AF37] hover:text-black transition-colors">Sale</Link></li>
           </ul>
         </div>
       </header>
 
-      {/* FIXED SPACER: Matches exact height of the new 3-tier header (40px + 96px + 56px = 192px) */}
-      <div className="h-[192px] w-full"></div>
+      {/* Clean spacer for the exact height of the new header (80px + 48px = 128px) */}
+      <div className="h-[128px] w-full bg-white"></div>
     </>
   );
 }
