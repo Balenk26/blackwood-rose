@@ -30,44 +30,32 @@ export default function Navbar() {
         {/* ROW 1: Icons, Logo, Search */}
         <div className="w-full px-6 md:px-12 h-24 flex items-center justify-between">
           
-          {/* Left: Search Icon (Matches Reference) */}
+          {/* Left: Search */}
           <div className="w-1/4 flex items-center justify-start">
-            <button className="text-gray-600 hover:text-black transition-colors p-2">
+            <button className="text-gray-900 hover:text-[#D4AF37] transition-colors p-2">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
               </svg>
             </button>
           </div>
 
-          {/* Center: Logo (Matches Reference) */}
+          {/* Center: BRAND LOGO */}
           <div className="w-2/4 flex justify-center">
-            <Link href="/preview" className="text-3xl md:text-4xl font-serif tracking-[0.05em] text-gray-400 hover:text-gray-600 transition-colors whitespace-nowrap">
-              style our home
+            <Link href="/preview" className="text-2xl md:text-3xl font-serif tracking-[0.15em] text-black uppercase whitespace-nowrap">
+              Blackwood <span className="text-[#D4AF37]">&</span> Rose
             </Link>
           </div>
 
-          {/* Right: Reviews & Icons (Matches Reference) */}
+          {/* Right: Icons */}
           <div className="w-1/4 flex justify-end items-center space-x-6 relative" ref={cartRef}>
             
-            {/* Reviews Block */}
-            <div className="hidden lg:flex items-center text-[10px] font-bold text-black uppercase tracking-widest">
-              Excellent
-              <div className="flex ml-2 space-x-0.5">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span key={star} className="bg-green-500 text-white w-4 h-4 flex items-center justify-center text-[10px]">★</span>
-                ))}
-              </div>
-            </div>
-            
-            {/* User Icon */}
-            <button className="text-gray-600 hover:text-black transition-colors">
+            <button className="text-gray-900 hover:text-[#D4AF37] transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
               </svg>
             </button>
 
-            {/* Heart Icon */}
-            <button className="text-gray-600 hover:text-black transition-colors">
+            <button className="text-gray-900 hover:text-[#D4AF37] transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
               </svg>
@@ -76,13 +64,13 @@ export default function Navbar() {
             {/* Bag Icon */}
             <button 
               onClick={() => setIsCartOpen(!isCartOpen)}
-              className="text-gray-600 hover:text-black transition-colors relative"
+              className="text-gray-900 hover:text-[#D4AF37] transition-colors relative"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
               </svg>
               {cart.length > 0 && (
-                <span className="absolute -top-2 -right-2 bg-gray-200 text-gray-800 text-[9px] font-bold h-4 w-4 rounded-full flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-[#D4AF37] text-white text-[9px] font-bold h-4 w-4 rounded-full flex items-center justify-center">
                   {cart.length}
                 </span>
               )}
@@ -90,12 +78,12 @@ export default function Navbar() {
 
             {/* Mini Cart Dropdown */}
             {isCartOpen && (
-              <div className="absolute top-[100%] right-0 mt-6 w-[340px] bg-white shadow-lg border border-gray-100 z-[120] flex flex-col p-6 cursor-default text-left">
+              <div className="absolute top-[100%] right-0 mt-6 w-[340px] bg-white shadow-2xl border border-gray-100 z-[120] flex flex-col p-6 cursor-default text-left">
                 <div className="flex justify-between items-center border-b border-gray-100 pb-4 mb-5 shrink-0">
                   <span className="text-[10px] font-bold uppercase tracking-widest text-black">Selection</span>
                   <span className="text-[10px] text-gray-500">{cart.length} Items</span>
                 </div>
-                <div className="flex flex-col gap-4 mb-6 max-h-[50vh] overflow-y-auto">
+                <div className="flex flex-col gap-4 mb-6 max-h-[50vh] overflow-y-auto scrollbar-hide">
                   {cart.length === 0 ? (
                     <p className="text-sm text-gray-500 text-center py-6">Your basket is empty.</p>
                   ) : (
@@ -108,8 +96,9 @@ export default function Navbar() {
                         <div className="flex flex-col flex-grow">
                           <div className="flex justify-between items-start gap-2">
                             <h3 className="text-[10px] font-bold text-gray-900 leading-tight max-w-[150px] truncate uppercase tracking-wider">{item.name}</h3>
-                            <p className="text-[10px] font-bold text-gray-900 shrink-0">£{item.price.toLocaleString()}</p>
+                            <p className="text-[10px] font-bold text-[#D4AF37] shrink-0">£{item.price.toLocaleString()}</p>
                           </div>
+                          <p className="text-[9px] text-gray-400 uppercase tracking-widest mt-1">{item.color} | {item.material}</p>
                         </div>
                       </div>
                     ))
@@ -119,9 +108,9 @@ export default function Navbar() {
                   <div className="pt-4 border-t border-gray-100 shrink-0">
                     <div className="flex justify-between items-end mb-4">
                       <span className="text-xs font-bold text-gray-900">Total</span>
-                      <span className="text-lg font-bold text-gray-900">£{cartTotal.toLocaleString()}</span>
+                      <span className="text-lg font-serif tracking-wider text-black">£{cartTotal.toLocaleString()}</span>
                     </div>
-                    <button className="w-full bg-black text-white py-3 text-xs font-bold hover:bg-gray-800 transition-colors">
+                    <button className="w-full bg-black text-white py-4 text-xs tracking-[0.2em] uppercase font-bold hover:bg-[#D4AF37] hover:text-black transition-colors">
                       Checkout
                     </button>
                   </div>
@@ -132,23 +121,22 @@ export default function Navbar() {
 
         </div>
 
-        {/* ROW 2: The Centered Navigation Links (Spaced fully) */}
+        {/* ROW 2: The Centered Navigation Links */}
         <div className="w-full h-14 flex justify-center items-center border-t border-gray-100">
           <ul className="flex justify-center w-full max-w-[1200px] gap-8 md:gap-16 text-[11px] font-bold text-gray-800 uppercase tracking-widest">
-            <li><Link href="/preview/shop" className="hover:text-gray-500 transition-colors">Products</Link></li>
-            <li><Link href="/preview/shop" className="hover:text-gray-500 transition-colors">Living</Link></li>
-            <li><Link href="/preview/shop" className="hover:text-gray-500 transition-colors">Dining</Link></li>
-            <li><Link href="/preview/shop" className="hover:text-gray-500 transition-colors">Bedroom</Link></li>
-            <li><Link href="/preview/shop" className="hover:text-gray-500 transition-colors">Upholstery</Link></li>
-            <li><Link href="/preview/shop" className="hover:text-gray-500 transition-colors">Outdoor</Link></li>
-            <li><Link href="/preview/shop" className="hover:text-gray-500 transition-colors">Brands</Link></li>
-            <li><Link href="/preview/shop" className="text-red-500 hover:text-red-700 transition-colors">Sale</Link></li>
+            <li><Link href="/preview/shop" className="hover:text-[#D4AF37] transition-colors">Products</Link></li>
+            <li><Link href="/preview/shop" className="hover:text-[#D4AF37] transition-colors">Living</Link></li>
+            <li><Link href="/preview/shop" className="hover:text-[#D4AF37] transition-colors">Dining</Link></li>
+            <li><Link href="/preview/shop" className="hover:text-[#D4AF37] transition-colors">Bedroom</Link></li>
+            <li><Link href="/preview/shop" className="hover:text-[#D4AF37] transition-colors">Upholstery</Link></li>
+            <li><Link href="/preview/shop" className="hover:text-[#D4AF37] transition-colors">Outdoor</Link></li>
+            <li><Link href="/preview/shop" className="hover:text-[#D4AF37] transition-colors">Brands</Link></li>
           </ul>
         </div>
       </header>
 
       {/* Spacer so content doesn't get hidden under the fixed header */}
-      <div className="h-[152px] w-full bg-white"></div>
+      <div className="h-[152px] w-full bg-white shrink-0"></div>
     </>
   );
 }

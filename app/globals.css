@@ -2,13 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  body {
+    @apply bg-white text-black antialiased;
+  }
+  a {
+    @apply text-inherit no-underline;
+  }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: white;
+/* Hides scrollbar for the mini-cart but allows scrolling */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
