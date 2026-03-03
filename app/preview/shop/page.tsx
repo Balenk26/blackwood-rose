@@ -44,7 +44,7 @@ export default function ShopPage() {
     <div className="min-h-screen bg-white flex flex-col text-black">
       <Navbar />
       
-      <div className="pt-10 pb-16 flex flex-col items-center">
+      <div className="pt-16 pb-16 flex flex-col items-center border-b border-gray-100 mb-12">
         <h1 className="text-3xl md:text-5xl font-serif text-black tracking-[0.2em] uppercase mb-6">
           The Collection
         </h1>
@@ -52,31 +52,30 @@ export default function ShopPage() {
       </div>
 
       <main 
-        className="px-6 md:px-12 pb-32 max-w-[1500px] mx-auto w-full"
-        style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: '3rem', alignItems: 'start' }}
+        className="px-6 md:px-12 pb-32 max-w-[1600px] mx-auto w-full"
+        style={{ display: 'grid', gridTemplateColumns: '260px 1fr', gap: '4rem', alignItems: 'start' }}
       >
         
-        {/* Left Side: The Sidebar */}
-        {/* FIXED: top is now 160px so it sits perfectly under the new 128px tall minimalist header */}
+        {/* The Sidebar Filters */}
         <aside 
           className="space-y-10 bg-white z-10 pr-6 pb-8"
-          style={{ position: 'sticky', top: '160px', height: 'fit-content', maxHeight: '75vh', overflowY: 'auto' }}
+          style={{ position: 'sticky', top: '240px', height: 'fit-content', maxHeight: '80vh', overflowY: 'auto' }}
         >
           
           <div className="pb-4 border-b-2 border-black">
-            <h2 className="text-sm font-bold text-black tracking-[0.2em] uppercase">
+            <h2 className="text-xs font-bold text-black tracking-[0.2em] uppercase">
               Refine Collection
             </h2>
           </div>
 
           <div>
-            <h3 className="text-[10px] text-black font-bold uppercase tracking-[0.2em] mb-4 border-b border-gray-200 pb-2">Color</h3>
+            <h3 className="text-[10px] text-gray-500 font-bold uppercase tracking-[0.2em] mb-4 pb-2 border-b border-gray-100">Color</h3>
             <ul className="flex flex-wrap gap-2 list-none p-0 m-0">
               {colors.map(color => (
                 <li key={color} className="p-0 m-0">
                   <button 
                     onClick={() => setSelectedColor(color)}
-                    className={`text-[10px] uppercase tracking-widest px-4 py-2 transition-all duration-300 border ${
+                    className={`text-[9px] uppercase tracking-widest px-4 py-2 transition-all duration-300 border ${
                       selectedColor === color 
                         ? 'bg-black text-white border-black font-bold shadow-sm' 
                         : 'bg-white text-gray-500 border-gray-200 hover:border-black hover:text-black'
@@ -90,13 +89,13 @@ export default function ShopPage() {
           </div>
 
           <div>
-            <h3 className="text-[10px] text-black font-bold uppercase tracking-[0.2em] mb-4 border-b border-gray-200 pb-2">Material</h3>
+            <h3 className="text-[10px] text-gray-500 font-bold uppercase tracking-[0.2em] mb-4 pb-2 border-b border-gray-100">Material</h3>
             <ul className="flex flex-wrap gap-2 list-none p-0 m-0">
               {materials.map(material => (
                 <li key={material} className="p-0 m-0">
                   <button 
                     onClick={() => setSelectedMaterial(material)}
-                    className={`text-[10px] uppercase tracking-widest px-4 py-2 transition-all duration-300 border ${
+                    className={`text-[9px] uppercase tracking-widest px-4 py-2 transition-all duration-300 border ${
                       selectedMaterial === material 
                         ? 'bg-black text-white border-black font-bold shadow-sm' 
                         : 'bg-white text-gray-500 border-gray-200 hover:border-black hover:text-black'
@@ -110,7 +109,7 @@ export default function ShopPage() {
           </div>
 
           <div>
-            <h3 className="text-[10px] text-black font-bold uppercase tracking-[0.2em] mb-4 border-b border-gray-200 pb-2 flex justify-between">
+            <h3 className="text-[10px] text-gray-500 font-bold uppercase tracking-[0.2em] mb-4 pb-2 border-b border-gray-100 flex justify-between items-center">
               <span>Max Price</span>
               <span className="text-black font-bold">£{maxPrice}</span>
             </h3>
@@ -125,10 +124,10 @@ export default function ShopPage() {
             />
           </div>
 
-          <div className="pt-4">
+          <div className="pt-6">
             <button 
               onClick={resetFilters}
-              className="w-full text-[10px] bg-white text-black border border-black px-4 py-3 uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300"
+              className="w-full text-[9px] bg-white text-black border border-black px-4 py-3 uppercase tracking-[0.2em] font-bold hover:bg-black hover:text-[#D4AF37] transition-all duration-300"
             >
               Reset Filters
             </button>
@@ -136,6 +135,7 @@ export default function ShopPage() {
 
         </aside>
         
+        {/* Product Grid */}
         <div className="w-full">
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-16">
             {filteredProducts.map((product) => (
@@ -151,11 +151,11 @@ export default function ShopPage() {
                   <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                 </div>
                 
-                <div className="flex flex-col text-left space-y-2 border-b border-transparent group-hover:border-black transition-colors pb-2">
+                <div className="flex flex-col text-left space-y-2">
                   <h3 className="text-xs text-black font-bold tracking-[0.15em] uppercase">
                     {product.name}
                   </h3>
-                  <p className="text-xs text-[#D4AF37] tracking-wider font-medium">
+                  <p className="text-xs text-[#D4AF37] tracking-wider font-bold">
                     £{product.price.toLocaleString()}
                   </p>
                 </div>
