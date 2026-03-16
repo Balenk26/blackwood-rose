@@ -45,38 +45,46 @@ export default function Navbar() {
             <button onClick={() => setIsCartOpen(!isCartOpen)} style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer', position: 'relative' }}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
               <span style={{ position: 'absolute', bottom: '-4px', right: '-8px', backgroundColor: '#ffffff', color: '#000000', fontSize: '10px', fontWeight: 'bold', height: '16px', width: '16px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                {cart.length}
+                {cart?.length || 0}
               </span>
             </button>
 
-            {/* THE MINI CART MENU */}
+            {/* THE MINI CART MENU (WITH DEFENSIVE FALLBACKS) */}
             {isCartOpen && (
               <div style={{ position: 'absolute', top: '100%', right: '0', marginTop: '30px', width: '360px', backgroundColor: '#ffffff', border: '1px solid #eaeaea', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.2)', padding: '24px', color: '#000', textAlign: 'left', cursor: 'default' }}>
                 <h4 style={{ fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', borderBottom: '1px solid #eaeaea', paddingBottom: '16px', margin: '0 0 16px 0' }}>Your Basket</h4>
                 
-                {cart.length === 0 ? (
+                {!cart || cart.length === 0 ? (
                   <p style={{ fontSize: '12px', color: '#666', textAlign: 'center', margin: '32px 0' }}>Your basket is empty.</p>
                 ) : (
                   <div style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                    {/* ADDED ": any" and ": number" HERE TO FIX THE TYPESCRIPT ERROR */}
-                    {cart.map((item: any, index: number) => (
-                      <div key={index} style={{ display: 'flex', gap: '16px', marginBottom: '16px', borderBottom: '1px solid #fafafa', paddingBottom: '16px' }}>
-                        <img src={item.image} alt={item.name} style={{ width: '60px', height: '80px', objectFit: 'cover' }} />
-                        <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                          <span style={{ fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{item.name}</span>
-                          <span style={{ fontSize: '10px', color: '#D4AF37', marginTop: '4px', fontWeight: 'bold' }}>£{item.price.toLocaleString()}</span>
-                          <button onClick={() => removeFromCart(item.id)} style={{ marginTop: 'auto', alignSelf: 'flex-start', background: 'none', border: 'none', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#999', cursor: 'pointer', padding: 0 }}>Remove</button>
+                    {cart.map((item: any, index: number) => {
+                      // These safe variables guarantee the app will never crash even if data is missing
+                      const safeName = item?.name || 'Luxury Item';
+                      const safePrice = Number(item?.price) || 0;
+                      const safeImage = item?.image || 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=200&q=80';
+                      const safeId = item?.id || index;
+
+                      return (
+                        <div key={`${safeId}-${index}`} style={{ display: 'flex', gap: '16px', marginBottom: '16px', borderBottom: '1px solid #fafafa', paddingBottom: '16px' }}>
+                          <img src={safeImage} alt={safeName} style={{ width: '60px', height: '80px', objectFit: 'cover' }} />
+                          <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                            <span style={{ fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{safeName}</span>
+                            <span style={{ fontSize: '10px', color: '#D4AF37', marginTop: '4px', fontWeight: 'bold' }}>£{safePrice.toLocaleString()}</span>
+                            <button onClick={() => removeFromCart(safeId)} style={{ marginTop: 'auto', alignSelf: 'flex-start', background: 'none', border: 'none', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#999', cursor: 'pointer', padding: 0 }}>Remove</button>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 )}
                 
-                {cart.length > 0 && (
+                {cart && cart.length > 0 && (
                   <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid #eaeaea' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', fontWeight: 'bold' }}>
                       <span style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Total</span>
-                      <span style={{ fontSize: '16px', fontFamily: 'serif' }}>£{cartTotal.toLocaleString()}</span>
+                      {/* Ensures cartTotal is treated strictly as a number before formatting */}
+                      <span style={{ fontSize: '16px', fontFamily: 'serif' }}>£{Number(cartTotal || 0).toLocaleString()}</span>
                     </div>
                     <Link href="/preview/checkout" style={{ display: 'block', width: '100%', backgroundColor: '#000000', color: '#ffffff', textAlign: 'center', padding: '16px 0', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', textDecoration: 'none' }}>
                       Proceed to Checkout
