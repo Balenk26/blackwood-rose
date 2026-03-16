@@ -4,117 +4,107 @@ import Navbar from '../components/Navbar';
 
 export default function PreviewHomepage() {
   return (
-    <div className="min-h-screen bg-white flex flex-col text-black font-sans">
+    <div style={{ backgroundColor: '#ffffff', color: '#000000', minHeight: '100vh', fontFamily: 'sans-serif' }}>
       <Navbar />
-      
-      {/* 1. HERO SECTION (Matches Screenshot 1) */}
-      <section className="w-full h-[70vh] md:h-[85vh] relative flex items-center justify-center overflow-hidden">
+
+      {/* 1. HERO SECTION (1:1 with Screenshot) */}
+      <section style={{ position: 'relative', width: '100%', height: '85vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img 
           src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=2000&q=80" 
           alt="Luxury Sofa" 
-          className="absolute inset-0 w-full h-full object-cover"
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
         />
-        <div className="relative z-10 text-center flex flex-col items-center mt-20">
-          <h1 className="text-4xl md:text-6xl font-serif text-gray-800 tracking-widest uppercase mb-4">
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.05)' }}></div>
+        
+        <div style={{ position: 'relative', zIndex: 10, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '60px' }}>
+          <h1 style={{ fontSize: 'clamp(3rem, 5vw, 5rem)', fontFamily: 'serif', color: '#4a4a4a', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem', textShadow: '2px 2px 10px rgba(255,255,255,0.8)' }}>
             Take A Seat
           </h1>
-          <p className="text-lg md:text-xl font-serif text-gray-700 tracking-wider mb-8">
+          <p style={{ fontSize: 'clamp(1rem, 2vw, 1.5rem)', fontFamily: 'serif', color: '#4a4a4a', letterSpacing: '0.05em', marginBottom: '2.5rem', textShadow: '1px 1px 5px rgba(255,255,255,0.8)' }}>
             Refined upholstery for beautifully lived spaces
           </p>
           <Link 
             href="/preview/shop" 
-            className="bg-white/90 text-gray-800 px-8 py-3 text-xs tracking-widest font-bold uppercase hover:bg-white transition-all duration-300 shadow-sm"
+            style={{ backgroundColor: 'rgba(255,255,255,0.95)', color: '#000000', padding: '16px 36px', fontSize: '11px', letterSpacing: '0.2em', fontWeight: 'bold', textTransform: 'uppercase', textDecoration: 'none', border: '1px solid rgba(0,0,0,0.1)', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}
           >
             View All Upholstery
           </Link>
         </div>
       </section>
 
-      {/* 2. CATEGORIES SECTION (Matches Screenshot 2 Top) */}
-      <section className="max-w-[1400px] mx-auto w-full px-4 md:px-8 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        {/* Bedroom */}
-        <Link href="/preview/shop" className="relative aspect-square overflow-hidden group block">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80" alt="Bedroom" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-          <div className="absolute bottom-8 left-0 right-0 flex justify-center">
-            <div className="bg-[#788e84] px-6 py-2 text-white text-sm font-bold tracking-[0.2em] uppercase shadow-md">
-              Bedroom
-            </div>
-          </div>
-        </Link>
+      {/* 2. THE COLLAGE SECTION (Hover for 'Shop Now') */}
+      <section style={{ maxWidth: '1400px', margin: '0 auto', width: '100%', padding: '100px 24px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+          <h2 style={{ fontSize: '24px', fontFamily: 'serif', textTransform: 'uppercase', letterSpacing: '0.15em', color: '#000' }}>Curated Spaces</h2>
+          <div style={{ width: '60px', height: '2px', backgroundColor: '#D4AF37', margin: '20px auto 0' }}></div>
+        </div>
 
-        {/* Living */}
-        <Link href="/preview/shop" className="relative aspect-square overflow-hidden group block">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=800&q=80" alt="Living" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-          <div className="absolute bottom-8 left-0 right-0 flex justify-center">
-            <div className="bg-[#788e84] px-6 py-2 text-white text-sm font-bold tracking-[0.2em] uppercase shadow-md">
-              Living
+        {/* CSS Grid for the Collage */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
+          
+          {/* Collage Item 1: Living */}
+          <Link href="/preview/shop" className="group" style={{ position: 'relative', aspectRatio: '1/1', overflow: 'hidden', display: 'block', textDecoration: 'none', backgroundColor: '#f5f5f5' }}>
+            <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=800&q=80" alt="Living" className="group-hover:scale-110" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 1s ease' }} />
+            <div className="group-hover:bg-black/40" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.15)', transition: 'background-color 0.4s ease' }}></div>
+            
+            {/* The "Shop Now" Overlay */}
+            <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+              <h3 style={{ color: '#ffffff', fontSize: '24px', fontFamily: 'serif', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '16px', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>Living</h3>
+              <span className="opacity-0 group-hover:opacity-100" style={{ color: '#ffffff', borderBottom: '2px solid #D4AF37', paddingBottom: '4px', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: 'bold', transition: 'opacity 0.4s ease' }}>Shop Now</span>
             </div>
-          </div>
-        </Link>
+          </Link>
 
-        {/* Dining */}
-        <Link href="/preview/shop" className="relative aspect-square overflow-hidden group block">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="https://images.unsplash.com/photo-1604578762246-41134e37f9cc?auto=format&fit=crop&w=800&q=80" alt="Dining" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-          <div className="absolute bottom-8 left-0 right-0 flex justify-center">
-            <div className="bg-[#788e84] px-6 py-2 text-white text-sm font-bold tracking-[0.2em] uppercase shadow-md">
-              Dining
+          {/* Collage Item 2: Dining */}
+          <Link href="/preview/shop" className="group" style={{ position: 'relative', aspectRatio: '1/1', overflow: 'hidden', display: 'block', textDecoration: 'none', backgroundColor: '#f5f5f5' }}>
+            <img src="https://images.unsplash.com/photo-1604578762246-41134e37f9cc?auto=format&fit=crop&w=800&q=80" alt="Dining" className="group-hover:scale-110" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 1s ease' }} />
+            <div className="group-hover:bg-black/40" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.15)', transition: 'background-color 0.4s ease' }}></div>
+            <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+              <h3 style={{ color: '#ffffff', fontSize: '24px', fontFamily: 'serif', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '16px', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>Dining</h3>
+              <span className="opacity-0 group-hover:opacity-100" style={{ color: '#ffffff', borderBottom: '2px solid #D4AF37', paddingBottom: '4px', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: 'bold', transition: 'opacity 0.4s ease' }}>Shop Now</span>
             </div>
-          </div>
-        </Link>
+          </Link>
 
+          {/* Collage Item 3: Bedroom */}
+          <Link href="/preview/shop" className="group" style={{ position: 'relative', aspectRatio: '1/1', overflow: 'hidden', display: 'block', textDecoration: 'none', backgroundColor: '#f5f5f5' }}>
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80" alt="Bedroom" className="group-hover:scale-110" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 1s ease' }} />
+            <div className="group-hover:bg-black/40" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.15)', transition: 'background-color 0.4s ease' }}></div>
+            <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+              <h3 style={{ color: '#ffffff', fontSize: '24px', fontFamily: 'serif', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '16px', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>Bedroom</h3>
+              <span className="opacity-0 group-hover:opacity-100" style={{ color: '#ffffff', borderBottom: '2px solid #D4AF37', paddingBottom: '4px', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: 'bold', transition: 'opacity 0.4s ease' }}>Shop Now</span>
+            </div>
+          </Link>
+
+        </div>
       </section>
 
-      {/* 3. BRAND HIGHLIGHT SECTION (Matches Screenshot 2 Bottom) */}
-      <section className="max-w-[1400px] mx-auto w-full px-4 md:px-8 py-16 flex flex-col lg:flex-row items-center gap-12">
-        
-        {/* Left: Text */}
-        <div className="w-full lg:w-1/3 text-center lg:text-left flex flex-col items-center lg:items-start">
-          <h2 className="text-xl font-serif text-black uppercase tracking-widest mb-2">Brand Highlight</h2>
-          <h3 className="text-2xl font-serif text-black uppercase tracking-widest mb-6">Ora Designs</h3>
-          <p className="text-sm text-gray-600 leading-relaxed mb-6">
-            With over 50 years of design heritage, Ora Designs is renowned for creating bold and versatile collections of luxury furniture, lighting, and home accessories.
-          </p>
-          <Link href="/preview/shop" className="text-xs font-bold text-black border-b border-black uppercase tracking-widest pb-1 hover:text-gray-500 transition-colors">
-            View The Brand
-          </Link>
-        </div>
-
-        {/* Center: Large Image */}
-        <div className="w-full lg:w-1/3 flex justify-center">
-          <div className="w-full aspect-[4/3] overflow-hidden">
-             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="Brand Feature" className="w-full h-full object-cover" />
-          </div>
-        </div>
-
-        {/* Right: Product List */}
-        <div className="w-full lg:w-1/3 flex flex-col justify-center space-y-8 pl-0 lg:pl-8">
+      {/* 3. BRAND HIGHLIGHT SECTION (Editorial Lifestyle instead of stock products) */}
+      <section style={{ width: '100%', backgroundColor: '#fafafa', padding: '100px 24px', borderTop: '1px solid #eaeaea' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '64px' }}>
           
-          <div className="flex gap-4 items-center">
-             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=200&q=80" alt="Product" className="w-24 h-16 object-cover" />
-            <div className="flex flex-col">
-              <p className="text-xs text-black mb-1 font-serif">Wicklow Sectional Sofa Natural</p>
-              <Link href="/preview/shop" className="text-[10px] text-black font-bold border-b border-black pb-0.5 inline-block w-fit">Shop Now</Link>
-            </div>
+          <div style={{ flex: '1 1 400px' }}>
+            <h2 style={{ fontSize: '11px', color: '#D4AF37', textTransform: 'uppercase', letterSpacing: '0.3em', marginBottom: '16px', fontWeight: 'bold' }}>Brand Highlight</h2>
+            <h3 style={{ fontSize: '36px', fontFamily: 'serif', color: '#000', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '24px' }}>Nova Phoenix</h3>
+            <p style={{ fontSize: '14px', color: '#666', lineHeight: '2', marginBottom: '40px', maxWidth: '450px' }}>
+              With over 50 years of design heritage, Nova Phoenix is renowned for creating bold and versatile collections. We blend sustainable materials with timeless British craftsmanship to curate spaces that feel instantly like home.
+            </p>
+            <Link href="/preview/shop" style={{ fontSize: '11px', color: '#000', textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: 'bold', textDecoration: 'none', borderBottom: '1px solid #000', paddingBottom: '4px', transition: 'color 0.3s ease' }}>
+              Discover The Brand
+            </Link>
           </div>
 
-          <div className="flex gap-4 items-center">
-             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=200&q=80" alt="Product" className="w-24 h-16 object-cover" />
-            <div className="flex flex-col">
-              <p className="text-xs text-black mb-1 font-serif">Egerton Occasional Chair With Wooden Arms Green Fabric</p>
-              <Link href="/preview/shop" className="text-[10px] text-black font-bold border-b border-black pb-0.5 inline-block w-fit">Shop Now</Link>
+          <div style={{ flex: '2 1 600px', display: 'flex', gap: '24px' }}>
+            {/* Editorial Image 1 */}
+            <div style={{ flex: 1, aspectRatio: '3/4', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
+              <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="Brand Editorial" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+            {/* Editorial Image 2 (Slightly staggered for a modern look) */}
+            <div style={{ flex: 1, aspectRatio: '3/4', overflow: 'hidden', marginTop: '48px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
+              <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=800&q=80" alt="Brand Details" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
           </div>
 
         </div>
-
       </section>
 
     </div>
