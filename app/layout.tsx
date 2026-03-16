@@ -1,5 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import { CartProvider } from './components/CartContext';
 
 export const metadata: Metadata = {
   title: 'Blackwood & Rose',
@@ -13,9 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* We are hardcoding the background to white to kill the transparent overlapping bug forever */}
       <body style={{ backgroundColor: '#ffffff', color: '#000000', margin: 0, padding: 0, WebkitFontSmoothing: 'antialiased' }}>
-        {children}
+        {/* We wrap the whole app in the Basket Brain */}
+        <CartProvider>
+          {children}
+        </CartProvider>
       </body>
     </html>
   );
