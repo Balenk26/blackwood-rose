@@ -5,10 +5,9 @@ import Navbar from '../../components/Navbar';
 import { useCart } from '../../components/CartContext';
 
 export default function CheckoutPage() {
- removeFromCart: const { cart, cartTotal, removeFromCart } = useCart();
+  const { cart, cartTotal, removeFromCart } = useCart(); // Typo fixed!
   const [paymentMethod, setPaymentMethod] = useState('card');
 
-  // DEFENSIVE FALLBACKS: Guarantees the page never crashes during Vercel's server build
   const safeCart = cart || [];
   const safeTotal = Number(cartTotal || 0);
 
@@ -21,10 +20,7 @@ export default function CheckoutPage() {
         
         <div style={{ display: 'flex', gap: '48px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
           
-          {/* LEFT COLUMN: Checkout Forms */}
           <div style={{ flex: '2 1 600px', backgroundColor: '#fff', padding: '40px', border: '1px solid #eaeaea', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
-            
-            {/* Contact & Shipping */}
             <h2 style={{ fontSize: '16px', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '24px', paddingBottom: '12px', borderBottom: '1px solid #eaeaea' }}>Contact & Shipping</h2>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '40px' }}>
               <input type="email" placeholder="Email Address" style={{ gridColumn: 'span 2', padding: '16px', border: '1px solid #ccc', fontSize: '13px', width: '100%', boxSizing: 'border-box' }} />
@@ -35,16 +31,13 @@ export default function CheckoutPage() {
               <input type="text" placeholder="Postcode" style={{ padding: '16px', border: '1px solid #ccc', fontSize: '13px', width: '100%', boxSizing: 'border-box' }} />
             </div>
 
-            {/* Payment Method Selection */}
             <h2 style={{ fontSize: '16px', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '24px', paddingBottom: '12px', borderBottom: '1px solid #eaeaea' }}>Payment Method</h2>
-            
             <div style={{ display: 'flex', gap: '16px', marginBottom: '24px' }}>
               <button onClick={() => setPaymentMethod('card')} style={{ flex: 1, padding: '16px', border: paymentMethod === 'card' ? '2px solid #000' : '1px solid #ccc', backgroundColor: '#fff', cursor: 'pointer', fontWeight: 'bold' }}>Credit Card</button>
               <button onClick={() => setPaymentMethod('apple')} style={{ flex: 1, padding: '16px', border: paymentMethod === 'apple' ? '2px solid #000' : '1px solid #ccc', backgroundColor: '#000', color: '#fff', cursor: 'pointer', fontWeight: 'bold' }}>Apple Pay</button>
               <button onClick={() => setPaymentMethod('paypal')} style={{ flex: 1, padding: '16px', border: paymentMethod === 'paypal' ? '2px solid #000' : '1px solid #ccc', backgroundColor: '#FFC439', color: '#000', cursor: 'pointer', fontWeight: 'bold' }}>PayPal</button>
             </div>
 
-            {/* Credit Card Form */}
             {paymentMethod === 'card' && (
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '40px' }}>
                 <input type="text" placeholder="Card Number" style={{ gridColumn: 'span 2', padding: '16px', border: '1px solid #ccc', fontSize: '13px', width: '100%', boxSizing: 'border-box' }} />
@@ -54,13 +47,11 @@ export default function CheckoutPage() {
               </div>
             )}
             
-            {/* Pay Button */}
             <button style={{ width: '100%', backgroundColor: '#000', color: '#fff', padding: '24px', fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}>
               {paymentMethod === 'apple' ? 'Pay with Apple Pay' : paymentMethod === 'paypal' ? 'Pay with PayPal' : `Pay £${safeTotal.toLocaleString()} Securely`}
             </button>
           </div>
 
-          {/* RIGHT COLUMN: Order Summary */}
           <div style={{ flex: '1 1 350px', backgroundColor: '#fff', padding: '40px', border: '1px solid #eaeaea' }}>
             <h2 style={{ fontSize: '16px', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '32px' }}>Order Summary</h2>
             
@@ -72,15 +63,23 @@ export default function CheckoutPage() {
                   const safeName = item?.name || 'Luxury Item';
                   const safePrice = Number(item?.price) || 0;
                   const safeImage = item?.image || '';
+                  const safeId = item?.id || index;
 
                   return (
-                    <div key={index} style={{ display: 'flex', gap: '16px', marginBottom: '24px' }}>
+                    <div key={`${safeId}-${index}`} style={{ display: 'flex', gap: '16px', marginBottom: '24px' }}>
                       <div style={{ width: '60px', height: '80px', backgroundColor: '#f5f5f5', flexShrink: 0 }}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         {safeImage && <img src={safeImage} alt={safeName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                         <span style={{ fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>{safeName}</span>
-                        <span style={{ fontSize: '12px', color: '#666' }}>£{safePrice.toLocaleString()}</span>
+                        <span style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>£{safePrice.toLocaleString()}</span>
+                        <button 
+                          onClick={() => removeFromCart(Number(safeId))} 
+                          style={{ alignSelf: 'flex-start', background: 'none', border: 'none', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#d9534f', cursor: 'pointer', padding: 0, fontWeight: 'bold' }}
+                        >
+                          Remove
+                        </button>
                       </div>
                     </div>
                   );
@@ -88,27 +87,24 @@ export default function CheckoutPage() {
               )}
             </div>
 
-{safeCart.map((item: any, index: number) => {
-  const safeName = item?.name || 'Luxury Item';
-  const safePrice = Number(item?.price) || 0;
-  const safeImage = item?.image || '';
+            <div style={{ borderTop: '1px solid #eaeaea', paddingTop: '24px', display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '13px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ color: '#666' }}>Subtotal</span>
+                <span>£{safeTotal.toLocaleString()}</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ color: '#666' }}>Shipping</span>
+                <span style={{ color: '#D4AF37', fontWeight: 'bold' }}>Complimentary</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid #eaeaea', paddingTop: '24px', fontSize: '18px', fontWeight: 'bold', fontFamily: 'serif' }}>
+                <span>Total</span>
+                <span>£{safeTotal.toLocaleString()}</span>
+              </div>
+            </div>
+          </div>
 
-  return (
-    <div key={index} style={{ display: 'flex', gap: '16px', marginBottom: '24px' }}>
-      <div style={{ width: '60px', height: '80px', backgroundColor: '#f5f5f5', flexShrink: 0 }}>
-        {safeImage && <img src={safeImage} alt={safeName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-        <span style={{ fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>{safeName}</span>
-        <span style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>£{safePrice.toLocaleString()}</span>
-        <button 
-          onClick={() => removeFromCart(Number(item.id))} 
-          style={{ alignSelf: 'flex-start', background: 'none', border: 'none', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#d9534f', cursor: 'pointer', padding: 0, fontWeight: 'bold' }}
-        >
-          Remove
-        </button>
+        </div>
       </div>
     </div>
   );
-})}
 }
