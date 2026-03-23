@@ -7,14 +7,13 @@ import { useCart } from './CartContext';
 export default function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { cart, cartTotal, removeFromCart } = useCart();
-  
-  // The Click Sensor
   const cartRef = useRef<HTMLDivElement>(null);
 
+  // The sensor that closes the cart when you click outside of it
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
-        setIsCartOpen(false); // Shuts the basket if you click outside
+        setIsCartOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -23,10 +22,9 @@ export default function Navbar() {
 
   return (
     <>
-      <header 
-        className="w-full fixed top-0 left-0 flex flex-col"
-        style={{ backgroundColor: '#000000', color: '#D4AF37', zIndex: 9999, borderBottom: '1px solid #333333' }}
-      >
+      <header className="w-full fixed top-0 left-0 flex flex-col" style={{ backgroundColor: '#000000', color: '#D4AF37', zIndex: 9999, borderBottom: '1px solid #333333' }}>
+        
+        {/* TOP ROW: Search, Logo, Icons */}
         <div className="w-full max-w-[1600px] mx-auto px-6 lg:px-12 h-[100px] flex items-center justify-between">
           
           <div className="w-1/4 flex items-center justify-start">
@@ -46,7 +44,6 @@ export default function Navbar() {
             </span>
           </div>
 
-          {/* WE ATTACH THE SENSOR HERE using ref={cartRef} */}
           <div className="w-1/4 flex justify-end items-center space-x-5 lg:space-x-7 relative" ref={cartRef}>
             <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer' }}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
@@ -73,18 +70,31 @@ export default function Navbar() {
                 ) : (
                   <div style={{ maxHeight: '50vh', overflowY: 'auto' }}>
                     {cart.map((item: any, index: number) => {
+                      // Fallbacks to prevent rendering crashes
+                      const safeId = item?.id || index;
                       const safeName = item?.name || 'Luxury Item';
                       const safePrice = Number(item?.price) || 0;
-                      const safeImage = item?.image || 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=200&q=80';
-                      const safeId = item?.id || index;
+                      const safeImage = item?.image || '';
 
                       return (
                         <div key={`${safeId}-${index}`} style={{ display: 'flex', gap: '16px', marginBottom: '16px', borderBottom: '1px solid #fafafa', paddingBottom: '16px' }}>
-                          <img src={safeImage} alt={safeName} style={{ width: '60px', height: '80px', objectFit: 'cover' }} />
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          {safeImage && <img src={safeImage} alt={safeName} style={{ width: '60px', height: '80px', objectFit: 'cover' }} />}
                           <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                             <span style={{ fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{safeName}</span>
                             <span style={{ fontSize: '10px', color: '#D4AF37', marginTop: '4px', fontWeight: 'bold' }}>£{safePrice.toLocaleString()}</span>
-                            <button onClick={() => removeFromCart(safeId)} style={{ marginTop: 'auto', alignSelf: 'flex-start', background: 'none', border: 'none', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#999', cursor: 'pointer', padding: 0 }}>Remove</button>
+                            
+                            {/* Functional Remove Button */}
+                            <button 
+                              onClick={(e) => { 
+                                e.preventDefault(); 
+                                e.stopPropagation(); 
+                                removeFromCart(Number(safeId)); 
+                              }} 
+                              style={{ marginTop: 'auto', alignSelf: 'flex-start', background: 'none', border: 'none', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#d9534f', cursor: 'pointer', padding: 0, fontWeight: 'bold' }}
+                            >
+                              Remove
+                            </button>
                           </div>
                         </div>
                       );
@@ -98,7 +108,8 @@ export default function Navbar() {
                       <span style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Total</span>
                       <span style={{ fontSize: '16px', fontFamily: 'serif' }}>£{Number(cartTotal || 0).toLocaleString()}</span>
                     </div>
-                    {/* onClick added here so the menu closes when you go to checkout */}
+                    
+                    {/* Closes cart when heading to checkout */}
                     <Link href="/preview/checkout" onClick={() => setIsCartOpen(false)} style={{ display: 'block', width: '100%', backgroundColor: '#000000', color: '#ffffff', textAlign: 'center', padding: '16px 0', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', textDecoration: 'none' }}>
                       Proceed to Checkout
                     </Link>
@@ -122,6 +133,7 @@ export default function Navbar() {
         </div>
       </header>
 
+      {/* Spacer so content doesn't get hidden under the 155px fixed header */}
       <div style={{ height: '155px', width: '100%', backgroundColor: '#ffffff' }}></div>
     </>
   );

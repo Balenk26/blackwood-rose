@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar';
 import { useCart } from '../../components/CartContext';
 
 export default function CheckoutPage() {
-  const { cart, cartTotal } = useCart();
+ removeFromCart: const { cart, cartTotal, removeFromCart } = useCart();
   const [paymentMethod, setPaymentMethod] = useState('card');
 
   // DEFENSIVE FALLBACKS: Guarantees the page never crashes during Vercel's server build
@@ -88,24 +88,27 @@ export default function CheckoutPage() {
               )}
             </div>
 
-            <div style={{ borderTop: '1px solid #eaeaea', paddingTop: '24px', display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '13px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: '#666' }}>Subtotal</span>
-                <span>£{safeTotal.toLocaleString()}</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: '#666' }}>Shipping</span>
-                <span style={{ color: '#D4AF37', fontWeight: 'bold' }}>Complimentary</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid #eaeaea', paddingTop: '24px', fontSize: '18px', fontWeight: 'bold', fontFamily: 'serif' }}>
-                <span>Total</span>
-                <span>£{safeTotal.toLocaleString()}</span>
-              </div>
-            </div>
-          </div>
+{safeCart.map((item: any, index: number) => {
+  const safeName = item?.name || 'Luxury Item';
+  const safePrice = Number(item?.price) || 0;
+  const safeImage = item?.image || '';
 
-        </div>
+  return (
+    <div key={index} style={{ display: 'flex', gap: '16px', marginBottom: '24px' }}>
+      <div style={{ width: '60px', height: '80px', backgroundColor: '#f5f5f5', flexShrink: 0 }}>
+        {safeImage && <img src={safeImage} alt={safeName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+        <span style={{ fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>{safeName}</span>
+        <span style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>£{safePrice.toLocaleString()}</span>
+        <button 
+          onClick={() => removeFromCart(Number(item.id))} 
+          style={{ alignSelf: 'flex-start', background: 'none', border: 'none', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#d9534f', cursor: 'pointer', padding: 0, fontWeight: 'bold' }}
+        >
+          Remove
+        </button>
       </div>
     </div>
   );
+})}
 }
