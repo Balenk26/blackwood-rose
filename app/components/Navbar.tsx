@@ -1,12 +1,25 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useCart } from './CartContext';
 
 export default function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { cart, cartTotal, removeFromCart } = useCart();
+  
+  // The Click Sensor
+  const cartRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+        setIsCartOpen(false); // Shuts the basket if you click outside
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <>
@@ -33,7 +46,8 @@ export default function Navbar() {
             </span>
           </div>
 
-          <div className="w-1/4 flex justify-end items-center space-x-5 lg:space-x-7 relative">
+          {/* WE ATTACH THE SENSOR HERE using ref={cartRef} */}
+          <div className="w-1/4 flex justify-end items-center space-x-5 lg:space-x-7 relative" ref={cartRef}>
             <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer' }}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
             </button>
@@ -49,7 +63,7 @@ export default function Navbar() {
               </span>
             </button>
 
-            {/* THE MINI CART MENU (WITH DEFENSIVE FALLBACKS) */}
+            {/* THE MINI CART MENU */}
             {isCartOpen && (
               <div style={{ position: 'absolute', top: '100%', right: '0', marginTop: '30px', width: '360px', backgroundColor: '#ffffff', border: '1px solid #eaeaea', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.2)', padding: '24px', color: '#000', textAlign: 'left', cursor: 'default' }}>
                 <h4 style={{ fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', borderBottom: '1px solid #eaeaea', paddingBottom: '16px', margin: '0 0 16px 0' }}>Your Basket</h4>
@@ -59,7 +73,6 @@ export default function Navbar() {
                 ) : (
                   <div style={{ maxHeight: '50vh', overflowY: 'auto' }}>
                     {cart.map((item: any, index: number) => {
-                      // These safe variables guarantee the app will never crash even if data is missing
                       const safeName = item?.name || 'Luxury Item';
                       const safePrice = Number(item?.price) || 0;
                       const safeImage = item?.image || 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=200&q=80';
@@ -83,10 +96,10 @@ export default function Navbar() {
                   <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid #eaeaea' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', fontWeight: 'bold' }}>
                       <span style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Total</span>
-                      {/* Ensures cartTotal is treated strictly as a number before formatting */}
                       <span style={{ fontSize: '16px', fontFamily: 'serif' }}>£{Number(cartTotal || 0).toLocaleString()}</span>
                     </div>
-                    <Link href="/preview/checkout" style={{ display: 'block', width: '100%', backgroundColor: '#000000', color: '#ffffff', textAlign: 'center', padding: '16px 0', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', textDecoration: 'none' }}>
+                    {/* onClick added here so the menu closes when you go to checkout */}
+                    <Link href="/preview/checkout" onClick={() => setIsCartOpen(false)} style={{ display: 'block', width: '100%', backgroundColor: '#000000', color: '#ffffff', textAlign: 'center', padding: '16px 0', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', textDecoration: 'none' }}>
                       Proceed to Checkout
                     </Link>
                   </div>
@@ -96,7 +109,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* BOTTOM ROW: The Updated Links */}
+        {/* BOTTOM ROW: Navigation Links */}
         <div style={{ width: '100%', height: '55px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid #333333' }}>
           <ul style={{ display: 'flex', justifyContent: 'center', width: '100%', maxWidth: '1200px', gap: '3rem', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', margin: 0, padding: 0, listStyle: 'none' }}>
             <li><Link href="/preview/shop" style={{ textDecoration: 'none', color: '#D4AF37' }}>All Products</Link></li>
