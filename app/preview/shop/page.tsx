@@ -1,21 +1,12 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
-// The correct map directions to the Navbar: Go up two folders
 import Navbar from '../../components/Navbar';
 import { useCart } from '../../components/CartContext';
+import Link from 'next/link';
+// We import your new master list here!
+import { products } from '../../data';
 
-export const products = [
-  { id: 1, name: 'The Onyx Lounge Chair', price: 1250, image: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80' },
-  { id: 2, name: 'Marble & Walnut Console', price: 890, image: 'https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=800&q=80' },
-  { id: 3, name: 'Velvet Accent Sofa', price: 2100, image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80' },
-  { id: 4, name: 'Minimalist Oak Dining Table', price: 1850, image: 'https://images.unsplash.com/photo-1577140917170-285929fb55b7?auto=format&fit=crop&w=800&q=80' },
-  { id: 5, name: 'Brushed Brass Floor Lamp', price: 420, image: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=800&q=80' },
-  { id: 6, name: 'Bouclé Armchair', price: 950, image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=800&q=80' }
-];
-
-// The correct function name for the Shop page
 export default function ShopPage() {
   const { addToCart } = useCart();
 
