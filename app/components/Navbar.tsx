@@ -8,9 +8,10 @@ export default function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { cart, cartTotal, removeFromCart } = useCart();
   const cartRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
-  // The sensor that closes the cart when you click outside of it
   useEffect(() => {
+    setMounted(true);
     function handleClickOutside(event: MouseEvent) {
       if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
         setIsCartOpen(false);
@@ -24,7 +25,6 @@ export default function Navbar() {
     <>
       <header className="w-full fixed top-0 left-0 flex flex-col" style={{ backgroundColor: '#000000', color: '#D4AF37', zIndex: 9999, borderBottom: '1px solid #333333' }}>
         
-        {/* TOP ROW: Search, Logo, Icons */}
         <div className="w-full max-w-[1600px] mx-auto px-6 lg:px-12 h-[100px] flex items-center justify-between">
           
           <div className="w-1/4 flex items-center justify-start">
@@ -52,15 +52,13 @@ export default function Navbar() {
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
             </button>
             
-            {/* BASKET BUTTON */}
             <button onClick={() => setIsCartOpen(!isCartOpen)} style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer', position: 'relative' }}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
               <span style={{ position: 'absolute', bottom: '-4px', right: '-8px', backgroundColor: '#ffffff', color: '#000000', fontSize: '10px', fontWeight: 'bold', height: '16px', width: '16px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                {cart?.length || 0}
+                {mounted ? cart.length : 0}
               </span>
             </button>
 
-            {/* THE MINI CART MENU */}
             {isCartOpen && (
               <div style={{ position: 'absolute', top: '100%', right: '0', marginTop: '30px', width: '360px', backgroundColor: '#ffffff', border: '1px solid #eaeaea', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.2)', padding: '24px', color: '#000', textAlign: 'left', cursor: 'default' }}>
                 <h4 style={{ fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', borderBottom: '1px solid #eaeaea', paddingBottom: '16px', margin: '0 0 16px 0' }}>Your Basket</h4>
@@ -70,26 +68,23 @@ export default function Navbar() {
                 ) : (
                   <div style={{ maxHeight: '50vh', overflowY: 'auto' }}>
                     {cart.map((item: any, index: number) => {
-                      // Fallbacks to prevent rendering crashes
-                      const safeId = item?.id || index;
                       const safeName = item?.name || 'Luxury Item';
                       const safePrice = Number(item?.price) || 0;
                       const safeImage = item?.image || '';
 
                       return (
-                        <div key={`${safeId}-${index}`} style={{ display: 'flex', gap: '16px', marginBottom: '16px', borderBottom: '1px solid #fafafa', paddingBottom: '16px' }}>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <div key={`nav-cart-${index}`} style={{ display: 'flex', gap: '16px', marginBottom: '16px', borderBottom: '1px solid #fafafa', paddingBottom: '16px' }}>
                           {safeImage && <img src={safeImage} alt={safeName} style={{ width: '60px', height: '80px', objectFit: 'cover' }} />}
                           <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                             <span style={{ fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{safeName}</span>
                             <span style={{ fontSize: '10px', color: '#D4AF37', marginTop: '4px', fontWeight: 'bold' }}>£{safePrice.toLocaleString()}</span>
                             
-                            {/* Functional Remove Button */}
+                            {/* NEW REMOVE BUTTON (Passes exact index) */}
                             <button 
                               onClick={(e) => { 
                                 e.preventDefault(); 
                                 e.stopPropagation(); 
-                                removeFromCart(Number(safeId)); 
+                                removeFromCart(index); 
                               }} 
                               style={{ marginTop: 'auto', alignSelf: 'flex-start', background: 'none', border: 'none', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#d9534f', cursor: 'pointer', padding: 0, fontWeight: 'bold' }}
                             >
@@ -109,7 +104,6 @@ export default function Navbar() {
                       <span style={{ fontSize: '16px', fontFamily: 'serif' }}>£{Number(cartTotal || 0).toLocaleString()}</span>
                     </div>
                     
-                    {/* Closes cart when heading to checkout */}
                     <Link href="/preview/checkout" onClick={() => setIsCartOpen(false)} style={{ display: 'block', width: '100%', backgroundColor: '#000000', color: '#ffffff', textAlign: 'center', padding: '16px 0', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', textDecoration: 'none' }}>
                       Proceed to Checkout
                     </Link>
@@ -120,7 +114,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* BOTTOM ROW: Navigation Links */}
         <div style={{ width: '100%', height: '55px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid #333333' }}>
           <ul style={{ display: 'flex', justifyContent: 'center', width: '100%', maxWidth: '1200px', gap: '3rem', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', margin: 0, padding: 0, listStyle: 'none' }}>
             <li><Link href="/preview/shop" style={{ textDecoration: 'none', color: '#D4AF37' }}>All Products</Link></li>
@@ -133,7 +126,6 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Spacer so content doesn't get hidden under the 155px fixed header */}
       <div style={{ height: '155px', width: '100%', backgroundColor: '#ffffff' }}></div>
     </>
   );
