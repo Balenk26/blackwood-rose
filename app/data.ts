@@ -3,25 +3,20 @@
 export const products = [
   {
     id: 1,
-    name: "The Obsidian Lounge Chair",
-    price: 1450,
-    category: "living", // Options: 'living', 'dining', 'bedroom'
-    image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80",
-    description: "Write your luxury description here. Talk about the craftsmanship, the comfort, and how it transforms the room.",
-    sku: "BR-LIV-001",
-    material: "Italian Top-Grain Leather",
-    dimensions: "W: 85cm x D: 90cm x H: 105cm"
-  },
-  {
-    id: 2,
-    name: "Enter Your Second Product Name",
-    price: 890,
-    category: "dining",
-    image: "https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=800&q=80",
-    description: "Another beautiful description goes here.",
-    sku: "BR-DIN-002",
-    material: "Solid Walnut & Marble",
-    dimensions: "W: 120cm x D: 40cm x H: 80cm"
-  },
-  // You can copy and paste the block above to add as many products as you want!
+    name: "Rustic Elegance Tall Louvered Cabinet",
+    price: 349,
+    category: "living", 
+    image: "https://images.unsplash.com/photo-1595514535415-84620f4c0847?auto=format&fit=crop&w=800&q=80", // Placeholder image
+    description: "Add a touch of timeless, rustic charm to your home with our beautifully crafted Tall Louvered Cabinet. Featuring a soft, distressed whitewash finish and a classic shutter-style door, this piece effortlessly complements farmhouse, coastal, and shabby-chic interiors. Designed with a clever, space-saving footprint, its slender profile makes it the perfect elegant storage solution for tight spaces. Whether you need stylish towel storage in a bathroom, an organizational hub in a narrow hallway, or a statement piece in a cozy living room, this cabinet offers ample room to tuck away your essentials completely out of sight.",
+    features: [
+      "Classic Design: Traditional louvered/shuttered door paneling.",
+      "Artisan Finish: Beautifully distressed, light wood finish that highlights natural grain and texture.",
+      "Space-Maximizing: Tall and narrow silhouette designed for rooms where floor space is at a premium.",
+      "Versatile Storage: Perfect for linens, books, toiletries, or general household organization."
+    ],
+    sku: "BR-CAB-001",
+    material: "Solid wood with a distressed finish",
+    dimensions: "35L x 50W x 162H (cm)",
+    doors: "1"
+  }
 ];
