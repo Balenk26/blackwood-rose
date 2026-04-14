@@ -6,6 +6,9 @@ import { useCart } from './CartContext';
 
 export default function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  // NEW: State to control the Brands dropdown menu
+  const [isBrandsHovered, setIsBrandsHovered] = useState(false);
+  
   const { cart, cartTotal, removeFromCart } = useCart();
   const cartRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
@@ -78,18 +81,7 @@ export default function Navbar() {
                           <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                             <span style={{ fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{safeName}</span>
                             <span style={{ fontSize: '10px', color: '#D4AF37', marginTop: '4px', fontWeight: 'bold' }}>£{safePrice.toLocaleString()}</span>
-                            
-                            {/* NEW REMOVE BUTTON (Passes exact index) */}
-                            <button 
-                              onClick={(e) => { 
-                                e.preventDefault(); 
-                                e.stopPropagation(); 
-                                removeFromCart(index); 
-                              }} 
-                              style={{ marginTop: 'auto', alignSelf: 'flex-start', background: 'none', border: 'none', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#d9534f', cursor: 'pointer', padding: 0, fontWeight: 'bold' }}
-                            >
-                              Remove
-                            </button>
+                            <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); removeFromCart(index); }} style={{ marginTop: 'auto', alignSelf: 'flex-start', background: 'none', border: 'none', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#d9534f', cursor: 'pointer', padding: 0, fontWeight: 'bold' }}>Remove</button>
                           </div>
                         </div>
                       );
@@ -103,10 +95,7 @@ export default function Navbar() {
                       <span style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Total</span>
                       <span style={{ fontSize: '16px', fontFamily: 'serif' }}>£{Number(cartTotal || 0).toLocaleString()}</span>
                     </div>
-                    
-                    <Link href="/preview/checkout" onClick={() => setIsCartOpen(false)} style={{ display: 'block', width: '100%', backgroundColor: '#000000', color: '#ffffff', textAlign: 'center', padding: '16px 0', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', textDecoration: 'none' }}>
-                      Proceed to Checkout
-                    </Link>
+                    <Link href="/preview/checkout" onClick={() => setIsCartOpen(false)} style={{ display: 'block', width: '100%', backgroundColor: '#000000', color: '#ffffff', textAlign: 'center', padding: '16px 0', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', textDecoration: 'none' }}>Proceed to Checkout</Link>
                   </div>
                 )}
               </div>
@@ -121,7 +110,25 @@ export default function Navbar() {
             <li><Link href="/preview/dining" style={{ textDecoration: 'none', color: '#D4AF37' }}>Dining</Link></li>
             <li><Link href="/preview/bedroom" style={{ textDecoration: 'none', color: '#D4AF37' }}>Bedroom</Link></li>
             <li><Link href="/preview/upholstery" style={{ textDecoration: 'none', color: '#D4AF37' }}>Upholstery</Link></li>
-            <li><Link href="/preview/brands" style={{ textDecoration: 'none', color: '#D4AF37' }}>Brands</Link></li>
+            
+            {/* NEW: Brands Dropdown */}
+            <li 
+              style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center', cursor: 'pointer' }}
+              onMouseEnter={() => setIsBrandsHovered(true)}
+              onMouseLeave={() => setIsBrandsHovered(false)}
+            >
+              <Link href="/preview/brands" style={{ textDecoration: 'none', color: '#D4AF37', padding: '10px 0' }}>Brands</Link>
+              
+              {isBrandsHovered && (
+                <div style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', backgroundColor: '#000', border: '1px solid #333', padding: '16px 24px', minWidth: '180px', display: 'flex', flexDirection: 'column', gap: '16px', zIndex: 100, textAlign: 'center' }}>
+                  <Link href="/preview/shop" style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s' }}>
+                    Delphine Collection
+                  </Link>
+                  {/* We can add more collections here later! */}
+                </div>
+              )}
+            </li>
+
           </ul>
         </div>
       </header>
