@@ -1,15 +1,16 @@
 // app/data.ts
 
 export const products = [
-  // --- LISTING 1: RUSTIC CABINET ---
   {
     id: 1,
     name: "Rustic Elegance Tall Louvered Cabinet",
     price: 349,
     category: "living", 
-    image: "/cabinet-1.jpg", // Main thumbnail
     
-    // All 4 images added to the gallery!
+    // Main thumbnail for the shop page and cart
+    image: "/cabinet-1.jpg", 
+    
+    // All 4 images linked together for the carousel!
     gallery: [
       "/cabinet-1.jpg", 
       "/cabinet-2.jpg",
@@ -28,29 +29,5 @@ export const products = [
     material: "Solid wood with a distressed finish",
     dimensions: "35L x 50W x 162H (cm)",
     doors: "1"
-  },
-
-  // --- LISTING 2: YOUR NEXT PRODUCT ---
-  {
-    id: 2, // Always give the next item a new ID number
-    name: "Your Second Product Name",
-    price: 499,
-    category: "living", // Change to 'bedroom' or 'dining' to make it show up on those pages!
-    image: "/your-next-image-1.jpg", 
-    
-    gallery: [
-      "/your-next-image-1.jpg", 
-      "/your-next-image-2.jpg"
-    ],
-    
-    description: "Your beautiful description goes right here. Talk about the craftsmanship and how it elevates the space.",
-    features: [
-      "Feature 1: Description of your first feature.",
-      "Feature 2: Description of your second feature."
-    ],
-    sku: "BR-NEW-002",
-    material: "Describe the material here",
-    dimensions: "100L x 50W x 100H (cm)",
-    // Note: If an item doesn't have doors (like a chair), you can just delete the 'doors' line entirely for that specific product!
   }
 ];
