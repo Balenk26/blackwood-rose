@@ -339,12 +339,12 @@ export const products = [
     doors: "2 (with 1 upper drawer)"
   },
 
-  // --- 16. REED COLLECTION 1-DRAWER SIDE TABLE (New Listing) ---
+  // --- 16. REED COLLECTION 1-DRAWER SIDE TABLE ---
   {
     id: 16,
     name: "Reed Collection 1-Drawer Side Table",
-    price: 295, // Placeholder price, adjust as needed!
-    category: "living", // Fits in living rooms or bedrooms
+    price: 295, 
+    category: "living", 
     collection: "reed", 
     image: "/reed-side-table-1.jpg", 
     gallery: [
@@ -364,5 +364,32 @@ export const products = [
     sku: "24320", 
     material: "Solid wood frame with a textured finish and sleek hardware",
     dimensions: "35L x 45W x 61H (cm)"
+  },
+
+  // --- 17. REED COLLECTION 2-DRAWER 2-DOOR CONSOLE (New Listing) ---
+  {
+    id: 17,
+    name: "Reed Collection 2-Drawer 2-Door Console",
+    price: 795, // Placeholder price, adjust as needed!
+    category: "living", // Excellent for entranceways or living spaces
+    collection: "reed", 
+    image: "/reed-2door-console-1.jpg", 
+    gallery: [
+      "/reed-2door-console-1.jpg", 
+      "/reed-2door-console-2.jpg",
+      "/reed-2door-console-3.jpg",
+      "/reed-2door-console-4.jpg"
+    ],
+    description: "Designed to enhance a variety of interior styles, the Reed Collection 2-Drawer, 2-Door Console presents a beautifully balanced interplay of texture and clean-lined structure. The understated facade is enriched with a subtle grain that lends depth to its surface, maintaining an uncluttered, harmonious aesthetic that integrates seamlessly into both contemporary and classic spaces. Two spacious cabinet compartments provide generous concealed storage, complemented by two smooth-gliding drawers for organizing smaller daily essentials. Its refined tonal quality is quietly impactful, allowing it to act as an impeccable foundation for styling with rich textiles, warm-toned ceramics, or woven accents. Whether positioned in an entranceway, lounge, or dining area, this console projects a quiet confidence that evolves beautifully with your changing seasonal decor.",
+    features: [
+      "Architectural Balance: A clean-lined, beautifully proportioned silhouette that anchors any living space or entranceway.",
+      "Subtle Textures: An understated finish enriched with a delicate woodgrain depth and refined hardware.",
+      "Comprehensive Storage: Dual smooth-gliding drawers and two spacious concealed cupboards offer exceptional organization.",
+      "Styling Foundation: A versatile, elegant canvas perfectly suited for displaying ceramics, botanicals, or statement lighting."
+    ],
+    sku: "24325", 
+    material: "Solid wood frame with a muted, textured finish and sleek hardware",
+    dimensions: "30L x 106W x 80H (cm)",
+    doors: "2 (with 2 upper drawers)"
   }
 ];
