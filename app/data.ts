@@ -262,7 +262,7 @@ export const products = [
   {
     id: 10,
     name: "Delphine Collection 1-Door 1-Drawer Chest (Left Hand)",
-    price: 495, // Placeholder price, adjust as needed!
+    price: 495, 
     category: "bedroom", 
     image: "/delphine-left-chest-1.jpg", 
     gallery: [
@@ -285,5 +285,34 @@ export const products = [
     material: "Solid wood frame with a muted, refined finish",
     dimensions: "38L x 50W x 72H (cm)",
     doors: "1 (Left-Hand Hinge, with 1 upper drawer)"
+  },
+
+  // --- 11. DELPHINE 3-DRAWER CONSOLE WITH SHELF (New Listing) ---
+  {
+    id: 11,
+    name: "Delphine Collection 3-Drawer Console With Shelf",
+    price: 750, // Placeholder price, adjust as needed!
+    category: "living", // Set to living as it's highly versatile for hallways and lounges
+    image: "/delphine-console-1.jpg", 
+    gallery: [
+      "/delphine-console-1.jpg", 
+      "/delphine-console-2.jpg",
+      "/delphine-console-3.jpg",
+      "/delphine-console-4.jpg",
+      "/delphine-console-5.jpg",
+      "/delphine-console-6.jpg",
+      "/delphine-console-7.jpg",
+      "/delphine-console-8.jpg"
+    ],
+    description: "Marrying functional elegance with architectural grace, the Delphine 3-Drawer Console with an integrated lower shelf is a masterclass in versatile luxury. Designed to elevate hallways, living spaces, or grand bedrooms, this piece offers a beautifully refined combination of concealed organization and open display. Three smooth-gliding drawers provide a discreet home for everyday essentials, while the expansive lower shelf invites the curation of oversized art books, woven baskets, or sculptural ceramics. Finished in the collection's signature calm, muted tone and accented with vintage-inspired hardware, the console's clean-lined proportions make it an impeccable canvas for styling beneath a statement mirror or artwork. Crafted with exceptional durability, it promises a lifetime of quiet sophistication and daily utility.",
+    features: [
+      "Versatile Elegance: Perfectly proportioned to act as a sophisticated hallway anchor, living room display, or elegant dressing table.",
+      "Dual Storage Design: Features three smooth-gliding drawers for concealed organization alongside an expansive lower shelf for curated display.",
+      "Quiet Luxury: Finished in a calm, muted tone with clean lines and meticulously considered vintage-inspired hardware.",
+      "Heirloom Construction: Durably crafted to support meaningful displays with stable, long-term structural integrity."
+    ],
+    sku: "24664", 
+    material: "Solid wood frame with a muted, refined finish",
+    dimensions: "40L x 120W x 80H (cm)"
   }
 ];
