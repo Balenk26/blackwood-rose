@@ -6,7 +6,6 @@ import { useCart } from './CartContext';
 
 export default function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  // NEW: State to control the Brands dropdown menu
   const [isBrandsHovered, setIsBrandsHovered] = useState(false);
   
   const { cart, cartTotal, removeFromCart } = useCart();
@@ -111,7 +110,7 @@ export default function Navbar() {
             <li><Link href="/preview/bedroom" style={{ textDecoration: 'none', color: '#D4AF37' }}>Bedroom</Link></li>
             <li><Link href="/preview/upholstery" style={{ textDecoration: 'none', color: '#D4AF37' }}>Upholstery</Link></li>
             
-            {/* NEW: Brands Dropdown */}
+            {/* Brands Dropdown */}
             <li 
               style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center', cursor: 'pointer' }}
               onMouseEnter={() => setIsBrandsHovered(true)}
@@ -124,7 +123,9 @@ export default function Navbar() {
                   <Link href="/preview/shop" style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s' }}>
                     Delphine Collection
                   </Link>
-                  {/* We can add more collections here later! */}
+                  <Link href="/preview/shop" style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s' }}>
+                    Reed Collection
+                  </Link>
                 </div>
               )}
             </li>
