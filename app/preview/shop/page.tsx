@@ -1,3 +1,4 @@
+// app/preview/shop/page.tsx
 "use client";
 
 import React, { useState, Suspense } from 'react';
@@ -6,6 +7,9 @@ import { useCart } from '../../components/CartContext';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { products } from '../../data';
+
+// THIS IS THE MAGIC LINE that forces Next.js to stop caching this page!
+export const dynamic = 'force-dynamic';
 
 function ProductCard({ product, addToCart }: { product: any, addToCart: any }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -52,7 +56,7 @@ function ShopContent() {
   let displayedProducts = products;
   let pageTitle = "All Products";
 
-  // LOGIC TO HANDLE ALL 3 COLLECTIONS
+  // Logic to handle Delphine, Reed, and Haldon
   if (collectionFilter === 'delphine') {
     displayedProducts = products.filter((p: any) => p.collection === 'delphine');
     pageTitle = "Delphine Collection";
