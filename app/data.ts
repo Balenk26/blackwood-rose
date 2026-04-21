@@ -7,7 +7,7 @@ export const products = [
     name: "Rustic Elegance Tall Louvered Cabinet",
     price: 349,
     category: "living", 
-    collection: "rustic", // NEW TAG
+    collection: "rustic", 
     image: "/cabinet-1.jpg", 
     gallery: ["/cabinet-1.jpg", "/cabinet-2.jpg", "/cabinet-3.jpg", "/cabinet-4.jpg"],
     description: "Add a touch of timeless, rustic charm to your home with our beautifully crafted Tall Louvered Cabinet. Featuring a soft, distressed whitewash finish and a classic shutter-style door, this piece effortlessly complements farmhouse, coastal, and shabby-chic interiors. Designed with a clever, space-saving footprint, its slender profile makes it the perfect elegant storage solution for tight spaces. Whether you need stylish towel storage in a bathroom, an organizational hub in a narrow hallway, or a statement piece in a cozy living room, this cabinet offers ample room to tuck away your essentials completely out of sight.",
@@ -29,7 +29,7 @@ export const products = [
     name: "Delphine Collection 6-Door Large Dresser Base",
     price: 1150, 
     category: "dining", 
-    collection: "delphine", // NEW TAG
+    collection: "delphine", 
     image: "/delphine-dresser-1.jpg", 
     gallery: ["/delphine-dresser-1.jpg", "/delphine-dresser-2.jpg", "/delphine-dresser-3.jpg"],
     description: "Part of our exclusive Delphine Collection, this magnificent 6-door, 3-drawer dresser base brings sweeping French-inspired elegance to your home. Expertly crafted with a gently distressed, hand-painted finish and a natural wood top, it offers monumental storage without compromising on delicate, classic styling. Perfect for grand dining rooms or spacious living areas, the intricate molding and antique-brass hardware make it a breathtaking focal point.",
@@ -246,7 +246,7 @@ export const products = [
     name: "Reed Collection 2-Drawer Console",
     price: 650, 
     category: "living", 
-    collection: "reed", // NEW TAG
+    collection: "reed", 
     image: "/reed-console-1.jpg", 
     gallery: ["/reed-console-1.jpg", "/reed-console-2.jpg", "/reed-console-3.jpg", "/reed-console-4.jpg"],
     description: "Subtle detailing meets refined structure in the Reed Collection 2-Drawer Console. This striking piece features a distinctive linear profile complemented by a beautifully textured finish that adds depth and visual rhythm to any space. Perfectly proportioned for entryways, living rooms, or elegant corridors, it pairs a muted tonal palette with a polished silhouette that commands attention without overwhelming a room. Two smooth-gliding drawers provide discreet storage for everyday essentials, ensuring a clean, uncluttered look. Designed to act as an impeccable canvas for your styling—whether displaying sculptural ceramics, textured glass vases, or sitting gracefully beneath a statement mirror—this console brings an understated yet memorable presence to a curated home.",
@@ -261,20 +261,15 @@ export const products = [
     dimensions: "33L x 90W x 80H (cm)"
   },
 
-  // --- 13. REED COLLECTION 1-DRAWER CABINET (New Listing) ---
+  // --- 13. REED COLLECTION 1-DRAWER CABINET ---
   {
     id: 13,
     name: "Reed Collection 1-Drawer Cabinet",
-    price: 395, // Placeholder price, adjust as needed!
-    category: "bedroom", // Very versatile, often used as a nightstand
-    collection: "reed", // NEW TAG
+    price: 395, 
+    category: "bedroom", 
+    collection: "reed", 
     image: "/reed-cabinet-1.jpg", 
-    gallery: [
-      "/reed-cabinet-1.jpg", 
-      "/reed-cabinet-2.jpg",
-      "/reed-cabinet-3.jpg",
-      "/reed-cabinet-4.jpg"
-    ],
+    gallery: ["/reed-cabinet-1.jpg", "/reed-cabinet-2.jpg", "/reed-cabinet-3.jpg", "/reed-cabinet-4.jpg"],
     description: "A refined combination of understated design and subtle detailing, the Reed 1-Drawer Cabinet is a striking choice for the modern home. Its balanced proportions and clean lines are harmonized with a delicately recessed panel front, offering a tactile contrast that speaks to modern minimalism while maintaining a warm, residential feel. The soft, muted tone of the finish allows the subtle grain to display a gentle depth, creating a sense of quiet quality that works effortlessly across a variety of interior themes. A discreet brushed metal handle provides a pleasing textural counterpoint, while shallow-angle tapered legs enhance its visual lightness. Perfectly scaled to act as an elegant nightstand or a sophisticated side table in living spaces, it pairs seamlessly with organic textures, ceramic accents, and muted palettes.",
     features: [
       "Modern Minimalism: Clean lines and a delicately recessed panel front offer a tactile, contemporary aesthetic.",
@@ -286,5 +281,33 @@ export const products = [
     material: "Solid wood frame with a muted, textured finish and brushed metal hardware",
     dimensions: "33L x 45W x 58H (cm)",
     doors: "1 (with 1 upper drawer)"
+  },
+
+  // --- 14. REED COLLECTION 3-DRAWER 2-DOOR CABINET (New Listing) ---
+  {
+    id: 14,
+    name: "Reed Collection 3-Drawer 2-Door Cabinet",
+    price: 895, // Placeholder price, adjust as needed!
+    category: "living", // Fits well in dining, living, or large hallways
+    collection: "reed", 
+    image: "/reed-large-cabinet-1.jpg", 
+    gallery: [
+      "/reed-large-cabinet-1.jpg", 
+      "/reed-large-cabinet-2.jpg",
+      "/reed-large-cabinet-3.jpg",
+      "/reed-large-cabinet-4.jpg",
+      "/reed-large-cabinet-5.jpg"
+    ],
+    description: "Blending subtle sophistication with capacious, practical storage, the Reed Collection 3-Drawer, 2-Door Cabinet is designed to elevate and anchor a variety of interior settings. Its surface showcases refined grain patterns and a beautifully balanced, warm-toned palette that complements both neutral and vibrant décor schemes. The thoughtfully paneled door fronts and sleek drawer profiles create a sense of understated geometry, conveying an inviting, polished ambiance perfectly suited for living rooms, dining spaces, or grand hallways. Built with heirloom durability in mind, it offers an exceptional volume of concealed organization to keep your home impeccably tidy while maintaining a commanding visual presence. Style its generous top surface with glazed ceramic table lamps, textured woven accents, or subtle metallic elements to create a seamlessly cohesive, curated focal point.",
+    features: [
+      "Understated Geometry: Paneled door fronts and sleek drawer profiles create structured, sophisticated visual interest.",
+      "Warm Textural Finish: A beautifully balanced tonal palette with refined grain patterns that adapts to diverse interior styles.",
+      "Generous Storage: Three smooth-gliding drawers and two spacious cabinet compartments support impeccably organized living.",
+      "Versatile Anchor: Perfectly proportioned to serve as a stunning focal point in dining spaces, living rooms, or expansive hallways."
+    ],
+    sku: "24326", 
+    material: "Solid wood frame with a muted, textured finish and sleek hardware",
+    dimensions: "40L x 115W x 80H (cm)",
+    doors: "2 (with 3 central drawers)"
   }
 ];
