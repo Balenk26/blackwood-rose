@@ -8,12 +8,7 @@ export const products = [
     price: 349,
     category: "living", 
     image: "/cabinet-1.jpg", 
-    gallery: [
-      "/cabinet-1.jpg", 
-      "/cabinet-2.jpg",
-      "/cabinet-3.jpg",
-      "/cabinet-4.jpg"
-    ],
+    gallery: ["/cabinet-1.jpg", "/cabinet-2.jpg", "/cabinet-3.jpg", "/cabinet-4.jpg"],
     description: "Add a touch of timeless, rustic charm to your home with our beautifully crafted Tall Louvered Cabinet. Featuring a soft, distressed whitewash finish and a classic shutter-style door, this piece effortlessly complements farmhouse, coastal, and shabby-chic interiors. Designed with a clever, space-saving footprint, its slender profile makes it the perfect elegant storage solution for tight spaces. Whether you need stylish towel storage in a bathroom, an organizational hub in a narrow hallway, or a statement piece in a cozy living room, this cabinet offers ample room to tuck away your essentials completely out of sight.",
     features: [
       "Classic Design: Traditional louvered/shuttered door paneling.",
@@ -34,11 +29,7 @@ export const products = [
     price: 1150, 
     category: "dining", 
     image: "/delphine-dresser-1.jpg", 
-    gallery: [
-      "/delphine-dresser-1.jpg", 
-      "/delphine-dresser-2.jpg",
-      "/delphine-dresser-3.jpg"
-    ],
+    gallery: ["/delphine-dresser-1.jpg", "/delphine-dresser-2.jpg", "/delphine-dresser-3.jpg"],
     description: "Part of our exclusive Delphine Collection, this magnificent 6-door, 3-drawer dresser base brings sweeping French-inspired elegance to your home. Expertly crafted with a gently distressed, hand-painted finish and a natural wood top, it offers monumental storage without compromising on delicate, classic styling. Perfect for grand dining rooms or spacious living areas, the intricate molding and antique-brass hardware make it a breathtaking focal point.",
     features: [
       "Grand Scale Storage: Six spacious cupboards and three wide drawers for ultimate organization.",
@@ -59,16 +50,7 @@ export const products = [
     price: 1250, 
     category: "bedroom", 
     image: "/delphine-base-1.jpg", 
-    gallery: [
-      "/delphine-base-1.jpg", 
-      "/delphine-base-2.jpg",
-      "/delphine-base-3.jpg",
-      "/delphine-base-4.jpg",
-      "/delphine-base-5.jpg",
-      "/delphine-base-6.jpg",
-      "/delphine-base-7.jpg",
-      "/delphine-base-8.jpg"
-    ],
+    gallery: ["/delphine-base-1.jpg", "/delphine-base-2.jpg", "/delphine-base-3.jpg", "/delphine-base-4.jpg", "/delphine-base-5.jpg", "/delphine-base-6.jpg", "/delphine-base-7.jpg", "/delphine-base-8.jpg"],
     description: "Commanding yet effortlessly refined, the Delphine 6-Door Dresser Base serves as the ultimate anchor for a principal bedroom. Crafted with a calm, muted finish and accented by meticulously considered hardware, this flagship piece offers an extraordinary volume of varied storage. From smooth-gliding drawers for everyday essentials to expansive cabinet compartments for larger linens and garments, it unifies your bedroom's organization into one magnificent silhouette. Engineered for exceptional longevity, the robust framework and flawless mechanisms ensure a lifetime of elegant, daily use. Pair it seamlessly with the Delphine Dresser Top to create a floor-to-ceiling focal point.",
     features: [
       "Masterful Organization: A generous configuration of six cabinet doors and three smooth-gliding drawers.",
@@ -89,16 +71,7 @@ export const products = [
     price: 950, 
     category: "bedroom", 
     image: "/delphine-2door-base-1.jpg", 
-    gallery: [
-      "/delphine-2door-base-1.jpg", 
-      "/delphine-2door-base-2.jpg",
-      "/delphine-2door-base-3.jpg",
-      "/delphine-2door-base-4.jpg",
-      "/delphine-2door-base-5.jpg",
-      "/delphine-2door-base-6.jpg",
-      "/delphine-2door-base-7.jpg",
-      "/delphine-2door-base-8.jpg"
-    ],
+    gallery: ["/delphine-2door-base-1.jpg", "/delphine-2door-base-2.jpg", "/delphine-2door-base-3.jpg", "/delphine-2door-base-4.jpg", "/delphine-2door-base-5.jpg", "/delphine-2door-base-6.jpg", "/delphine-2door-base-7.jpg", "/delphine-2door-base-8.jpg"],
     description: "Substantial in its storage provision and refined in its aesthetic, the Delphine 2-Door, 4-Drawer Large Dresser Base offers a commanding yet elegantly proportioned storage solution. Featuring a calm, muted tone with clean lines and meticulously considered hardware, this piece feels quietly luxurious and thoroughly at home in a well-appointed bedroom. The generous combination of expansive cabinet space and smooth-gliding drawers easily accommodates everything from folded garments and heavy bedding to smaller personal accessories. Engineered for decades of daily use with quiet-closure hinges and reliable drawer mechanisms, this dresser base serves as the sophisticated, functional core of your serene bedroom retreat.",
     features: [
       "Substantial Storage: Two spacious door-concealed compartments alongside four easy-access drawers.",
@@ -119,16 +92,7 @@ export const products = [
     price: 650, 
     category: "bedroom", 
     image: "/delphine-top-1.jpg", 
-    gallery: [
-      "/delphine-top-1.jpg", 
-      "/delphine-top-2.jpg",
-      "/delphine-top-3.jpg",
-      "/delphine-top-4.jpg",
-      "/delphine-top-5.jpg",
-      "/delphine-top-6.jpg",
-      "/delphine-top-7.jpg",
-      "/delphine-top-8.jpg"
-    ],
+    gallery: ["/delphine-top-1.jpg", "/delphine-top-2.jpg", "/delphine-top-3.jpg", "/delphine-top-4.jpg", "/delphine-top-5.jpg", "/delphine-top-6.jpg", "/delphine-top-7.jpg", "/delphine-top-8.jpg"],
     description: "Designed to sit flawlessly atop the Delphine Large Dresser Base, this magnificent three-shelf dresser top extends your storage and display capacity with an open, tiered configuration. It transforms a standard dresser into a breathtaking, full-height architectural feature. The three expansive open shelves provide an elegant and accessible stage for folded linens, curated decorative objects, or cherished personal accessories, adding a beautiful display dimension to the collection's concealed storage. Finished in the collection's signature calm, muted tone, it integrates seamlessly with the base below, anchoring your bedroom with quiet authority and a truly considered presence.",
     features: [
       "Tiered Display: Three expansive open shelves for beautifully styling curated objects, books, or accessible linens.",
@@ -148,16 +112,7 @@ export const products = [
     price: 795, 
     category: "bedroom", 
     image: "/delphine-glass-top-1.jpg", 
-    gallery: [
-      "/delphine-glass-top-1.jpg", 
-      "/delphine-glass-top-2.jpg",
-      "/delphine-glass-top-3.jpg",
-      "/delphine-glass-top-4.jpg",
-      "/delphine-glass-top-5.jpg",
-      "/delphine-glass-top-6.jpg",
-      "/delphine-glass-top-7.jpg",
-      "/delphine-glass-top-8.jpg"
-    ],
+    gallery: ["/delphine-glass-top-1.jpg", "/delphine-glass-top-2.jpg", "/delphine-glass-top-3.jpg", "/delphine-glass-top-4.jpg", "/delphine-glass-top-5.jpg", "/delphine-glass-top-6.jpg", "/delphine-glass-top-7.jpg", "/delphine-glass-top-8.jpg"],
     description: "Elegant in its proportions and brilliantly practical, the Delphine Sliding Glass Dresser Top introduces a sophisticated display solution for the well-appointed bedroom. The ingeniously engineered sliding glass mechanism provides smooth access to the interior without the swing clearance required by hinged doors, making it an exceptional choice for space-conscious interiors. The pristine glass paneling lends an airy, contemporary lightness to the piece, allowing you to showcase folded garments or cherished accessories while entirely preventing the visual weight of opaque cabinetry. Designed to unite seamlessly with the Delphine dresser base, it creates a magnificent, cohesive storage tower that anchors your suite with serene, ordered sophistication.",
     features: [
       "Space-Efficient Access: Smooth-gliding sliding glass mechanism requires zero outward swing clearance.",
@@ -178,16 +133,7 @@ export const products = [
     price: 695, 
     category: "bedroom", 
     image: "/delphine-chest-1.jpg", 
-    gallery: [
-      "/delphine-chest-1.jpg", 
-      "/delphine-chest-2.jpg",
-      "/delphine-chest-3.jpg",
-      "/delphine-chest-4.jpg",
-      "/delphine-chest-5.jpg",
-      "/delphine-chest-6.jpg",
-      "/delphine-chest-7.jpg",
-      "/delphine-chest-8.jpg"
-    ],
+    gallery: ["/delphine-chest-1.jpg", "/delphine-chest-2.jpg", "/delphine-chest-3.jpg", "/delphine-chest-4.jpg", "/delphine-chest-5.jpg", "/delphine-chest-6.jpg", "/delphine-chest-7.jpg", "/delphine-chest-8.jpg"],
     description: "Versatile in its application and thoughtful in its design, the Delphine 2-Door, 2-Drawer Chest offers a beautifully compact yet capacious storage solution. The perfectly balanced configuration provides flexible options—expansive compartments for folded garments alongside smooth-gliding drawers for smaller essentials—within a refined footprint that suits both grand principal suites and elegant guest bedrooms. Finished in the collection's signature muted tone with clean lines and premium hardware, it maintains a quietly sophisticated aesthetic. Whether standing as a singular accent piece or pairing seamlessly with the broader Delphine collection, this chest brings calm, organized efficiency to any space.",
     features: [
       "Flexible Storage: A perfectly balanced combination of two concealed compartments and two smooth-gliding drawers.",
@@ -208,15 +154,7 @@ export const products = [
     price: 595, 
     category: "bedroom", 
     image: "/delphine-3drawer-1.jpg", 
-    gallery: [
-      "/delphine-3drawer-1.jpg", 
-      "/delphine-3drawer-2.jpg",
-      "/delphine-3drawer-3.jpg",
-      "/delphine-3drawer-4.jpg",
-      "/delphine-3drawer-5.jpg",
-      "/delphine-3drawer-6.jpg",
-      "/delphine-3drawer-7.jpg"
-    ],
+    gallery: ["/delphine-3drawer-1.jpg", "/delphine-3drawer-2.jpg", "/delphine-3drawer-3.jpg", "/delphine-3drawer-4.jpg", "/delphine-3drawer-5.jpg", "/delphine-3drawer-6.jpg", "/delphine-3drawer-7.jpg"],
     description: "Clean in its lines and generous in its capacity, the Delphine 3-Drawer Chest presents a refined and considered solution for bedroom organization. The three-drawer format delivers a straightforward, uncluttered hierarchy—perfectly accommodating folded garments, accessories, and personal essentials across clearly defined tiers. Finished in the collection's signature calm, muted tone and accented with elegant hardware, this piece feels quietly premium and thoroughly at home in a well-appointed space. Serving as a beautiful standalone chest or a natural complement to the larger Delphine dressers, its smooth-gliding mechanisms ensure a flawless everyday experience, opening and closing with consistent, whisper-quiet precision.",
     features: [
       "Tiered Organization: Three spacious drawers provide a clear, uncluttered hierarchy for folded garments and essentials.",
@@ -236,15 +174,7 @@ export const products = [
     price: 495, 
     category: "bedroom", 
     image: "/delphine-right-chest-1.jpg", 
-    gallery: [
-      "/delphine-right-chest-1.jpg", 
-      "/delphine-right-chest-2.jpg",
-      "/delphine-right-chest-3.jpg",
-      "/delphine-right-chest-4.jpg",
-      "/delphine-right-chest-5.jpg",
-      "/delphine-right-chest-6.jpg",
-      "/delphine-right-chest-7.jpg"
-    ],
+    gallery: ["/delphine-right-chest-1.jpg", "/delphine-right-chest-2.jpg", "/delphine-right-chest-3.jpg", "/delphine-right-chest-4.jpg", "/delphine-right-chest-5.jpg", "/delphine-right-chest-6.jpg", "/delphine-right-chest-7.jpg"],
     description: "Sharing the same considered design and compact storage efficiency as its left-hand counterpart, the Delphine 1-Drawer, 1-Door Chest in a right-hand configuration provides an essential, elegant solution for tailored spatial flow. Designed so the door opens from the right, this piece can be placed flush against a left-side wall or paired symmetrically with its mirror opposite to frame a bed or doorway perfectly. Finished in the collection's signature calm, muted tone and accented with refined hardware, it maintains a quietly sophisticated character at an accessible scale. The practical combination of a smooth-gliding drawer and a concealed lower compartment delivers flexible, organized storage for everyday essentials. Durably constructed for dependable daily use, this chest sits naturally alongside the broader Delphine collection to create a cohesive, meticulously curated interior.",
     features: [
       "Directional Design: Right-hand door configuration allows for optimal spatial flow or symmetrical pairing.",
@@ -265,15 +195,7 @@ export const products = [
     price: 495, 
     category: "bedroom", 
     image: "/delphine-left-chest-1.jpg", 
-    gallery: [
-      "/delphine-left-chest-1.jpg", 
-      "/delphine-left-chest-2.jpg",
-      "/delphine-left-chest-3.jpg",
-      "/delphine-left-chest-4.jpg",
-      "/delphine-left-chest-5.jpg",
-      "/delphine-left-chest-6.jpg",
-      "/delphine-left-chest-7.jpg"
-    ],
+    gallery: ["/delphine-left-chest-1.jpg", "/delphine-left-chest-2.jpg", "/delphine-left-chest-3.jpg", "/delphine-left-chest-4.jpg", "/delphine-left-chest-5.jpg", "/delphine-left-chest-6.jpg", "/delphine-left-chest-7.jpg"],
     description: "A perfect mirror to its right-hand counterpart, the Delphine 1-Drawer, 1-Door Chest in a left-hand configuration offers an essential, directional storage solution for refined interiors. Designed with a left-opening door, this piece is ideal for framing the left side of a bed or maximizing accessibility against a right-side wall. Featuring the collection's signature muted finish, clean lines, and vintage-inspired hardware, it provides flexible storage within a compact footprint. A smooth-gliding top drawer keeps daily essentials close at hand, while the concealed lower compartment seamlessly accommodates larger items. Whether standing alone as an elegant nightstand or paired symmetrically for a complete look, its heirloom-quality construction ensures decades of quiet, dependable use.",
     features: [
       "Directional Design: Left-hand door configuration designed for optimal spatial flow and symmetrical bedside pairing.",
@@ -287,23 +209,14 @@ export const products = [
     doors: "1 (Left-Hand Hinge, with 1 upper drawer)"
   },
 
-  // --- 11. DELPHINE 3-DRAWER CONSOLE WITH SHELF (New Listing) ---
+  // --- 11. DELPHINE 3-DRAWER CONSOLE WITH SHELF ---
   {
     id: 11,
     name: "Delphine Collection 3-Drawer Console With Shelf",
-    price: 750, // Placeholder price, adjust as needed!
-    category: "living", // Set to living as it's highly versatile for hallways and lounges
+    price: 750, 
+    category: "living", 
     image: "/delphine-console-1.jpg", 
-    gallery: [
-      "/delphine-console-1.jpg", 
-      "/delphine-console-2.jpg",
-      "/delphine-console-3.jpg",
-      "/delphine-console-4.jpg",
-      "/delphine-console-5.jpg",
-      "/delphine-console-6.jpg",
-      "/delphine-console-7.jpg",
-      "/delphine-console-8.jpg"
-    ],
+    gallery: ["/delphine-console-1.jpg", "/delphine-console-2.jpg", "/delphine-console-3.jpg", "/delphine-console-4.jpg", "/delphine-console-5.jpg", "/delphine-console-6.jpg", "/delphine-console-7.jpg", "/delphine-console-8.jpg"],
     description: "Marrying functional elegance with architectural grace, the Delphine 3-Drawer Console with an integrated lower shelf is a masterclass in versatile luxury. Designed to elevate hallways, living spaces, or grand bedrooms, this piece offers a beautifully refined combination of concealed organization and open display. Three smooth-gliding drawers provide a discreet home for everyday essentials, while the expansive lower shelf invites the curation of oversized art books, woven baskets, or sculptural ceramics. Finished in the collection's signature calm, muted tone and accented with vintage-inspired hardware, the console's clean-lined proportions make it an impeccable canvas for styling beneath a statement mirror or artwork. Crafted with exceptional durability, it promises a lifetime of quiet sophistication and daily utility.",
     features: [
       "Versatile Elegance: Perfectly proportioned to act as a sophisticated hallway anchor, living room display, or elegant dressing table.",
@@ -314,5 +227,30 @@ export const products = [
     sku: "24664", 
     material: "Solid wood frame with a muted, refined finish",
     dimensions: "40L x 120W x 80H (cm)"
+  },
+
+  // --- 12. REED COLLECTION 2-DRAWER CONSOLE (New Listing) ---
+  {
+    id: 12,
+    name: "Reed Collection 2-Drawer Console",
+    price: 650, // Placeholder price, adjust as needed!
+    category: "living", 
+    image: "/reed-console-1.jpg", 
+    gallery: [
+      "/reed-console-1.jpg", 
+      "/reed-console-2.jpg",
+      "/reed-console-3.jpg",
+      "/reed-console-4.jpg"
+    ],
+    description: "Subtle detailing meets refined structure in the Reed Collection 2-Drawer Console. This striking piece features a distinctive linear profile complemented by a beautifully textured finish that adds depth and visual rhythm to any space. Perfectly proportioned for entryways, living rooms, or elegant corridors, it pairs a muted tonal palette with a polished silhouette that commands attention without overwhelming a room. Two smooth-gliding drawers provide discreet storage for everyday essentials, ensuring a clean, uncluttered look. Designed to act as an impeccable canvas for your styling—whether displaying sculptural ceramics, textured glass vases, or sitting gracefully beneath a statement mirror—this console brings an understated yet memorable presence to a curated home.",
+    features: [
+      "Textured Elegance: A distinctive linear profile elevated by a beautifully textured finish that catches the light.",
+      "Discreet Storage: Two smooth-closing integrated drawers keep entryways or living spaces perfectly uncluttered.",
+      "Versatile Proportions: A beautifully scaled silhouette designed to anchor hallways, living rooms, or dining spaces.",
+      "Quiet Sophistication: A muted, adaptable palette that harmonizes seamlessly with both modern and classic interiors."
+    ],
+    sku: "24321", 
+    material: "Textured frame with a muted, polished finish",
+    dimensions: "33L x 90W x 80H (cm)"
   }
 ];
