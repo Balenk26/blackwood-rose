@@ -141,11 +141,11 @@ export const products = [
     dimensions: "32L x 163W x 127H (cm)"
   },
 
-  // --- 6. DELPHINE SLIDING GLASS DRESSER TOP (New Listing) ---
+  // --- 6. DELPHINE SLIDING GLASS DRESSER TOP ---
   {
     id: 6,
     name: "Delphine Collection Sliding Glass Dresser Top",
-    price: 795, // Placeholder price, adjust as needed!
+    price: 795, 
     category: "bedroom", 
     image: "/delphine-glass-top-1.jpg", 
     gallery: [
@@ -169,5 +169,35 @@ export const products = [
     material: "Solid wood frame with muted finish and tempered glass paneling",
     dimensions: "38L x 126W x 120H (cm)",
     doors: "2 (Sliding Glass)"
+  },
+
+  // --- 7. DELPHINE 2-DOOR 2-DRAWER CHEST (New Listing) ---
+  {
+    id: 7,
+    name: "Delphine Collection 2-Door 2-Drawer Chest",
+    price: 695, // Placeholder price, adjust as needed!
+    category: "bedroom", 
+    image: "/delphine-chest-1.jpg", 
+    gallery: [
+      "/delphine-chest-1.jpg", 
+      "/delphine-chest-2.jpg",
+      "/delphine-chest-3.jpg",
+      "/delphine-chest-4.jpg",
+      "/delphine-chest-5.jpg",
+      "/delphine-chest-6.jpg",
+      "/delphine-chest-7.jpg",
+      "/delphine-chest-8.jpg"
+    ],
+    description: "Versatile in its application and thoughtful in its design, the Delphine 2-Door, 2-Drawer Chest offers a beautifully compact yet capacious storage solution. The perfectly balanced configuration provides flexible options—expansive compartments for folded garments alongside smooth-gliding drawers for smaller essentials—within a refined footprint that suits both grand principal suites and elegant guest bedrooms. Finished in the collection's signature muted tone with clean lines and premium hardware, it maintains a quietly sophisticated aesthetic. Whether standing as a singular accent piece or pairing seamlessly with the broader Delphine collection, this chest brings calm, organized efficiency to any space.",
+    features: [
+      "Flexible Storage: A perfectly balanced combination of two concealed compartments and two smooth-gliding drawers.",
+      "Compact Elegance: A refined, space-efficient footprint ideal for principal suites, guest bedrooms, or alcoves.",
+      "Quiet Luxury: The collection's signature muted finish accented by beautifully considered, vintage-inspired hardware.",
+      "Heirloom Construction: Durably crafted with engineered mechanisms for decades of smooth, dependable operation."
+    ],
+    sku: "24660", 
+    material: "Solid wood frame with a muted, refined finish",
+    dimensions: "33L x 73W x 81H (cm)",
+    doors: "2 (with 2 upper drawers)"
   }
 ];
