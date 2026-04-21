@@ -112,11 +112,11 @@ export const products = [
     doors: "2 (with 4 side drawers)"
   },
 
-  // --- 5. DELPHINE 3-SHELF DRESSER TOP (New Listing) ---
+  // --- 5. DELPHINE 3-SHELF DRESSER TOP ---
   {
     id: 5,
     name: "Delphine Collection 3-Shelf Large Dresser Top",
-    price: 650, // Placeholder price, adjust as needed!
+    price: 650, 
     category: "bedroom", 
     image: "/delphine-top-1.jpg", 
     gallery: [
@@ -139,6 +139,35 @@ export const products = [
     sku: "24666", 
     material: "Solid wood frame with a muted, refined finish",
     dimensions: "32L x 163W x 127H (cm)"
-    // Notice I removed the 'doors' line here since it's an open shelving unit!
+  },
+
+  // --- 6. DELPHINE SLIDING GLASS DRESSER TOP (New Listing) ---
+  {
+    id: 6,
+    name: "Delphine Collection Sliding Glass Dresser Top",
+    price: 795, // Placeholder price, adjust as needed!
+    category: "bedroom", 
+    image: "/delphine-glass-top-1.jpg", 
+    gallery: [
+      "/delphine-glass-top-1.jpg", 
+      "/delphine-glass-top-2.jpg",
+      "/delphine-glass-top-3.jpg",
+      "/delphine-glass-top-4.jpg",
+      "/delphine-glass-top-5.jpg",
+      "/delphine-glass-top-6.jpg",
+      "/delphine-glass-top-7.jpg",
+      "/delphine-glass-top-8.jpg"
+    ],
+    description: "Elegant in its proportions and brilliantly practical, the Delphine Sliding Glass Dresser Top introduces a sophisticated display solution for the well-appointed bedroom. The ingeniously engineered sliding glass mechanism provides smooth access to the interior without the swing clearance required by hinged doors, making it an exceptional choice for space-conscious interiors. The pristine glass paneling lends an airy, contemporary lightness to the piece, allowing you to showcase folded garments or cherished accessories while entirely preventing the visual weight of opaque cabinetry. Designed to unite seamlessly with the Delphine dresser base, it creates a magnificent, cohesive storage tower that anchors your suite with serene, ordered sophistication.",
+    features: [
+      "Space-Efficient Access: Smooth-gliding sliding glass mechanism requires zero outward swing clearance.",
+      "Visual Lightness: Elegant glass paneling beautifully showcases curated items while maintaining a refined, airy aesthetic.",
+      "Seamless Integration: Expertly designed to pair flawlessly with the Delphine Dresser Base for a cohesive, vertical storage tower.",
+      "Premium Engineering: Durably constructed with robust tracking for reliable, quiet operation over decades of use."
+    ],
+    sku: "24658", 
+    material: "Solid wood frame with muted finish and tempered glass paneling",
+    dimensions: "38L x 126W x 120H (cm)",
+    doors: "2 (Sliding Glass)"
   }
 ];
