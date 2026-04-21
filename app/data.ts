@@ -171,11 +171,11 @@ export const products = [
     doors: "2 (Sliding Glass)"
   },
 
-  // --- 7. DELPHINE 2-DOOR 2-DRAWER CHEST (New Listing) ---
+  // --- 7. DELPHINE 2-DOOR 2-DRAWER CHEST ---
   {
     id: 7,
     name: "Delphine Collection 2-Door 2-Drawer Chest",
-    price: 695, // Placeholder price, adjust as needed!
+    price: 695, 
     category: "bedroom", 
     image: "/delphine-chest-1.jpg", 
     gallery: [
@@ -199,5 +199,33 @@ export const products = [
     material: "Solid wood frame with a muted, refined finish",
     dimensions: "33L x 73W x 81H (cm)",
     doors: "2 (with 2 upper drawers)"
+  },
+
+  // --- 8. DELPHINE 3-DRAWER CHEST (Updated for 7 Images) ---
+  {
+    id: 8,
+    name: "Delphine Collection 3-Drawer Chest",
+    price: 595, 
+    category: "bedroom", 
+    image: "/delphine-3drawer-1.jpg", 
+    gallery: [
+      "/delphine-3drawer-1.jpg", 
+      "/delphine-3drawer-2.jpg",
+      "/delphine-3drawer-3.jpg",
+      "/delphine-3drawer-4.jpg",
+      "/delphine-3drawer-5.jpg",
+      "/delphine-3drawer-6.jpg",
+      "/delphine-3drawer-7.jpg"
+    ],
+    description: "Clean in its lines and generous in its capacity, the Delphine 3-Drawer Chest presents a refined and considered solution for bedroom organization. The three-drawer format delivers a straightforward, uncluttered hierarchy—perfectly accommodating folded garments, accessories, and personal essentials across clearly defined tiers. Finished in the collection's signature calm, muted tone and accented with elegant hardware, this piece feels quietly premium and thoroughly at home in a well-appointed space. Serving as a beautiful standalone chest or a natural complement to the larger Delphine dressers, its smooth-gliding mechanisms ensure a flawless everyday experience, opening and closing with consistent, whisper-quiet precision.",
+    features: [
+      "Tiered Organization: Three spacious drawers provide a clear, uncluttered hierarchy for folded garments and essentials.",
+      "Quiet Luxury: Finished in a calm, muted tone with clean lines and meticulously considered hardware.",
+      "Premium Engineering: Built with smooth-gliding drawer mechanisms for reliable, whisper-quiet daily operation.",
+      "Versatile Proportions: Perfectly scaled to sit beautifully beside an upholstered bed or beneath a wall-mounted mirror."
+    ],
+    sku: "24663", 
+    material: "Solid wood frame with a muted, refined finish",
+    dimensions: "38L x 50W x 65H (cm)"
   }
 ];
