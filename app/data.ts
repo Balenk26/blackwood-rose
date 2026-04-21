@@ -448,5 +448,35 @@ export const products = [
     sku: "24671", 
     material: "Solid wood with a refined, clean-lined finish",
     dimensions: "90L x 200W x 78H (cm)"
+  },
+
+  // --- 20. HALDON COLLECTION 9-DRAWER CHEST WITH SHELF (New Listing) ---
+  {
+    id: 20,
+    name: "Haldon Collection 9-Drawer Chest With Shelf",
+    price: 1150, // Placeholder price, adjust as needed!
+    category: "bedroom", // Versatile, but excellent for bedrooms
+    collection: "haldon", 
+    image: "/haldon-9drawer-chest-1.jpg", 
+    gallery: [
+      "/haldon-9drawer-chest-1.jpg", 
+      "/haldon-9drawer-chest-2.jpg",
+      "/haldon-9drawer-chest-3.jpg",
+      "/haldon-9drawer-chest-4.jpg",
+      "/haldon-9drawer-chest-5.jpg",
+      "/haldon-9drawer-chest-6.jpg",
+      "/haldon-9drawer-chest-7.jpg",
+      "/haldon-9drawer-chest-8.jpg"
+    ],
+    description: "Combining exceptional drawer capacity with the graceful addition of an integrated display shelf, the Haldon Collection 9-Drawer Chest offers a masterclass in versatile, considered storage. This substantial piece addresses both concealed organization and open display within a single, beautifully unified form. Nine smooth-gliding drawers deliver exceptional space for linens, garments, or daily essentials, while the expansive open shelf provides a curated stage for framed artwork, sculptural ceramics, or woven accessories. Finished in the collection's signature calm, refined aesthetic, it adapts effortlessly to bedroom, living room, or hallway settings. Durably constructed for a lifetime of dependable daily use, this chest perfectly balances functional necessity with the opportunity for personalized, decorative styling.",
+    features: [
+      "Substantial Capacity: Nine smooth-gliding drawers provide exceptional, organized storage for garments, linens, or daily essentials.",
+      "Curated Display: An integrated open shelf invites personalized styling with ceramics, books, or framed artwork.",
+      "Quiet Luxury: Finished in a clean-lined, refined aesthetic that elevates bedrooms, living spaces, or expansive hallways.",
+      "Heirloom Construction: Durably engineered for reliable daily use, ensuring smooth operation and long-lasting structural integrity."
+    ],
+    sku: "24670", 
+    material: "Solid wood with a refined, clean-lined finish",
+    dimensions: "40L x 110W x 88H (cm)"
   }
 ];
