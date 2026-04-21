@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { products } from '../../data';
 
-// Component for individual shop cards
 function ProductCard({ product, addToCart }: { product: any, addToCart: any }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = product?.gallery?.length > 0 ? product.gallery : [product?.image];
@@ -45,22 +44,24 @@ function ProductCard({ product, addToCart }: { product: any, addToCart: any }) {
   );
 }
 
-// THE FIX: We split the page content into a separate component so we can read the URL parameters
 function ShopContent() {
   const { addToCart } = useCart();
   const searchParams = useSearchParams();
   const collectionFilter = searchParams.get('collection');
 
-  // Logic to change the Title and the Products based on the click!
   let displayedProducts = products;
   let pageTitle = "All Products";
 
+  // Logic to handle Delphine, Reed, and the new Haldon collection!
   if (collectionFilter === 'delphine') {
     displayedProducts = products.filter((p: any) => p.collection === 'delphine');
     pageTitle = "Delphine Collection";
   } else if (collectionFilter === 'reed') {
     displayedProducts = products.filter((p: any) => p.collection === 'reed');
     pageTitle = "Reed Collection";
+  } else if (collectionFilter === 'haldon') {
+    displayedProducts = products.filter((p: any) => p.collection === 'haldon');
+    pageTitle = "Haldon Collection";
   }
 
   return (
@@ -86,7 +87,7 @@ function ShopContent() {
              <ProductCard key={product.id} product={product} addToCart={addToCart} />
           ))}
           {displayedProducts.length === 0 && (
-            <p style={{ color: '#666', gridColumn: '1 / -1' }}>No products found in this collection.</p>
+            <p style={{ color: '#666', gridColumn: '1 / -1' }}>No products found in this collection yet.</p>
           )}
         </div>
       </main>
@@ -94,7 +95,6 @@ function ShopContent() {
   );
 }
 
-// We wrap the shop content in Suspense to keep Next.js happy when reading URL parameters
 export default function ShopPage() {
   return (
     <Suspense fallback={<div style={{ padding: '100px', textAlign: 'center' }}>Loading products...</div>}>

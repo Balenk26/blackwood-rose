@@ -119,12 +119,15 @@ export default function Navbar() {
               
               {isBrandsHovered && (
                 <div style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', backgroundColor: '#000', border: '1px solid #333', padding: '16px 24px', minWidth: '180px', display: 'flex', flexDirection: 'column', gap: '16px', zIndex: 100, textAlign: 'center' }}>
-                  {/* THE FIX: Changed from <Link> to <a> to force the browser to reload the page and apply the filter */}
                   <a href="/preview/shop?collection=delphine" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>
                     Delphine Collection
                   </a>
                   <a href="/preview/shop?collection=reed" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>
                     Reed Collection
+                  </a>
+                  {/* NEW: Added the Haldon Collection! */}
+                  <a href="/preview/shop?collection=haldon" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>
+                    Haldon Collection
                   </a>
                 </div>
               )}
