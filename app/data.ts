@@ -393,11 +393,11 @@ export const products = [
     doors: "2 (with 2 upper drawers)"
   },
 
-  // --- 18. REED COLLECTION 3-DRAWER BEDSIDE TABLE (New Listing) ---
+  // --- 18. REED COLLECTION 3-DRAWER BEDSIDE TABLE ---
   {
     id: 18,
     name: "Reed Collection 3-Drawer Bedside Table",
-    price: 350, // Placeholder price, adjust as needed!
+    price: 350, 
     category: "bedroom", 
     collection: "reed", 
     image: "/reed-bedside-1.jpg", 
@@ -418,5 +418,35 @@ export const products = [
     sku: "24322", 
     material: "Solid wood frame with a muted, textured finish and sleek hardware",
     dimensions: "40L x 45W x 58H (cm)"
+  },
+
+  // --- 19. HALDON COLLECTION LARGE DINING TABLE ---
+  {
+    id: 19,
+    name: "Haldon Collection Large Dining Table",
+    price: 1295, 
+    category: "dining", 
+    collection: "haldon", 
+    image: "/haldon-table-1.jpg", 
+    gallery: [
+      "/haldon-table-1.jpg", 
+      "/haldon-table-2.jpg",
+      "/haldon-table-3.jpg",
+      "/haldon-table-4.jpg",
+      "/haldon-table-5.jpg",
+      "/haldon-table-6.jpg",
+      "/haldon-table-7.jpg",
+      "/haldon-table-8.jpg"
+    ],
+    description: "Generous in its proportions and considered in its construction, the Haldon Large Dining Table provides a commanding and refined centerpiece for your home. The substantial surface area comfortably accommodates generous place settings, making it perfectly suited for family gatherings, entertaining, and everyday shared meals. Finished with a clean-lined and quietly premium aesthetic, it feels thoroughly at home in a well-appointed dining room or open-plan living space. This large format table makes a confident architectural statement, anchoring the dining area with a sense of permanence and scale. Engineered for the demands of daily life, the robust tabletop and leg structure ensure long-term stability and enduring style. Pair it naturally with the Haldon Dining Bench and your choice of seating to create a cohesive, characterful dining sanctuary.",
+    features: [
+      "Generous Proportions: An expansive 200cm surface that comfortably accommodates large family meals and entertaining.",
+      "Architectural Presence: Clean-lined and commanding, designed to anchor your dining space with a sense of permanence.",
+      "Quiet Luxury: A refined, premium finish that perfectly complements well-appointed kitchens and open-plan interiors.",
+      "Heirloom Durability: Robustly constructed for daily use, ensuring exceptional stability and long-lasting visual appeal."
+    ],
+    sku: "24671", 
+    material: "Solid wood with a refined, clean-lined finish",
+    dimensions: "90L x 200W x 78H (cm)"
   }
 ];
