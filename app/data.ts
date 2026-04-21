@@ -27,7 +27,7 @@ export const products = [
     doors: "1"
   },
 
-  // --- 2. DELPHINE LARGE DRESSER BASE (From Previous Step) ---
+  // --- 2. DELPHINE 6-DOOR DRESSER BASE ---
   {
     id: 2,
     name: "Delphine Collection 6-Door Large Dresser Base",
@@ -52,15 +52,13 @@ export const products = [
     doors: "6 (with 3 top drawers)"
   },
 
-  // --- 3. DELPHINE MASTER BEDROOM DRESSER (New Listing) ---
+  // --- 3. DELPHINE MASTER BEDROOM DRESSER ---
   {
     id: 3,
     name: "Delphine Master Bedroom Dresser Base",
-    price: 1250, // Feel free to adjust this price!
-    category: "bedroom", // Set specifically for the bedroom collection
+    price: 1250, 
+    category: "bedroom", 
     image: "/delphine-base-1.jpg", 
-    
-    // All 8 images loaded into the carousel!
     gallery: [
       "/delphine-base-1.jpg", 
       "/delphine-base-2.jpg",
@@ -71,7 +69,6 @@ export const products = [
       "/delphine-base-7.jpg",
       "/delphine-base-8.jpg"
     ],
-    
     description: "Commanding yet effortlessly refined, the Delphine 6-Door Dresser Base serves as the ultimate anchor for a principal bedroom. Crafted with a calm, muted finish and accented by meticulously considered hardware, this flagship piece offers an extraordinary volume of varied storage. From smooth-gliding drawers for everyday essentials to expansive cabinet compartments for larger linens and garments, it unifies your bedroom's organization into one magnificent silhouette. Engineered for exceptional longevity, the robust framework and flawless mechanisms ensure a lifetime of elegant, daily use. Pair it seamlessly with the Delphine Dresser Top to create a floor-to-ceiling focal point.",
     features: [
       "Masterful Organization: A generous configuration of six cabinet doors and three smooth-gliding drawers.",
@@ -83,5 +80,35 @@ export const products = [
     material: "Solid wood frame with a muted, refined finish",
     dimensions: "41L x 160W x 84H (cm)",
     doors: "6 (with 3 upper drawers)"
+  },
+
+  // --- 4. DELPHINE 2-DOOR 4-DRAWER DRESSER (New Listing) ---
+  {
+    id: 4,
+    name: "Delphine 2-Door 4-Drawer Large Dresser Base",
+    price: 950, // I put a placeholder price here, adjust as needed!
+    category: "bedroom", 
+    image: "/delphine-2door-base-1.jpg", 
+    gallery: [
+      "/delphine-2door-base-1.jpg", 
+      "/delphine-2door-base-2.jpg",
+      "/delphine-2door-base-3.jpg",
+      "/delphine-2door-base-4.jpg",
+      "/delphine-2door-base-5.jpg",
+      "/delphine-2door-base-6.jpg",
+      "/delphine-2door-base-7.jpg",
+      "/delphine-2door-base-8.jpg"
+    ],
+    description: "Substantial in its storage provision and refined in its aesthetic, the Delphine 2-Door, 4-Drawer Large Dresser Base offers a commanding yet elegantly proportioned storage solution. Featuring a calm, muted tone with clean lines and meticulously considered hardware, this piece feels quietly luxurious and thoroughly at home in a well-appointed bedroom. The generous combination of expansive cabinet space and smooth-gliding drawers easily accommodates everything from folded garments and heavy bedding to smaller personal accessories. Engineered for decades of daily use with quiet-closure hinges and reliable drawer mechanisms, this dresser base serves as the sophisticated, functional core of your serene bedroom retreat.",
+    features: [
+      "Substantial Storage: Two spacious door-concealed compartments alongside four easy-access drawers.",
+      "Quiet Luxury: A calm, muted finish accented by beautifully considered, vintage-inspired hardware.",
+      "Premium Engineering: Built with durably constructed drawer mechanisms and smooth, quiet-close door hinges.",
+      "Versatile Anchor: An elegantly proportioned core piece that elevates any principal bedroom scheme."
+    ],
+    sku: "24659", // Using your exact product code here
+    material: "Solid wood frame with a muted, refined finish",
+    dimensions: "41L x 122W x 80H (cm)",
+    doors: "2 (with 4 side drawers)"
   }
 ];
