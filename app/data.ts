@@ -366,12 +366,12 @@ export const products = [
     dimensions: "35L x 45W x 61H (cm)"
   },
 
-  // --- 17. REED COLLECTION 2-DRAWER 2-DOOR CONSOLE (New Listing) ---
+  // --- 17. REED COLLECTION 2-DRAWER 2-DOOR CONSOLE ---
   {
     id: 17,
     name: "Reed Collection 2-Drawer 2-Door Console",
-    price: 795, // Placeholder price, adjust as needed!
-    category: "living", // Excellent for entranceways or living spaces
+    price: 795, 
+    category: "living", 
     collection: "reed", 
     image: "/reed-2door-console-1.jpg", 
     gallery: [
@@ -391,5 +391,32 @@ export const products = [
     material: "Solid wood frame with a muted, textured finish and sleek hardware",
     dimensions: "30L x 106W x 80H (cm)",
     doors: "2 (with 2 upper drawers)"
+  },
+
+  // --- 18. REED COLLECTION 3-DRAWER BEDSIDE TABLE (New Listing) ---
+  {
+    id: 18,
+    name: "Reed Collection 3-Drawer Bedside Table",
+    price: 350, // Placeholder price, adjust as needed!
+    category: "bedroom", 
+    collection: "reed", 
+    image: "/reed-bedside-1.jpg", 
+    gallery: [
+      "/reed-bedside-1.jpg", 
+      "/reed-bedside-2.jpg",
+      "/reed-bedside-3.jpg",
+      "/reed-bedside-4.jpg",
+      "/reed-bedside-5.jpg"
+    ],
+    description: "Understated yet rich in visual character, the Reed Collection 3-Drawer Bedside Table harmonizes clean structural lines with a subtle textural depth. Designed to bring a sense of order and calm to your bedroom sanctuary, this elegant piece features three smooth-gliding drawers that provide ample concealed storage while maintaining a beautifully streamlined silhouette. Its carefully balanced proportions and refined tonal finish allow it to integrate seamlessly into both contemporary and traditionally inspired spaces. The beautifully textured top surface offers an ideal pedestal for a reading lamp, a curated stack of books, or your evening essentials. Pairing flawlessly with the broader Reed collection, this bedside table delivers a perfect blend of everyday utility and lasting, quiet sophistication.",
+    features: [
+      "Textured Elegance: A subtle, refined tonal finish that beautifully complements both modern and classic bedroom interiors.",
+      "Compact Capacity: Three smooth-gliding drawers offer generous concealed storage within a perfectly proportioned bedside footprint.",
+      "Quiet Sophistication: Clean architectural lines accented by discreet, tactile hardware for a serene and uncluttered aesthetic.",
+      "Heirloom Quality: Durably crafted to provide smooth, reliable daily operation and enduring visual appeal."
+    ],
+    sku: "24322", 
+    material: "Solid wood frame with a muted, textured finish and sleek hardware",
+    dimensions: "40L x 45W x 58H (cm)"
   }
 ];
