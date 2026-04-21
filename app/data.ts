@@ -233,7 +233,7 @@ export const products = [
   {
     id: 9,
     name: "Delphine Collection 1-Door 1-Drawer Chest (Right Hand)",
-    price: 495, // Placeholder price, adjust as needed!
+    price: 495, 
     category: "bedroom", 
     image: "/delphine-right-chest-1.jpg", 
     gallery: [
@@ -256,5 +256,34 @@ export const products = [
     material: "Solid wood frame with a muted, refined finish",
     dimensions: "38L x 50W x 72H (cm)",
     doors: "1 (Right-Hand Hinge, with 1 upper drawer)"
+  },
+
+  // --- 10. DELPHINE 1-DOOR 1-DRAWER CHEST (LEFT HAND) ---
+  {
+    id: 10,
+    name: "Delphine Collection 1-Door 1-Drawer Chest (Left Hand)",
+    price: 495, // Placeholder price, adjust as needed!
+    category: "bedroom", 
+    image: "/delphine-left-chest-1.jpg", 
+    gallery: [
+      "/delphine-left-chest-1.jpg", 
+      "/delphine-left-chest-2.jpg",
+      "/delphine-left-chest-3.jpg",
+      "/delphine-left-chest-4.jpg",
+      "/delphine-left-chest-5.jpg",
+      "/delphine-left-chest-6.jpg",
+      "/delphine-left-chest-7.jpg"
+    ],
+    description: "A perfect mirror to its right-hand counterpart, the Delphine 1-Drawer, 1-Door Chest in a left-hand configuration offers an essential, directional storage solution for refined interiors. Designed with a left-opening door, this piece is ideal for framing the left side of a bed or maximizing accessibility against a right-side wall. Featuring the collection's signature muted finish, clean lines, and vintage-inspired hardware, it provides flexible storage within a compact footprint. A smooth-gliding top drawer keeps daily essentials close at hand, while the concealed lower compartment seamlessly accommodates larger items. Whether standing alone as an elegant nightstand or paired symmetrically for a complete look, its heirloom-quality construction ensures decades of quiet, dependable use.",
+    features: [
+      "Directional Design: Left-hand door configuration designed for optimal spatial flow and symmetrical bedside pairing.",
+      "Flexible Storage: Features one smooth-gliding top drawer for essentials and a spacious door-concealed lower compartment.",
+      "Quiet Luxury: Finished in a calm, muted tone with clean lines and meticulously considered vintage-inspired hardware.",
+      "Compact Footprint: Perfectly scaled to act as an elegant nightstand, hallway accent, or supplementary bedroom storage."
+    ],
+    sku: "24661", 
+    material: "Solid wood frame with a muted, refined finish",
+    dimensions: "38L x 50W x 72H (cm)",
+    doors: "1 (Left-Hand Hinge, with 1 upper drawer)"
   }
 ];
