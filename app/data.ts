@@ -283,12 +283,12 @@ export const products = [
     doors: "1 (with 1 upper drawer)"
   },
 
-  // --- 14. REED COLLECTION 3-DRAWER 2-DOOR CABINET (New Listing) ---
+  // --- 14. REED COLLECTION 3-DRAWER 2-DOOR CABINET ---
   {
     id: 14,
     name: "Reed Collection 3-Drawer 2-Door Cabinet",
-    price: 895, // Placeholder price, adjust as needed!
-    category: "living", // Fits well in dining, living, or large hallways
+    price: 895, 
+    category: "living", 
     collection: "reed", 
     image: "/reed-large-cabinet-1.jpg", 
     gallery: [
@@ -309,5 +309,33 @@ export const products = [
     material: "Solid wood frame with a muted, textured finish and sleek hardware",
     dimensions: "40L x 115W x 80H (cm)",
     doors: "2 (with 3 central drawers)"
+  },
+
+  // --- 15. REED COLLECTION 1-DRAWER 2-DOOR CABINET (New Listing) ---
+  {
+    id: 15,
+    name: "Reed Collection 1-Drawer 2-Door Cabinet",
+    price: 550, // Placeholder price, adjust as needed!
+    category: "living", // Fits perfectly in living, hallway, or dining spaces
+    collection: "reed", 
+    image: "/reed-2door-cabinet-1.jpg", 
+    gallery: [
+      "/reed-2door-cabinet-1.jpg", 
+      "/reed-2door-cabinet-2.jpg",
+      "/reed-2door-cabinet-3.jpg",
+      "/reed-2door-cabinet-4.jpg",
+      "/reed-2door-cabinet-5.jpg"
+    ],
+    description: "Striking the perfect balance between beautifully proportioned styling and practical utility, the Reed Collection 1-Drawer, 2-Door Cabinet is an exceptionally versatile storage solution. Its distinctive linear form features a textured, muted finish that effortlessly bridges the gap between contemporary minimalism and warm, classic design. The single, full-width top drawer offers smooth-gliding access for smaller daily essentials, while the dual doors below reveal a generous cabinet space capable of stowing everything from dining room linens to living room media. Accented with the collection's signature brushed metal hardware, this mid-sized cabinet anchors any wall with quiet confidence, providing a stunning pedestal for layered displays of artwork, botanicals, or ceramics.",
+    features: [
+      "Linear Proportion: A beautifully balanced rectangular form featuring a modern, textured finish.",
+      "Flexible Storage: Combines a convenient, full-width top drawer with a spacious two-door concealed compartment below.",
+      "Subtle Accents: Muted tonal depth enhanced by cleanly integrated brushed metal hardware.",
+      "Versatile Silhouette: Mid-sized proportions make it an ideal fit for hallways, alcoves, or compact living spaces."
+    ],
+    sku: "24324", 
+    material: "Solid wood frame with a muted, textured finish and brushed metal hardware",
+    dimensions: "35L x 80W x 80H (cm)",
+    doors: "2 (with 1 upper drawer)"
   }
 ];
