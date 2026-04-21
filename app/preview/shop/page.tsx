@@ -52,7 +52,7 @@ function ShopContent() {
   let displayedProducts = products;
   let pageTitle = "All Products";
 
-  // Logic to handle Delphine, Reed, and the new Haldon collection!
+  // LOGIC TO HANDLE ALL 3 COLLECTIONS
   if (collectionFilter === 'delphine') {
     displayedProducts = products.filter((p: any) => p.collection === 'delphine');
     pageTitle = "Delphine Collection";
