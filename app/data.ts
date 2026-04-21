@@ -82,11 +82,11 @@ export const products = [
     doors: "6 (with 3 upper drawers)"
   },
 
-  // --- 4. DELPHINE 2-DOOR 4-DRAWER DRESSER (New Listing) ---
+  // --- 4. DELPHINE 2-DOOR 4-DRAWER DRESSER ---
   {
     id: 4,
     name: "Delphine 2-Door 4-Drawer Large Dresser Base",
-    price: 950, // I put a placeholder price here, adjust as needed!
+    price: 950, 
     category: "bedroom", 
     image: "/delphine-2door-base-1.jpg", 
     gallery: [
@@ -106,9 +106,39 @@ export const products = [
       "Premium Engineering: Built with durably constructed drawer mechanisms and smooth, quiet-close door hinges.",
       "Versatile Anchor: An elegantly proportioned core piece that elevates any principal bedroom scheme."
     ],
-    sku: "24659", // Using your exact product code here
+    sku: "24659",
     material: "Solid wood frame with a muted, refined finish",
     dimensions: "41L x 122W x 80H (cm)",
     doors: "2 (with 4 side drawers)"
+  },
+
+  // --- 5. DELPHINE 3-SHELF DRESSER TOP (New Listing) ---
+  {
+    id: 5,
+    name: "Delphine Collection 3-Shelf Large Dresser Top",
+    price: 650, // Placeholder price, adjust as needed!
+    category: "bedroom", 
+    image: "/delphine-top-1.jpg", 
+    gallery: [
+      "/delphine-top-1.jpg", 
+      "/delphine-top-2.jpg",
+      "/delphine-top-3.jpg",
+      "/delphine-top-4.jpg",
+      "/delphine-top-5.jpg",
+      "/delphine-top-6.jpg",
+      "/delphine-top-7.jpg",
+      "/delphine-top-8.jpg"
+    ],
+    description: "Designed to sit flawlessly atop the Delphine Large Dresser Base, this magnificent three-shelf dresser top extends your storage and display capacity with an open, tiered configuration. It transforms a standard dresser into a breathtaking, full-height architectural feature. The three expansive open shelves provide an elegant and accessible stage for folded linens, curated decorative objects, or cherished personal accessories, adding a beautiful display dimension to the collection's concealed storage. Finished in the collection's signature calm, muted tone, it integrates seamlessly with the base below, anchoring your bedroom with quiet authority and a truly considered presence.",
+    features: [
+      "Tiered Display: Three expansive open shelves for beautifully styling curated objects, books, or accessible linens.",
+      "Seamless Integration: Specifically designed to sit securely and flawlessly atop the Delphine Large Dresser Base.",
+      "Architectural Presence: Creates a striking, floor-to-ceiling focal point when paired with its matching base.",
+      "Heirloom Construction: Durably crafted to support meaningful displays with stable, long-term structural integrity."
+    ],
+    sku: "24666", 
+    material: "Solid wood frame with a muted, refined finish",
+    dimensions: "32L x 163W x 127H (cm)"
+    // Notice I removed the 'doors' line here since it's an open shelving unit!
   }
 ];
