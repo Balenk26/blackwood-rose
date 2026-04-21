@@ -311,12 +311,12 @@ export const products = [
     doors: "2 (with 3 central drawers)"
   },
 
-  // --- 15. REED COLLECTION 1-DRAWER 2-DOOR CABINET (New Listing) ---
+  // --- 15. REED COLLECTION 1-DRAWER 2-DOOR CABINET ---
   {
     id: 15,
     name: "Reed Collection 1-Drawer 2-Door Cabinet",
-    price: 550, // Placeholder price, adjust as needed!
-    category: "living", // Fits perfectly in living, hallway, or dining spaces
+    price: 550, 
+    category: "living", 
     collection: "reed", 
     image: "/reed-2door-cabinet-1.jpg", 
     gallery: [
@@ -337,5 +337,32 @@ export const products = [
     material: "Solid wood frame with a muted, textured finish and brushed metal hardware",
     dimensions: "35L x 80W x 80H (cm)",
     doors: "2 (with 1 upper drawer)"
+  },
+
+  // --- 16. REED COLLECTION 1-DRAWER SIDE TABLE (New Listing) ---
+  {
+    id: 16,
+    name: "Reed Collection 1-Drawer Side Table",
+    price: 295, // Placeholder price, adjust as needed!
+    category: "living", // Fits in living rooms or bedrooms
+    collection: "reed", 
+    image: "/reed-side-table-1.jpg", 
+    gallery: [
+      "/reed-side-table-1.jpg", 
+      "/reed-side-table-2.jpg",
+      "/reed-side-table-3.jpg",
+      "/reed-side-table-4.jpg",
+      "/reed-side-table-5.jpg"
+    ],
+    description: "Graceful lines and a harmonious blend of textures make the Reed Collection 1-Drawer Side Table a flawless accent piece for discerning interiors. Its soft, muted finish brings a sense of quiet refinement, while the single smooth-gliding drawer offers a practical storage solution for daily essentials. Subtle grain patterns add depth to the surface, enhancing its character without overpowering your surrounding décor. Thoughtfully balanced and incredibly versatile, it acts as the perfect companion beside a living room sofa, tucked into a cozy reading nook, or utilized as an elegant nightstand alternative. The sleek detailing of the drawer hardware provides a beautiful textural contrast, elevating the table from a simple functional item to a beautifully curated design asset.",
+    features: [
+      "Graceful Proportions: A beautifully balanced silhouette ideal for framing a sofa, armchair, or bed.",
+      "Quiet Refinement: Soft, muted finish with subtle grain patterns that add natural depth and character.",
+      "Practical Storage: Features a single smooth-gliding drawer to keep everyday essentials neatly tucked away.",
+      "Versatile Accent: An understated, highly adaptable design that harmonizes perfectly with both contemporary and traditional spaces."
+    ],
+    sku: "24320", 
+    material: "Solid wood frame with a textured finish and sleek hardware",
+    dimensions: "35L x 45W x 61H (cm)"
   }
 ];
