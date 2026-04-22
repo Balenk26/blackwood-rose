@@ -539,11 +539,11 @@ export const products = [
     dimensions: "50L x 50W x 60H (cm)"
   },
 
-  // --- 23. HALDON COLLECTION LARGE DINING BENCH (New Listing) ---
+  // --- 23. HALDON COLLECTION LARGE DINING BENCH ---
   {
     id: 23,
     name: "Haldon Collection Large Dining Bench",
-    price: 450, // Placeholder price, adjust as needed!
+    price: 450, 
     category: "dining", 
     collection: "haldon", 
     image: "/haldon-bench-1.jpg", 
@@ -567,5 +567,35 @@ export const products = [
     sku: "24672", 
     material: "Solid wood with a refined, clean-lined finish",
     dimensions: "35L x 200W x 45H (cm)"
+  },
+
+  // --- 24. HALDON COLLECTION 4-SHELF APEX UNIT (New Listing) ---
+  {
+    id: 24,
+    name: "Haldon Collection 4-Shelf Apex Unit",
+    price: 850, // Placeholder price, adjust as needed!
+    category: "living", // Excellent for living rooms, home offices, or open-plan displays
+    collection: "haldon", 
+    image: "/haldon-apex-1.jpg", 
+    gallery: [
+      "/haldon-apex-1.jpg", 
+      "/haldon-apex-2.jpg",
+      "/haldon-apex-3.jpg",
+      "/haldon-apex-4.jpg",
+      "/haldon-apex-5.jpg",
+      "/haldon-apex-6.jpg",
+      "/haldon-apex-7.jpg",
+      "/haldon-apex-8.jpg"
+    ],
+    description: "Architectural in its silhouette and considered in its construction, the Haldon Collection 4-Shelf Apex Unit introduces a distinctive, peaked form to open display. The apex profile—defined by its triangular top—creates an immediately recognizable outline that draws the eye upward, adding genuine visual interest and distinguishing it from conventional shelving. Finished in the collection's signature clean, refined style, the unit feels quietly premium. Four generously proportioned shelves deliver a natural display hierarchy: lower, wider tiers effortlessly accommodate larger objects, while the narrowing upper shelves are perfectly suited to smaller, delicate pieces. This elegant tapering creates an inherent sense of order and balance, guiding your styling with ease. Durably constructed with a robust framework, the open format keeps your cherished items accessible and visually connected to the room, entirely avoiding the heaviness of closed cabinetry. It stands as a striking architectural focal point, pairing beautifully with trailing botanicals, ceramic vessels, and framed art in any contemporary or transitional space.",
+    features: [
+      "Architectural Silhouette: A distinctive peaked apex design that draws the eye upward and adds striking visual interest.",
+      "Tiered Display: Four narrowing shelves create a natural, beautifully balanced hierarchy for styling objects of varied sizes.",
+      "Quiet Luxury: Finished in a clean-lined, refined aesthetic that beautifully complements contemporary and Scandi-inspired interiors.",
+      "Heirloom Durability: Robustly constructed to provide stable, load-bearing support for your curated collections."
+    ],
+    sku: "24668", 
+    material: "Solid wood with a refined, clean-lined finish",
+    dimensions: "40L x 160W x 180H (cm)"
   }
 ];
