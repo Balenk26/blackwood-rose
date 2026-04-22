@@ -450,12 +450,12 @@ export const products = [
     dimensions: "90L x 200W x 78H (cm)"
   },
 
-  // --- 20. HALDON COLLECTION 9-DRAWER CHEST WITH SHELF (New Listing) ---
+  // --- 20. HALDON COLLECTION 9-DRAWER CHEST WITH SHELF ---
   {
     id: 20,
     name: "Haldon Collection 9-Drawer Chest With Shelf",
-    price: 1150, // Placeholder price, adjust as needed!
-    category: "bedroom", // Versatile, but excellent for bedrooms
+    price: 1150, 
+    category: "bedroom", 
     collection: "haldon", 
     image: "/haldon-9drawer-chest-1.jpg", 
     gallery: [
@@ -478,5 +478,34 @@ export const products = [
     sku: "24670", 
     material: "Solid wood with a refined, clean-lined finish",
     dimensions: "40L x 110W x 88H (cm)"
+  },
+
+  // --- 21. HALDON COLLECTION 12-DRAWER CHEST (New Listing) ---
+  {
+    id: 21,
+    name: "Haldon Collection 12-Drawer Chest",
+    price: 1450, // Placeholder price, adjust as needed!
+    category: "bedroom", 
+    collection: "haldon", 
+    image: "/haldon-12drawer-1.jpg", 
+    gallery: [
+      "/haldon-12drawer-1.jpg", 
+      "/haldon-12drawer-2.jpg",
+      "/haldon-12drawer-3.jpg",
+      "/haldon-12drawer-4.jpg",
+      "/haldon-12drawer-5.jpg",
+      "/haldon-12drawer-6.jpg",
+      "/haldon-12drawer-7.jpg"
+    ],
+    description: "Bold in its presence and meticulous in its execution, the Haldon Collection 12-Drawer Chest presents an extraordinary storage solution that balances impressive capacity with a composed, refined aesthetic. The twelve drawers are arranged in a considered grid configuration, creating a striking visual rhythm across the chest's facade that feels both functional and deliberately decorative. Finished in the collection's signature calm, clean-lined style, the piece retains a unified and quietly luxurious presence despite its considerable scale. This expansive volume provides an unparalleled degree of organization, allowing for the precise categorization of garments, accessories, and personal items. Perfectly suited as a magnificent focal point for a principal bedroom or a bespoke dressing room, its robust, heirloom-quality construction ensures smooth, consistent operation across every drawer, bringing effortless order and architectural grace to your home.",
+    features: [
+      "Exceptional Organization: Twelve individual smooth-gliding drawers allow for precise categorization of garments and accessories.",
+      "Architectural Rhythm: A bold, repetitive drawer grid creates a striking visual statement that anchors any wall.",
+      "Quiet Luxury: Finished in a calm, refined aesthetic that maintains a unified, luxurious presence across its expansive scale.",
+      "Heirloom Engineering: Durably constructed with a robust framework and premium drawer mechanisms for decades of dependable daily use."
+    ],
+    sku: "24669", 
+    material: "Solid wood with a refined, clean-lined finish",
+    dimensions: "40L x 170W x 88H (cm)"
   }
 ];
