@@ -569,12 +569,12 @@ export const products = [
     dimensions: "35L x 200W x 45H (cm)"
   },
 
-  // --- 24. HALDON COLLECTION 4-SHELF APEX UNIT (New Listing) ---
+  // --- 24. HALDON COLLECTION 4-SHELF APEX UNIT ---
   {
     id: 24,
     name: "Haldon Collection 4-Shelf Apex Unit",
-    price: 850, // Placeholder price, adjust as needed!
-    category: "living", // Excellent for living rooms, home offices, or open-plan displays
+    price: 850, 
+    category: "living", 
     collection: "haldon", 
     image: "/haldon-apex-1.jpg", 
     gallery: [
@@ -597,5 +597,33 @@ export const products = [
     sku: "24668", 
     material: "Solid wood with a refined, clean-lined finish",
     dimensions: "40L x 160W x 180H (cm)"
+  },
+
+  // --- 25. HALDON COLLECTION CONSOLE (New Listing) ---
+  {
+    id: 25,
+    name: "Haldon Collection Console",
+    price: 550, // Placeholder price, adjust as needed!
+    category: "living", // Fits well in hallways, living rooms, and bedrooms
+    collection: "haldon", 
+    image: "/haldon-console-1.jpg", 
+    gallery: [
+      "/haldon-console-1.jpg", 
+      "/haldon-console-2.jpg",
+      "/haldon-console-3.jpg",
+      "/haldon-console-4.jpg",
+      "/haldon-console-5.jpg",
+      "/haldon-console-6.jpg"
+    ],
+    description: "Elegant in its restraint and multifunctional in its purpose, the Haldon Collection Console brings a refined and considered presence to any hallway, living room, or bedroom setting. Its clean, slender profile provides a practical surface for everyday essentials—from keys and correspondence to curated decorative objects—without imposing on your floor space. Finished in the collection's signature quiet luxury, it integrates seamlessly within a broader Haldon scheme or stands with quiet confidence as a singular accent piece. Perfectly proportioned to act as a welcoming focal point in an entranceway, a sophisticated behind-sofa table, or an elegant bedroom vanity, it offers endless styling potential. Durably constructed for daily use, it provides a stable and reliable platform for your favorite statement mirror, architectural ceramics, or trailing botanicals.",
+    features: [
+      "Slender Elegance: A beautifully proportioned, space-efficient profile perfect for hallways, behind sofas, or as a bedroom vanity.",
+      "Quiet Luxury: Finished in a refined, clean-lined aesthetic that seamlessly complements both modern and classic interiors.",
+      "Versatile Canvas: An impeccable surface for styling with statement mirrors, sculptural ceramics, or warm lighting.",
+      "Heirloom Construction: Durably engineered to provide a stable, long-lasting platform for your everyday essentials and curated displays."
+    ],
+    sku: "24673", 
+    material: "Solid wood with a refined, clean-lined finish",
+    dimensions: "40L x 140W x 76H (cm)"
   }
 ];
