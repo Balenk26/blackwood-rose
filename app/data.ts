@@ -480,11 +480,11 @@ export const products = [
     dimensions: "40L x 110W x 88H (cm)"
   },
 
-  // --- 21. HALDON COLLECTION 12-DRAWER CHEST (New Listing) ---
+  // --- 21. HALDON COLLECTION 12-DRAWER CHEST ---
   {
     id: 21,
     name: "Haldon Collection 12-Drawer Chest",
-    price: 1450, // Placeholder price, adjust as needed!
+    price: 1450, 
     category: "bedroom", 
     collection: "haldon", 
     image: "/haldon-12drawer-1.jpg", 
@@ -507,5 +507,65 @@ export const products = [
     sku: "24669", 
     material: "Solid wood with a refined, clean-lined finish",
     dimensions: "40L x 170W x 88H (cm)"
+  },
+
+  // --- 22. HALDON COLLECTION 1-DRAWER SIDE TABLE WITH SHELF ---
+  {
+    id: 22,
+    name: "Haldon Collection 1-Drawer Side Table With Shelf",
+    price: 350, 
+    category: "bedroom", 
+    collection: "haldon", 
+    image: "/haldon-side-table-1.jpg", 
+    gallery: [
+      "/haldon-side-table-1.jpg", 
+      "/haldon-side-table-2.jpg",
+      "/haldon-side-table-3.jpg",
+      "/haldon-side-table-4.jpg",
+      "/haldon-side-table-5.jpg",
+      "/haldon-side-table-6.jpg",
+      "/haldon-side-table-7.jpg",
+      "/haldon-side-table-8.jpg"
+    ],
+    description: "Compact in its footprint yet considered in its detail, the Haldon Collection 1-Drawer Side Table with Shelf offers a beautifully proportioned bedside or occasional table solution. It perfectly balances practical, concealed storage with open display. A single smooth-gliding drawer provides discreet access for everyday essentials, while the integrated shelf below offers an elegant platform for books, botanicals, or a statement lamp. Finished in the collection's signature quiet luxury, it integrates seamlessly into a variety of interior styles. Whether anchoring a reading corner or serving as a refined bedside companion, this piece brings a sense of serene organization and exceptional craftsmanship to spaces where efficiency and elegance are paramount.",
+    features: [
+      "Discreet Storage: A single smooth-gliding drawer keeps personal everyday essentials neatly tucked away.",
+      "Curated Display: An integrated lower shelf provides a perfect stage for oversized books, ceramics, or a reading lamp.",
+      "Compact Elegance: A beautifully space-efficient footprint ideal for bedside use or alongside a living room armchair.",
+      "Quiet Luxury: Finished in a refined, clean-lined aesthetic that complements both modern and classic interiors."
+    ],
+    sku: "24674", 
+    material: "Solid wood with a refined, clean-lined finish",
+    dimensions: "50L x 50W x 60H (cm)"
+  },
+
+  // --- 23. HALDON COLLECTION LARGE DINING BENCH (New Listing) ---
+  {
+    id: 23,
+    name: "Haldon Collection Large Dining Bench",
+    price: 450, // Placeholder price, adjust as needed!
+    category: "dining", 
+    collection: "haldon", 
+    image: "/haldon-bench-1.jpg", 
+    gallery: [
+      "/haldon-bench-1.jpg", 
+      "/haldon-bench-2.jpg",
+      "/haldon-bench-3.jpg",
+      "/haldon-bench-4.jpg",
+      "/haldon-bench-5.jpg",
+      "/haldon-bench-6.jpg",
+      "/haldon-bench-7.jpg",
+      "/haldon-bench-8.jpg"
+    ],
+    description: "Relaxed in its character yet refined in its execution, the Haldon Large Dining Bench provides a sociable and considered seating solution that perfectly complements the collection's dining table. The bench format encourages a convivial, informal dining experience, effortlessly accommodating multiple guests along a single continuous seat. With its clean lines and quiet authority, it offers the clever flexibility to be tucked neatly beneath the table when not in use, maximizing your floor space. Finished in the collection's signature premium aesthetic, it ensures visual consistency for a unified and deliberately curated dining ensemble. The generous scale mirrors the grand proportions of the dining table, providing ample seating for family gatherings and entertaining. Durably constructed for the demands of daily life, the robust frame offers a stable seating platform built for long-term performance. Pair it seamlessly with the Haldon Large Dining Table and a mix of dining chairs to create a relaxed, characterful, and inviting dining sanctuary.",
+    features: [
+      "Sociable Seating: A generous 200cm continuous seat that encourages convivial, relaxed dining for family and guests.",
+      "Space-Saving Design: Perfectly proportioned to tuck neatly beneath the Haldon Large Dining Table when not in use.",
+      "Quiet Luxury: Finished in the collection's signature premium aesthetic for a beautifully unified dining ensemble.",
+      "Heirloom Durability: Robustly constructed to withstand the rigors of daily use, ensuring lasting stability and style."
+    ],
+    sku: "24672", 
+    material: "Solid wood with a refined, clean-lined finish",
+    dimensions: "35L x 200W x 45H (cm)"
   }
 ];
