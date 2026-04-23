@@ -8,7 +8,6 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { products } from '../../data';
 
-// THIS IS THE MAGIC LINE that forces Next.js to stop caching this page!
 export const dynamic = 'force-dynamic';
 
 function ProductCard({ product, addToCart }: { product: any, addToCart: any }) {
@@ -56,7 +55,7 @@ function ShopContent() {
   let displayedProducts = products;
   let pageTitle = "All Products";
 
-  // Logic to handle Delphine, Reed, and Haldon
+  // Logic to handle Delphine, Reed, Haldon, and the new Lennox collection!
   if (collectionFilter === 'delphine') {
     displayedProducts = products.filter((p: any) => p.collection === 'delphine');
     pageTitle = "Delphine Collection";
@@ -66,6 +65,9 @@ function ShopContent() {
   } else if (collectionFilter === 'haldon') {
     displayedProducts = products.filter((p: any) => p.collection === 'haldon');
     pageTitle = "Haldon Collection";
+  } else if (collectionFilter === 'lennox') {
+    displayedProducts = products.filter((p: any) => p.collection === 'lennox');
+    pageTitle = "Lennox Collection";
   }
 
   return (
