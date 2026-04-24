@@ -599,12 +599,12 @@ export const products = [
     dimensions: "40L x 160W x 180H (cm)"
   },
 
-  // --- 25. HALDON COLLECTION CONSOLE (New Listing) ---
+  // --- 25. HALDON COLLECTION CONSOLE ---
   {
     id: 25,
     name: "Haldon Collection Console",
-    price: 550, // Placeholder price, adjust as needed!
-    category: "living", // Fits well in hallways, living rooms, and bedrooms
+    price: 550, 
+    category: "living", 
     collection: "haldon", 
     image: "/haldon-console-1.jpg", 
     gallery: [
@@ -625,5 +625,35 @@ export const products = [
     sku: "24673", 
     material: "Solid wood with a refined, clean-lined finish",
     dimensions: "40L x 140W x 76H (cm)"
+  },
+
+  // --- 26. LENNOX BLACK 2-DOOR SIDEBOARD (New Listing) ---
+  {
+    id: 26,
+    name: "Lennox Black 2-Door Sideboard",
+    price: 695, // Placeholder price, adjust as needed!
+    category: "dining", // Excellent for dining or living spaces
+    collection: "lennox", 
+    image: "/lennox-sideboard-1.jpg", 
+    gallery: [
+      "/lennox-sideboard-1.jpg", 
+      "/lennox-sideboard-2.jpg",
+      "/lennox-sideboard-3.jpg",
+      "/lennox-sideboard-4.jpg",
+      "/lennox-sideboard-5.jpg",
+      "/lennox-sideboard-6.jpg",
+      "/lennox-sideboard-7.jpg"
+    ],
+    description: "Stately proportions and minimalist aesthetics define this statement piece from the Lennox Collection. Finished in a deep noir that accentuates its clean lines and architectural presence, this two-door sideboard achieves a perfect equilibrium of form and function. The balanced composition marries contemporary urban sensibilities with generous storage capabilities, while the subtly grained, scratch-resistant surface treatment demonstrates unparalleled craftsmanship. Its monochromatic palette ensures seamless integration across diverse interior schemes, serving as a striking anchor for your dining or living space. Style it magnificently with metallic wall art, geometric mirrors, or textural woven accessories to create a cohesive, modern narrative in your home. With a deliberate restraint in its design language, this sideboard promises enduring style and practical, everyday utility.",
+    features: [
+      "Modern Linear Framework: Clean architectural lines that bring a contemporary, urban sensibility to your space.",
+      "Deep Noir Finish: A beautifully rich, scratch-resistant black finish with subtle grain detailing.",
+      "Generous Concealed Storage: Two spacious doors open to maximize your organizational potential for dining or living essentials.",
+      "Enduring Craftsmanship: Precisely engineered to ensure lasting structural integrity and daily reliability."
+    ],
+    sku: "23956", 
+    material: "Solid wood with a scratch-resistant noir finish",
+    dimensions: "34L x 123W x 84H (cm)",
+    doors: "2"
   }
 ];
