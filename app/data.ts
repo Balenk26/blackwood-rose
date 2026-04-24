@@ -657,12 +657,12 @@ export const products = [
     doors: "2"
   },
 
-  // --- 27. LENNOX BLACK DRINKS UNIT (New Listing) ---
+  // --- 27. LENNOX BLACK DRINKS UNIT ---
   {
     id: 27,
     name: "Lennox Black Drinks Unit",
-    price: 895, // Placeholder price, adjust as needed!
-    category: "living", // Also fits well in dining
+    price: 895, 
+    category: "living", 
     collection: "lennox", 
     image: "/lennox-drinks-unit-1.jpg", 
     gallery: [
@@ -685,5 +685,32 @@ export const products = [
     sku: "24563", 
     material: "Solid wood with a matte black finish and metal accents",
     dimensions: "39L x 50W x 183H (cm)"
+  },
+
+  // --- 28. LENNOX BLACK CONSOLE TABLE (New Listing) ---
+  {
+    id: 28,
+    name: "Lennox Black Console Table",
+    price: 495, // Placeholder price, adjust as needed!
+    category: "living", 
+    collection: "lennox", 
+    image: "/lennox-console-1.jpg", 
+    gallery: [
+      "/lennox-console-1.jpg", 
+      "/lennox-console-2.jpg",
+      "/lennox-console-3.jpg",
+      "/lennox-console-4.jpg",
+      "/lennox-console-5.jpg"
+    ],
+    description: "Offering a harmonious blend of generous surface space and sculptural solidarity, the Lennox Black Console Table acts as a foundational element for your hallways and living areas. The substantial matte black tabletop provides a durable and striking stage for displaying curated art, statement lamps, or your daily essentials. Its support structure—combining solid panels with geometric metal framing—introduces visual weight and architectural interest, ensuring the design feels anchored and intentional. This robust base contrasts beautifully with the sleek top to create a dynamic yet balanced form. Perfectly proportioned to fit comfortably behind a sofa, in an entryway, or along a blank wall, it fulfills multiple roles from a practical catch-all to a beautifully curated display platform. The deep noir finish acts as a perfect backdrop, making decorative objects and books stand out with stunning clarity. Defining your space with confident, structured elegance, its timeless appeal and robust construction make it a lasting investment for the modern home.",
+    features: [
+      "Architectural Presence: A robust, geometric base blending solid wood and metal framing for a sculptural, anchored look.",
+      "Matte Black Finish: A sleek, deep noir surface that serves as a stunning, high-contrast backdrop for your curated decor.",
+      "Versatile Proportions: Beautifully scaled to act as an entryway focal point, a behind-sofa anchor, or an elegant living room accent.",
+      "Heirloom Durability: Engineered with a substantial tabletop and robust base to provide a stable, long-lasting display platform."
+    ],
+    sku: "24565", 
+    material: "Solid wood with a matte black finish and metal framing",
+    dimensions: "40L x 130W x 81H (cm)"
   }
 ];
