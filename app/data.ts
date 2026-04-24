@@ -627,12 +627,12 @@ export const products = [
     dimensions: "40L x 140W x 76H (cm)"
   },
 
-  // --- 26. LENNOX BLACK 2-DOOR SIDEBOARD (New Listing) ---
+  // --- 26. LENNOX BLACK 2-DOOR SIDEBOARD ---
   {
     id: 26,
     name: "Lennox Black 2-Door Sideboard",
-    price: 695, // Placeholder price, adjust as needed!
-    category: "dining", // Excellent for dining or living spaces
+    price: 695, 
+    category: "dining", 
     collection: "lennox", 
     image: "/lennox-sideboard-1.jpg", 
     gallery: [
@@ -655,5 +655,35 @@ export const products = [
     material: "Solid wood with a scratch-resistant noir finish",
     dimensions: "34L x 123W x 84H (cm)",
     doors: "2"
+  },
+
+  // --- 27. LENNOX BLACK DRINKS UNIT (New Listing) ---
+  {
+    id: 27,
+    name: "Lennox Black Drinks Unit",
+    price: 895, // Placeholder price, adjust as needed!
+    category: "living", // Also fits well in dining
+    collection: "lennox", 
+    image: "/lennox-drinks-unit-1.jpg", 
+    gallery: [
+      "/lennox-drinks-unit-1.jpg", 
+      "/lennox-drinks-unit-2.jpg",
+      "/lennox-drinks-unit-3.jpg",
+      "/lennox-drinks-unit-4.jpg",
+      "/lennox-drinks-unit-5.jpg",
+      "/lennox-drinks-unit-6.jpg",
+      "/lennox-drinks-unit-7.jpg",
+      "/lennox-drinks-unit-8.jpg"
+    ],
+    description: "Marrying sharp, contemporary style with dedicated functionality for entertaining, the Lennox Black Drinks Unit is the ultimate statement piece for the modern host. Finished in the collection’s signature deep matte black, its architecture offers a considered composition of solid forms and open frameworks. A thoughtful mix of closed cabinetry, open shelving, and a dedicated top surface transforms the storage and service of drinks into a beautifully curated experience—providing a proper home for your finest decanters, glassware, and spirits. Robust metal accents reinforce the structure, adding an industrial-chic edge that contrasts beautifully with the dark finish. Whether claiming a corner of your living room, sitting proudly in a study, or functioning as a sleek partition in an open-plan space, this drinks unit is more than mere furniture. It acts as a striking focal point for social gatherings, elevating the everyday ritual of hosting into an art form.",
+    features: [
+      "Dedicated Entertaining: Purpose-built storage for elegantly displaying and serving barware, bottles, and spirits.",
+      "Dynamic Architecture: A thoughtful mix of open shelving and closed cabinetry creates visual intrigue and practical organization.",
+      "Industrial-Chic Accents: Sleek metal supports add a robust, modern edge that perfectly complements the deep matte black finish.",
+      "Versatile Placement: A striking, self-contained silhouette that anchors a living room corner, study, or open-plan space."
+    ],
+    sku: "24563", 
+    material: "Solid wood with a matte black finish and metal accents",
+    dimensions: "39L x 50W x 183H (cm)"
   }
 ];
