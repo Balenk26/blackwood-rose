@@ -687,11 +687,11 @@ export const products = [
     dimensions: "39L x 50W x 183H (cm)"
   },
 
-  // --- 28. LENNOX BLACK CONSOLE TABLE (New Listing) ---
+  // --- 28. LENNOX BLACK CONSOLE TABLE ---
   {
     id: 28,
     name: "Lennox Black Console Table",
-    price: 495, // Placeholder price, adjust as needed!
+    price: 495, 
     category: "living", 
     collection: "lennox", 
     image: "/lennox-console-1.jpg", 
@@ -712,5 +712,36 @@ export const products = [
     sku: "24565", 
     material: "Solid wood with a matte black finish and metal framing",
     dimensions: "40L x 130W x 81H (cm)"
+  },
+
+  // --- 29. LENNOX BLACK 2-DOOR SMALL SIDEBOARD (New Listing) ---
+  {
+    id: 29,
+    name: "Lennox Black 2-Door Small Sideboard",
+    price: 450, // Placeholder price, adjust as needed!
+    category: "dining", // Also great for living rooms and hallways
+    collection: "lennox", 
+    image: "/lennox-small-sideboard-1.jpg", 
+    gallery: [
+      "/lennox-small-sideboard-1.jpg", 
+      "/lennox-small-sideboard-2.jpg",
+      "/lennox-small-sideboard-3.jpg",
+      "/lennox-small-sideboard-4.jpg",
+      "/lennox-small-sideboard-5.jpg",
+      "/lennox-small-sideboard-6.jpg",
+      "/lennox-small-sideboard-7.jpg",
+      "/lennox-small-sideboard-8.jpg"
+    ],
+    description: "Presenting a compact statement of tailored sophistication, the Lennox Black 2-Door Small Sideboard is defined by a deep, muted black finish that offers a grounding neutrality to any room. Its silhouette balances clean, vertical lines with beautifully considered proportions, featuring two panelled doors that provide orderly, discreet storage. Subtle detailing and minimalist hardware accentuate the form, creating quiet visual interest without unnecessary ornamentation—perfect for spaces where understated elegance is paramount. It serves as a versatile storage anchor for dining rooms, hallways, or living spaces, offering a sophisticated home for tableware, linens, or media essentials while maintaining a perfectly clutter-free environment. The modest scale ensures it fits seamlessly into tighter floor plans or acts as an elegant supplementary piece in larger rooms, delivering maximum utility without the bulk. Crafted for dependable, everyday use, it features a stable carcass, smooth-opening doors, and intelligent interior organization. This practical focus makes it an essential solution for curated living, where form and purpose are in perfect harmony. Style it effortlessly with a ceramic table lamp, sculptural objects, and natural textures to create a truly refined vignette.",
+    features: [
+      "Compact Elegance: A modest, space-efficient footprint ideal for tight floor plans, hallways, or cozy dining nooks.",
+      "Deep Noir Finish: A grounding, muted black aesthetic with clean architectural lines and minimalist hardware.",
+      "Discreet Storage: Two elegantly panelled doors open to reveal versatile organization for tableware, linens, or media.",
+      "Versatile Styling: Acts as a sophisticated, dark backdrop that pairs beautifully with warm woods, metallic accents, and sculptural ceramics."
+    ],
+    sku: "24562", 
+    material: "Solid wood with a scratch-resistant noir finish",
+    dimensions: "42L x 49W x 67H (cm)",
+    doors: "2"
   }
 ];
