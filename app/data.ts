@@ -1118,12 +1118,12 @@ export const products = [
     doors: "2 (Drawers)"
   },
 
-  // --- 43. THE CAMDEN COLLECTION 3-DRAWER ROUND SIDE TABLE (New Listing) ---
+  // --- 43. THE CAMDEN COLLECTION 3-DRAWER ROUND SIDE TABLE ---
   {
     id: 43,
     name: "The Camden Collection 3-Drawer Round Side Table",
-    price: 350, // Placeholder price, adjust as needed!
-    category: "living", // Excellent for living spaces or as a nightstand
+    price: 350, 
+    category: "living", 
     collection: "camden", 
     image: "/camden-round-side-table-1.jpg", 
     gallery: [
@@ -1141,5 +1141,34 @@ export const products = [
     material: "Solid wood with a refined finish and smooth-operating hardware",
     dimensions: "45L x 45W x 66H (cm)",
     doors: "3 (Drawers)"
+  },
+
+  // --- 44. THE CAMDEN COLLECTION ONE-DRAWER SIDE TABLE (New Listing) ---
+  {
+    id: 44,
+    name: "The Camden Collection One-Drawer Side Table",
+    price: 250, // Placeholder price, adjust as needed!
+    category: "living", // Also beautiful in the bedroom
+    collection: "camden", 
+    image: "/camden-one-drawer-side-table-1.jpg", 
+    gallery: [
+      "/camden-one-drawer-side-table-1.jpg", 
+      "/camden-one-drawer-side-table-2.jpg",
+      "/camden-one-drawer-side-table-3.jpg",
+      "/camden-one-drawer-side-table-4.jpg",
+      "/camden-one-drawer-side-table-5.jpg",
+      "/camden-one-drawer-side-table-6.jpg"
+    ],
+    description: "Embodying the refined simplicity that defines the Camden Collection, this minimalist one-drawer side table is a masterclass in understated craftsmanship. The perfectly balanced silhouette and clean lines allow it to sit harmoniously in both traditional and highly contemporary spaces. Thoughtfully scaled, its considered dimensions make it an exceptionally adaptable addition, particularly suited for intimate living areas or as a sophisticated bedside companion. The seamlessly integrated drawer provides highly practical, discreet storage for your daily essentials while maintaining the table's sleek, uncluttered aesthetic. Crafted from premium materials to ensure lasting stability and heirloom durability, this piece pairs beautifully with metallic accents, polished picture frames, or textured ceramics to create a cohesive, curated vignette in your home.",
+    features: [
+      "Discreet Storage: A seamlessly integrated single drawer offers smart, hidden organization for everyday essentials.",
+      "Minimalist Elegance: Clean lines and a beautifully balanced silhouette that complement both traditional and modern decor.",
+      "Versatile Proportions: Thoughtfully scaled at 50cm wide, making it an ideal companion beside an armchair or as a refined nightstand.",
+      "Heirloom Construction: Expertly crafted with premium materials to ensure lasting stability and enduring daily utility."
+    ],
+    sku: "23953", 
+    material: "Solid wood with a refined natural finish",
+    dimensions: "38L x 50W x 75H (cm)",
+    doors: "1 (Drawer)"
   }
 ];
