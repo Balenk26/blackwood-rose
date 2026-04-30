@@ -857,11 +857,11 @@ export const products = [
     dimensions: "59L x 59W x 61H (cm)"
   },
 
-  // --- 34. RUTLAND COLLECTION RECTANGULAR DINING TABLE (New Listing) ---
+  // --- 34. RUTLAND COLLECTION RECTANGULAR DINING TABLE ---
   {
     id: 34,
     name: "The Rutland Collection Rectangular Dining Table",
-    price: 1295, // Placeholder price, adjust as needed!
+    price: 1295, 
     category: "dining", 
     collection: "rutland", 
     image: "/rutland-dining-table-1.jpg", 
@@ -885,5 +885,63 @@ export const products = [
     sku: "23980", 
     material: "Solid wood with a contemporary surface treatment",
     dimensions: "100L x 200W x 76H (cm)"
+  },
+
+  // --- 35. THE RUTLAND COLLECTION ROUND COFFEE TABLE ---
+  {
+    id: 35,
+    name: "The Rutland Collection Round Coffee Table",
+    price: 495, 
+    category: "living", 
+    collection: "rutland", 
+    image: "/rutland-coffee-table-1.jpg", 
+    gallery: [
+      "/rutland-coffee-table-1.jpg", 
+      "/rutland-coffee-table-2.jpg",
+      "/rutland-coffee-table-3.jpg",
+      "/rutland-coffee-table-4.jpg",
+      "/rutland-coffee-table-5.jpg",
+      "/rutland-coffee-table-6.jpg"
+    ],
+    description: "A standout centerpiece from the Rutland Collection, this round coffee table exemplifies modern British craftsmanship with its clean, minimalist silhouette and superior materials. The pristine circular top presents an expansive surface that establishes a brilliant focal point for contemporary living spaces, naturally maximizing flow and breaking up the sharp lines of modern upholstery. Its thoughtfully proportioned design reflects light beautifully, creating dynamic, airy plays of illumination throughout the day. The architectural base provides unwavering stability without compromising the overall lightness of the piece, seamlessly combining physical substance with elevated style. When styled with complementary accents—such as glass hurricane lanterns, metallic decorative bowls, or textured trays—the table's inherent beauty is enhanced even further. Designed to anchor your living room, its refined presence ensures enduring appeal across changing trends, providing a sophisticated foundation that gracefully evolves with your changing decor.",
+    features: [
+      "Socially Centric Design: The circular profile naturally improves spatial flow and encourages conversation in your living area.",
+      "Modern British Craftsmanship: Clean, minimalist lines and superior materials create a striking, light-reflecting focal point.",
+      "Architectural Base: Designed to provide unwavering structural stability while maintaining a visually light, airy footprint.",
+      "Dynamic Finish: Beautifully treated surfaces create engaging plays of illumination and adapt seamlessly to your interior styling."
+    ],
+    sku: "23985", 
+    material: "Premium solid wood with a light-reflecting finish",
+    dimensions: "90L x 90W x 40H (cm)"
+  },
+
+  // --- 36. THE RUTLAND COLLECTION ROUND DINING TABLE (New Listing) ---
+  {
+    id: 36,
+    name: "The Rutland Collection Round Dining Table",
+    price: 995, // Placeholder price, adjust as needed!
+    category: "dining", 
+    collection: "rutland", 
+    image: "/rutland-round-dining-1.jpg", 
+    gallery: [
+      "/rutland-round-dining-1.jpg", 
+      "/rutland-round-dining-2.jpg",
+      "/rutland-round-dining-3.jpg",
+      "/rutland-round-dining-4.jpg",
+      "/rutland-round-dining-5.jpg",
+      "/rutland-round-dining-6.jpg",
+      "/rutland-round-dining-7.jpg",
+      "/rutland-round-dining-8.jpg"
+    ],
+    description: "Within the distinguished Rutland Collection, this circular dining table represents the pinnacle of modern British craftsmanship. The expansive round surface creates an inviting focal point that naturally encourages meaningful conversation and shared moments. Its balanced proportions and refined silhouette demonstrate outstanding attention to detail, while superior materials ensure heirloom-quality durability. The table's adaptable, elegant design flourishes in both traditional and contemporary settings, offering a stunning foundation for your dining space. It pairs beautifully with decorative elements—like metalwork mirrors, soft ambient lighting, or an artisanal glass centerpiece that echoes the table's graceful curves. By merging uncompromising build quality with a welcoming, communal shape, this table acts as the perfect anchor for family meals and sophisticated dinner parties alike, seamlessly evolving with your home’s changing style.",
+    features: [
+      "Sociable Dining: The 120cm circular profile naturally improves spatial flow and encourages intimate, convivial conversation.",
+      "Modern British Craftsmanship: Clean, balanced lines and superior materials create a striking, refined focal point.",
+      "Enduring Adaptability: A versatile design that integrates flawlessly into both traditional and highly contemporary interiors.",
+      "Heirloom Durability: Precision-engineered with a robust framework to provide long-lasting stability for daily use."
+    ],
+    sku: "23986", 
+    material: "Premium solid wood with a contemporary surface treatment",
+    dimensions: "120L x 120W x 76H (cm)"
   }
 ];
