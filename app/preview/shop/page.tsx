@@ -51,11 +51,12 @@ function ShopContent() {
   const { addToCart } = useCart();
   const searchParams = useSearchParams();
   const collectionFilter = searchParams.get('collection');
+  const categoryFilter = searchParams.get('category');
 
   let displayedProducts = products;
   let pageTitle = "All Products";
 
-  // Logic to handle all our amazing collections!
+  // Filter by Collection (Brands)
   if (collectionFilter === 'delphine') {
     displayedProducts = products.filter((p: any) => p.collection === 'delphine');
     pageTitle = "Delphine Collection";
@@ -74,6 +75,21 @@ function ShopContent() {
   } else if (collectionFilter === 'camden') {
     displayedProducts = products.filter((p: any) => p.collection === 'camden');
     pageTitle = "Camden Collection";
+  }
+
+  // Filter by Category (Living, Dining, Bedroom, Upholstery)
+  if (categoryFilter === 'living') {
+    displayedProducts = products.filter((p: any) => p.category === 'living');
+    pageTitle = "Living Room";
+  } else if (categoryFilter === 'dining') {
+    displayedProducts = products.filter((p: any) => p.category === 'dining');
+    pageTitle = "Dining Room";
+  } else if (categoryFilter === 'bedroom') {
+    displayedProducts = products.filter((p: any) => p.category === 'bedroom');
+    pageTitle = "Bedroom";
+  } else if (categoryFilter === 'upholstery') {
+    displayedProducts = products.filter((p: any) => p.category === 'upholstery');
+    pageTitle = "Upholstery";
   }
 
   return (
@@ -99,7 +115,7 @@ function ShopContent() {
              <ProductCard key={product.id} product={product} addToCart={addToCart} />
           ))}
           {displayedProducts.length === 0 && (
-            <p style={{ color: '#666', gridColumn: '1 / -1' }}>No products found in this collection yet.</p>
+            <p style={{ color: '#666', gridColumn: '1 / -1', textAlign: 'center', marginTop: '48px' }}>No products found in this collection yet. Check back soon!</p>
           )}
         </div>
       </main>

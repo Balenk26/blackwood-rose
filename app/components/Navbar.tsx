@@ -105,10 +105,11 @@ export default function Navbar() {
         <div style={{ width: '100%', height: '55px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid #333333' }}>
           <ul style={{ display: 'flex', justifyContent: 'center', width: '100%', maxWidth: '1200px', gap: '3rem', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', margin: 0, padding: 0, listStyle: 'none' }}>
             <li><Link href="/preview/shop" style={{ textDecoration: 'none', color: '#D4AF37' }}>All Products</Link></li>
-            <li><Link href="/preview/living" style={{ textDecoration: 'none', color: '#D4AF37' }}>Living</Link></li>
-            <li><Link href="/preview/dining" style={{ textDecoration: 'none', color: '#D4AF37' }}>Dining</Link></li>
-            <li><Link href="/preview/bedroom" style={{ textDecoration: 'none', color: '#D4AF37' }}>Bedroom</Link></li>
-            <li><Link href="/preview/upholstery" style={{ textDecoration: 'none', color: '#D4AF37' }}>Upholstery</Link></li>
+            {/* UPDATED CATEGORY LINKS HERE */}
+            <li><Link href="/preview/shop?category=living" style={{ textDecoration: 'none', color: '#D4AF37' }}>Living</Link></li>
+            <li><Link href="/preview/shop?category=dining" style={{ textDecoration: 'none', color: '#D4AF37' }}>Dining</Link></li>
+            <li><Link href="/preview/shop?category=bedroom" style={{ textDecoration: 'none', color: '#D4AF37' }}>Bedroom</Link></li>
+            <li><Link href="/preview/shop?category=upholstery" style={{ textDecoration: 'none', color: '#D4AF37' }}>Upholstery</Link></li>
             
             <li 
               style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center', cursor: 'pointer' }}
@@ -134,7 +135,6 @@ export default function Navbar() {
                   <a href="/preview/shop?collection=rutland" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>
                     Rutland Collection
                   </a>
-                  {/* NEW: Added the Camden Collection! */}
                   <a href="/preview/shop?collection=camden" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>
                     Camden Collection
                   </a>
