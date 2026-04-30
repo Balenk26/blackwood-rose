@@ -1089,12 +1089,12 @@ export const products = [
     doors: "2 (Drawers)"
   },
 
-  // --- 42. THE CAMDEN COLLECTION TWO DRAWER CONSOLE TABLE (New Listing) ---
+  // --- 42. THE CAMDEN COLLECTION TWO DRAWER CONSOLE TABLE ---
   {
     id: 42,
     name: "The Camden Collection Two-Drawer Console Table",
-    price: 495, // Placeholder price, adjust as needed!
-    category: "living", // Excellent for hallways and living rooms
+    price: 495, 
+    category: "living", 
     collection: "camden", 
     image: "/camden-compact-console-1.jpg", 
     gallery: [
@@ -1116,5 +1116,30 @@ export const products = [
     material: "Solid wood with a lustrous natural finish",
     dimensions: "35L x 90W x 81H (cm)",
     doors: "2 (Drawers)"
+  },
+
+  // --- 43. THE CAMDEN COLLECTION 3-DRAWER ROUND SIDE TABLE (New Listing) ---
+  {
+    id: 43,
+    name: "The Camden Collection 3-Drawer Round Side Table",
+    price: 350, // Placeholder price, adjust as needed!
+    category: "living", // Excellent for living spaces or as a nightstand
+    collection: "camden", 
+    image: "/camden-round-side-table-1.jpg", 
+    gallery: [
+      "/camden-round-side-table-1.jpg", 
+      "/camden-round-side-table-2.jpg"
+    ],
+    description: "A distinctive circular side table that delivers modern functionality with refined style, this three-drawer piece from the Camden Collection showcases intelligent design through its balanced proportions and considered details. The elegant round silhouette creates an inviting focal point while beautifully maximizing space efficiency in any room setting. Its carefully crafted construction demonstrates superior attention to detail, from the precise drawer alignment to the whisper-quiet mechanisms that ensure lasting reliability. Perfectly scaled for both compact spaces and larger rooms, it offers highly practical concealed storage without ever compromising on visual appeal. Whether sitting beside a reading chair or acting as a sophisticated bedside companion, its neutral palette harmonizes effortlessly with contemporary and traditional interiors alike. Style it beautifully with a decorative table lamp, artisanal vase, or curated objets d'art to complete your space.",
+    features: [
+      "Smart Organization: Three smooth-operating drawers offer highly practical, concealed storage for everyday essentials.",
+      "Space-Maximizing Silhouette: The elegant circular design naturally softens a room's aesthetic while fitting perfectly into compact corners.",
+      "Premium Engineering: Crafted with precise drawer alignment and high-quality mechanisms for lasting, dependable reliability.",
+      "Versatile Placement: Beautifully proportioned to serve as an elegant living room accent or a sophisticated bedside table."
+    ],
+    sku: "23952", 
+    material: "Solid wood with a refined finish and smooth-operating hardware",
+    dimensions: "45L x 45W x 66H (cm)",
+    doors: "3 (Drawers)"
   }
 ];
