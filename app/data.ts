@@ -1061,12 +1061,12 @@ export const products = [
     dimensions: "60L x 60W x 60H (cm)"
   },
 
-  // --- 41. THE CAMDEN COLLECTION LARGE TWO DRAWER CONSOLE TABLE (New Listing) ---
+  // --- 41. THE CAMDEN COLLECTION LARGE TWO DRAWER CONSOLE TABLE ---
   {
     id: 41,
     name: "The Camden Collection Large Two Drawer Console Table",
-    price: 695, // Placeholder price, adjust as needed!
-    category: "living", // Excellent for hallways, entryways, or behind a sofa
+    price: 695, 
+    category: "living", 
     collection: "camden", 
     image: "/camden-console-table-1.jpg", 
     gallery: [
@@ -1086,6 +1086,35 @@ export const products = [
     sku: "23955", 
     material: "Premium solid wood with refined hardware",
     dimensions: "40L x 120W x 81H (cm)",
+    doors: "2 (Drawers)"
+  },
+
+  // --- 42. THE CAMDEN COLLECTION TWO DRAWER CONSOLE TABLE (New Listing) ---
+  {
+    id: 42,
+    name: "The Camden Collection Two-Drawer Console Table",
+    price: 495, // Placeholder price, adjust as needed!
+    category: "living", // Excellent for hallways and living rooms
+    collection: "camden", 
+    image: "/camden-compact-console-1.jpg", 
+    gallery: [
+      "/camden-compact-console-1.jpg", 
+      "/camden-compact-console-2.jpg",
+      "/camden-compact-console-3.jpg",
+      "/camden-compact-console-4.jpg",
+      "/camden-compact-console-5.jpg",
+      "/camden-compact-console-6.jpg"
+    ],
+    description: "Unparalleled refinement meets functional design in this two-drawer console from the Camden Collection. Distinguished by its clean lines and perfectly measured proportions, this piece exhibits superior craftsmanship perfectly suited for the modern home. The understated silhouette displays meticulous attention to detail in every aspect, from the precisely fashioned drawer fronts to the thoughtfully arranged storage space. A lustrous finish enhances the natural characteristics of the wood, creating an atmosphere of understated luxury that effortlessly complements both traditional and contemporary settings. Making an elegant addition to any curated interior space, this console anchors your room while providing highly practical organization. Style it effortlessly with a statement wall mirror, atmospheric table lamps, or geometric decorative objects to complete its refined look. An authentic investment in enduring style, this console table promises to maintain its sophisticated appeal across changing interior trends.",
+    features: [
+      "Compact Elegance: Beautifully scaled at 90cm wide, making it an ideal fit for narrow hallways, alcoves, or smaller living spaces.",
+      "Discreet Storage: Two seamlessly integrated drawers offer practical, elegant organization for your everyday essentials.",
+      "Premium Engineering: Built with solid wood construction and precision-engineered drawer mechanisms for smooth, reliable daily use.",
+      "Lustrous Finish: An expertly applied finish that enhances the natural wood grain, delivering an atmosphere of understated luxury."
+    ],
+    sku: "23954", 
+    material: "Solid wood with a lustrous natural finish",
+    dimensions: "35L x 90W x 81H (cm)",
     doors: "2 (Drawers)"
   }
 ];
