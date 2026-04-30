@@ -2,9 +2,9 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-// Initialize Stripe with your secret key
+// Initialize Stripe with your secret key and the latest API version
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2023-10-16',
+  apiVersion: '2026-04-22.dahlia', 
 });
 
 export async function POST(request: Request) {
