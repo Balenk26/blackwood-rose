@@ -915,11 +915,11 @@ export const products = [
     dimensions: "90L x 90W x 40H (cm)"
   },
 
-  // --- 36. THE RUTLAND COLLECTION ROUND DINING TABLE (New Listing) ---
+  // --- 36. THE RUTLAND COLLECTION ROUND DINING TABLE ---
   {
     id: 36,
     name: "The Rutland Collection Round Dining Table",
-    price: 995, // Placeholder price, adjust as needed!
+    price: 995, 
     category: "dining", 
     collection: "rutland", 
     image: "/rutland-round-dining-1.jpg", 
@@ -943,5 +943,35 @@ export const products = [
     sku: "23986", 
     material: "Premium solid wood with a contemporary surface treatment",
     dimensions: "120L x 120W x 76H (cm)"
+  },
+
+  // --- 37. THE RUTLAND COLLECTION CONSOLE TABLE (New Listing) ---
+  {
+    id: 37,
+    name: "The Rutland Collection Console Table",
+    price: 550, // Placeholder price, adjust as needed!
+    category: "living", // Excellent for hallways and living rooms
+    collection: "rutland", 
+    image: "/rutland-console-1.jpg", 
+    gallery: [
+      "/rutland-console-1.jpg", 
+      "/rutland-console-2.jpg",
+      "/rutland-console-3.jpg",
+      "/rutland-console-4.jpg",
+      "/rutland-console-5.jpg",
+      "/rutland-console-6.jpg",
+      "/rutland-console-7.jpg",
+      "/rutland-console-8.jpg"
+    ],
+    description: "Showcasing an unparalleled blend of form and finesse, the Rutland Collection Console Table is an architectural statement that defines modern luxury. Its thoughtfully proportioned 150cm silhouette and harmonious fusion of materials pair beautifully with minimalist decor while maintaining a commanding presence as a centerpiece. The distinguished construction reveals impeccable attention to detail through every curve and connection, reflecting a true commitment to heirloom-quality excellence. Designed to serve as a stunning focal point in an entryway, living room, or hallway, its clean lines meet functional beauty in perfect equilibrium. The versatile neutral palette allows for seamless integration into diverse interior schemes, from understated metropolitan spaces to richly layered traditional environments. Style it effortlessly with metallic vessels, abstract sculptures, or your favorite statement mirror to create a curated, sophisticated vignette.",
+    features: [
+      "Architectural Presence: A harmonious fusion of materials and clean lines that creates a striking modern focal point.",
+      "Versatile Proportions: Generously scaled at 150cm wide to anchor hallways, living spaces, or feature walls beautifully.",
+      "Adaptable Styling: A refined neutral palette that integrates seamlessly into both contemporary and traditional interior schemes.",
+      "Heirloom Craftsmanship: Distinguished construction with impeccable attention to detail, built to provide lasting stability and enduring style."
+    ],
+    sku: "23982", 
+    material: "Premium solid wood with an architectural base",
+    dimensions: "40L x 150W x 80H (cm)"
   }
 ];
