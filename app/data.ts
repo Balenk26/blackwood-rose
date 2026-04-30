@@ -804,12 +804,12 @@ export const products = [
     doors: "2"
   },
 
-  // --- 32. LENNOX BLACK FRAMED CONSOLE (New Listing) ---
+  // --- 32. LENNOX BLACK FRAMED CONSOLE ---
   {
     id: 32,
     name: "Lennox Black Framed Console",
-    price: 595, // Placeholder price, adjust as needed!
-    category: "living", // Excellent for hallways and living spaces
+    price: 595, 
+    category: "living", 
     collection: "lennox", 
     image: "/lennox-framed-console-1.jpg", 
     gallery: [
@@ -828,5 +828,32 @@ export const products = [
     sku: "23959", 
     material: "Solid wood top with a robust metal framework",
     dimensions: "36L x 132W x 81H (cm)"
+  },
+
+  // --- 33. LENNOX BLACK FRAMED SET OF 2 SIDE TABLES (New Listing) ---
+  {
+    id: 33,
+    name: "Lennox Black Framed Set of 2 Side Tables",
+    price: 395, // Placeholder price, adjust as needed!
+    category: "living", 
+    collection: "lennox", 
+    image: "/lennox-nesting-tables-1.jpg", 
+    gallery: [
+      "/lennox-nesting-tables-1.jpg", 
+      "/lennox-nesting-tables-2.jpg",
+      "/lennox-nesting-tables-3.jpg",
+      "/lennox-nesting-tables-4.jpg",
+      "/lennox-nesting-tables-5.jpg"
+    ],
+    description: "Contemporary urban design meets highly adaptable functionality in this pair of Lennox Black Framed Side Tables. Embodying the collection's refined aesthetic, these tables feature striking black frames that create a dramatic silhouette while maintaining an airy, open presence that never overwhelms a room. The industrial-inspired metal framework demonstrates precise engineering and geometric precision. The clever nesting design provides endless flexibility—keep them clustered together for a beautifully layered display, or separate them when hosting to offer convenient surfaces for drinks and styling. Their minimalist profile makes them an impeccable choice for contemporary spaces where understated refinement is paramount. Style them with abstract sculptures, metallic accents, or low atmospheric lighting to create a complete, cohesive modern narrative.",
+    features: [
+      "Flexible Nesting Design: Two perfectly proportioned tables that can be layered together or separated for entertaining.",
+      "Architectural Silhouette: Striking, clean-lined frames that deliver industrial-chic style with a visually light footprint.",
+      "Matte Black Finish: A deep, sophisticated noir finish that grounds your space and highlights curated decor.",
+      "Heirloom Durability: Precision-engineered with robust metal construction for unwavering stability and daily use."
+    ],
+    sku: "23958", 
+    material: "Solid wood tops with a robust metal framework",
+    dimensions: "59L x 59W x 61H (cm)"
   }
 ];
