@@ -1172,12 +1172,12 @@ export const products = [
     doors: "1 (Drawer)"
   },
 
-  // --- 45. THE CAMDEN COLLECTION ROUND SIDE TABLE (New Listing) ---
+  // --- 45. THE CAMDEN COLLECTION ROUND SIDE TABLE ---
   {
     id: 45,
     name: "The Camden Collection Round Side Table",
-    price: 250, // Placeholder price, adjust as needed!
-    category: "living", // Excellent for living rooms, bedrooms, or reading nooks
+    price: 250, 
+    category: "living", 
     collection: "camden", 
     image: "/camden-round-accent-table-1.jpg", 
     gallery: [
@@ -1196,5 +1196,30 @@ export const products = [
     sku: "23949", 
     material: "Premium solid wood with a refined finish",
     dimensions: "45L x 45W x 60H (cm)"
+  },
+
+  // --- 46. THE CAMDEN COLLECTION TALL ROUND SIDE TABLE (New Listing) ---
+  {
+    id: 46,
+    name: "The Camden Collection Tall Round Side Table",
+    price: 295, // Placeholder price, adjust as needed!
+    category: "living", // Also wonderful in bedrooms
+    collection: "camden", 
+    image: "/camden-tall-round-side-table-1.jpg", 
+    gallery: [
+      "/camden-tall-round-side-table-1.jpg", 
+      "/camden-tall-round-side-table-2.jpg",
+      "/camden-tall-round-side-table-3.jpg"
+    ],
+    description: "A stunning achievement in modern furniture design, this tall round side table exemplifies the meticulous attention to detail found throughout the Camden Collection. The elegant circular silhouette naturally enhances spatial flow in any room, while its considered 76cm height makes it an ideal companion piece for modern, high-arm seating arrangements or as a standalone display pedestal. The proportions have been carefully calculated to maintain visual balance without compromising on practicality. Each element reflects a dedication to superior materials and refined aesthetics, creating a statement piece that seamlessly blends form and function. Its clean lines and balanced profile make it an effortlessly adaptable addition to diverse interior styles, from minimalist urban settings to richly layered traditional spaces. When styled with curated accents—such as a statement table lamp, cascading botanicals, or a metallic candle holder—this side table becomes the cornerstone of a cohesive design narrative. The elevated height allows for dynamic layering of decorative elements, proving that intelligent design can serve both practical and exquisitely aesthetic purposes in the modern home.",
+    features: [
+      "Elevated Proportions: A thoughtfully considered 76cm height perfect for flanking taller seating or creating a dynamic display pedestal.",
+      "Spatial Flow: The elegant circular design softens harsh architectural lines and maximizes flow within your living space.",
+      "Heirloom Construction: Precision-engineered with superior materials to ensure unwavering stability and lasting quality.",
+      "Versatile Styling: Clean lines and a refined aesthetic allow it to integrate seamlessly into both minimalist and traditional interiors."
+    ],
+    sku: "23950", 
+    material: "Premium solid wood with a refined finish",
+    dimensions: "45L x 45W x 76H (cm)"
   }
 ];
