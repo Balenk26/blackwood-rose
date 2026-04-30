@@ -773,12 +773,12 @@ export const products = [
     dimensions: "50L x 50W x 65H (cm)"
   },
 
-  // --- 31. LENNOX BLACK 2-DOOR SIDE CUPBOARD (New Listing) ---
+  // --- 31. LENNOX BLACK 2-DOOR SIDE CUPBOARD ---
   {
     id: 31,
     name: "Lennox Black 2-Door Side Cupboard",
-    price: 395, // Placeholder price, adjust as needed!
-    category: "living", // Excellent for living, dining, or hallways
+    price: 395, 
+    category: "living", 
     collection: "lennox", 
     image: "/lennox-side-cupboard-1.jpg", 
     gallery: [
@@ -802,5 +802,31 @@ export const products = [
     material: "Solid wood with a scratch-resistant noir finish",
     dimensions: "43L x 49W x 67H (cm)",
     doors: "2"
+  },
+
+  // --- 32. LENNOX BLACK FRAMED CONSOLE (New Listing) ---
+  {
+    id: 32,
+    name: "Lennox Black Framed Console",
+    price: 595, // Placeholder price, adjust as needed!
+    category: "living", // Excellent for hallways and living spaces
+    collection: "lennox", 
+    image: "/lennox-framed-console-1.jpg", 
+    gallery: [
+      "/lennox-framed-console-1.jpg", 
+      "/lennox-framed-console-2.jpg",
+      "/lennox-framed-console-3.jpg",
+      "/lennox-framed-console-4.jpg"
+    ],
+    description: "A stunning fusion of industrial aesthetics and modern minimalism, the Lennox Black Framed Console anchors your space with absolute architectural precision. Its sleek, black linear frame creates a powerful silhouette, deliberately contrasting robust metalwork with airy, open spaces so the piece appears to almost float within its surroundings. Perfectly proportioned for hallways, behind floating sofas, or along feature walls, this console offers an impeccable stage for styling minimalist metal wall art, geometric mirrors, or sculptural monochromatic vases. Adapting effortlessly from urban lofts to refined, contemporary homes, its clean lines and considered design strike the perfect balance between form and function. Engineered with heirloom-quality durability and an enduring matte finish, this console is a lasting investment for the detail-oriented homeowner.",
+    features: [
+      "Architectural Silhouette: A powerful linear frame that balances industrial edge with airy, minimalist openness.",
+      "Sleek Noir Finish: Features a deep, durable matte black finish that serves as a high-contrast canvas for decor.",
+      "Versatile Proportions: Beautifully streamlined to anchor entryways, living spaces, or feature walls without overwhelming the room.",
+      "Heirloom Durability: Expertly crafted with a robust framework to provide long-lasting stability and enduring style."
+    ],
+    sku: "23959", 
+    material: "Solid wood top with a robust metal framework",
+    dimensions: "36L x 132W x 81H (cm)"
   }
 ];
