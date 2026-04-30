@@ -644,7 +644,7 @@ export const products = [
       "/lennox-sideboard-6.jpg",
       "/lennox-sideboard-7.jpg"
     ],
-    description: "Stately proportions and minimalist aesthetics define this statement piece from the Lennox Collection. Finished in a deep noir that accentuates its clean lines and architectural presence, this two-door sideboard achieves a perfect equilibrium of form and function. The balanced composition marries contemporary urban sensibilities with generous storage capabilities, while the subtly grained, scratch-resistant surface treatment demonstrates unparalleled craftsmanship. Its monochromatic palette ensures seamless integration across diverse interior schemes, serving as a striking anchor for your dining or living space. Style it magnificently with metallic wall art, geometric mirrors, or textural woven accessories to create a cohesive, modern narrative in your home. With a deliberate restraint in its design language, this sideboard promises enduring style and practical, everyday utility.",
+    description: "Stately proportions and aesthetics define this statement piece from the Lennox Collection. Finished in a deep noir that accentuates its clean lines and architectural presence, this two-door sideboard achieves a perfect equilibrium of form and function. The balanced composition marries contemporary urban sensibilities with generous storage capabilities, while the subtly grained, scratch-resistant surface treatment demonstrates unparalleled craftsmanship. Its monochromatic palette ensures seamless integration across diverse interior schemes, serving as a striking anchor for your dining or living space. Style it magnificently with metallic wall art, geometric mirrors, or textural woven accessories to create a cohesive, modern narrative in your home. With a deliberate restraint in its design language, this sideboard promises enduring style and practical, everyday utility.",
     features: [
       "Modern Linear Framework: Clean architectural lines that bring a contemporary, urban sensibility to your space.",
       "Deep Noir Finish: A beautifully rich, scratch-resistant black finish with subtle grain detailing.",
@@ -1143,12 +1143,12 @@ export const products = [
     doors: "3 (Drawers)"
   },
 
-  // --- 44. THE CAMDEN COLLECTION ONE-DRAWER SIDE TABLE (New Listing) ---
+  // --- 44. THE CAMDEN COLLECTION ONE-DRAWER SIDE TABLE ---
   {
     id: 44,
     name: "The Camden Collection One-Drawer Side Table",
-    price: 250, // Placeholder price, adjust as needed!
-    category: "living", // Also beautiful in the bedroom
+    price: 250, 
+    category: "living", 
     collection: "camden", 
     image: "/camden-one-drawer-side-table-1.jpg", 
     gallery: [
@@ -1170,5 +1170,31 @@ export const products = [
     material: "Solid wood with a refined natural finish",
     dimensions: "38L x 50W x 75H (cm)",
     doors: "1 (Drawer)"
+  },
+
+  // --- 45. THE CAMDEN COLLECTION ROUND SIDE TABLE (New Listing) ---
+  {
+    id: 45,
+    name: "The Camden Collection Round Side Table",
+    price: 250, // Placeholder price, adjust as needed!
+    category: "living", // Excellent for living rooms, bedrooms, or reading nooks
+    collection: "camden", 
+    image: "/camden-round-accent-table-1.jpg", 
+    gallery: [
+      "/camden-round-accent-table-1.jpg", 
+      "/camden-round-accent-table-2.jpg",
+      "/camden-round-accent-table-3.jpg",
+      "/camden-round-accent-table-4.jpg"
+    ],
+    description: "Modern aesthetics merge seamlessly with practical design in this circular accent piece from the Camden Collection. The round silhouette presents a harmonious blend of materials that creates a striking statement in any setting, whether positioned as a standalone highlight or paired thoughtfully within a curated space. Its carefully considered proportions make it an ideal companion for contemporary living areas, bedrooms, or entryways, where its sleek presence adds immediate depth and visual interest. Maintaining the collection's dedication to heirloom-quality construction, it offers a fresh, elegant interpretation of classic forms. The design particularly flourishes when styled with complementary accents such as mirrored wall art, sculptural vases, or metallic-finish trinket boxes. Demonstrating a true understanding of modern design principles, its adaptable style allows it to harmonize flawlessly with both minimalist and richly decorated spaces.",
+    features: [
+      "Compact Elegance: A perfectly scaled 45cm circular profile that easily fits into cozy nooks, entryways, or beside an armchair.",
+      "Versatile Application: Serves beautifully as a living room accent table, a sophisticated nightstand, or a chic entryway drop-zone.",
+      "Curated Styling: A refined aesthetic that pairs brilliantly with mirrored decor, metallic accents, and sculptural ceramics.",
+      "Heirloom Quality: Expertly crafted with premium materials to ensure lasting stability and enduring style."
+    ],
+    sku: "23949", 
+    material: "Premium solid wood with a refined finish",
+    dimensions: "45L x 45W x 60H (cm)"
   }
 ];
