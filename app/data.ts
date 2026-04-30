@@ -745,12 +745,12 @@ export const products = [
     doors: "2"
   },
 
-  // --- 30. LENNOX BLACK SIDE TABLE (New Listing) ---
+  // --- 30. LENNOX BLACK SIDE TABLE ---
   {
     id: 30,
     name: "Lennox Black Side Table",
-    price: 295, // Placeholder price, adjust as needed!
-    category: "living", // Excellent accent piece
+    price: 295, 
+    category: "living", 
     collection: "lennox", 
     image: "/lennox-side-table-1.jpg", 
     gallery: [
@@ -771,5 +771,36 @@ export const products = [
     sku: "24566", 
     material: "Solid wood with a matte black finish and architectural base",
     dimensions: "50L x 50W x 65H (cm)"
+  },
+
+  // --- 31. LENNOX BLACK 2-DOOR SIDE CUPBOARD (New Listing) ---
+  {
+    id: 31,
+    name: "Lennox Black 2-Door Side Cupboard",
+    price: 395, // Placeholder price, adjust as needed!
+    category: "living", // Excellent for living, dining, or hallways
+    collection: "lennox", 
+    image: "/lennox-side-cupboard-1.jpg", 
+    gallery: [
+      "/lennox-side-cupboard-1.jpg", 
+      "/lennox-side-cupboard-2.jpg",
+      "/lennox-side-cupboard-3.jpg",
+      "/lennox-side-cupboard-4.jpg",
+      "/lennox-side-cupboard-5.jpg",
+      "/lennox-side-cupboard-6.jpg",
+      "/lennox-side-cupboard-7.jpg",
+      "/lennox-side-cupboard-8.jpg"
+    ],
+    description: "Engineered to maximize space with elegant efficiency, the Lennox Black 2-Door Side Cupboard shares the collection's signature matte black palette and minimalist detailing. Its considered, low-profile silhouette allows it to sit beautifully beneath windows, in cozy alcoves, or along empty stretches of wall, providing highly accessible storage without visually overwhelming your room. The dual doors present a seamless, flush facade that maintains a clean, architectural aesthetic while concealing a generously shelved interior—perfect for organizing media, books, toys, or living room essentials. Designed for modern homes where spatial economy and style are paramount, this piece delivers exceptional utility while contributing to your room's overall harmony. Its sleek, horizontal lines help to anchor your space, proving that intelligent, tailored design can resolve storage challenges with quiet, sophisticated authority.",
+    features: [
+      "Low-Profile Elegance: A considered, shallow-height design perfect for placing beneath windows or in compact living spaces.",
+      "Seamless Storage: Two flush, minimalist doors open to reveal a generously shelved interior for media, books, or daily essentials.",
+      "Deep Noir Finish: Features the collection's signature matte black palette for a grounding, highly contemporary aesthetic.",
+      "Architectural Harmony: Clean, horizontal lines that effortlessly anchor your space while maximizing practical organization."
+    ],
+    sku: "24564", 
+    material: "Solid wood with a scratch-resistant noir finish",
+    dimensions: "43L x 49W x 67H (cm)",
+    doors: "2"
   }
 ];
