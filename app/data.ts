@@ -1198,12 +1198,12 @@ export const products = [
     dimensions: "45L x 45W x 60H (cm)"
   },
 
-  // --- 46. THE CAMDEN COLLECTION TALL ROUND SIDE TABLE (New Listing) ---
+  // --- 46. THE CAMDEN COLLECTION TALL ROUND SIDE TABLE ---
   {
     id: 46,
     name: "The Camden Collection Tall Round Side Table",
-    price: 295, // Placeholder price, adjust as needed!
-    category: "living", // Also wonderful in bedrooms
+    price: 295, 
+    category: "living", 
     collection: "camden", 
     image: "/camden-tall-round-side-table-1.jpg", 
     gallery: [
@@ -1221,5 +1221,33 @@ export const products = [
     sku: "23950", 
     material: "Premium solid wood with a refined finish",
     dimensions: "45L x 45W x 76H (cm)"
+  },
+
+  // --- 47. THE CAMDEN COLLECTION HALF MOON 3-TIER TABLE (New Listing) ---
+  {
+    id: 47,
+    name: "The Camden Collection Half Moon 3-Tier Table",
+    price: 450, // Placeholder price, adjust as needed!
+    category: "living", // Excellent for hallways and entryways
+    collection: "camden", 
+    image: "/camden-half-moon-table-1.jpg", 
+    gallery: [
+      "/camden-half-moon-table-1.jpg", 
+      "/camden-half-moon-table-2.jpg",
+      "/camden-half-moon-table-3.jpg",
+      "/camden-half-moon-table-4.jpg",
+      "/camden-half-moon-table-5.jpg",
+      "/camden-half-moon-table-6.jpg"
+    ],
+    description: "Gracefully proportioned with three ascending tiers, this striking demilune statement piece from the Camden Collection exemplifies refined sensibility. The half-moon silhouette presents a seamless union of functional display and space-efficient design, making it an indispensable addition to hallways, tight entryways, or sophisticated living spaces. Each tier offers an elegant platform for displaying your cherished objects, while the graduated levels naturally create visual intrigue through dimensional layering. The table's distinctive curvature harmonizes with both classic and modern interior schemes, demonstrating remarkable adaptability across diverse style preferences. When paired with a statement decorative mirror or warm ambient lighting, this piece orchestrates a cohesive, elevated design narrative. The premium materials and construction reflect unwavering attention to detail, ensuring heirloom-quality durability. Consider styling it with metallic accessories, architectural glass vases, or organic pottery pieces to amplify its inherent refinement.",
+    features: [
+      "Multi-Level Display: Three graduated tiers provide a dynamic, elegant platform for showcasing curated decor, books, or trailing botanicals.",
+      "Space-Saving Demilune Profile: The elegant half-moon shape sits perfectly flush against walls, maximizing floor space in hallways or compact rooms.",
+      "Adaptable Elegance: Features a distinctive, sweeping curvature that harmonizes flawlessly with both traditional and contemporary interior styling.",
+      "Heirloom Quality: Crafted with premium materials and unwavering attention to detail to ensure lasting stability and enduring beauty."
+    ],
+    sku: "23951", 
+    material: "Solid wood with a refined finish",
+    dimensions: "33L x 71W x 76H (cm)"
   }
 ];
