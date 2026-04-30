@@ -1033,11 +1033,11 @@ export const products = [
     dimensions: "60L x 60W x 60H (cm)"
   },
 
-  // --- 40. THE RUTLAND COLLECTION SQUARE SIDE TABLE (New Listing) ---
+  // --- 40. THE RUTLAND COLLECTION SQUARE SIDE TABLE ---
   {
     id: 40,
     name: "The Rutland Collection Side Table",
-    price: 295, // Placeholder price, adjust as needed!
+    price: 295, 
     category: "living", 
     collection: "rutland", 
     image: "/rutland-square-side-table-1.jpg", 
@@ -1059,5 +1059,33 @@ export const products = [
     sku: "23983", 
     material: "Premium solid wood construction",
     dimensions: "60L x 60W x 60H (cm)"
+  },
+
+  // --- 41. THE CAMDEN COLLECTION LARGE TWO DRAWER CONSOLE TABLE (New Listing) ---
+  {
+    id: 41,
+    name: "The Camden Collection Large Two Drawer Console Table",
+    price: 695, // Placeholder price, adjust as needed!
+    category: "living", // Excellent for hallways, entryways, or behind a sofa
+    collection: "camden", 
+    image: "/camden-console-table-1.jpg", 
+    gallery: [
+      "/camden-console-table-1.jpg", 
+      "/camden-console-table-2.jpg",
+      "/camden-console-table-3.jpg",
+      "/camden-console-table-4.jpg",
+      "/camden-console-table-5.jpg"
+    ],
+    description: "A testament to modern design sensibility, the Camden Collection Large Two-Drawer Console Table showcases clean lines and flawless proportions. Its purposeful two-drawer configuration provides discreet storage while maintaining an airy, uncluttered silhouette that flourishes in contemporary living spaces. Carefully considered dimensions allow for practical placement in entryways, living areas, or as a sophisticated behind-sofa display surface. Demonstrating the Camden Collection's commitment to the seamless integration of form and function, subtle details reflect exceptional craftsmanship throughout. The table's restrained yet impactful presence makes it an impeccable foundation for styling with statement mirrors, sculptural ceramics, or curated artwork. Designed for the discerning homeowner, its adaptable, enduring aesthetic effortlessly bridges the gap between traditional charm and understated modern luxury.",
+    features: [
+      "Discreet Storage: Two smooth-gliding drawers maximize organization while maintaining a clean, uncluttered facade.",
+      "Versatile Proportions: Perfectly scaled at 120cm wide to anchor hallways, rest behind sofas, or elevate living spaces.",
+      "Adaptable Styling: Clean lines and a refined aesthetic seamlessly complement both modern and transitional decor.",
+      "Heirloom Quality: Expertly crafted with premium materials to ensure lasting stability and everyday utility."
+    ],
+    sku: "23955", 
+    material: "Premium solid wood with refined hardware",
+    dimensions: "40L x 120W x 81H (cm)",
+    doors: "2 (Drawers)"
   }
 ];
