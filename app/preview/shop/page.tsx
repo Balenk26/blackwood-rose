@@ -55,7 +55,7 @@ function ShopContent() {
   let displayedProducts = products;
   let pageTitle = "All Products";
 
-  // Logic to handle Delphine, Reed, Haldon, and the new Lennox collection!
+  // Logic to handle Delphine, Reed, Haldon, Lennox, and the new Rutland collection!
   if (collectionFilter === 'delphine') {
     displayedProducts = products.filter((p: any) => p.collection === 'delphine');
     pageTitle = "Delphine Collection";
@@ -68,6 +68,9 @@ function ShopContent() {
   } else if (collectionFilter === 'lennox') {
     displayedProducts = products.filter((p: any) => p.collection === 'lennox');
     pageTitle = "Lennox Collection";
+  } else if (collectionFilter === 'rutland') {
+    displayedProducts = products.filter((p: any) => p.collection === 'rutland');
+    pageTitle = "Rutland Collection";
   }
 
   return (

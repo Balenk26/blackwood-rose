@@ -128,9 +128,12 @@ export default function Navbar() {
                   <a href="/preview/shop?collection=haldon" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>
                     Haldon Collection
                   </a>
-                  {/* NEW: Added the Lennox Collection! */}
                   <a href="/preview/shop?collection=lennox" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>
                     Lennox Collection
+                  </a>
+                  {/* NEW: Added the Rutland Collection! */}
+                  <a href="/preview/shop?collection=rutland" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>
+                    Rutland Collection
                   </a>
                 </div>
               )}
