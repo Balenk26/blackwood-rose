@@ -1,10 +1,10 @@
 import './globals.css';
-import type { Metadata } from 'next';
+import { ClerkProvider } from '@clerk/nextjs';
 import { CartProvider } from './components/CartContext';
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Blackwood & Rose',
-  description: 'Luxury Furniture',
+  description: 'Luxury Furniture & Home Accessories',
 };
 
 export default function RootLayout({
@@ -13,13 +13,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body style={{ backgroundColor: '#ffffff', color: '#000000', margin: 0, padding: 0, WebkitFontSmoothing: 'antialiased' }}>
-        {/* We wrap the whole app in the Basket Brain */}
-        <CartProvider>
-          {children}
-        </CartProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body>
+          <CartProvider>
+            {children}
+          </CartProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

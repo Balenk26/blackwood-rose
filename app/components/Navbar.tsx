@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useCart } from './CartContext';
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 
 export default function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -47,9 +48,21 @@ export default function Navbar() {
           </div>
 
           <div className="w-1/4 flex justify-end items-center space-x-5 lg:space-x-7 relative" ref={cartRef}>
-            <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer' }}>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
-            </button>
+            
+            {/* NEW: CLERK AUTHENTICATION ICONS */}
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+                </button>
+              </SignInButton>
+            </SignedOut>
+            
+            <SignedIn>
+              <UserButton afterSignOutUrl="/preview/shop" />
+            </SignedIn>
+            {/* END CLERK */}
+
             <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer' }}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
             </button>
@@ -105,7 +118,6 @@ export default function Navbar() {
         <div style={{ width: '100%', height: '55px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid #333333' }}>
           <ul style={{ display: 'flex', justifyContent: 'center', width: '100%', maxWidth: '1200px', gap: '3rem', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', margin: 0, padding: 0, listStyle: 'none' }}>
             <li><Link href="/preview/shop" style={{ textDecoration: 'none', color: '#D4AF37' }}>All Products</Link></li>
-            {/* UPDATED CATEGORY LINKS HERE */}
             <li><Link href="/preview/shop?category=living" style={{ textDecoration: 'none', color: '#D4AF37' }}>Living</Link></li>
             <li><Link href="/preview/shop?category=dining" style={{ textDecoration: 'none', color: '#D4AF37' }}>Dining</Link></li>
             <li><Link href="/preview/shop?category=bedroom" style={{ textDecoration: 'none', color: '#D4AF37' }}>Bedroom</Link></li>
