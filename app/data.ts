@@ -975,12 +975,12 @@ export const products = [
     dimensions: "40L x 150W x 80H (cm)"
   },
 
-  // --- 38. THE RUTLAND COLLECTION RECTANGULAR BENCH (New Listing) ---
+  // --- 38. THE RUTLAND COLLECTION RECTANGULAR BENCH ---
   {
     id: 38,
     name: "The Rutland Collection Rectangular Bench",
-    price: 395, // Placeholder price, adjust as needed!
-    category: "dining", // Excellent for dining or living spaces/entryways
+    price: 395, 
+    category: "dining", 
     collection: "rutland", 
     image: "/rutland-bench-1.jpg", 
     gallery: [
@@ -1003,5 +1003,33 @@ export const products = [
     sku: "23981", 
     material: "Premium solid wood construction",
     dimensions: "40L x 160W x 45H (cm)"
+  },
+
+  // --- 39. THE RUTLAND COLLECTION ROUND SIDE TABLE (New Listing) ---
+  {
+    id: 39,
+    name: "The Rutland Collection Round Side Table",
+    price: 295, // Placeholder price, adjust as needed!
+    category: "living", // Fits beautifully in living rooms or bedrooms
+    collection: "rutland", 
+    image: "/rutland-round-side-table-1.jpg", 
+    gallery: [
+      "/rutland-round-side-table-1.jpg", 
+      "/rutland-round-side-table-2.jpg",
+      "/rutland-round-side-table-3.jpg",
+      "/rutland-round-side-table-4.jpg",
+      "/rutland-round-side-table-5.jpg",
+      "/rutland-round-side-table-6.jpg"
+    ],
+    description: "A masterful blend of modern aesthetics and functional design, this circular side table represents a beautiful accent piece from the distinguished Rutland Collection. The perfectly proportioned round silhouette demonstrates unmatched attention to detail, featuring flawless joinery and superior materials that showcase the true quality of British furniture making. The balanced proportions and thoughtful design make this piece an ideal addition to contemporary living spaces, while its understated profile allows it to harmonize seamlessly with both minimalist and richly decorated interiors. As part of the wider Rutland Collection, this side table maintains cohesive design elements that flow throughout the range. For maximum visual impact, consider pairing it with a curated selection of metallic vases, a contemporary table lamp, or artisanal glass decorative pieces. The table's surface provides the perfect platform for displaying statement accents, while its considered dimensions ensure it fits beautifully into any room arrangement.",
+    features: [
+      "Impeccable Form: A perfectly proportioned circular silhouette ideal for corner or beside-sofa placement.",
+      "Heirloom Durability: Superior construction ensures lasting stability and dependable everyday utility.",
+      "Cohesive Aesthetic: Matches seamlessly with the broader Rutland Collection for a unified interior look.",
+      "Versatile Styling: An understated profile that beautifully grounds both minimalist and layered, richly decorated rooms."
+    ],
+    sku: "23984", 
+    material: "Premium solid wood with flawless joinery",
+    dimensions: "60L x 60W x 60H (cm)"
   }
 ];
