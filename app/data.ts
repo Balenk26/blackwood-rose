@@ -714,12 +714,12 @@ export const products = [
     dimensions: "40L x 130W x 81H (cm)"
   },
 
-  // --- 29. LENNOX BLACK 2-DOOR SMALL SIDEBOARD (New Listing) ---
+  // --- 29. LENNOX BLACK 2-DOOR SMALL SIDEBOARD ---
   {
     id: 29,
     name: "Lennox Black 2-Door Small Sideboard",
-    price: 450, // Placeholder price, adjust as needed!
-    category: "dining", // Also great for living rooms and hallways
+    price: 450, 
+    category: "dining", 
     collection: "lennox", 
     image: "/lennox-small-sideboard-1.jpg", 
     gallery: [
@@ -743,5 +743,33 @@ export const products = [
     material: "Solid wood with a scratch-resistant noir finish",
     dimensions: "42L x 49W x 67H (cm)",
     doors: "2"
+  },
+
+  // --- 30. LENNOX BLACK SIDE TABLE (New Listing) ---
+  {
+    id: 30,
+    name: "Lennox Black Side Table",
+    price: 295, // Placeholder price, adjust as needed!
+    category: "living", // Excellent accent piece
+    collection: "lennox", 
+    image: "/lennox-side-table-1.jpg", 
+    gallery: [
+      "/lennox-side-table-1.jpg", 
+      "/lennox-side-table-2.jpg",
+      "/lennox-side-table-3.jpg",
+      "/lennox-side-table-4.jpg",
+      "/lennox-side-table-5.jpg",
+      "/lennox-side-table-6.jpg"
+    ],
+    description: "Functioning as a versatile and sculptural accent, the Lennox Black Side Table provides reliable surface space while contributing distinct, modern character to your living areas. It features a beautifully proportioned top in the collection's signature deep matte black, offering a stable platform for statement lamps, evening drinks, or curated books. The design interest is concentrated in the base, which takes the form of a striking geometric frame. This architectural focus adds a tactile and visual counterpoint to the sleek tabletop, transforming it from a simple table into a curated object in its own right. Its modest scale ensures easy placement, allowing it to be used singly to anchor a reading nook or in pairs to frame a sofa symmetrically. Merging unabashedly modern form with timeless utility, this side table serves as an essential finishing layer, bringing texture, purpose, and detail-oriented design to your home.",
+    features: [
+      "Sculptural Base: A striking geometric frame that adds architectural interest and beautiful tactile contrast.",
+      "Matte Black Finish: The collection's signature deep noir surface, perfect for high-contrast interior styling.",
+      "Compact Versatility: Modest proportions ideal for flanking a sofa, an armchair, or anchoring a cozy reading nook.",
+      "Curated Utility: Merges unabashedly modern form with practical stability for your everyday essentials."
+    ],
+    sku: "24566", 
+    material: "Solid wood with a matte black finish and architectural base",
+    dimensions: "50L x 50W x 65H (cm)"
   }
 ];
