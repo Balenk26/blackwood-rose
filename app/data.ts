@@ -945,12 +945,12 @@ export const products = [
     dimensions: "120L x 120W x 76H (cm)"
   },
 
-  // --- 37. THE RUTLAND COLLECTION CONSOLE TABLE (New Listing) ---
+  // --- 37. THE RUTLAND COLLECTION CONSOLE TABLE ---
   {
     id: 37,
     name: "The Rutland Collection Console Table",
-    price: 550, // Placeholder price, adjust as needed!
-    category: "living", // Excellent for hallways and living rooms
+    price: 550, 
+    category: "living", 
     collection: "rutland", 
     image: "/rutland-console-1.jpg", 
     gallery: [
@@ -973,5 +973,35 @@ export const products = [
     sku: "23982", 
     material: "Premium solid wood with an architectural base",
     dimensions: "40L x 150W x 80H (cm)"
+  },
+
+  // --- 38. THE RUTLAND COLLECTION RECTANGULAR BENCH (New Listing) ---
+  {
+    id: 38,
+    name: "The Rutland Collection Rectangular Bench",
+    price: 395, // Placeholder price, adjust as needed!
+    category: "dining", // Excellent for dining or living spaces/entryways
+    collection: "rutland", 
+    image: "/rutland-bench-1.jpg", 
+    gallery: [
+      "/rutland-bench-1.jpg", 
+      "/rutland-bench-2.jpg",
+      "/rutland-bench-3.jpg",
+      "/rutland-bench-4.jpg",
+      "/rutland-bench-5.jpg",
+      "/rutland-bench-6.jpg",
+      "/rutland-bench-7.jpg",
+      "/rutland-bench-8.jpg"
+    ],
+    description: "Minimalist authenticity meets luxury living in this rectangular bench from the distinguished Rutland Collection. Exemplifying superior British craftsmanship with its clean lines and considered proportions, it serves as a beautifully versatile addition to the modern home. Its understated silhouette harmonizes seamlessly with both traditional and contemporary settings, while the generous 160cm dimension allows for flexible placement in entryways, alongside dining tables, or as statement seating in an open-plan space. The collection's signature aesthetic shines through in the bench's balanced composition and meticulous attention to detail, reflecting a commitment to enduring quality. When styled with decorative cushions or layered with a textured throw, it easily transforms into an inviting focal point. The refined neutral palette ensures effortless integration into your existing decor, while the robust construction promises heirloom-quality longevity.",
+    features: [
+      "Superior Craftsmanship: Clean lines and balanced proportions that reflect the elegance of modern British design.",
+      "Multi-Room Versatility: Generously scaled at 160cm for flexible placement in dining spaces, entryways, or living areas.",
+      "Adaptable Styling: A refined neutral palette that integrates perfectly into diverse interior schemes.",
+      "Heirloom Durability: Robustly constructed using premium materials to ensure lasting stability and everyday utility."
+    ],
+    sku: "23981", 
+    material: "Premium solid wood construction",
+    dimensions: "40L x 160W x 45H (cm)"
   }
 ];
