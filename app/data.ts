@@ -1005,12 +1005,12 @@ export const products = [
     dimensions: "40L x 160W x 45H (cm)"
   },
 
-  // --- 39. THE RUTLAND COLLECTION ROUND SIDE TABLE (New Listing) ---
+  // --- 39. THE RUTLAND COLLECTION ROUND SIDE TABLE ---
   {
     id: 39,
     name: "The Rutland Collection Round Side Table",
-    price: 295, // Placeholder price, adjust as needed!
-    category: "living", // Fits beautifully in living rooms or bedrooms
+    price: 295, 
+    category: "living", 
     collection: "rutland", 
     image: "/rutland-round-side-table-1.jpg", 
     gallery: [
@@ -1030,6 +1030,34 @@ export const products = [
     ],
     sku: "23984", 
     material: "Premium solid wood with flawless joinery",
+    dimensions: "60L x 60W x 60H (cm)"
+  },
+
+  // --- 40. THE RUTLAND COLLECTION SQUARE SIDE TABLE (New Listing) ---
+  {
+    id: 40,
+    name: "The Rutland Collection Side Table",
+    price: 295, // Placeholder price, adjust as needed!
+    category: "living", 
+    collection: "rutland", 
+    image: "/rutland-square-side-table-1.jpg", 
+    gallery: [
+      "/rutland-square-side-table-1.jpg", 
+      "/rutland-square-side-table-2.jpg",
+      "/rutland-square-side-table-3.jpg",
+      "/rutland-square-side-table-4.jpg",
+      "/rutland-square-side-table-5.jpg",
+      "/rutland-square-side-table-6.jpg"
+    ],
+    description: "Exemplifying modern British craftsmanship with its clean lines and perfectly balanced square proportions, this side table is a masterclass in functional elegance. Part of the distinguished Rutland Collection, it demonstrates superb attention to detail and a seamless fusion of materials, creating an atmosphere of understated luxury tailored for contemporary living. Its thoughtfully measured dimensions provide the perfect platform for displaying cherished objects, a sculptural table lamp, or serving evening refreshments. The table's restrained yet impactful presence makes it particularly well-suited to urban dwellings where space and style must coexist harmoniously. Whether sitting beautifully in a minimalist setting or anchoring a richly layered environment, it pairs effortlessly with metallic accents, artisanal glass vessels, and textured decorative elements to elevate your home's aesthetic.",
+    features: [
+      "Superior Craftsmanship: Crafted to exacting standards with premium materials for lasting stability.",
+      "Adaptable Scale: Perfectly proportioned at 60cm to suit multiple room layouts and urban living spaces.",
+      "Versatile Styling: Coordinates seamlessly with decorative accessories, metallic accents, and textured decor.",
+      "Architectural Presence: Clean lines and a square profile provide an anchor of understated luxury."
+    ],
+    sku: "23983", 
+    material: "Premium solid wood construction",
     dimensions: "60L x 60W x 60H (cm)"
   }
 ];
