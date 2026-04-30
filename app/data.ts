@@ -830,11 +830,11 @@ export const products = [
     dimensions: "36L x 132W x 81H (cm)"
   },
 
-  // --- 33. LENNOX BLACK FRAMED SET OF 2 SIDE TABLES (New Listing) ---
+  // --- 33. LENNOX BLACK FRAMED SET OF 2 SIDE TABLES ---
   {
     id: 33,
     name: "Lennox Black Framed Set of 2 Side Tables",
-    price: 395, // Placeholder price, adjust as needed!
+    price: 395, 
     category: "living", 
     collection: "lennox", 
     image: "/lennox-nesting-tables-1.jpg", 
@@ -855,5 +855,35 @@ export const products = [
     sku: "23958", 
     material: "Solid wood tops with a robust metal framework",
     dimensions: "59L x 59W x 61H (cm)"
+  },
+
+  // --- 34. RUTLAND COLLECTION RECTANGULAR DINING TABLE (New Listing) ---
+  {
+    id: 34,
+    name: "The Rutland Collection Rectangular Dining Table",
+    price: 1295, // Placeholder price, adjust as needed!
+    category: "dining", 
+    collection: "rutland", 
+    image: "/rutland-dining-table-1.jpg", 
+    gallery: [
+      "/rutland-dining-table-1.jpg", 
+      "/rutland-dining-table-2.jpg",
+      "/rutland-dining-table-3.jpg",
+      "/rutland-dining-table-4.jpg",
+      "/rutland-dining-table-5.jpg",
+      "/rutland-dining-table-6.jpg",
+      "/rutland-dining-table-7.jpg",
+      "/rutland-dining-table-8.jpg"
+    ],
+    description: "Robust engineering and refined aesthetics converge in this spectacular centerpiece from the Rutland Collection. Showcasing impeccable craftsmanship, this rectangular dining table features clean lines and balanced proportions that reflect the very best of modern British design. Unwavering attention to detail is evident through its sturdy construction and meticulous finishing, while the thoughtful dimensioning ensures generous seating capacity for entertaining without overwhelming your room. The understated yet confident design language makes it an impeccable anchor for any residential dining space. A neutral palette allows for seamless integration with your existing decor, yet it maintains a strong, focal presence. Pair it beautifully with artisanal table runners, contemporary centerpiece bowls, or statement metallic wall mirrors to amplify its sophisticated charm. Designed for the discerning homeowner, this table perfectly balances everyday practicality with refined, minimalist elegance and substantial heirloom-quality build.",
+    features: [
+      "Modern British Design: Clean lines and balanced proportions that create a confident, architectural centerpiece.",
+      "Generous Entertaining: Thoughtfully dimensioned at 200cm to comfortably accommodate family gatherings and dinner parties.",
+      "Adaptable Styling: A refined neutral palette that effortlessly complements a variety of modern and transitional decor schemes.",
+      "Heirloom Construction: Precision-engineered joints and a robust framework ensure lasting stability and enduring daily use."
+    ],
+    sku: "23980", 
+    material: "Solid wood with a contemporary surface treatment",
+    dimensions: "100L x 200W x 76H (cm)"
   }
 ];
