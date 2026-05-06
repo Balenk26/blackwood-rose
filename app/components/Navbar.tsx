@@ -7,10 +7,11 @@ import { SignInButton, Show, UserButton } from '@clerk/nextjs';
 
 export default function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isBrandsHovered, setIsBrandsHovered] = useState(false);
+  const [isBrandsOpen, setIsBrandsOpen] = useState(false); // Changed from Hovered to Open
   
   const { cart, cartTotal, removeFromCart } = useCart();
   const cartRef = useRef<HTMLDivElement>(null);
+  const brandsRef = useRef<HTMLLIElement>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -18,6 +19,10 @@ export default function Navbar() {
     function handleClickOutside(event: MouseEvent) {
       if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
         setIsCartOpen(false);
+      }
+      // Closes brands menu if you click anywhere else on the screen
+      if (brandsRef.current && !brandsRef.current.contains(event.target as Node)) {
+        setIsBrandsOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -28,10 +33,16 @@ export default function Navbar() {
     <>
       <style dangerouslySetInnerHTML={{__html: `
         @media (max-width: 768px) {
-          /* Shrink the logo slightly so it fits securely between the icons */
-          .nav-brand { font-size: 18px !important; letter-spacing: 0.05em !important; }
-          .nav-sub { font-size: 6px !important; letter-spacing: 0.1em !important; }
+          /* Force the center logo to shrink and wrap so it doesn't push the icons away */
+          .nav-brand { font-size: 16px !important; letter-spacing: 0.05em !important; line-height: 1.2 !important; white-space: normal !important; text-align: center; }
+          .nav-sub { font-size: 6px !important; letter-spacing: 0.1em !important; display: block; margin-top: 2px !important; }
           
+          /* The Ultimate Icon Fix: Thumbtack the left and right columns to the edges */
+          .nav-top-container { display: flex !important; justify-content: center !important; position: relative !important; padding: 0 !important; }
+          .nav-left-col { position: absolute !important; left: 16px !important; width: auto !important; }
+          .nav-right-col { position: absolute !important; right: 16px !important; width: auto !important; }
+          .nav-center-col { width: 60% !important; }
+
           /* Force the bottom menu into a swipable single line */
           .mobile-bottom-row ul { 
             gap: 1.2rem !important; 
@@ -44,11 +55,8 @@ export default function Navbar() {
           .mobile-bottom-row ul li { flex-shrink: 0 !important; }
           .mobile-bottom-row ul::-webkit-scrollbar { display: none; }
           
-          /* Secure the cart dropdown so it doesn't break the screen width */
-          .cart-dropdown { width: 280px !important; right: 0px !important; max-width: 90vw !important; }
-          .nav-top-container { padding: 0 12px !important; }
-          
-          /* Ensure the Brands dropdown covers the screen beautifully */
+          /* Pull dropdowns safely onto the screen */
+          .cart-dropdown { width: 280px !important; right: -16px !important; max-width: 90vw !important; }
           .brands-dropdown {
             position: fixed !important;
             top: 155px !important;
@@ -64,11 +72,10 @@ export default function Navbar() {
 
       <header className="w-full fixed top-0 left-0 flex flex-col" style={{ backgroundColor: '#000000', color: '#D4AF37', zIndex: 50, borderBottom: '1px solid #333333' }}>
         
-        {/* FIXED: Using CSS Grid. This creates 3 strict columns (1fr auto 1fr) so icons NEVER get pushed off-screen */}
-        <div className="nav-top-container" style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', width: '100%', maxWidth: '1600px', margin: '0 auto', height: '100px', padding: '0 24px' }}>
+        <div className="nav-top-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', maxWidth: '1600px', margin: '0 auto', height: '100px', padding: '0 24px' }}>
           
           {/* Left Column */}
-          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+          <div className="nav-left-col" style={{ width: '120px', display: 'flex', justifyContent: 'flex-start' }}>
             <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer' }}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -77,7 +84,7 @@ export default function Navbar() {
           </div>
 
           {/* Center Column (Logo) */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+          <div className="nav-center-col" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <Link href="/preview" className="nav-brand" style={{ textDecoration: 'none', color: '#D4AF37', fontSize: '32px', fontFamily: 'serif', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
               Blackwood & Rose
             </Link>
@@ -87,7 +94,7 @@ export default function Navbar() {
           </div>
 
           {/* Right Column (Icons) */}
-          <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '16px', position: 'relative' }} ref={cartRef}>
+          <div className="nav-right-col" style={{ width: '120px', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '16px', position: 'relative' }} ref={cartRef}>
             
             <Show when="signed-out">
               <SignInButton mode="modal" fallbackRedirectUrl="/preview/account">
@@ -163,23 +170,22 @@ export default function Navbar() {
             <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop?category=bedroom" style={{ textDecoration: 'none', color: '#D4AF37' }}>Bedroom</Link></li>
             <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop?category=upholstery" style={{ textDecoration: 'none', color: '#D4AF37' }}>Upholstery</Link></li>
             
-            {/* FIXED: Removed the Link tag entirely and replaced it with a strict div button */}
+            {/* FIXED: Removed onMouseEnter entirely. Now it strictly requires a tap/click to open & close securely! */}
             <li 
+              ref={brandsRef}
               style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center', cursor: 'pointer' }}
-              onMouseEnter={() => setIsBrandsHovered(true)}
-              onMouseLeave={() => setIsBrandsHovered(false)}
-              onClick={(e) => { e.preventDefault(); setIsBrandsHovered(!isBrandsHovered); }}
+              onClick={(e) => { e.preventDefault(); setIsBrandsOpen(!isBrandsOpen); }}
             >
               <div style={{ color: '#D4AF37', fontWeight: 'bold' }}>BRANDS</div>
               
-              {isBrandsHovered && (
+              {isBrandsOpen && (
                 <div className="brands-dropdown" style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', backgroundColor: '#000', border: '1px solid #333', padding: '16px 24px', minWidth: '180px', display: 'flex', flexDirection: 'column', gap: '16px', zIndex: 100, textAlign: 'center' }}>
-                  <Link href="/preview/shop?collection=delphine" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Delphine Collection</Link>
-                  <Link href="/preview/shop?collection=reed" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Reed Collection</Link>
-                  <Link href="/preview/shop?collection=haldon" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Haldon Collection</Link>
-                  <Link href="/preview/shop?collection=lennox" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Lennox Collection</Link>
-                  <Link href="/preview/shop?collection=rutland" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Rutland Collection</Link>
-                  <Link href="/preview/shop?collection=camden" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Camden Collection</Link>
+                  <Link href="/preview/shop?collection=delphine" onClick={(e) => { e.stopPropagation(); setIsBrandsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Delphine Collection</Link>
+                  <Link href="/preview/shop?collection=reed" onClick={(e) => { e.stopPropagation(); setIsBrandsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Reed Collection</Link>
+                  <Link href="/preview/shop?collection=haldon" onClick={(e) => { e.stopPropagation(); setIsBrandsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Haldon Collection</Link>
+                  <Link href="/preview/shop?collection=lennox" onClick={(e) => { e.stopPropagation(); setIsBrandsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Lennox Collection</Link>
+                  <Link href="/preview/shop?collection=rutland" onClick={(e) => { e.stopPropagation(); setIsBrandsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Rutland Collection</Link>
+                  <Link href="/preview/shop?collection=camden" onClick={(e) => { e.stopPropagation(); setIsBrandsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Camden Collection</Link>
                 </div>
               )}
             </li>
