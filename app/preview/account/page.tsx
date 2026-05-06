@@ -1,15 +1,35 @@
+// app/preview/account/page.tsx
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Navbar from '../../components/Navbar';
 import { useUser, SignOutButton } from '@clerk/nextjs';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
-export default function AccountPage() {
+function AccountDashboard() {
   const { isLoaded, isSignedIn, user } = useUser();
-  const [activeTab, setActiveTab] = useState('orders'); // Changed default tab to orders so you can see it instantly!
+  const searchParams = useSearchParams();
+  
+  // Read the URL to see if they clicked a specific dropdown link, otherwise default to profile
+  const initialTab = searchParams.get('tab') || 'profile';
+  const [activeTab, setActiveTab] = useState(initialTab);
+  
+  const [recentlyViewed, setRecentlyViewed] = useState<any[]>([]);
 
-  // If Clerk is still loading, show a clean loading state
+  // Automatically update the tab if the URL changes
+  useEffect(() => {
+    const tab = searchParams.get('tab');
+    if (tab) setActiveTab(tab);
+  }, [searchParams]);
+
+  useEffect(() => {
+    const savedViews = localStorage.getItem('recentlyViewed');
+    if (savedViews) {
+      setRecentlyViewed(JSON.parse(savedViews));
+    }
+  }, []);
+
   if (!isLoaded) {
     return (
       <div style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
@@ -19,7 +39,6 @@ export default function AccountPage() {
     );
   }
 
-  // If the user isn't logged in, politely tell them to log in
   if (!isSignedIn) {
     return (
       <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', fontFamily: 'sans-serif' }}>
@@ -110,100 +129,9 @@ export default function AccountPage() {
           {activeTab === 'orders' && (
             <div style={{ animation: 'fadeIn 0.5s ease-in-out' }}>
               <h2 style={{ fontSize: '18px', fontFamily: 'serif', marginBottom: '24px', borderBottom: '1px solid #eaeaea', paddingBottom: '16px' }}>Order History & Tracking</h2>
-              
-              {/* MOCK ORDER 1: CURRENTLY IN TRANSIT */}
-              <div style={{ border: '1px solid #eaeaea', marginBottom: '32px', backgroundColor: '#fff' }}>
-                <div style={{ backgroundColor: '#fafafa', padding: '16px 24px', borderBottom: '1px solid #eaeaea', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-                  <div>
-                    <p style={{ fontSize: '10px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 4px 0' }}>Order Placed</p>
-                    <p style={{ fontSize: '12px', fontWeight: 'bold', margin: 0 }}>May 2, 2026</p>
-                  </div>
-                  <div>
-                    <p style={{ fontSize: '10px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 4px 0' }}>Total</p>
-                    <p style={{ fontSize: '12px', fontWeight: 'bold', margin: 0 }}>£1,295</p>
-                  </div>
-                  <div>
-                    <p style={{ fontSize: '10px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 4px 0' }}>Order #</p>
-                    <p style={{ fontSize: '12px', fontWeight: 'bold', margin: 0 }}>BWR-8934-22</p>
-                  </div>
-                </div>
-                
-                <div style={{ padding: '24px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}>
-                    <div>
-                      <h3 style={{ fontSize: '16px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 8px 0', color: '#D4AF37' }}>Status: Shipped</h3>
-                      <p style={{ fontSize: '12px', color: '#666', margin: 0 }}>Estimated Delivery: May 8, 2026</p>
-                    </div>
-                    <button style={{ padding: '10px 20px', backgroundColor: '#000', color: '#fff', border: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 'bold', cursor: 'pointer' }}>Track Package</button>
-                  </div>
-
-                  {/* Visual Progress Bar */}
-                  <div style={{ width: '100%', height: '4px', backgroundColor: '#eaeaea', marginBottom: '40px', position: 'relative' }}>
-                    {/* The Fill */}
-                    <div style={{ position: 'absolute', top: 0, left: 0, height: '100%', width: '66%', backgroundColor: '#D4AF37' }}></div>
-                    
-                    {/* The Dots */}
-                    <div style={{ position: 'absolute', top: '-4px', left: '0%', width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#D4AF37' }}></div>
-                    <div style={{ position: 'absolute', top: '-4px', left: '33%', width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#D4AF37' }}></div>
-                    {/* Current Stage Dot (Slightly larger/outlined) */}
-                    <div style={{ position: 'absolute', top: '-6px', left: '66%', width: '16px', height: '16px', borderRadius: '50%', backgroundColor: '#D4AF37', border: '3px solid #fff', boxShadow: '0 0 0 1px #D4AF37' }}></div>
-                    <div style={{ position: 'absolute', top: '-4px', right: '0%', width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#eaeaea' }}></div>
-                    
-                    {/* The Labels */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px', fontSize: '9px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                      <span style={{ width: '25%', textAlign: 'left' }}>Ordered</span>
-                      <span style={{ width: '25%', textAlign: 'center' }}>Processing</span>
-                      <span style={{ width: '25%', textAlign: 'center', color: '#000', fontWeight: 'bold' }}>Shipped</span>
-                      <span style={{ width: '25%', textAlign: 'right' }}>Delivered</span>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', gap: '16px', borderTop: '1px solid #eaeaea', paddingTop: '24px' }}>
-                    <img src="/haldon-table-1.jpg" alt="Item" style={{ width: '80px', height: '80px', objectFit: 'cover', backgroundColor: '#f5f5f5' }} />
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                      <p style={{ fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 8px 0' }}>Haldon Collection Large Dining Table</p>
-                      <p style={{ fontSize: '11px', color: '#666', margin: 0 }}>Qty: 1</p>
-                    </div>
-                  </div>
-                </div>
+              <div style={{ padding: '48px', textAlign: 'center', backgroundColor: '#fafafa', border: '1px solid #eaeaea' }}>
+                <p style={{ fontSize: '12px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.1em' }}>You have no previous orders.</p>
               </div>
-
-              {/* MOCK ORDER 2: DELIVERED PREVIOUSLY */}
-              <div style={{ border: '1px solid #eaeaea', backgroundColor: '#fff', opacity: 0.7 }}>
-                <div style={{ backgroundColor: '#fafafa', padding: '16px 24px', borderBottom: '1px solid #eaeaea', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-                  <div>
-                    <p style={{ fontSize: '10px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 4px 0' }}>Order Placed</p>
-                    <p style={{ fontSize: '12px', fontWeight: 'bold', margin: 0 }}>April 15, 2026</p>
-                  </div>
-                  <div>
-                    <p style={{ fontSize: '10px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 4px 0' }}>Total</p>
-                    <p style={{ fontSize: '12px', fontWeight: 'bold', margin: 0 }}>£450</p>
-                  </div>
-                  <div>
-                    <p style={{ fontSize: '10px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 4px 0' }}>Order #</p>
-                    <p style={{ fontSize: '12px', fontWeight: 'bold', margin: 0 }}>BWR-7210-09</p>
-                  </div>
-                </div>
-                
-                <div style={{ padding: '24px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-                    <div>
-                      <h3 style={{ fontSize: '14px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 4px 0' }}>Status: Delivered</h3>
-                      <p style={{ fontSize: '12px', color: '#666', margin: 0 }}>Delivered on April 21, 2026</p>
-                    </div>
-                    <button style={{ padding: '8px 16px', backgroundColor: 'transparent', color: '#000', border: '1px solid #000', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 'bold', cursor: 'pointer' }}>View Invoice</button>
-                  </div>
-
-                  <div style={{ display: 'flex', gap: '16px', borderTop: '1px solid #eaeaea', paddingTop: '24px' }}>
-                    <img src="/lennox-small-sideboard-1.jpg" alt="Item" style={{ width: '80px', height: '80px', objectFit: 'cover', backgroundColor: '#f5f5f5' }} />
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                      <p style={{ fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 8px 0' }}>Lennox Black 2-Door Small Sideboard</p>
-                      <p style={{ fontSize: '11px', color: '#666', margin: 0 }}>Qty: 1</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
             </div>
           )}
 
@@ -220,9 +148,25 @@ export default function AccountPage() {
           {activeTab === 'viewed' && (
             <div style={{ animation: 'fadeIn 0.5s ease-in-out' }}>
               <h2 style={{ fontSize: '18px', fontFamily: 'serif', marginBottom: '24px', borderBottom: '1px solid #eaeaea', paddingBottom: '16px' }}>Recently Viewed</h2>
-              <div style={{ padding: '48px', textAlign: 'center', backgroundColor: '#fafafa', border: '1px solid #eaeaea' }}>
-                <p style={{ fontSize: '12px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Your viewing history is empty.</p>
-              </div>
+              
+              {recentlyViewed.length === 0 ? (
+                <div style={{ padding: '48px', textAlign: 'center', backgroundColor: '#fafafa', border: '1px solid #eaeaea' }}>
+                  <p style={{ fontSize: '12px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Your viewing history is empty.</p>
+                  <Link href="/preview/shop" style={{ display: 'inline-block', marginTop: '16px', color: '#D4AF37', textDecoration: 'none', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Explore the Collection</Link>
+                </div>
+              ) : (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '32px' }}>
+                  {recentlyViewed.map((item, index) => (
+                    <Link href={`/preview/shop/${item.id}`} key={index} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column' }}>
+                      <div style={{ width: '100%', aspectRatio: '4/5', backgroundColor: '#f5f5f5', marginBottom: '16px' }}>
+                        <img src={item.image || item.gallery?.[0]} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      </div>
+                      <h3 style={{ fontSize: '10px', fontWeight: 'bold', letterSpacing: '0.1em', textTransform: 'uppercase', margin: '0 0 8px 0', lineHeight: '1.4' }}>{item.name}</h3>
+                      <p style={{ fontSize: '11px', color: '#D4AF37', margin: 0, fontWeight: 'bold' }}>£{item.price.toLocaleString()}</p>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 
@@ -235,5 +179,14 @@ export default function AccountPage() {
         }
       `}} />
     </div>
+  );
+}
+
+// Next.js requires us to wrap pages that use `useSearchParams` inside a Suspense block
+export default function AccountPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: '100px', textAlign: 'center', fontFamily: 'sans-serif' }}>Loading...</div>}>
+      <AccountDashboard />
+    </Suspense>
   );
 }

@@ -26,7 +26,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* FIXED: Lowered zIndex to 50 so the Clerk Modal can appear on top! */}
       <header className="w-full fixed top-0 left-0 flex flex-col" style={{ backgroundColor: '#000000', color: '#D4AF37', zIndex: 50, borderBottom: '1px solid #333333' }}>
         
         <div className="w-full max-w-[1600px] mx-auto px-6 lg:px-12 h-[100px] flex items-center justify-between">
@@ -50,9 +49,8 @@ export default function Navbar() {
 
           <div className="w-1/4 flex justify-end items-center space-x-5 lg:space-x-7 relative" ref={cartRef}>
             
-            {/* CLERK AUTHENTICATION ICONS */}
+            {/* CLERK AUTHENTICATION ICONS WITH CUSTOM MENU */}
             <Show when="signed-out">
-              {/* FIXED: Changed inner button to a span to prevent nesting bugs */}
               <SignInButton mode="modal" fallbackRedirectUrl="/preview/account">
                 <span style={{ color: '#D4AF37', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
@@ -61,7 +59,25 @@ export default function Navbar() {
             </Show>
             
             <Show when="signed-in">
-              <UserButton />
+              <UserButton>
+                <UserButton.MenuItems>
+                  <UserButton.Link
+                    label="Orders & Tracking"
+                    href="/preview/account?tab=orders"
+                    labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.25v10.5A2.25 2.25 0 0118 21H6a2.25 2.25 0 01-2.25-2.25V8.25M12 2.25v10.5m0 0l-3-3m3 3l3-3" /></svg>}
+                  />
+                  <UserButton.Link
+                    label="Recently Viewed"
+                    href="/preview/account?tab=viewed"
+                    labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
+                  />
+                  <UserButton.Link
+                    label="Saved Favourites"
+                    href="/preview/account?tab=favorites"
+                    labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>}
+                  />
+                </UserButton.MenuItems>
+              </UserButton>
             </Show>
             {/* END CLERK */}
 
@@ -155,7 +171,6 @@ export default function Navbar() {
                 </div>
               )}
             </li>
-
           </ul>
         </div>
       </header>
