@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useCart } from './CartContext';
-import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { SignInButton, Show, UserButton } from '@clerk/nextjs';
 
 export default function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -50,17 +50,17 @@ export default function Navbar() {
           <div className="w-1/4 flex justify-end items-center space-x-5 lg:space-x-7 relative" ref={cartRef}>
             
             {/* NEW: CLERK AUTHENTICATION ICONS */}
-            <SignedOut>
+            <Show when="signed-out">
               <SignInButton mode="modal">
                 <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
                 </button>
               </SignInButton>
-            </SignedOut>
+            </Show>
             
-            <SignedIn>
+            <Show when="signed-in">
               <UserButton afterSignOutUrl="/preview/shop" />
-            </SignedIn>
+            </Show>
             {/* END CLERK */}
 
             <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer' }}>
