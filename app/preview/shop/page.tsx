@@ -1,7 +1,7 @@
 // app/preview/shop/page.tsx
 "use client";
 
-import React, { useState, Suspense } from 'react';
+import React, { useState, Suspense, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import { useCart } from '../../components/CartContext';
 import Link from 'next/link';
@@ -10,7 +10,7 @@ import { products } from '../../data';
 
 export const dynamic = 'force-dynamic';
 
-function ProductCard({ product, addToCart }: { product: any, addToCart: any }) {
+function ProductCard({ product, addToCart, isFavorite, toggleFavorite }: { product: any, addToCart: any, isFavorite: boolean, toggleFavorite: (id: number) => void }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = product?.gallery?.length > 0 ? product.gallery : [product?.image];
 
@@ -20,6 +20,17 @@ function ProductCard({ product, addToCart }: { product: any, addToCart: any }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
       <div style={{ width: '100%', aspectRatio: '4/5', backgroundColor: '#f5f5f5', marginBottom: '16px', position: 'relative', overflow: 'hidden' }}>
+        
+        {/* HEART ICON BUTTON */}
+        <button 
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(product.id); }}
+          style={{ position: 'absolute', top: '12px', right: '12px', zIndex: 10, background: 'rgba(255,255,255,0.9)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: isFavorite ? '#d9534f' : '#666', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={isFavorite ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth={1.5} style={{ width: '18px', height: '18px', marginTop: '2px' }}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+          </svg>
+        </button>
+
         <Link href={`/preview/shop/${product.id}`} style={{ display: 'block', width: '100%', height: '100%' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={images[currentIndex]} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -53,10 +64,31 @@ function ShopContent() {
   const collectionFilter = searchParams.get('collection');
   const categoryFilter = searchParams.get('category');
 
+  // Favorites state
+  const [favorites, setFavorites] = useState<number[]>([]);
+
+  useEffect(() => {
+    const savedFavs = localStorage.getItem('favorites');
+    if (savedFavs) {
+      setFavorites(JSON.parse(savedFavs));
+    }
+  }, []);
+
+  const toggleFavorite = (productId: number) => {
+    let updatedFavs = [...favorites];
+    if (updatedFavs.includes(productId)) {
+      updatedFavs = updatedFavs.filter(id => id !== productId);
+    } else {
+      updatedFavs.push(productId);
+    }
+    setFavorites(updatedFavs);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavs));
+  };
+
   let displayedProducts = products;
   let pageTitle = "All Products";
 
-  // Filter by Collection (Brands)
+  // Filter by Collection
   if (collectionFilter === 'delphine') {
     displayedProducts = products.filter((p: any) => p.collection === 'delphine');
     pageTitle = "Delphine Collection";
@@ -77,7 +109,7 @@ function ShopContent() {
     pageTitle = "Camden Collection";
   }
 
-  // Filter by Category (Living, Dining, Bedroom, Upholstery)
+  // Filter by Category
   if (categoryFilter === 'living') {
     displayedProducts = products.filter((p: any) => p.category === 'living');
     pageTitle = "Living Room";
@@ -112,7 +144,7 @@ function ShopContent() {
         
         <div style={{ flexGrow: 1, display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '32px' }}>
           {displayedProducts.map((product) => (
-             <ProductCard key={product.id} product={product} addToCart={addToCart} />
+             <ProductCard key={product.id} product={product} addToCart={addToCart} isFavorite={favorites.includes(product.id)} toggleFavorite={toggleFavorite} />
           ))}
           {displayedProducts.length === 0 && (
             <p style={{ color: '#666', gridColumn: '1 / -1', textAlign: 'center', marginTop: '48px' }}>No products found in this collection yet. Check back soon!</p>

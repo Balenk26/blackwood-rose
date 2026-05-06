@@ -12,6 +12,7 @@ export default function ProductPage() {
   const { addToCart } = useCart();
   const [product, setProduct] = useState<any>(null);
   const [mainImage, setMainImage] = useState('');
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     const id = parseInt(params.id as string);
@@ -21,24 +22,38 @@ export default function ProductPage() {
       setProduct(foundProduct);
       setMainImage(foundProduct.image || foundProduct.gallery?.[0]);
 
-      // --- RECENTLY VIEWED MEMORY LOGIC ---
-      // 1. Check if they already have a history
+      // Handle Favorites Check
+      const savedFavs = localStorage.getItem('favorites');
+      if (savedFavs) {
+        const favsArray = JSON.parse(savedFavs);
+        if (favsArray.includes(foundProduct.id)) {
+          setIsFavorite(true);
+        }
+      }
+
+      // Recently Viewed Logic
       const savedViews = localStorage.getItem('recentlyViewed');
       let viewedArray = savedViews ? JSON.parse(savedViews) : [];
-      
-      // 2. Remove this product if it's already in the list (so we don't get duplicates)
       viewedArray = viewedArray.filter((p: any) => p.id !== foundProduct.id);
-      
-      // 3. Add this product to the very front of the list
       viewedArray.unshift(foundProduct);
-      
-      // 4. Keep only the 4 most recent items so we don't overload the browser memory
       if (viewedArray.length > 4) viewedArray.pop();
-      
-      // 5. Save the updated list back into their browser
       localStorage.setItem('recentlyViewed', JSON.stringify(viewedArray));
     }
   }, [params.id]);
+
+  const handleToggleFavorite = () => {
+    const savedFavs = localStorage.getItem('favorites');
+    let favsArray = savedFavs ? JSON.parse(savedFavs) : [];
+    
+    if (favsArray.includes(product.id)) {
+      favsArray = favsArray.filter((id: number) => id !== product.id);
+      setIsFavorite(false);
+    } else {
+      favsArray.push(product.id);
+      setIsFavorite(true);
+    }
+    localStorage.setItem('favorites', JSON.stringify(favsArray));
+  };
 
   if (!product) return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', color: '#000' }}>
@@ -82,7 +97,16 @@ export default function ProductPage() {
         {/* Product Info Section */}
         <div style={{ flex: '1 1 400px', padding: '24px 0' }}>
           <p style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#666', marginBottom: '16px' }}>{product.collection} Collection</p>
-          <h1 style={{ fontSize: '32px', fontFamily: 'serif', letterSpacing: '0.05em', marginBottom: '24px', textTransform: 'uppercase' }}>{product.name}</h1>
+          
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
+            <h1 style={{ fontSize: '32px', fontFamily: 'serif', letterSpacing: '0.05em', textTransform: 'uppercase', margin: 0, paddingRight: '24px' }}>{product.name}</h1>
+            <button onClick={handleToggleFavorite} style={{ background: 'none', border: 'none', cursor: 'pointer', color: isFavorite ? '#d9534f' : '#ccc', marginTop: '4px', padding: 0 }}>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={isFavorite ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth={1.5} style={{ width: '28px', height: '28px', transition: 'color 0.2s' }}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+              </svg>
+            </button>
+          </div>
+
           <p style={{ fontSize: '20px', fontWeight: 'bold', color: '#D4AF37', marginBottom: '32px' }}>£{product.price.toLocaleString()}</p>
           
           <button 

@@ -6,27 +6,36 @@ import Navbar from '../../components/Navbar';
 import { useUser, SignOutButton } from '@clerk/nextjs';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { products } from '../../data'; // We import data to match saved IDs
 
 function AccountDashboard() {
   const { isLoaded, isSignedIn, user } = useUser();
   const searchParams = useSearchParams();
   
-  // Read the URL to see if they clicked a specific dropdown link, otherwise default to profile
   const initialTab = searchParams.get('tab') || 'profile';
   const [activeTab, setActiveTab] = useState(initialTab);
   
   const [recentlyViewed, setRecentlyViewed] = useState<any[]>([]);
+  const [favorites, setFavorites] = useState<any[]>([]);
 
-  // Automatically update the tab if the URL changes
   useEffect(() => {
     const tab = searchParams.get('tab');
     if (tab) setActiveTab(tab);
   }, [searchParams]);
 
   useEffect(() => {
+    // Load Recently Viewed
     const savedViews = localStorage.getItem('recentlyViewed');
     if (savedViews) {
       setRecentlyViewed(JSON.parse(savedViews));
+    }
+
+    // Load Favorites
+    const savedFavs = localStorage.getItem('favorites');
+    if (savedFavs) {
+      const favIds = JSON.parse(savedFavs);
+      const favProducts = products.filter(p => favIds.includes(p.id));
+      setFavorites(favProducts);
     }
   }, []);
 
@@ -138,10 +147,25 @@ function AccountDashboard() {
           {activeTab === 'favorites' && (
             <div style={{ animation: 'fadeIn 0.5s ease-in-out' }}>
               <h2 style={{ fontSize: '18px', fontFamily: 'serif', marginBottom: '24px', borderBottom: '1px solid #eaeaea', paddingBottom: '16px' }}>Saved Favourites</h2>
-              <div style={{ padding: '48px', textAlign: 'center', backgroundColor: '#fafafa', border: '1px solid #eaeaea' }}>
-                <p style={{ fontSize: '12px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.1em' }}>You haven't saved any items yet.</p>
-                <Link href="/preview/shop" style={{ display: 'inline-block', marginTop: '16px', color: '#D4AF37', textDecoration: 'none', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Explore the Collection</Link>
-              </div>
+              
+              {favorites.length === 0 ? (
+                <div style={{ padding: '48px', textAlign: 'center', backgroundColor: '#fafafa', border: '1px solid #eaeaea' }}>
+                  <p style={{ fontSize: '12px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.1em' }}>You haven't saved any items yet.</p>
+                  <Link href="/preview/shop" style={{ display: 'inline-block', marginTop: '16px', color: '#D4AF37', textDecoration: 'none', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Explore the Collection</Link>
+                </div>
+              ) : (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '32px' }}>
+                  {favorites.map((item, index) => (
+                    <Link href={`/preview/shop/${item.id}`} key={index} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column' }}>
+                      <div style={{ width: '100%', aspectRatio: '4/5', backgroundColor: '#f5f5f5', marginBottom: '16px' }}>
+                        <img src={item.image || item.gallery?.[0]} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      </div>
+                      <h3 style={{ fontSize: '10px', fontWeight: 'bold', letterSpacing: '0.1em', textTransform: 'uppercase', margin: '0 0 8px 0', lineHeight: '1.4' }}>{item.name}</h3>
+                      <p style={{ fontSize: '11px', color: '#D4AF37', margin: 0, fontWeight: 'bold' }}>£{item.price.toLocaleString()}</p>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 
@@ -182,7 +206,6 @@ function AccountDashboard() {
   );
 }
 
-// Next.js requires us to wrap pages that use `useSearchParams` inside a Suspense block
 export default function AccountPage() {
   return (
     <Suspense fallback={<div style={{ padding: '100px', textAlign: 'center', fontFamily: 'sans-serif' }}>Loading...</div>}>
