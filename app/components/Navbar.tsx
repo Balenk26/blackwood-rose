@@ -28,9 +28,10 @@ export default function Navbar() {
     <>
       <style dangerouslySetInnerHTML={{__html: `
         @media (max-width: 768px) {
-          .nav-brand { font-size: 22px !important; }
+          .nav-brand { font-size: 20px !important; }
           .nav-sub { font-size: 7px !important; letter-spacing: 0.1em !important; }
-          /* FIXED: Added flex-wrap nowrap to force a single line, and adjusted gap */
+          
+          /* Ensures the bottom menu is horizontally scrollable and doesn't squish */
           .mobile-bottom-row ul { 
             gap: 1.2rem !important; 
             overflow-x: auto !important; 
@@ -39,19 +40,33 @@ export default function Navbar() {
             -webkit-overflow-scrolling: touch !important; 
             flex-wrap: nowrap !important;
           }
-          /* FIXED: Prevent the links from shrinking and squishing together */
           .mobile-bottom-row ul li { flex-shrink: 0 !important; }
           .mobile-bottom-row ul::-webkit-scrollbar { display: none; }
-          .cart-dropdown { width: 300px !important; right: -20px !important; }
+          
+          /* Pulls the cart back onto the screen */
+          .cart-dropdown { width: 300px !important; right: -10px !important; }
           .nav-top-container { padding: 0 16px !important; }
+          
+          /* Makes the brands dropdown beautiful on mobile */
+          .brands-dropdown {
+            position: fixed !important;
+            top: 155px !important;
+            left: 0 !important;
+            width: 100vw !important;
+            transform: none !important;
+            background-color: rgba(0,0,0,0.95) !important;
+            border: none !important;
+            border-bottom: 1px solid #333 !important;
+          }
         }
       `}} />
 
       <header className="w-full fixed top-0 left-0 flex flex-col" style={{ backgroundColor: '#000000', color: '#D4AF37', zIndex: 50, borderBottom: '1px solid #333333' }}>
         
+        {/* FIXED: Switched from rigid widths (w-1/4) to flexible scaling (flex-1) so icons never get pushed off screen */}
         <div className="nav-top-container w-full max-w-[1600px] mx-auto px-6 lg:px-12 h-[100px] flex items-center justify-between">
           
-          <div className="w-1/4 flex items-center justify-start">
+          <div className="flex-1 flex items-center justify-start">
             <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer' }}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -59,7 +74,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          <div className="w-2/4 flex flex-col items-center justify-center text-center">
+          <div className="flex-[2] flex flex-col items-center justify-center text-center">
             <Link href="/preview" className="nav-brand" style={{ textDecoration: 'none', color: '#D4AF37', fontSize: '32px', fontFamily: 'serif', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
               Blackwood & Rose
             </Link>
@@ -68,7 +83,7 @@ export default function Navbar() {
             </span>
           </div>
 
-          <div className="w-1/4 flex justify-end items-center space-x-4 lg:space-x-7 relative" ref={cartRef}>
+          <div className="flex-1 flex justify-end items-center space-x-3 lg:space-x-7 relative" ref={cartRef}>
             
             <Show when="signed-out">
               <SignInButton mode="modal" fallbackRedirectUrl="/preview/account">
@@ -144,21 +159,24 @@ export default function Navbar() {
             <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop?category=bedroom" style={{ textDecoration: 'none', color: '#D4AF37' }}>Bedroom</Link></li>
             <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop?category=upholstery" style={{ textDecoration: 'none', color: '#D4AF37' }}>Upholstery</Link></li>
             
+            {/* FIXED: Changed Brands to act as a toggle button on mobile click */}
             <li 
               style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center', cursor: 'pointer' }}
               onMouseEnter={() => setIsBrandsHovered(true)}
               onMouseLeave={() => setIsBrandsHovered(false)}
+              onClick={() => setIsBrandsHovered(!isBrandsHovered)}
             >
-              <Link href="/preview/brands" style={{ textDecoration: 'none', color: '#D4AF37' }}>Brands</Link>
+              <span style={{ textDecoration: 'none', color: '#D4AF37' }}>Brands</span>
               
               {isBrandsHovered && (
-                <div style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', backgroundColor: '#000', border: '1px solid #333', padding: '16px 24px', minWidth: '180px', display: 'flex', flexDirection: 'column', gap: '16px', zIndex: 100, textAlign: 'center' }}>
-                  <a href="/preview/shop?collection=delphine" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Delphine Collection</a>
-                  <a href="/preview/shop?collection=reed" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Reed Collection</a>
-                  <a href="/preview/shop?collection=haldon" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Haldon Collection</a>
-                  <a href="/preview/shop?collection=lennox" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Lennox Collection</a>
-                  <a href="/preview/shop?collection=rutland" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Rutland Collection</a>
-                  <a href="/preview/shop?collection=camden" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Camden Collection</a>
+                <div className="brands-dropdown" style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', backgroundColor: '#000', border: '1px solid #333', padding: '16px 24px', minWidth: '180px', display: 'flex', flexDirection: 'column', gap: '16px', zIndex: 100, textAlign: 'center' }}>
+                  {/* Added stopPropagation so clicking a link doesn't double-fire the parent onClick */}
+                  <Link href="/preview/shop?collection=delphine" onClick={(e) => { e.stopPropagation(); setIsBrandsHovered(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Delphine Collection</Link>
+                  <Link href="/preview/shop?collection=reed" onClick={(e) => { e.stopPropagation(); setIsBrandsHovered(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Reed Collection</Link>
+                  <Link href="/preview/shop?collection=haldon" onClick={(e) => { e.stopPropagation(); setIsBrandsHovered(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Haldon Collection</Link>
+                  <Link href="/preview/shop?collection=lennox" onClick={(e) => { e.stopPropagation(); setIsBrandsHovered(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Lennox Collection</Link>
+                  <Link href="/preview/shop?collection=rutland" onClick={(e) => { e.stopPropagation(); setIsBrandsHovered(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Rutland Collection</Link>
+                  <Link href="/preview/shop?collection=camden" onClick={(e) => { e.stopPropagation(); setIsBrandsHovered(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Camden Collection</Link>
                 </div>
               )}
             </li>
