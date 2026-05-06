@@ -26,9 +26,20 @@ export default function Navbar() {
 
   return (
     <>
+      <style dangerouslySetInnerHTML={{__html: `
+        @media (max-width: 768px) {
+          .nav-brand { font-size: 22px !important; }
+          .nav-sub { font-size: 7px !important; letter-spacing: 0.1em !important; }
+          .mobile-bottom-row ul { gap: 1.5rem !important; overflow-x: auto; padding: 0 16px !important; justify-content: flex-start !important; -webkit-overflow-scrolling: touch; }
+          .mobile-bottom-row ul::-webkit-scrollbar { display: none; }
+          .cart-dropdown { width: 300px !important; right: -20px !important; }
+          .nav-top-container { padding: 0 16px !important; }
+        }
+      `}} />
+
       <header className="w-full fixed top-0 left-0 flex flex-col" style={{ backgroundColor: '#000000', color: '#D4AF37', zIndex: 50, borderBottom: '1px solid #333333' }}>
         
-        <div className="w-full max-w-[1600px] mx-auto px-6 lg:px-12 h-[100px] flex items-center justify-between">
+        <div className="nav-top-container w-full max-w-[1600px] mx-auto px-6 lg:px-12 h-[100px] flex items-center justify-between">
           
           <div className="w-1/4 flex items-center justify-start">
             <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer' }}>
@@ -39,17 +50,16 @@ export default function Navbar() {
           </div>
 
           <div className="w-2/4 flex flex-col items-center justify-center text-center">
-            <Link href="/preview" style={{ textDecoration: 'none', color: '#D4AF37', fontSize: '32px', fontFamily: 'serif', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+            <Link href="/preview" className="nav-brand" style={{ textDecoration: 'none', color: '#D4AF37', fontSize: '32px', fontFamily: 'serif', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
               Blackwood & Rose
             </Link>
-            <span style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.3em', color: '#aaaaaa', marginTop: '4px', fontWeight: 'bold' }}>
+            <span className="nav-sub" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.3em', color: '#aaaaaa', marginTop: '4px', fontWeight: 'bold' }}>
               Furniture & Home Accessories
             </span>
           </div>
 
-          <div className="w-1/4 flex justify-end items-center space-x-5 lg:space-x-7 relative" ref={cartRef}>
+          <div className="w-1/4 flex justify-end items-center space-x-4 lg:space-x-7 relative" ref={cartRef}>
             
-            {/* CLERK AUTHENTICATION ICONS WITH CUSTOM MENU */}
             <Show when="signed-out">
               <SignInButton mode="modal" fallbackRedirectUrl="/preview/account">
                 <span style={{ color: '#D4AF37', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
@@ -61,27 +71,13 @@ export default function Navbar() {
             <Show when="signed-in">
               <UserButton>
                 <UserButton.MenuItems>
-                  <UserButton.Link
-                    label="Orders & Tracking"
-                    href="/preview/account?tab=orders"
-                    labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.25v10.5A2.25 2.25 0 0118 21H6a2.25 2.25 0 01-2.25-2.25V8.25M12 2.25v10.5m0 0l-3-3m3 3l3-3" /></svg>}
-                  />
-                  <UserButton.Link
-                    label="Recently Viewed"
-                    href="/preview/account?tab=viewed"
-                    labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
-                  />
-                  <UserButton.Link
-                    label="Saved Favourites"
-                    href="/preview/account?tab=favorites"
-                    labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>}
-                  />
+                  <UserButton.Link label="Orders & Tracking" href="/preview/account?tab=orders" labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.25v10.5A2.25 2.25 0 0118 21H6a2.25 2.25 0 01-2.25-2.25V8.25M12 2.25v10.5m0 0l-3-3m3 3l3-3" /></svg>} />
+                  <UserButton.Link label="Recently Viewed" href="/preview/account?tab=viewed" labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>} />
+                  <UserButton.Link label="Saved Favourites" href="/preview/account?tab=favorites" labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>} />
                 </UserButton.MenuItems>
               </UserButton>
             </Show>
-            {/* END CLERK */}
-            
-            {/* Cart Icon */}
+
             <button onClick={() => setIsCartOpen(!isCartOpen)} style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer', position: 'relative' }}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
               <span style={{ position: 'absolute', bottom: '-4px', right: '-8px', backgroundColor: '#ffffff', color: '#000000', fontSize: '10px', fontWeight: 'bold', height: '16px', width: '16px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -90,7 +86,7 @@ export default function Navbar() {
             </button>
 
             {isCartOpen && (
-              <div style={{ position: 'absolute', top: '100%', right: '0', marginTop: '30px', width: '360px', backgroundColor: '#ffffff', border: '1px solid #eaeaea', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.2)', padding: '24px', color: '#000', textAlign: 'left', cursor: 'default' }}>
+              <div className="cart-dropdown" style={{ position: 'absolute', top: '100%', right: '0', marginTop: '30px', width: '360px', backgroundColor: '#ffffff', border: '1px solid #eaeaea', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.2)', padding: '24px', color: '#000', textAlign: 'left', cursor: 'default' }}>
                 <h4 style={{ fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', borderBottom: '1px solid #eaeaea', paddingBottom: '16px', margin: '0 0 16px 0' }}>Your Basket</h4>
                 
                 {!cart || cart.length === 0 ? (
@@ -130,10 +126,9 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div style={{ width: '100%', height: '55px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid #333333' }}>
-          {/* ALL LIST ITEMS NOW SHARE IDENTICAL ALIGNMENT STYLING */}
+        <div className="mobile-bottom-row" style={{ width: '100%', height: '55px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid #333333' }}>
           <ul style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', maxWidth: '1200px', gap: '3rem', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', margin: 0, padding: 0, listStyle: 'none', height: '100%' }}>
-            <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop" style={{ textDecoration: 'none', color: '#D4AF37' }}>All Products</Link></li>
+            <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop" style={{ textDecoration: 'none', color: '#D4AF37' }}>All</Link></li>
             <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop?category=living" style={{ textDecoration: 'none', color: '#D4AF37' }}>Living</Link></li>
             <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop?category=dining" style={{ textDecoration: 'none', color: '#D4AF37' }}>Dining</Link></li>
             <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop?category=bedroom" style={{ textDecoration: 'none', color: '#D4AF37' }}>Bedroom</Link></li>
@@ -148,24 +143,12 @@ export default function Navbar() {
               
               {isBrandsHovered && (
                 <div style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', backgroundColor: '#000', border: '1px solid #333', padding: '16px 24px', minWidth: '180px', display: 'flex', flexDirection: 'column', gap: '16px', zIndex: 100, textAlign: 'center' }}>
-                  <a href="/preview/shop?collection=delphine" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>
-                    Delphine Collection
-                  </a>
-                  <a href="/preview/shop?collection=reed" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>
-                    Reed Collection
-                  </a>
-                  <a href="/preview/shop?collection=haldon" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>
-                    Haldon Collection
-                  </a>
-                  <a href="/preview/shop?collection=lennox" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>
-                    Lennox Collection
-                  </a>
-                  <a href="/preview/shop?collection=rutland" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>
-                    Rutland Collection
-                  </a>
-                  <a href="/preview/shop?collection=camden" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>
-                    Camden Collection
-                  </a>
+                  <a href="/preview/shop?collection=delphine" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Delphine Collection</a>
+                  <a href="/preview/shop?collection=reed" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Reed Collection</a>
+                  <a href="/preview/shop?collection=haldon" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Haldon Collection</a>
+                  <a href="/preview/shop?collection=lennox" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Lennox Collection</a>
+                  <a href="/preview/shop?collection=rutland" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Rutland Collection</a>
+                  <a href="/preview/shop?collection=camden" onClick={() => setIsBrandsHovered(false)} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Camden Collection</a>
                 </div>
               )}
             </li>

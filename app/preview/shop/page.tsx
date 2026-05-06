@@ -21,7 +21,6 @@ function ProductCard({ product, addToCart, isFavorite, toggleFavorite }: { produ
     <div style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
       <div style={{ width: '100%', aspectRatio: '4/5', backgroundColor: '#f5f5f5', marginBottom: '16px', position: 'relative', overflow: 'hidden' }}>
         
-        {/* HEART ICON BUTTON */}
         <button 
           onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(product.id); }}
           style={{ position: 'absolute', top: '12px', right: '12px', zIndex: 10, background: 'rgba(255,255,255,0.9)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: isFavorite ? '#d9534f' : '#666', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}
@@ -64,7 +63,6 @@ function ShopContent() {
   const collectionFilter = searchParams.get('collection');
   const categoryFilter = searchParams.get('category');
 
-  // Favorites state
   const [favorites, setFavorites] = useState<number[]>([]);
 
   useEffect(() => {
@@ -88,52 +86,37 @@ function ShopContent() {
   let displayedProducts = products;
   let pageTitle = "All Products";
 
-  // Filter by Collection
-  if (collectionFilter === 'delphine') {
-    displayedProducts = products.filter((p: any) => p.collection === 'delphine');
-    pageTitle = "Delphine Collection";
-  } else if (collectionFilter === 'reed') {
-    displayedProducts = products.filter((p: any) => p.collection === 'reed');
-    pageTitle = "Reed Collection";
-  } else if (collectionFilter === 'haldon') {
-    displayedProducts = products.filter((p: any) => p.collection === 'haldon');
-    pageTitle = "Haldon Collection";
-  } else if (collectionFilter === 'lennox') {
-    displayedProducts = products.filter((p: any) => p.collection === 'lennox');
-    pageTitle = "Lennox Collection";
-  } else if (collectionFilter === 'rutland') {
-    displayedProducts = products.filter((p: any) => p.collection === 'rutland');
-    pageTitle = "Rutland Collection";
-  } else if (collectionFilter === 'camden') {
-    displayedProducts = products.filter((p: any) => p.collection === 'camden');
-    pageTitle = "Camden Collection";
-  }
+  if (collectionFilter === 'delphine') { displayedProducts = products.filter((p: any) => p.collection === 'delphine'); pageTitle = "Delphine Collection"; }
+  else if (collectionFilter === 'reed') { displayedProducts = products.filter((p: any) => p.collection === 'reed'); pageTitle = "Reed Collection"; }
+  else if (collectionFilter === 'haldon') { displayedProducts = products.filter((p: any) => p.collection === 'haldon'); pageTitle = "Haldon Collection"; }
+  else if (collectionFilter === 'lennox') { displayedProducts = products.filter((p: any) => p.collection === 'lennox'); pageTitle = "Lennox Collection"; }
+  else if (collectionFilter === 'rutland') { displayedProducts = products.filter((p: any) => p.collection === 'rutland'); pageTitle = "Rutland Collection"; }
+  else if (collectionFilter === 'camden') { displayedProducts = products.filter((p: any) => p.collection === 'camden'); pageTitle = "Camden Collection"; }
 
-  // Filter by Category
-  if (categoryFilter === 'living') {
-    displayedProducts = products.filter((p: any) => p.category === 'living');
-    pageTitle = "Living Room";
-  } else if (categoryFilter === 'dining') {
-    displayedProducts = products.filter((p: any) => p.category === 'dining');
-    pageTitle = "Dining Room";
-  } else if (categoryFilter === 'bedroom') {
-    displayedProducts = products.filter((p: any) => p.category === 'bedroom');
-    pageTitle = "Bedroom";
-  } else if (categoryFilter === 'upholstery') {
-    displayedProducts = products.filter((p: any) => p.category === 'upholstery');
-    pageTitle = "Upholstery";
-  }
+  if (categoryFilter === 'living') { displayedProducts = products.filter((p: any) => p.category === 'living'); pageTitle = "Living Room"; }
+  else if (categoryFilter === 'dining') { displayedProducts = products.filter((p: any) => p.category === 'dining'); pageTitle = "Dining Room"; }
+  else if (categoryFilter === 'bedroom') { displayedProducts = products.filter((p: any) => p.category === 'bedroom'); pageTitle = "Bedroom"; }
+  else if (categoryFilter === 'upholstery') { displayedProducts = products.filter((p: any) => p.category === 'upholstery'); pageTitle = "Upholstery"; }
 
   return (
     <div style={{ backgroundColor: '#ffffff', color: '#000000', minHeight: '100vh', fontFamily: 'sans-serif' }}>
       <Navbar />
       
-      <div style={{ padding: '48px 24px', textAlign: 'center', borderBottom: '1px solid #eaeaea', marginBottom: '48px' }}>
+      <style dangerouslySetInnerHTML={{__html: `
+        @media (max-width: 768px) {
+          .shop-main { flex-direction: column !important; gap: 32px !important; padding: 0 16px 64px 16px !important; }
+          .shop-sidebar { width: 100% !important; position: static !important; }
+          .shop-header { padding: 32px 16px !important; margin-bottom: 24px !important; }
+          .shop-header h1 { font-size: 28px !important; }
+        }
+      `}} />
+
+      <div className="shop-header" style={{ padding: '48px 24px', textAlign: 'center', borderBottom: '1px solid #eaeaea', marginBottom: '48px' }}>
         <h1 style={{ fontSize: '36px', fontFamily: 'serif', letterSpacing: '0.1em', textTransform: 'uppercase', margin: 0 }}>{pageTitle}</h1>
       </div>
 
-      <main style={{ maxWidth: '1600px', margin: '0 auto', padding: '0 24px 100px 24px', display: 'flex', gap: '64px' }}>
-        <aside style={{ width: '250px', flexShrink: 0, position: 'sticky', top: '180px', height: 'fit-content' }}>
+      <main className="shop-main" style={{ maxWidth: '1600px', margin: '0 auto', padding: '0 24px 100px 24px', display: 'flex', gap: '64px' }}>
+        <aside className="shop-sidebar" style={{ width: '250px', flexShrink: 0, position: 'sticky', top: '180px', height: 'fit-content' }}>
           <div style={{ borderBottom: '1px solid #eaeaea', paddingBottom: '16px', marginBottom: '24px' }}>
             <h2 style={{ fontSize: '12px', fontWeight: 'bold', letterSpacing: '0.2em', textTransform: 'uppercase', margin: 0 }}>Refine</h2>
           </div>

@@ -22,7 +22,6 @@ export default function ProductPage() {
       setProduct(foundProduct);
       setMainImage(foundProduct.image || foundProduct.gallery?.[0]);
 
-      // Handle Favorites Check
       const savedFavs = localStorage.getItem('favorites');
       if (savedFavs) {
         const favsArray = JSON.parse(savedFavs);
@@ -31,7 +30,6 @@ export default function ProductPage() {
         }
       }
 
-      // Recently Viewed Logic
       const savedViews = localStorage.getItem('recentlyViewed');
       let viewedArray = savedViews ? JSON.parse(savedViews) : [];
       viewedArray = viewedArray.filter((p: any) => p.id !== foundProduct.id);
@@ -66,14 +64,26 @@ export default function ProductPage() {
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', color: '#000', fontFamily: 'sans-serif' }}>
       <Navbar />
       
-      <main style={{ maxWidth: '1400px', margin: '0 auto', padding: '60px 24px', display: 'flex', flexWrap: 'wrap', gap: '64px' }}>
+      <style dangerouslySetInnerHTML={{__html: `
+        @media (max-width: 768px) {
+          .product-main { padding: 32px 16px 64px 16px !important; flex-direction: column !important; gap: 32px !important; }
+          .gallery-container { flex-direction: column-reverse !important; }
+          .thumb-list { flex-direction: row !important; width: 100% !important; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+          .thumb-item { width: 80px !important; flex-shrink: 0; }
+          .main-img-wrap { min-height: 400px !important; }
+          .product-title { font-size: 24px !important; }
+        }
+      `}} />
+
+      <main className="product-main" style={{ maxWidth: '1400px', margin: '0 auto', padding: '60px 24px', display: 'flex', flexWrap: 'wrap', gap: '64px' }}>
         
         {/* Gallery Section */}
-        <div style={{ flex: '1 1 500px', display: 'flex', gap: '16px', flexDirection: 'row' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100px' }}>
+        <div className="gallery-container" style={{ flex: '1 1 500px', display: 'flex', gap: '16px', flexDirection: 'row' }}>
+          <div className="thumb-list" style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100px' }}>
             {product.gallery?.map((img: string, index: number) => (
               <img 
                 key={index} 
+                className="thumb-item"
                 src={img} 
                 alt="" 
                 onClick={() => setMainImage(img)} 
@@ -89,7 +99,7 @@ export default function ProductPage() {
               />
             ))}
           </div>
-          <div style={{ flex: 1, backgroundColor: '#f5f5f5' }}>
+          <div className="main-img-wrap" style={{ flex: 1, backgroundColor: '#f5f5f5' }}>
             <img src={mainImage} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', minHeight: '600px' }} />
           </div>
         </div>
@@ -99,7 +109,7 @@ export default function ProductPage() {
           <p style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#666', marginBottom: '16px' }}>{product.collection} Collection</p>
           
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
-            <h1 style={{ fontSize: '32px', fontFamily: 'serif', letterSpacing: '0.05em', textTransform: 'uppercase', margin: 0, paddingRight: '24px' }}>{product.name}</h1>
+            <h1 className="product-title" style={{ fontSize: '32px', fontFamily: 'serif', letterSpacing: '0.05em', textTransform: 'uppercase', margin: 0, paddingRight: '24px' }}>{product.name}</h1>
             <button onClick={handleToggleFavorite} style={{ background: 'none', border: 'none', cursor: 'pointer', color: isFavorite ? '#d9534f' : '#ccc', marginTop: '4px', padding: 0 }}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={isFavorite ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth={1.5} style={{ width: '28px', height: '28px', transition: 'color 0.2s' }}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />

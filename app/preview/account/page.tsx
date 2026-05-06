@@ -6,7 +6,7 @@ import Navbar from '../../components/Navbar';
 import { useUser, SignOutButton } from '@clerk/nextjs';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { products } from '../../data'; // We import data to match saved IDs
+import { products } from '../../data';
 
 function AccountDashboard() {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -24,13 +24,11 @@ function AccountDashboard() {
   }, [searchParams]);
 
   useEffect(() => {
-    // Load Recently Viewed
     const savedViews = localStorage.getItem('recentlyViewed');
     if (savedViews) {
       setRecentlyViewed(JSON.parse(savedViews));
     }
 
-    // Load Favorites
     const savedFavs = localStorage.getItem('favorites');
     if (savedFavs) {
       const favIds = JSON.parse(savedFavs);
@@ -67,6 +65,21 @@ function AccountDashboard() {
     <div style={{ backgroundColor: '#ffffff', color: '#000000', minHeight: '100vh', fontFamily: 'sans-serif' }}>
       <Navbar />
       
+      <style dangerouslySetInnerHTML={{__html: `
+        @media (max-width: 768px) {
+          .account-main { flex-direction: column !important; gap: 32px !important; padding: 0 16px 64px 16px !important; }
+          .account-sidebar { width: 100% !important; }
+          .account-nav { flex-direction: row !important; overflow-x: auto; white-space: nowrap; padding-bottom: 8px; border-bottom: 1px solid #eaeaea; }
+          .account-nav button { flex: 0 0 auto; border-left: none !important; border-bottom: 2px solid transparent; padding: 12px 16px !important; }
+          .account-nav button.active { border-bottom: 2px solid #D4AF37 !important; }
+          .sign-out-wrap { margin-top: 0 !important; padding-top: 0 !important; border-top: none !important; }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}} />
+
       <div style={{ padding: '48px 24px', textAlign: 'center', borderBottom: '1px solid #eaeaea', marginBottom: '48px' }}>
         <h1 style={{ fontSize: '36px', fontFamily: 'serif', letterSpacing: '0.1em', textTransform: 'uppercase', margin: 0 }}>
           My Account
@@ -76,37 +89,40 @@ function AccountDashboard() {
         </p>
       </div>
 
-      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px 100px 24px', display: 'flex', gap: '64px', flexDirection: 'row', flexWrap: 'wrap' }}>
+      <main className="account-main" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px 100px 24px', display: 'flex', gap: '64px', flexDirection: 'row' }}>
         
-        {/* SIDEBAR NAVIGATION */}
-        <aside style={{ width: '250px', flexShrink: 0 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <aside className="account-sidebar" style={{ width: '250px', flexShrink: 0 }}>
+          <div className="account-nav" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <button 
+              className={activeTab === 'profile' ? 'active' : ''}
               onClick={() => setActiveTab('profile')}
               style={{ textAlign: 'left', padding: '16px', backgroundColor: activeTab === 'profile' ? '#f5f5f5' : 'transparent', border: 'none', borderLeft: activeTab === 'profile' ? '2px solid #D4AF37' : '2px solid transparent', cursor: 'pointer', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 'bold', transition: 'all 0.2s' }}
             >
               Profile Details
             </button>
             <button 
+              className={activeTab === 'orders' ? 'active' : ''}
               onClick={() => setActiveTab('orders')}
               style={{ textAlign: 'left', padding: '16px', backgroundColor: activeTab === 'orders' ? '#f5f5f5' : 'transparent', border: 'none', borderLeft: activeTab === 'orders' ? '2px solid #D4AF37' : '2px solid transparent', cursor: 'pointer', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 'bold', transition: 'all 0.2s' }}
             >
               Order History
             </button>
             <button 
+              className={activeTab === 'favorites' ? 'active' : ''}
               onClick={() => setActiveTab('favorites')}
               style={{ textAlign: 'left', padding: '16px', backgroundColor: activeTab === 'favorites' ? '#f5f5f5' : 'transparent', border: 'none', borderLeft: activeTab === 'favorites' ? '2px solid #D4AF37' : '2px solid transparent', cursor: 'pointer', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 'bold', transition: 'all 0.2s' }}
             >
               Saved Favourites
             </button>
             <button 
+              className={activeTab === 'viewed' ? 'active' : ''}
               onClick={() => setActiveTab('viewed')}
               style={{ textAlign: 'left', padding: '16px', backgroundColor: activeTab === 'viewed' ? '#f5f5f5' : 'transparent', border: 'none', borderLeft: activeTab === 'viewed' ? '2px solid #D4AF37' : '2px solid transparent', cursor: 'pointer', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 'bold', transition: 'all 0.2s' }}
             >
               Recently Viewed
             </button>
             
-            <div style={{ marginTop: '32px', paddingTop: '16px', borderTop: '1px solid #eaeaea' }}>
+            <div className="sign-out-wrap" style={{ marginTop: '32px', paddingTop: '16px', borderTop: '1px solid #eaeaea' }}>
               <SignOutButton redirectUrl="/preview/shop">
                 <button style={{ textAlign: 'left', padding: '16px', width: '100%', background: 'transparent', border: 'none', cursor: 'pointer', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#d9534f', fontWeight: 'bold' }}>
                   Sign Out
@@ -116,8 +132,7 @@ function AccountDashboard() {
           </div>
         </aside>
 
-        {/* DASHBOARD CONTENT AREA */}
-        <div style={{ flexGrow: 1, minWidth: '300px' }}>
+        <div style={{ flexGrow: 1, minWidth: 0 }}>
           
           {activeTab === 'profile' && (
             <div style={{ animation: 'fadeIn 0.5s ease-in-out' }}>
@@ -196,12 +211,6 @@ function AccountDashboard() {
 
         </div>
       </main>
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}} />
     </div>
   );
 }
