@@ -49,7 +49,7 @@ export default function Navbar() {
 
           <div className="w-1/4 flex justify-end items-center space-x-5 lg:space-x-7 relative" ref={cartRef}>
             
-            {/* NEW: CLERK AUTHENTICATION ICONS */}
+            {/* CLERK AUTHENTICATION ICONS */}
             <Show when="signed-out">
               <SignInButton mode="modal">
                 <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
@@ -59,7 +59,7 @@ export default function Navbar() {
             </Show>
             
             <Show when="signed-in">
-              <UserButton afterSignOutUrl="/preview/shop" />
+              <UserButton />
             </Show>
             {/* END CLERK */}
 
