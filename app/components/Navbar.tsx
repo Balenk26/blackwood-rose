@@ -30,7 +30,17 @@ export default function Navbar() {
         @media (max-width: 768px) {
           .nav-brand { font-size: 22px !important; }
           .nav-sub { font-size: 7px !important; letter-spacing: 0.1em !important; }
-          .mobile-bottom-row ul { gap: 1.5rem !important; overflow-x: auto; padding: 0 16px !important; justify-content: flex-start !important; -webkit-overflow-scrolling: touch; }
+          /* FIXED: Added flex-wrap nowrap to force a single line, and adjusted gap */
+          .mobile-bottom-row ul { 
+            gap: 1.2rem !important; 
+            overflow-x: auto !important; 
+            padding: 0 16px !important; 
+            justify-content: flex-start !important; 
+            -webkit-overflow-scrolling: touch !important; 
+            flex-wrap: nowrap !important;
+          }
+          /* FIXED: Prevent the links from shrinking and squishing together */
+          .mobile-bottom-row ul li { flex-shrink: 0 !important; }
           .mobile-bottom-row ul::-webkit-scrollbar { display: none; }
           .cart-dropdown { width: 300px !important; right: -20px !important; }
           .nav-top-container { padding: 0 16px !important; }
