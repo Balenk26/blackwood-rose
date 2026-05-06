@@ -26,7 +26,8 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="w-full fixed top-0 left-0 flex flex-col" style={{ backgroundColor: '#000000', color: '#D4AF37', zIndex: 9999, borderBottom: '1px solid #333333' }}>
+      {/* FIXED: Lowered zIndex to 50 so the Clerk Modal can appear on top! */}
+      <header className="w-full fixed top-0 left-0 flex flex-col" style={{ backgroundColor: '#000000', color: '#D4AF37', zIndex: 50, borderBottom: '1px solid #333333' }}>
         
         <div className="w-full max-w-[1600px] mx-auto px-6 lg:px-12 h-[100px] flex items-center justify-between">
           
@@ -51,10 +52,11 @@ export default function Navbar() {
             
             {/* CLERK AUTHENTICATION ICONS */}
             <Show when="signed-out">
-              <SignInButton mode="modal">
-                <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+              {/* FIXED: Changed inner button to a span to prevent nesting bugs */}
+              <SignInButton mode="modal" fallbackRedirectUrl="/preview/account">
+                <span style={{ color: '#D4AF37', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
-                </button>
+                </span>
               </SignInButton>
             </Show>
             
