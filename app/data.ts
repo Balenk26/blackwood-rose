@@ -23,28 +23,6 @@ export const products = [
     doors: "1"
   },
 
-  // --- 2. DELPHINE 6-DOOR DRESSER BASE ---
-  {
-    id: 2,
-    name: "Delphine Collection 6-Door Large Dresser Base",
-    price: 1150, 
-    category: "dining", 
-    collection: "delphine", 
-    image: "/delphine-dresser-1.jpg", 
-    gallery: ["/delphine-dresser-1.jpg", "/delphine-dresser-2.jpg", "/delphine-dresser-3.jpg"],
-    description: "Part of our exclusive Delphine Collection, this magnificent 6-door, 3-drawer dresser base brings sweeping French-inspired elegance to your home. Expertly crafted with a gently distressed, hand-painted finish and a natural wood top, it offers monumental storage without compromising on delicate, classic styling. Perfect for grand dining rooms or spacious living areas, the intricate molding and antique-brass hardware make it a breathtaking focal point.",
-    features: [
-      "Grand Scale Storage: Six spacious cupboards and three wide drawers for ultimate organization.",
-      "Two-Tone Finish: Soft, distressed painted body contrasting beautifully with a natural rustic wood top.",
-      "Exquisite Detailing: Classic panelled doors, turned feet, and vintage-style brass handles.",
-      "Versatile Elegance: Functions flawlessly as a dining room sideboard, hallway credenza, or living room statement piece."
-    ],
-    sku: "BR-DEL-002",
-    material: "Solid Pine & Oak Veneer with Antique Brass Hardware",
-    dimensions: "214L x 50W x 90H (cm)",
-    doors: "6 (with 3 top drawers)"
-  },
-
   // --- 3. DELPHINE MASTER BEDROOM DRESSER ---
   {
     id: 3,
@@ -1223,12 +1201,12 @@ export const products = [
     dimensions: "45L x 45W x 76H (cm)"
   },
 
-  // --- 47. THE CAMDEN COLLECTION HALF MOON 3-TIER TABLE (New Listing) ---
+  // --- 47. THE CAMDEN COLLECTION HALF MOON 3-TIER TABLE ---
   {
     id: 47,
     name: "The Camden Collection Half Moon 3-Tier Table",
-    price: 450, // Placeholder price, adjust as needed!
-    category: "living", // Excellent for hallways and entryways
+    price: 450, 
+    category: "living", 
     collection: "camden", 
     image: "/camden-half-moon-table-1.jpg", 
     gallery: [
