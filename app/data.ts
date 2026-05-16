@@ -1542,7 +1542,7 @@ export const products = [
     dimensions: "108L x 116W x 72H (cm)"
   },
 
-  // --- 60. PROVENCE COLLECTION OUTDO 4 SEATER LOUNGE SET ---
+  // --- 60. PROVENCE COLLECTION OUTDOOR 4 SEATER LOUNGE SET ---
   {
     id: 60,
     name: "Provence Collection Outdoor 4 Seater Lounge Set",
@@ -1658,7 +1658,7 @@ export const products = [
   {
     id: 64,
     name: "Amalfi Collection Outdoor Five Seater Set",
-    price: 1995, // <-- Update this price to your actual retail price!
+    price: 1995, 
     category: "outdoor", 
     collection: "amalfi", 
     image: "/amalfi-5-seater-set-1.jpg", 
@@ -1682,5 +1682,33 @@ export const products = [
     sku: "22947", 
     material: "12mm HDPE wicker, powder-coated aluminum, Olefin fabric, acacia wood, tempered glass",
     dimensions: "3-Seater: 210W x 92D x 72H | Armchair: 90W x 92D x 72H | Table: 120L x 63W x 42H (Seat height: 59cm)"
+  },
+
+  // --- 65. CAPRI COLLECTION OUTDOOR FOOT STOOL ---
+  {
+    id: 65,
+    name: "Capri Collection Outdoor Foot Stool",
+    price: 195, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "capri", 
+    image: "/capri-footstool-1.jpg", 
+    gallery: [
+      "/capri-footstool-1.jpg", 
+      "/capri-footstool-2.jpg",
+      "/capri-footstool-3.jpg",
+      "/capri-footstool-4.jpg",
+      "/capri-footstool-5.jpg",
+      "/capri-footstool-6.jpg"
+    ],
+    description: "Embrace outdoor luxury with this meticulously crafted wicker footstool, showcasing a refined 5mm half-round HDPE weave that replicates authentic natural materials while offering superior weather resistance. The lightweight aluminum frame ensures easy repositioning while maintaining structural integrity against the elements. The cushion features advanced Olefin fabric technology, providing quick-drying comfort and exceptional color retention through sun exposure and light rain. This maintenance-friendly piece requires only basic cleaning with mild soap and water to maintain its pristine appearance. For a cohesive outdoor sanctuary, pair this footstool with atmospheric accessories—like a standing wicker lantern, LED wax candles, or a framed mirror to reflect natural light and create depth in covered outdoor spaces. This thoughtfully engineered footstool demonstrates a commitment to combining aesthetics with practicality, making it an essential addition to any premium outdoor space. The acacia wood feet add an organic touch while ensuring stability and longevity, complementing both contemporary and traditional exterior design schemes.",
+    features: [
+      "Premium HDPE Wicker: 5mm half-round weave replicating authentic natural materials with superior weather resistance.",
+      "Enduring Construction: Rust-proof aluminum frame grounded by eco-friendly acacia wood feet.",
+      "Advanced Cushion Technology: Quick-drying, shower-resistant Olefin fabric ensures exceptional color retention.",
+      "Low-Maintenance: Designed for year-round outdoor durability with simple soap-and-water cleaning."
+    ],
+    sku: "22954", 
+    material: "HDPE wicker, powder-coated aluminum frame, Olefin fabric cushion, acacia wood feet",
+    dimensions: "56L x 81W x 24H (cm)"
   }
 ];
