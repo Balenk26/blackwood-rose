@@ -1469,7 +1469,7 @@ export const products = [
   {
     id: 57,
     name: "Amalfi Collection Outdoor Dining Chair",
-    price: 275, // <-- Update this price to your actual retail price!
+    price: 275, 
     category: "outdoor", 
     collection: "amalfi", 
     image: "/amalfi-dining-chair-1.jpg", 
@@ -1489,5 +1489,29 @@ export const products = [
     sku: "22950", 
     material: "HDPE wicker, powder-coated aluminum frame, acacia wood, Olefin fabric",
     dimensions: "52L x 52W x 94H (cm)"
+  },
+
+  // --- 58. AMALFI COLLECTION OUTDOOR CORNER SET ---
+  {
+    id: 58,
+    name: "Amalfi Collection Outdoor Large Corner Set",
+    price: 1895, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "amalfi", 
+    image: "/amalfi-corner-set-1.jpg", 
+    gallery: [
+      "/amalfi-corner-set-1.jpg", 
+      "/amalfi-corner-set-2.jpg"
+    ],
+    description: "Radiating Mediterranean allure, this sumptuous corner set transforms gardens into resplendent entertainment havens. The intricate weave pattern and generous proportions promise unmatched outdoor luxury. The Amalfi Collection Outdoor Large Corner Set delivers unrivalled outdoor opulence with its thoughtfully arranged seating configuration. This magnificent garden furniture piece boasts an intricate weave pattern that mirrors the tranquil Mediterranean coastlines of its namesake. The luxurious cushioning invites lengthy afternoon conversations while the robust framework ensures this set remains a garden fixture for many summers ahead. The harmonious balance of aesthetics and durability makes it an irresistible addition to any outdoor living space or showroom floor. Each section has been deliberately proportioned to maximise comfort without overwhelming even modest garden settings. The neutral palette works wonderfully across diverse exterior décors, from countryside retreats to urban balconies, allowing your customers to visualise this stunning set within their own spaces. As part of the wider Amalfi Garden Furniture Range, this corner set establishes a cohesive outdoor narrative when paired with other collection pieces. We suggest complementing this corner set with the Amalfi Outdoor Lanterns to create ambient evening illumination or the Amalfi Weather-Resistant Throw Cushions available in coordinating coastal hues. For the ultimate alfresco entertainment setup, consider recommending the Amalfi Outdoor Drinks Cooler which maintains the same refined design language while adding practical functionality. The architectural silhouette of this corner arrangement creates a defined outdoor room feeling, helping consumers transform previously underutilised garden spaces into profitable extended living areas. This range consistently outperforms competing options due to its perfect union of visual appeal and practical engineering. The spacious dimensions allow comfortable seating for numerous guests while the included table provides convenient placement for refreshments. When presented as part of your retail collection, this statement set invariably attracts attention and generates enquiries, making it a smart investment for forward-thinking stockists aiming to diversify their outdoor furniture offerings.",
+    features: [
+      "Mediterranean Allure: Intricate weave pattern and graceful silhouette inspired by coastal Italian design.",
+      "Robust Construction: A durable framework ensures long-lasting stability across changing seasons.",
+      "Versatile Proportions: Perfect for both spacious gardens and more intimate balcony or patio settings.",
+      "Complete Entertainment Hub: Includes a practical matching table for refreshments and social gatherings."
+    ],
+    sku: "23912", 
+    material: "Weather-resistant wicker weave and robust frame",
+    dimensions: "80L x 212W x 80H (cm)"
   }
 ];
