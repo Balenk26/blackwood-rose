@@ -1873,7 +1873,7 @@ export const products = [
   {
     id: 72,
     name: "Amalfi Collection Outdoor Large Corner Set With Riser Table & 2 Stools",
-    price: 2495, // <-- Update this price to your actual retail price!
+    price: 2495, 
     category: "outdoor", 
     collection: "amalfi", 
     image: "/amalfi-corner-riser-1.jpg", 
@@ -1891,5 +1891,31 @@ export const products = [
     sku: "23914", 
     material: "Weather-resistant wicker, robust frame, adjustable table mechanism",
     dimensions: "92L x 277W x 72H (cm)"
+  },
+
+  // --- 73. AXIS PUTTY GREY CHAIR ---
+  {
+    id: 73,
+    name: "Axis Putty Grey Chair",
+    price: 145, // <-- Note: This is currently set to a placeholder retail price, please update if £40.60 is meant to be the final public price!
+    category: "outdoor", 
+    collection: "axis", 
+    image: "/axis-putty-chair-1.jpg", 
+    gallery: [
+      "/axis-putty-chair-1.jpg", 
+      "/axis-putty-chair-2.jpg",
+      "/axis-putty-chair-3.jpg",
+      "/axis-putty-chair-4.jpg"
+    ],
+    description: "Crafted in a sophisticated putty grey finish, this chair delivers contemporary appeal with its clean lines and thoughtful proportions that speak to modern sensibilities. The neutral putty grey tone provides a refined backdrop that harmonises beautifully with various outdoor palettes, whilst maintaining its distinctive character. Its carefully considered silhouette combines comfort with visual impact, creating a piece that functions as both seating and a curated statement. The chair's refined aesthetic draws attention without overwhelming spaces, making it an ideal choice for discerning homeowners. The putty grey colourway offers exceptional coordination potential, pairing seamlessly with weathered outdoor planters, textured cushions in complementary earth tones, and woven outdoor rugs that share similar neutral foundations. Consider showcasing alongside ceramic lanterns with matching grey undertones or rustic outdoor side tables that echo the chair's understated refinement. The colour's versatility extends to seasonal decorative accessories, working beautifully with both summer's bright outdoor cushions and autumn's deeper textile accents. The carefully balanced proportions and refined finish demonstrate quality construction built for lasting value, whilst the putty grey tone provides the flexibility demanded in modern outdoor living spaces.",
+    features: [
+      "Putty Grey Finish: A warm, neutral tone that complements diverse outdoor color schemes and natural surroundings.",
+      "Contemporary Design: Clean architectural lines and thoughtful proportions that speak to modern sensibilities.",
+      "Exceptional Versatility: Harmonizes perfectly with seasonal decorative accessories, textured cushions, and woven rugs.",
+      "Enduring Quality: Carefully balanced proportions and a refined, weather-resistant finish built for lasting value."
+    ],
+    sku: "24294", 
+    material: "Weather-resistant materials with a Putty Grey finish",
+    dimensions: "54L x 51W x 79H (cm)"
   }
 ];
