@@ -1576,7 +1576,7 @@ export const products = [
   {
     id: 61,
     name: "Palma Collection Outdoor Set",
-    price: 1595, // <-- Update this price to your actual retail price!
+    price: 1595, 
     category: "outdoor", 
     collection: "palma", 
     image: "/palma-outdoor-set-1.jpg", 
@@ -1600,5 +1600,30 @@ export const products = [
     sku: "22957", 
     material: "HDPE wicker, powder-coated aluminum, acacia hardwood, Olefin fabric",
     dimensions: "Sofa: 180L x 80W x 77H | Chair: 80L x 80W x 77H | Table: 115L x 65W x 41H (cm)"
+  },
+
+  // --- 62. PROVENCE COLLECTION OUTDOOR BISTRO TABLE ---
+  {
+    id: 62,
+    name: "Provence Collection Outdoor Bistro Table",
+    price: 245, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "provence", 
+    image: "/provence-bistro-table-1.jpg", 
+    gallery: [
+      "/provence-bistro-table-1.jpg", 
+      "/provence-bistro-table-2.jpg",
+      "/provence-bistro-table-3.jpg"
+    ],
+    description: "Outdoor dining takes on a refined character with this compact bistro table that seamlessly blends French provincial charm with contemporary functionality. The distinctive square proportions create an intimate dining experience perfect for courtyards, balconies, or café-style settings, while the robust construction ensures year-round durability against the elements. Within the Provence Collection, this piece maintains the characteristic weathered aesthetic that speaks to discerning customers seeking authentic outdoor furniture with enduring appeal. The carefully proportioned dimensions accommodate two diners comfortably, making it ideal for romantic meals or leisurely morning coffee rituals. Weather-resistant materials have been selected to withstand seasonal changes whilst maintaining the appealing patina that develops naturally over time. The table's neutral palette complements various architectural styles, from traditional cottage gardens to modern urban terraces. The compact footprint makes it suitable for space-conscious consumers, yet substantial enough to anchor outdoor seating arrangements effectively. This table represents the perfect intersection of practicality and style, ensuring strong customer satisfaction and an enduring luxury appeal.",
+    features: [
+      "Intimate Dining: Compact square design maximises intimate outdoor dining experiences.",
+      "Enduring Quality: Weather-resistant construction maintains an authentic, appealing patina.",
+      "Provincial Charm: French-inspired aesthetic with robust construction for year-round appeal.",
+      "Versatile Placement: Perfect for courtyards, balconies, or café-style patio settings."
+    ],
+    sku: "24515", 
+    material: "Weather-resistant materials with a weathered finish",
+    dimensions: "70L x 70W x 72H (cm)"
   }
 ];
