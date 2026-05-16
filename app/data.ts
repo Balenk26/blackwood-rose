@@ -1442,7 +1442,7 @@ export const products = [
   {
     id: 56,
     name: "Provence Collection Outdoor Dining Chair",
-    price: 345, // <-- Update this price to your actual retail price!
+    price: 345, 
     category: "outdoor", 
     collection: "provence", 
     image: "/provence-dining-chair-1.jpg", 
@@ -1463,5 +1463,31 @@ export const products = [
     sku: "23904", 
     material: "5mm HDPE wicker, powder-coated aluminium frame, Olefin fabric cushion",
     dimensions: "94L x 62W x 69H (cm)"
+  },
+
+  // --- 57. AMALFI COLLECTION OUTDOOR DINING CHAIR ---
+  {
+    id: 57,
+    name: "Amalfi Collection Outdoor Dining Chair",
+    price: 275, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "amalfi", 
+    image: "/amalfi-dining-chair-1.jpg", 
+    gallery: [
+      "/amalfi-dining-chair-1.jpg", 
+      "/amalfi-dining-chair-2.jpg", 
+      "/amalfi-dining-chair-3.jpg", 
+      "/amalfi-dining-chair-4.jpg"
+    ],
+    description: "Meticulously woven with 5mm half-round HDPE wicker, this outdoor dining chair showcases artisanal detail and authentic appeal. Built for outdoor endurance, the weather-resistant chair is perfect for creating resort-style dining spaces. The powder-coated aluminum frame ensures lasting stability while maintaining a graceful silhouette, beautifully complemented by eco-friendly acacia wood feet. The accompanying Olefin cushions offer superior weather resistance, resisting fading, UV rays, and moisture while providing quick-drying comfort. Style this chair alongside the Stamford Plank Collection coffee table and enhance your outdoor display with Tall Stone Effect Urn planters filled with Calabria olive trees. Complete the look with Kubu rattan storage baskets for a cohesive Mediterranean-inspired setting.",
+    features: [
+      "Authentic Appeal: Meticulously woven with 5mm half-round HDPE wicker for realistic texture and durability.",
+      "Enduring Construction: Features a rust-proof aluminum frame grounded by eco-friendly acacia wood feet.",
+      "Premium Comfort: Shower-resistant, UV-protected Olefin cushioning provides quick-drying, fade-resistant comfort.",
+      "Resort-Style Living: Designed for year-round outdoor durability to elevate any patio or garden space."
+    ],
+    sku: "22950", 
+    material: "HDPE wicker, powder-coated aluminum frame, acacia wood, Olefin fabric",
+    dimensions: "52L x 52W x 94H (cm)"
   }
 ];
