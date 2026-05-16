@@ -183,15 +183,7 @@ export const products = [
     category: "bedroom", 
     collection: "delphine", 
     image: "/delphine-left-chest-1.jpg", 
-    gallery: [
-      "/delphine-left-chest-1.jpg", 
-      "/delphine-left-chest-2.jpg",
-      "/delphine-left-chest-3.jpg",
-      "/delphine-left-chest-4.jpg",
-      "/delphine-left-chest-5.jpg",
-      "/delphine-left-chest-6.jpg",
-      "/delphine-left-chest-7.jpg"
-    ],
+    gallery: ["/delphine-left-chest-1.jpg", "/delphine-left-chest-2.jpg", "/delphine-left-chest-3.jpg", "/delphine-left-chest-4.jpg", "/delphine-left-chest-5.jpg", "/delphine-left-chest-6.jpg", "/delphine-left-chest-7.jpg"],
     description: "A perfect mirror to its right-hand counterpart, the Delphine 1-Drawer, 1-Door Chest in a left-hand configuration offers an essential, directional storage solution for refined interiors. Designed with a left-opening door, this piece is ideal for framing the left side of a bed or maximizing accessibility against a right-side wall. Featuring the collection's signature muted finish, clean lines, and vintage-inspired hardware, it provides flexible storage within a compact footprint. A smooth-gliding top drawer keeps daily essentials close at hand, while the concealed lower compartment seamlessly accommodates larger items. Whether standing alone as an elegant nightstand or paired symmetrically for a complete look, its heirloom-quality construction ensures decades of quiet, dependable use.",
     features: [
       "Directional Design: Left-hand door configuration designed for optimal spatial flow and symmetrical bedside pairing.",
@@ -513,7 +505,7 @@ export const products = [
       "/haldon-side-table-7.jpg",
       "/haldon-side-table-8.jpg"
     ],
-    description: "Compact in its footprint yet considered in its detail, the Haldon Collection 1-Drawer Side Table with Shelf offers a beautifully proportioned bedside or occasional table solution. It perfectly balances practical, concealed storage with open display. A single smooth-gliding drawer provides discreet access for everyday essentials, while the integrated shelf below offers an elegant platform for books, botanicals, or a statement lamp. Finished in the collection's signature quiet luxury, it integrates seamlessly within a broader Haldon scheme or stands with quiet confidence as a singular accent piece. Directly built with durability in mind, it promises a lifetime of quiet sophistication and daily utility.",
+    description: "Compact in its footprint yet considered in its detail, the Haldon Collection 1-Drawer Side Table with Shelf offers a beautifully proportioned bedside or occasional table solution. It perfectly balances practical, concealed storage with open display. A single smooth-gliding drawer provides discreet access for everyday essentials, while the integrated shelf below offers an elegant platform for books, botanicals, or a statement lamp. Finished in the collection's signature quiet luxury, it integrates seamlessly into a variety of interior styles. Whether anchoring a reading corner or serving as a refined bedside companion, this piece brings a sense of serene organization and exceptional craftsmanship to spaces where efficiency and elegance are paramount.",
     features: [
       "Discreet Storage: A single smooth-gliding drawer keeps personal everyday essentials neatly tucked away.",
       "Curated Display: An integrated lower shelf provides a perfect stage for oversized books, ceramics, or a reading lamp.",
@@ -1855,7 +1847,7 @@ export const products = [
   {
     id: 71,
     name: "Echo Putty Grey Chair",
-    price: 185, // <-- Update this price to your actual retail price!
+    price: 185, 
     category: "outdoor", 
     collection: "", 
     image: "/echo-putty-chair-1.jpg", 
@@ -1875,5 +1867,29 @@ export const products = [
     sku: "24298", 
     material: "Weather-resistant materials with a Putty Grey finish",
     dimensions: "50L x 55W x 77H (cm)"
+  },
+
+  // --- 72. AMALFI COLLECTION OUTDOOR LARGE CORNER SET WITH RISER TABLE + 2 STOOLS ---
+  {
+    id: 72,
+    name: "Amalfi Collection Outdoor Large Corner Set With Riser Table & 2 Stools",
+    price: 2495, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "amalfi", 
+    image: "/amalfi-corner-riser-1.jpg", 
+    gallery: [
+      "/amalfi-corner-riser-1.jpg", 
+      "/amalfi-corner-riser-2.jpg"
+    ],
+    description: "Improve your outdoor living space with this magnificent large corner set from the celebrated Amalfi collection. The distinctive riser table serves as the centrepiece of this luxurious arrangement, offering unmatched functionality as it elegantly adjusts from a casual coffee table height to a formal dining level with minimal effort. Wrapped in weather-resistant materials over a substantial frame, this corner set presents an inviting sanctuary for alfresco entertainment and relaxation throughout the seasons. The generous proportions accommodate multiple guests comfortably, while the streamlined silhouette projects a modern refinement. Two accompanying stools provide additional flexible seating options, perfect for accommodating extra visitors or creating intimate conversation clusters. The neutral palette ensures this statement piece coordinates seamlessly with various garden aesthetics, from contemporary minimalist to classic country settings. The modular nature of the set allows for versatile arrangement possibilities, maximising your patio space while demonstrating effortless lifestyle applications. Consider pairing with complementary outdoor accessories from our wider collection, such as weather-resistant cushions, atmospheric outdoor lighting solutions, or all-weather throws to complete the look. The substantial construction and thoughtful design details reflect a true commitment to quality, offering a resort-inspired aesthetic that helps you create a magazine-worthy outdoor space.",
+    features: [
+      "Innovative Versatility: Height-adjustable table mechanism effortlessly transitions between casual lounging and formal dining.",
+      "Enduring Durability: Weather-resistant construction withstands outdoor conditions while maintaining its luxury visual appeal.",
+      "Flexible Layout: Modular components and two additional stools allow multiple seating arrangements for diverse spaces.",
+      "Resort-Inspired Aesthetic: Clean architectural lines and a neutral palette coordinate seamlessly with any garden setting."
+    ],
+    sku: "23914", 
+    material: "Weather-resistant wicker, robust frame, adjustable table mechanism",
+    dimensions: "92L x 277W x 72H (cm)"
   }
 ];
