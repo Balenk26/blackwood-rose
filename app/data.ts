@@ -1227,5 +1227,32 @@ export const products = [
     sku: "23951", 
     material: "Solid wood with a refined finish",
     dimensions: "33L x 71W x 76H (cm)"
+  },
+
+  // --- 48. CROSS BACK DINING CHAIR (UNBRANDED) ---
+  {
+    id: 48,
+    name: "Cross Back Dining Chair",
+    price: 145,
+    category: "dining", 
+    collection: "", 
+    image: "/cross-back-chair-1.jpg", 
+    gallery: [
+      "/cross-back-chair-1.jpg", 
+      "/cross-back-chair-2.jpg",
+      "/cross-back-chair-3.jpg",
+      "/cross-back-chair-4.jpg",
+      "/cross-back-chair-5.jpg"
+    ],
+    description: "Discover our Cross Back Chair: a perfect blend of Elm wood, comfort, and durability. Ideal for homes and restaurants alike, this versatile seat offers timeless style and lasting quality. Designed with practicality and comfort in mind, this piece makes for a remarkably hard-wearing dining chair. It features a cross-back design which adds ergonomic support, while the black finish of the metal gives a subtle industrial feel. The chair is finished with a traditional rush seat, ideal for comfort and longevity. Durable enough for the catering sector and a fantastically timeless addition to the modern home.",
+    features: [
+      "Premium Materials: Handcrafted from beautiful, hard-wearing Elm wood.",
+      "Traditional Comfort: Features a hand-woven rush seat designed for long-lasting comfort.",
+      "Industrial Edge: A stylish black metal cross-back provides sturdy support and visual contrast.",
+      "Commercial Grade: Built with exceptional durability suitable for both busy homes and restaurants."
+    ],
+    sku: "20571", 
+    material: "Elm wood, metal framing, and a rush seat",
+    dimensions: "41L x 42W x 88H (cm)"
   }
 ];
