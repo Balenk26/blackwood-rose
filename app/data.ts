@@ -1390,7 +1390,7 @@ export const products = [
   {
     id: 54,
     name: "Capri Collection Outdoor Large Corner And Coffee Table Set",
-    price: 1895, // <-- Update this price to your actual retail price!
+    price: 1895, 
     category: "outdoor", 
     collection: "capri", 
     image: "/capri-corner-set-1.jpg", 
@@ -1410,5 +1410,31 @@ export const products = [
     sku: "23913", 
     material: "Weather-resistant materials",
     dimensions: "212L x 80W x 80H (cm)"
+  },
+
+  // --- 55. CAPRI COLLECTION OUTDOOR DINING CHAIR ---
+  {
+    id: 55,
+    name: "Capri Collection Outdoor Dining Chair",
+    price: 295, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "capri", 
+    image: "/capri-dining-chair-1.jpg", 
+    gallery: [
+      "/capri-dining-chair-1.jpg", 
+      "/capri-dining-chair-2.jpg", 
+      "/capri-dining-chair-3.jpg", 
+      "/capri-dining-chair-4.jpg"
+    ],
+    description: "This is the Capri Collection Outdoor Dining Chair. This premium quality HDPE outdoor wicker dining chair is the perfect blend of style and durability. Every detail of its construction has been built with your long-lasting enjoyment in mind. With a frame built from lightweight yet sturdy powder-coated aluminium, it is protected against rust and corrosion within. Externally, the choice of 5mm half-round HDPE wicker weave delivers the most realistic and hardwearing wicker on the market. Eco-friendly, fast-growing acacia wood feet also offer long-lasting durability. Built to last, this dining chair is weatherproof, rustproof and can remain outdoors year around (although, like anything, it will last even longer if stored under cover from the elements). The chair comes with a comfortable seat cushion in a grade 5 Olefin fabric that keeps its colour. The cushion is shower-resistant, UV-resistant and easy to remove. Because Olefin is more resistant to mildew than polyester and drys more quickly, it is an excellent choice for furniture exposed to the elements. Ideally cover when not in extended periods of use and bring inside during winter months for increased longevity. Cleaning this outdoor furniture will be easy - HDPE wicker can be washed with mild soapy water (without abrasive solvents) and a soft brush. The cushion is sponge clean only.",
+    features: [
+      "Premium HDPE Wicker: 5mm half-round weave for a realistic look and ultimate durability.",
+      "Weatherproof & Rustproof: Powder-coated aluminium frame allows for year-round outdoor use.",
+      "Comfortable Olefin Cushion: Grade 5 fabric that is shower-resistant, UV-resistant, and mildew-resistant.",
+      "Eco-Friendly Base: Finished with fast-growing, durable acacia wood feet."
+    ],
+    sku: "22951", 
+    material: "HDPE wicker, powder-coated aluminium frame, acacia wood feet, Olefin cushion",
+    dimensions: "60L x 48W x 103H (cm)"
   }
 ];
