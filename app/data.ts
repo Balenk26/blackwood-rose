@@ -1296,7 +1296,7 @@ export const products = [
       "/live-edge-bench-2.jpg",
       "/live-edge-bench-3.jpg",
       "/live-edge-bench-4.jpg",
-      "/live-edge-bench-5.jpg" // Added the 5th image here!
+      "/live-edge-bench-5.jpg"
     ],
     description: "Bring the raw splendor of Indian acacia wood into your retail space with this remarkable bench, featuring an authentic live edge that tells a unique story in every piece. The natural grain patterns and organic contours create an arresting visual narrative, while the understated grey metal cross-leg frame provides an industrial contrast to the wood's rustic character. This bench embodies the minimal, earthy aesthetics that modern homes actively seek, making it a reliable and striking addition in both traditional and contemporary settings. Perfect for dining spaces or as a statement hallway piece. To create a cohesive display, pair this piece with organic refinement like potted orchids, faux pampas grass, or ceramic accent bowls to seamlessly enhance the bench's natural elements.",
     features: [
@@ -1308,5 +1308,31 @@ export const products = [
     sku: "19744", 
     material: "Indian acacia wood and grey metal frame",
     dimensions: "40L x 180W x 45H (cm)"
+  },
+
+  // --- 51. FRANKLIN HARDWOOD SHAPED BAR STOOL (UNBRANDED) ---
+  {
+    id: 51,
+    name: "Franklin Hardwood Shaped Bar Stool",
+    price: 135, // <-- Update this price to your actual retail price!
+    category: "dining", 
+    collection: "", 
+    image: "/franklin-bar-stool-1.jpg", 
+    gallery: [
+      "/franklin-bar-stool-1.jpg", 
+      "/franklin-bar-stool-2.jpg",
+      "/franklin-bar-stool-3.jpg",
+      "/franklin-bar-stool-4.jpg"
+    ],
+    description: "This is the Franklin Hardwood Shaped Barstool. It features a beautifully crafted hardwood seat with complementing metal legs and frame. This immensely popular bar stool design effortlessly complements an extensive range of interiors, making it an ideal choice for a residential kitchen island, home bar, or commercial restaurant and hotel settings. Featuring a contoured, shaped seat, this barstool offers the perfect combination of industrial style, daily practicality, and genuine comfort.",
+    features: [
+      "Industrial Styling: A perfect pairing of a solid hardwood seat and a robust metal frame.",
+      "Handcrafted Quality: Beautifully made and incredibly stylish for any interior setting.",
+      "Ergonomic Comfort: Features a carefully shaped hardwood seat for extended sitting.",
+      "Versatile Application: Highly popular design suited for kitchens, home bars, restaurants, or hotels."
+    ],
+    sku: "19924", 
+    material: "Hardwood seat and metal frame",
+    dimensions: "35L x 40W x 75H (cm)"
   }
 ];
