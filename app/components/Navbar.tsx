@@ -7,11 +7,11 @@ import { SignInButton, Show, UserButton } from '@clerk/nextjs';
 
 export default function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isBrandsOpen, setIsBrandsOpen] = useState(false);
+  const [isCollectionsOpen, setIsCollectionsOpen] = useState(false);
   
   const { cart, cartTotal, removeFromCart } = useCart();
   const cartRef = useRef<HTMLDivElement>(null);
-  const brandsRef = useRef<HTMLLIElement>(null);
+  const collectionsRef = useRef<HTMLLIElement>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -20,8 +20,8 @@ export default function Navbar() {
       if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
         setIsCartOpen(false);
       }
-      if (brandsRef.current && !brandsRef.current.contains(event.target as Node)) {
-        setIsBrandsOpen(false);
+      if (collectionsRef.current && !collectionsRef.current.contains(event.target as Node)) {
+        setIsCollectionsOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -64,7 +64,7 @@ export default function Navbar() {
             z-index: 99999 !important;
           }
           
-          .brands-dropdown {
+          .collections-dropdown {
             position: fixed !important;
             top: 155px !important;
             left: 0 !important;
@@ -174,25 +174,23 @@ export default function Navbar() {
             <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop?category=dining" style={{ textDecoration: 'none', color: '#D4AF37' }}>Dining</Link></li>
             <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop?category=bedroom" style={{ textDecoration: 'none', color: '#D4AF37' }}>Bedroom</Link></li>
             <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop?category=upholstery" style={{ textDecoration: 'none', color: '#D4AF37' }}>Upholstery</Link></li>
-            
-            {/* ADDED OUTDOOR SECTION HERE */}
             <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop?category=outdoor" style={{ textDecoration: 'none', color: '#D4AF37' }}>Outdoor</Link></li>
             
             <li 
-              ref={brandsRef}
+              ref={collectionsRef}
               style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center', cursor: 'pointer' }}
-              onClick={(e) => { e.preventDefault(); setIsBrandsOpen(!isBrandsOpen); }}
+              onClick={(e) => { e.preventDefault(); setIsCollectionsOpen(!isCollectionsOpen); }}
             >
-              <div style={{ color: '#D4AF37', fontWeight: 'bold' }}>BRANDS</div>
+              <div style={{ color: '#D4AF37', fontWeight: 'bold' }}>COLLECTIONS</div>
               
-              {isBrandsOpen && (
-                <div className="brands-dropdown" style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', backgroundColor: '#000', border: '1px solid #333', padding: '16px 24px', minWidth: '180px', display: 'flex', flexDirection: 'column', gap: '16px', zIndex: 100, textAlign: 'center' }}>
-                  <Link href="/preview/shop?collection=delphine" onClick={(e) => { e.stopPropagation(); setIsBrandsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Delphine Collection</Link>
-                  <Link href="/preview/shop?collection=reed" onClick={(e) => { e.stopPropagation(); setIsBrandsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Reed Collection</Link>
-                  <Link href="/preview/shop?collection=haldon" onClick={(e) => { e.stopPropagation(); setIsBrandsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Haldon Collection</Link>
-                  <Link href="/preview/shop?collection=lennox" onClick={(e) => { e.stopPropagation(); setIsBrandsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Lennox Collection</Link>
-                  <Link href="/preview/shop?collection=rutland" onClick={(e) => { e.stopPropagation(); setIsBrandsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Rutland Collection</Link>
-                  <Link href="/preview/shop?collection=camden" onClick={(e) => { e.stopPropagation(); setIsBrandsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Camden Collection</Link>
+              {isCollectionsOpen && (
+                <div className="collections-dropdown" style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', backgroundColor: '#000', border: '1px solid #333', padding: '16px 24px', minWidth: '180px', display: 'flex', flexDirection: 'column', gap: '16px', zIndex: 100, textAlign: 'center' }}>
+                  <Link href="/preview/shop?collection=delphine" onClick={(e) => { e.stopPropagation(); setIsCollectionsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Delphine Collection</Link>
+                  <Link href="/preview/shop?collection=reed" onClick={(e) => { e.stopPropagation(); setIsCollectionsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Reed Collection</Link>
+                  <Link href="/preview/shop?collection=haldon" onClick={(e) => { e.stopPropagation(); setIsCollectionsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Haldon Collection</Link>
+                  <Link href="/preview/shop?collection=lennox" onClick={(e) => { e.stopPropagation(); setIsCollectionsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Lennox Collection</Link>
+                  <Link href="/preview/shop?collection=rutland" onClick={(e) => { e.stopPropagation(); setIsCollectionsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Rutland Collection</Link>
+                  <Link href="/preview/shop?collection=camden" onClick={(e) => { e.stopPropagation(); setIsCollectionsOpen(false); }} style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', transition: 'color 0.2s', display: 'block' }}>Camden Collection</Link>
                 </div>
               )}
             </li>
