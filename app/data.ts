@@ -1495,7 +1495,7 @@ export const products = [
   {
     id: 58,
     name: "Amalfi Collection Outdoor Large Corner Set",
-    price: 1895, // <-- Update this price to your actual retail price!
+    price: 1895, 
     category: "outdoor", 
     collection: "amalfi", 
     image: "/amalfi-corner-set-1.jpg", 
@@ -1513,5 +1513,32 @@ export const products = [
     sku: "23912", 
     material: "Weather-resistant wicker weave and robust frame",
     dimensions: "80L x 212W x 80H (cm)"
+  },
+
+  // --- 59. BLOOM COLLECTION OUTDOOR LOUNGE CHAIR ---
+  {
+    id: 59,
+    name: "Bloom Collection Outdoor Large Lounge Chair",
+    price: 595, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "bloom", 
+    image: "/bloom-lounge-chair-1.jpg", 
+    gallery: [
+      "/bloom-lounge-chair-1.jpg", 
+      "/bloom-lounge-chair-2.jpg",
+      "/bloom-lounge-chair-3.jpg",
+      "/bloom-lounge-chair-4.jpg",
+      "/bloom-lounge-chair-5.jpg"
+    ],
+    description: "Outdoor relaxation reaches new dimensions with this generously proportioned lounge chair that redefines comfort for commercial hospitality and retail environments. The oversized design creates an inviting sanctuary where customers can truly unwind, making it an irresistible centrepiece for any outdoor collection. Its substantial frame showcases meticulous attention to detail, with clean lines that speak to contemporary sensibilities whilst maintaining universal appeal across diverse customer demographics. The chair's impressive scale commands attention in showroom displays, instantly communicating quality and luxury to discerning buyers. Within the Bloom Garden Furniture Range, this piece represents the pinnacle of outdoor seating solutions, offering retailers a statement piece that drives sales through its undeniable presence and comfort credentials. The design philosophy centres on creating outdoor living spaces that rival interior comfort, positioning this chair as an essential investment for retailers targeting the growing outdoor lifestyle market. Its generous proportions accommodate various body types, ensuring broad customer appeal whilst the refined aesthetic attracts design-conscious consumers willing to invest in quality outdoor furniture. Perfect pairings from complementary collections include coordinating outdoor cushions in weather-resistant fabrics, decorative lanterns that enhance evening ambience, and stylish outdoor side tables for convenient placement of refreshments. Consider adding outdoor throws in coordinating colours, decorative planters that frame the seating area, and ambient lighting solutions that extend usage into evening hours. The chair's design language speaks fluently to both minimalist outdoor schemes and more elaborate garden settings, offering retailers flexibility in merchandising and display options. Its commercial-grade construction ensures longevity, providing retailers with confidence in product durability whilst the contemporary aesthetic ensures continued relevance in evolving outdoor furniture markets. This investment piece commands premium pricing whilst delivering exceptional value through its combination of comfort, style, and enduring appeal that keeps customers returning season after season.",
+    features: [
+      "Unmatched Comfort: Generous, oversized proportions maximise comfort appeal to create an inviting outdoor sanctuary.",
+      "Enduring Durability: Commercial-grade, weather-resistant construction ensures lasting performance across changing seasons.",
+      "Contemporary Aesthetic: Clean lines and modern design seamlessly suit diverse outdoor spaces from urban balconies to expansive patios.",
+      "Versatile Styling: Perfectly pairs with outdoor throws, decorative lanterns, and stylish side tables for a complete look."
+    ],
+    sku: "24516", 
+    material: "Weather-resistant fabric and robust frame construction",
+    dimensions: "108L x 116W x 72H (cm)"
   }
 ];
