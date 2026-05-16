@@ -1416,7 +1416,7 @@ export const products = [
   {
     id: 55,
     name: "Capri Collection Outdoor Dining Chair",
-    price: 295, // <-- Update this price to your actual retail price!
+    price: 295, 
     category: "outdoor", 
     collection: "capri", 
     image: "/capri-dining-chair-1.jpg", 
@@ -1436,5 +1436,32 @@ export const products = [
     sku: "22951", 
     material: "HDPE wicker, powder-coated aluminium frame, acacia wood feet, Olefin cushion",
     dimensions: "60L x 48W x 103H (cm)"
+  },
+
+  // --- 56. PROVENCE COLLECTION OUTDOOR DINING CHAIR ---
+  {
+    id: 56,
+    name: "Provence Collection Outdoor Dining Chair",
+    price: 345, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "provence", 
+    image: "/provence-dining-chair-1.jpg", 
+    gallery: [
+      "/provence-dining-chair-1.jpg", 
+      "/provence-dining-chair-2.jpg", 
+      "/provence-dining-chair-3.jpg", 
+      "/provence-dining-chair-4.jpg",
+      "/provence-dining-chair-5.jpg"
+    ],
+    description: "Bask in the unmatched luxury of our outdoor dining chair from the Provence Collection. This chair represents the pinnacle of al fresco seating, with its chunky 5mm round HDPE wicker weave offering an authentic rattan appearance while providing superior durability against the elements. The thoughtfully engineered powder-coated aluminium frame ensures this chair remains lightweight yet remarkably sturdy, completely protected against rust and corrosion even in challenging weather conditions. What truly distinguishes this dining chair is the meticulous attention to comfort—plush seat cushions crafted from grade 5 Olefin fabric retain their vibrant colour while resisting moisture and UV damage. The fabric's quick-drying properties make it vastly superior to standard polyester options for outdoor use. The chair's substantial proportions create a commanding presence in any garden setting, patio, or conservatory. The Provence Collection's distinctive styling pairs magnificently with decorative garden accessories to create a cohesive outdoor entertainment zone. Maintenance couldn't be simpler—the HDPE rattan requires only occasional cleaning with mild soapy water and a soft brush, maintaining its pristine appearance for years with minimal effort. While designed to withstand year-round outdoor placement, the chair's longevity can be further extended by storing cushions inside during winter months or covering during extended periods of non-use. This dining chair delivers an impressive combination of style, substance and practicality that your customers will appreciate season after season.",
+    features: [
+      "Authentic Aesthetics: Chunky 5mm round HDPE wicker weave offers a realistic rattan appearance with superior durability.",
+      "Enduring Quality: Rust-proof, powder-coated aluminium frame ensures years of structural integrity.",
+      "Premium Comfort: Quick-drying grade 5 Olefin cushions resist moisture and UV damage.",
+      "Low Maintenance: Weather-resistant construction allows year-round outdoor placement with simple soap-and-water cleaning."
+    ],
+    sku: "23904", 
+    material: "5mm HDPE wicker, powder-coated aluminium frame, Olefin fabric cushion",
+    dimensions: "94L x 62W x 69H (cm)"
   }
 ];
