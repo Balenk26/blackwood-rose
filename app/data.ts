@@ -695,6 +695,9 @@ export const products = [
   // --- 29. LENNOX BLACK 2-DOOR SMALL SIDEBOARD ---
   {
     id: 29,
+    name: "Lennox Black 2-Door Small SideBOARD ---
+  {
+    id: 29,
     name: "Lennox Black 2-Door Small Sideboard",
     price: 450, 
     category: "dining", 
@@ -825,7 +828,7 @@ export const products = [
     ],
     description: "Contemporary urban design meets highly adaptable functionality in this pair of Lennox Black Framed Side Tables. Embodying the collection's refined aesthetic, these tables feature striking black frames that create a dramatic silhouette while maintaining an airy, open presence that never overwhelms a room. The industrial-inspired metal framework demonstrates precise engineering and geometric precision. The clever nesting design provides endless flexibility—keep them clustered together for a beautifully layered display, or separate them when hosting to offer convenient surfaces for drinks and styling. Their minimalist profile makes them an impeccable choice for contemporary spaces where understated refinement is paramount. Style them with abstract sculptures, metallic accents, or low atmospheric lighting to create a complete, cohesive modern narrative.",
     features: [
-      "Flexible Nesting Design: Two perfectly proportioned tables that can be layered together or separated for entertaining.",
+      "Flexible Nesting Design: Two perfectly proportioned tables that can be rendered together or separated for entertaining.",
       "Architectural Silhouette: Striking, clean-lined frames that deliver industrial-chic style with a visually light footprint.",
       "Matte Black Finish: A deep, sophisticated noir finish that grounds your space and highlights curated decor.",
       "Heirloom Durability: Precision-engineered with robust metal construction for unwavering stability and daily use."
@@ -1014,7 +1017,7 @@ export const products = [
   // --- 40. THE RUTLAND COLLECTION SQUARE SIDE TABLE ---
   {
     id: 40,
-    name: "The Rutland Collection Side Table",
+    name: "The Rutland Collection Square Side Table",
     price: 295, 
     category: "living", 
     collection: "rutland", 
@@ -1770,7 +1773,7 @@ export const products = [
   {
     id: 68,
     name: "Echo French Grey Chair",
-    price: 185, // <-- Update this price to your actual retail price!
+    price: 185, 
     category: "outdoor", 
     collection: "", 
     image: "/echo-chair-1.jpg", 
@@ -1790,5 +1793,30 @@ export const products = [
     sku: "24299", 
     material: "Weather-resistant materials with a French Grey finish",
     dimensions: "50L x 55W x 77H (cm)"
+  },
+
+  // --- 69. AXIS FRENCH GREY CARVER CHAIR ---
+  {
+    id: 69,
+    name: "Axis French Grey Carver Chair",
+    price: 225, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "axis", 
+    image: "/axis-carver-chair-1.jpg", 
+    gallery: [
+      "/axis-carver-chair-1.jpg", 
+      "/axis-carver-chair-2.jpg", 
+      "/axis-carver-chair-3.jpg"
+    ],
+    description: "This French Grey Carver Chair showcases refined outdoor dining luxury with its carefully selected tonal finish that complements any garden or patio setting. The carver design provides enhanced comfort and support through its smoothly integrated armrests, making it ideal for extended outdoor entertaining sessions. Part of the distinguished Axis collection, this piece demonstrates superior construction methods that ensure weather resistance whilst maintaining its sophisticated appearance throughout the changing seasons. The French Grey colourway offers a contemporary neutral palette that harmonises beautifully with various outdoor décor themes, from coastal schemes to modern architectural garden designs. The carver configuration makes it particularly stunning for head-of-table positioning, creating elegant focal points in outdoor dining arrangements. To complete the outdoor aesthetic, consider pairing with outdoor cushions in complementary tones, weatherproof table runners, or atmospheric garden lanterns that enhance the ambiance for evening al fresco dining.",
+    features: [
+      "Carver Silhouette: Built-in armrests provide enhanced upper-body comfort and support for long al fresco meals.",
+      "Tonal Mastery: Refined French Grey neutral finish easily harmonizes with coastal or modern garden aesthetics.",
+      "All-Weather Proof: Advanced construction methods ensure robust weather resistance throughout the changing British seasons.",
+      "Head of Table Anchor: Striking geometric layout profile makes it ideal for anchoring dining table arrangements."
+    ],
+    sku: "24293", 
+    material: "Weather-resistant materials with a French Grey finish",
+    dimensions: "54L x 60W x 79H (cm)"
   }
 ];
