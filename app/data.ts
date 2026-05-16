@@ -1254,5 +1254,32 @@ export const products = [
     sku: "20571", 
     material: "Elm wood, metal framing, and a rush seat",
     dimensions: "41L x 42W x 88H (cm)"
+  },
+
+  // --- 49. ADJUSTABLE TRACTOR SEAT (UNBRANDED) ---
+  {
+    id: 49,
+    name: "Adjustable Tractor Seat",
+    price: 125, // <-- Update this price to your actual retail price!
+    category: "dining", 
+    collection: "", 
+    image: "/adjustable-tractor-seat-1.jpg", 
+    gallery: [
+      "/adjustable-tractor-seat-1.jpg", 
+      "/adjustable-tractor-seat-2.jpg",
+      "/adjustable-tractor-seat-3.jpg",
+      "/adjustable-tractor-seat-4.jpg",
+      "/adjustable-tractor-seat-5.jpg"
+    ],
+    description: "Elevate any space with this adjustable Tractor Seat, blending practical comfort and bold industrial style. The height-adjustable design and contoured seat ensure optimal ergonomics, while the sleek black metal lends a modern, eye-catching appeal. A perfectly practical and stylish addition of seating to inject personality into any interior whether it be a home, bar, hotel, or venue. The stool easily adjusts in height, while the seat has been shaped to ensure maximum comfort. The use of black metal gives a bold industrial feel that can be complemented with a range of other furnishings and styles to create your ideal look.",
+    features: [
+      "Industrial Styling: Bold black metal construction perfect for modern, loft, or eclectic interiors.",
+      "Handcrafted Quality: Beautifully made and incredibly stylish for both residential and commercial spaces.",
+      "Ergonomic Comfort: Features a contoured tractor-style seat designed for extended sitting.",
+      "Adjustable Height: Easily adapts to fit various counter, bar, or dining table heights."
+    ],
+    sku: "19925", 
+    material: "Sleek black metal",
+    dimensions: "37L x 37W x 86H (cm)"
   }
 ];
