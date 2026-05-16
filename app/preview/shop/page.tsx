@@ -93,10 +93,12 @@ function ShopContent() {
   else if (collectionFilter === 'rutland') { displayedProducts = products.filter((p: any) => p.collection === 'rutland'); pageTitle = "Rutland Collection"; }
   else if (collectionFilter === 'camden') { displayedProducts = products.filter((p: any) => p.collection === 'camden'); pageTitle = "Camden Collection"; }
 
+  // ADDED: Logic to filter for Outdoor products!
   if (categoryFilter === 'living') { displayedProducts = products.filter((p: any) => p.category === 'living'); pageTitle = "Living Room"; }
   else if (categoryFilter === 'dining') { displayedProducts = products.filter((p: any) => p.category === 'dining'); pageTitle = "Dining Room"; }
   else if (categoryFilter === 'bedroom') { displayedProducts = products.filter((p: any) => p.category === 'bedroom'); pageTitle = "Bedroom"; }
   else if (categoryFilter === 'upholstery') { displayedProducts = products.filter((p: any) => p.category === 'upholstery'); pageTitle = "Upholstery"; }
+  else if (categoryFilter === 'outdoor') { displayedProducts = products.filter((p: any) => p.category === 'outdoor'); pageTitle = "Outdoor Living"; }
 
   return (
     <div style={{ backgroundColor: '#ffffff', color: '#000000', minHeight: '100vh', fontFamily: 'sans-serif' }}>

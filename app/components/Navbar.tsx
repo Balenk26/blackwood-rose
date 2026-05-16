@@ -7,7 +7,7 @@ import { SignInButton, Show, UserButton } from '@clerk/nextjs';
 
 export default function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isBrandsOpen, setIsBrandsOpen] = useState(false); // Changed from Hovered to Open
+  const [isBrandsOpen, setIsBrandsOpen] = useState(false);
   
   const { cart, cartTotal, removeFromCart } = useCart();
   const cartRef = useRef<HTMLDivElement>(null);
@@ -20,7 +20,6 @@ export default function Navbar() {
       if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
         setIsCartOpen(false);
       }
-      // Closes brands menu if you click anywhere else on the screen
       if (brandsRef.current && !brandsRef.current.contains(event.target as Node)) {
         setIsBrandsOpen(false);
       }
@@ -33,30 +32,38 @@ export default function Navbar() {
     <>
       <style dangerouslySetInnerHTML={{__html: `
         @media (max-width: 768px) {
-          /* Force the center logo to shrink and wrap so it doesn't push the icons away */
           .nav-brand { font-size: 16px !important; letter-spacing: 0.05em !important; line-height: 1.2 !important; white-space: normal !important; text-align: center; }
           .nav-sub { font-size: 6px !important; letter-spacing: 0.1em !important; display: block; margin-top: 2px !important; }
           
-          /* The Ultimate Icon Fix: Thumbtack the left and right columns to the edges */
           .nav-top-container { display: flex !important; justify-content: center !important; position: relative !important; padding: 0 !important; }
           .nav-left-col { position: absolute !important; left: 16px !important; width: auto !important; }
           .nav-right-col { position: absolute !important; right: 16px !important; width: auto !important; }
           .nav-center-col { width: 60% !important; }
 
-          /* Force the bottom menu into a swipable single line */
+          /* Adjusted for 7 menu items */
           .mobile-bottom-row ul { 
-            gap: 1.2rem !important; 
-            overflow-x: auto !important; 
-            padding: 0 16px !important; 
-            justify-content: flex-start !important; 
-            -webkit-overflow-scrolling: touch !important; 
+            gap: 0.2rem !important; 
+            padding: 0 8px !important; 
+            justify-content: space-between !important; 
             flex-wrap: nowrap !important;
           }
-          .mobile-bottom-row ul li { flex-shrink: 0 !important; }
+          .mobile-bottom-row ul li, .mobile-bottom-row ul li a, .mobile-bottom-row ul li div { 
+            font-size: 7.5px !important; 
+            letter-spacing: 0.02em !important; 
+            flex-shrink: 1 !important; 
+          }
           .mobile-bottom-row ul::-webkit-scrollbar { display: none; }
           
-          /* Pull dropdowns safely onto the screen */
-          .cart-dropdown { width: 280px !important; right: -16px !important; max-width: 90vw !important; }
+          .cart-dropdown { 
+            position: fixed !important;
+            top: 100px !important;
+            right: 0 !important;
+            width: 100vw !important; 
+            max-width: 100vw !important; 
+            box-sizing: border-box !important;
+            z-index: 99999 !important;
+          }
+          
           .brands-dropdown {
             position: fixed !important;
             top: 155px !important;
@@ -66,6 +73,7 @@ export default function Navbar() {
             background-color: rgba(0,0,0,0.98) !important;
             border: none !important;
             border-bottom: 1px solid #333 !important;
+            z-index: 99999 !important;
           }
         }
       `}} />
@@ -74,7 +82,6 @@ export default function Navbar() {
         
         <div className="nav-top-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', maxWidth: '1600px', margin: '0 auto', height: '100px', padding: '0 24px' }}>
           
-          {/* Left Column */}
           <div className="nav-left-col" style={{ width: '120px', display: 'flex', justifyContent: 'flex-start' }}>
             <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer' }}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}>
@@ -83,7 +90,6 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Center Column (Logo) */}
           <div className="nav-center-col" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <Link href="/preview" className="nav-brand" style={{ textDecoration: 'none', color: '#D4AF37', fontSize: '32px', fontFamily: 'serif', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
               Blackwood & Rose
@@ -93,7 +99,6 @@ export default function Navbar() {
             </span>
           </div>
 
-          {/* Right Column (Icons) */}
           <div className="nav-right-col" style={{ width: '120px', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '16px', position: 'relative' }} ref={cartRef}>
             
             <Show when="signed-out">
@@ -128,7 +133,7 @@ export default function Navbar() {
                 {!cart || cart.length === 0 ? (
                   <p style={{ fontSize: '12px', color: '#666', textAlign: 'center', margin: '32px 0' }}>Your basket is empty.</p>
                 ) : (
-                  <div style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                  <div style={{ maxHeight: '50vh', overflowY: 'auto', overflowX: 'hidden' }}>
                     {cart.map((item: any, index: number) => {
                       const safeName = item?.name || 'Luxury Item';
                       const safePrice = Number(item?.price) || 0;
@@ -136,9 +141,9 @@ export default function Navbar() {
 
                       return (
                         <div key={`nav-cart-${index}`} style={{ display: 'flex', gap: '16px', marginBottom: '16px', borderBottom: '1px solid #fafafa', paddingBottom: '16px' }}>
-                          {safeImage && <img src={safeImage} alt={safeName} style={{ width: '60px', height: '80px', objectFit: 'cover' }} />}
-                          <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                            <span style={{ fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{safeName}</span>
+                          {safeImage && <img src={safeImage} alt={safeName} style={{ width: '60px', height: '80px', objectFit: 'cover', flexShrink: 0 }} />}
+                          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+                            <span style={{ fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', lineHeight: '1.4', wordWrap: 'break-word', whiteSpace: 'normal' }}>{safeName}</span>
                             <span style={{ fontSize: '10px', color: '#D4AF37', marginTop: '4px', fontWeight: 'bold' }}>£{safePrice.toLocaleString()}</span>
                             <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); removeFromCart(index); }} style={{ marginTop: 'auto', alignSelf: 'flex-start', background: 'none', border: 'none', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#d9534f', cursor: 'pointer', padding: 0, fontWeight: 'bold' }}>Remove</button>
                           </div>
@@ -170,7 +175,9 @@ export default function Navbar() {
             <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop?category=bedroom" style={{ textDecoration: 'none', color: '#D4AF37' }}>Bedroom</Link></li>
             <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop?category=upholstery" style={{ textDecoration: 'none', color: '#D4AF37' }}>Upholstery</Link></li>
             
-            {/* FIXED: Removed onMouseEnter entirely. Now it strictly requires a tap/click to open & close securely! */}
+            {/* ADDED OUTDOOR SECTION HERE */}
+            <li style={{ display: 'flex', alignItems: 'center', height: '100%' }}><Link href="/preview/shop?category=outdoor" style={{ textDecoration: 'none', color: '#D4AF37' }}>Outdoor</Link></li>
+            
             <li 
               ref={brandsRef}
               style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center', cursor: 'pointer' }}
