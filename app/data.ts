@@ -1716,7 +1716,7 @@ export const products = [
   {
     id: 66,
     name: "Provence Collection Outdoor 4 Seater Dining Set",
-    price: 1095, // <-- Update this price to your actual retail price!
+    price: 1095, 
     category: "outdoor", 
     collection: "provence", 
     image: "/provence-4-seater-dining-set-1.jpg", 
@@ -1735,5 +1735,34 @@ export const products = [
     sku: "23908", 
     material: "5mm HDPE wicker, powder-coated aluminium frame, Olefin fabric, 5mm tempered glass",
     dimensions: "90L x 90W x 72H (cm)"
+  },
+
+  // --- 67. AMALFI COLLECTION OUTDOOR THREE SEATER SOFA ---
+  {
+    id: 67,
+    name: "Amalfi Collection Outdoor Three Seater Sofa",
+    price: 1195, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "amalfi", 
+    image: "/capri-3-seater-sofa-1.jpg", 
+    gallery: [
+      "/capri-3-seater-sofa-1.jpg", 
+      "/capri-3-seater-sofa-2.jpg",
+      "/capri-3-seater-sofa-3.jpg",
+      "/capri-3-seater-sofa-4.jpg",
+      "/capri-3-seater-sofa-5.jpg",
+      "/capri-3-seater-sofa-6.jpg",
+      "/capri-3-seater-sofa-7.jpg"
+    ],
+    description: "Make a statement in luxury outdoor living with this meticulously crafted wicker sofa that exemplifies durability and refinement. The authentic-looking 5mm half-round HDPE wicker weave creates an intricate pattern that catches the light while providing unmatched resilience against the elements. The sofa's graceful silhouette is enhanced by eco-conscious acacia wood feet, adding an organic touch to its modern design. The Grade 5 Olefin cushions offer both comfort and practicality, maintaining their color brilliance while resisting UV damage and moisture. This thoughtfully engineered piece demonstrates superior weatherproofing and rust resistance through its powder-coated aluminum frame, allowing for year-round outdoor placement. The neutral palette and detailed weave pattern make it an ideal centerpiece for any outdoor space. For the perfect finishing touches, we recommend pairing with our selection of weather-resistant decorative cushions, outdoor lanterns, and all-weather throw blankets. The combination of teak-finish serving trays and strategically placed outdoor lighting fixtures will create an inviting atmosphere for entertainment. Consider adding weather-resistant outdoor rugs and coordinating planters to complete the look of your outdoor sanctuary.",
+    features: [
+      "All-Weather Wicker: Authentic, intricate 5mm half-round HDPE weave construction built for resilience.",
+      "Premium Cushioning: Fast-drying, mildew-resistant Grade 5 Olefin fabric offers UV protection and color stability.",
+      "Enduring Frame: Rust-proof, powder-coated aluminum frame built for year-round outdoor placement.",
+      "Organic Accents: Grounded by eco-conscious acacia wood feet to elevate the modern silhouette."
+    ],
+    sku: "22955", 
+    material: "HDPE wicker, powder-coated aluminum, acacia wood feet, Olefin fabric",
+    dimensions: "92L x 215W x 70H (cm)"
   }
 ];
