@@ -1542,7 +1542,7 @@ export const products = [
     dimensions: "108L x 116W x 72H (cm)"
   },
 
-  // --- 60. PROVENCE COLLECTION OUTDOOR 4 SEATER LOUNGE SET ---
+  // --- 60. PROVENCE COLLECTION OUTDO 4 SEATER LOUNGE SET ---
   {
     id: 60,
     name: "Provence Collection Outdoor 4 Seater Lounge Set",
@@ -1631,7 +1631,7 @@ export const products = [
   {
     id: 63,
     name: "Bloom Collection Outdoor Footstool",
-    price: 150, // <-- Update this price to your actual retail price!
+    price: 150, 
     category: "outdoor", 
     collection: "bloom", 
     image: "/bloom-footstool-1.jpg", 
@@ -1652,5 +1652,35 @@ export const products = [
     sku: "24519", 
     material: "Weather-resistant fabric and frame",
     dimensions: "55L x 77W x 27H (cm)"
+  },
+
+  // --- 64. AMALFI COLLECTION OUTDOOR FIVE SEATER SET ---
+  {
+    id: 64,
+    name: "Amalfi Collection Outdoor Five Seater Set",
+    price: 1995, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "amalfi", 
+    image: "/amalfi-5-seater-set-1.jpg", 
+    gallery: [
+      "/amalfi-5-seater-set-1.jpg", 
+      "/amalfi-5-seater-set-2.jpg",
+      "/amalfi-5-seater-set-3.jpg",
+      "/amalfi-5-seater-set-4.jpg",
+      "/amalfi-5-seater-set-5.jpg",
+      "/amalfi-5-seater-set-6.jpg",
+      "/amalfi-5-seater-set-7.jpg",
+      "/amalfi-5-seater-set-8.jpg"
+    ],
+    description: "Embrace outdoor living with this meticulously designed five-seater set that combines authentic appearance with unmatched resilience. The round 12mm HDPE wicker weave creates an organic pattern that mimics natural materials while surpassing them in durability and weather resistance. The lightweight aluminum frame provides stability without compromising on portability, while the powder coating ensures long-term protection against environmental factors. The addition of grade 5 Olefin fabric cushions delivers superior comfort and practicality—their quick-drying properties and resistance to UV damage make them ideal for outdoor settings. The eco-conscious hardwood acacia coffee table crowned with tempered glass adds both functionality and refinement to the arrangement. For a coordinated outdoor aesthetic, consider pairing this set with the Pula or Leptis Magna table lamps for ambient evening lighting, or enhance the visual appeal with the Black Wood Round Framed Mirror or Washed Wood Window Mirror to create depth and reflection in your outdoor space. This collection maintains its fresh appearance with minimal maintenance—simple soap and water cleaning for the wicker and easy-care cushions that can be removed as needed. The set's year-round outdoor capability, combined with its shower-resistant and color-fast properties, ensures lasting value and ultimate customer satisfaction.",
+    features: [
+      "All-Weather Construction: Weather-resistant 12mm HDPE wicker over a rust-proof aluminum frame.",
+      "Premium Comfort: Fast-drying, UV-protected Olefin cushions for lasting vibrancy and quick recovery from showers.",
+      "Eco-Conscious Detailing: Includes a stylish acacia hardwood coffee table topped with tempered glass.",
+      "Low-Maintenance Care: Designed for year-round outdoor use with simple soap-and-water cleaning."
+    ],
+    sku: "22947", 
+    material: "12mm HDPE wicker, powder-coated aluminum, Olefin fabric, acacia wood, tempered glass",
+    dimensions: "3-Seater: 210W x 92D x 72H | Armchair: 90W x 92D x 72H | Table: 120L x 63W x 42H (Seat height: 59cm)"
   }
 ];
