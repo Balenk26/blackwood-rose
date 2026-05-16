@@ -88,7 +88,7 @@ export const products = [
     dimensions: "32L x 163W x 127H (cm)"
   },
 
-  // --- 6. DELPHIDE SLIDING GLASS DRESSER TOP ---
+  // --- 6. DELPHINE SLIDING GLASS DRESSER TOP ---
   {
     id: 6,
     name: "Delphine Collection Sliding Glass Dresser Top",
@@ -104,7 +104,7 @@ export const products = [
       "Seamless Integration: Expertly designed to pair flawlessly with the Delphine Dresser Base for a cohesive, vertical storage tower.",
       "Premium Engineering: Durably constructed with robust tracking for reliable, quiet operation over decades of use."
     ],
-    sku: "24568", 
+    sku: "24658", 
     material: "Solid wood frame with muted finish and tempered glass paneling",
     dimensions: "38L x 126W x 120H (cm)",
     doors: "2 (Sliding Glass)"
@@ -183,7 +183,15 @@ export const products = [
     category: "bedroom", 
     collection: "delphine", 
     image: "/delphine-left-chest-1.jpg", 
-    gallery: ["/delphine-left-chest-1.jpg", "/delphine-left-chest-2.jpg", "/delphine-left-chest-3.jpg", "/delphine-left-chest-4.jpg", "/delphine-left-chest-5.jpg", "/delphine-left-chest-6.jpg", "/delphine-left-chest-7.jpg"],
+    gallery: [
+      "/delphine-left-chest-1.jpg", 
+      "/delphine-left-chest-2.jpg",
+      "/delphine-left-chest-3.jpg",
+      "/delphine-left-chest-4.jpg",
+      "/delphine-left-chest-5.jpg",
+      "/delphine-left-chest-6.jpg",
+      "/delphine-left-chest-7.jpg"
+    ],
     description: "A perfect mirror to its right-hand counterpart, the Delphine 1-Drawer, 1-Door Chest in a left-hand configuration offers an essential, directional storage solution for refined interiors. Designed with a left-opening door, this piece is ideal for framing the left side of a bed or maximizing accessibility against a right-side wall. Featuring the collection's signature muted finish, clean lines, and vintage-inspired hardware, it provides flexible storage within a compact footprint. A smooth-gliding top drawer keeps daily essentials close at hand, while the concealed lower compartment seamlessly accommodates larger items. Whether standing alone as an elegant nightstand or paired symmetrically for a complete look, its heirloom-quality construction ensures decades of quiet, dependable use.",
     features: [
       "Directional Design: Left-hand door configuration designed for optimal spatial flow and symmetrical bedside pairing.",
@@ -785,7 +793,7 @@ export const products = [
   // --- 32. LENNOX BLACK FRAMED CONSOLE ---
   {
     id: 32,
-    name: "Lennox Black FRAMED CONSOLE",
+    name: "Lennox Black Framed Console",
     price: 595, 
     category: "living", 
     collection: "lennox", 
@@ -1821,7 +1829,7 @@ export const products = [
   {
     id: 70,
     name: "Kyra French Grey Chair",
-    price: 165, // <-- Update this price to your actual retail price!
+    price: 165, 
     category: "outdoor", 
     collection: "", 
     image: "/kyra-chair-1.jpg", 
@@ -1841,5 +1849,31 @@ export const products = [
     sku: "24308", 
     material: "Weather-resistant materials with a French Grey finish",
     dimensions: "46L x 43W x 80H (cm)"
+  },
+
+  // --- 71. ECHO PUTTY GREY CHAIR ---
+  {
+    id: 71,
+    name: "Echo Putty Grey Chair",
+    price: 185, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "", 
+    image: "/echo-putty-chair-1.jpg", 
+    gallery: [
+      "/echo-putty-chair-1.jpg", 
+      "/echo-putty-chair-2.jpg", 
+      "/echo-putty-chair-3.jpg", 
+      "/echo-putty-chair-4.jpg"
+    ],
+    description: "Crafted with meticulous attention to detail, this dining chair showcases a refined putty grey tone that exudes understated sophistication and contemporary appeal. The carefully selected neutral palette provides an ideal foundation for your patio or garden layout, beautifully complementing both minimalist and richly decorated outdoor spaces. Within The Outdoor Living Collection, this chair represents the perfect marriage of comfort and modern aesthetics, offering a premium seating solution for long, leisurely meals. The chair's clean lines and beautifully proportioned silhouette create visual harmony in any setting, while the warm putty grey finish adds a subtle, welcoming layer of texture without overwhelming your existing color scheme. Perfect pairings from our range include coordinating outdoor cushions in complementary earth tones, weather-resistant throws in natural linen textures, and stylish outdoor lanterns to illuminate your evening entertainment space. The robust weather-proof construction ensures unwavering durability through changing seasons, providing a timeless investment for your outdoor sanctuary.",
+    features: [
+      "Putty Grey Tone: A gorgeous, subtle warm neutral finish that adaptively sits within minimalist or richly styled outdoor setups.",
+      "Weather-Resistant: Robust structural design resists cracking, raw environmental moisture, and seasonal elements.",
+      "Visual Balance: Sleek clean lines and a proportioned silhouette offer an elegant presence without cluttering patio space.",
+      "Styling Foundation: Perfectly complements natural linen textures, woven earth-toned textiles, and ambient garden lighting."
+    ],
+    sku: "24298", 
+    material: "Weather-resistant materials with a Putty Grey finish",
+    dimensions: "50L x 55W x 77H (cm)"
   }
 ];
