@@ -1366,7 +1366,7 @@ export const products = [
   {
     id: 53,
     name: "Provence Collection Outdoor Sun Lounger Set",
-    price: 895, // <-- Update this price to your actual retail price!
+    price: 895, 
     category: "outdoor", 
     collection: "provence", 
     image: "/provence-sun-lounger-1.jpg", 
@@ -1384,5 +1384,31 @@ export const products = [
     sku: "23911", 
     material: "5mm HDPE wicker, aluminium frames, Olefin cushions, Acacia wood table",
     dimensions: "164L x 77W x 87H (cm)"
+  },
+
+  // --- 54. CAPRI COLLECTION OUTDOOR CORNER SET ---
+  {
+    id: 54,
+    name: "Capri Collection Outdoor Large Corner And Coffee Table Set",
+    price: 1895, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "capri", 
+    image: "/capri-corner-set-1.jpg", 
+    gallery: [
+      "/capri-corner-set-1.jpg", 
+      "/capri-corner-set-2.jpg", 
+      "/capri-corner-set-3.jpg", 
+      "/capri-corner-set-4.jpg"
+    ],
+    description: "Transform your outdoor space into a luxurious retreat with this stunning Large Corner and Coffee Table Set from the Capri Collection. The graceful lines and substantial proportions of this outdoor furniture ensemble create a focal point for al fresco entertaining that rivals indoor comforts. Designed with both style and practicality in mind, the generous seating configuration accommodates multiple guests whilst the accompanying coffee table provides ample space for refreshments and decorative items. The robust construction ensures weather resilience throughout changing seasons, making it an investment piece for years of outdoor enjoyment. When merchandising this set in your showroom, consider positioning it as the cornerstone of a complete outdoor entertainment area. The neutral palette works harmoniously with a variety of garden settings, from contemporary urban balconies to expansive country patios. For retailers seeking to increase basket value, suggest pairing with complementary accessories from the Capri Collection such as decorative outdoor cushions, weather-resistant throws, and atmospheric garden lighting options. The modular nature of the corner arrangement offers flexibility for different spatial requirements, appealing to a diverse customer base. Each component has been thoughtfully proportioned to balance visual impact with practical function—the left and right sections create a welcoming embrace while the coffee table stands at the optimal height for casual dining and drinks. When displaying this collection, emphasise how the materials have been selected specifically to withstand British weather conditions whilst maintaining their aesthetic appeal. This combination of durability and design sophistication represents excellent value, with strong margins and repeat customer satisfaction. The Capri Collection consistently generates positive feedback for its combination of comfort, style longevity and ease of maintenance—all crucial selling points for today's discerning consumer who views their garden as an extension of their living space rather than a separate zone.",
+    features: [
+      "Robust Weather-Proof Construction: Designed specifically to withstand British weather conditions while maintaining aesthetic appeal.",
+      "Modular Layout Adaptability: Flexible left and right corner arrangement to suit a variety of garden shapes and spatial requirements.",
+      "Spacious Seating: Substantial proportions create an inviting focal point for al fresco entertaining for multiple guests.",
+      "Complete Set: Includes a perfectly proportioned coffee table at the optimal height for casual dining and drinks."
+    ],
+    sku: "23913", 
+    material: "Weather-resistant materials",
+    dimensions: "212L x 80W x 80H (cm)"
   }
 ];
