@@ -1546,7 +1546,7 @@ export const products = [
   {
     id: 60,
     name: "Provence Collection Outdoor 4 Seater Lounge Set",
-    price: 1295, // <-- Update this price to your actual retail price!
+    price: 1295, 
     category: "outdoor", 
     collection: "provence", 
     image: "/provence-lounge-set-1.jpg", 
@@ -1570,5 +1570,35 @@ export const products = [
     sku: "24513", 
     material: "Weather-resistant framework and durable upholstery",
     dimensions: "152L x 85W x 75H (cm)"
+  },
+
+  // --- 61. PALMA COLLECTION OUTDOOR SET ---
+  {
+    id: 61,
+    name: "Palma Collection Outdoor Set",
+    price: 1595, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "palma", 
+    image: "/palma-outdoor-set-1.jpg", 
+    gallery: [
+      "/palma-outdoor-set-1.jpg", 
+      "/palma-outdoor-set-2.jpg",
+      "/palma-outdoor-set-3.jpg",
+      "/palma-outdoor-set-4.jpg",
+      "/palma-outdoor-set-5.jpg",
+      "/palma-outdoor-set-6.jpg",
+      "/palma-outdoor-set-7.jpg",
+      "/palma-outdoor-set-8.jpg"
+    ],
+    description: "A meticulously designed outdoor collection that sets new standards in durability and visual appeal. The intricate 5mm half-round HDPE wicker weave creates a realistic appearance while offering unmatched resilience against outdoor conditions. The lightweight yet robust powder-coated aluminum frame ensures lasting stability without compromising on style. The set showcases an eco-conscious approach with its fast-growing acacia hardwood table, demonstrating environmental responsibility while maintaining luxury standards. The attention to detail extends to the Grade 5 Olefin fabric cushions, which maintain their vibrancy while providing superior moisture resistance and quick-drying properties compared to conventional materials. This collection represents the perfect fusion of practicality and refinement, making it an essential addition to any outdoor space. For a cohesive outdoor aesthetic, we recommend pairing with the Siena Large Brown Amphora Pot, complemented by the understated charm of the Pula Table Lamp, and finished with the rustic appeal of our Large White Clock with Beaded Frame. The combination of weatherproof construction, year-round outdoor durability, and minimal maintenance requirements makes this set an incredible investment for high-quality outdoor living.",
+    features: [
+      "All-Weather Construction: Verified weather-resistant HDPE wicker for year-round outdoor use.",
+      "Quick-Dry Cushion Technology: Features premium Grade 5 Olefin fabric that resists fading and moisture.",
+      "Low-Maintenance: Rust-proof powder-coated aluminum frames offer easy cleaning and enduring stability.",
+      "Complete Luxury Set: Includes a spacious 3-seater sofa, armchairs, and an eco-friendly acacia hardwood table."
+    ],
+    sku: "22957", 
+    material: "HDPE wicker, powder-coated aluminum, acacia hardwood, Olefin fabric",
+    dimensions: "Sofa: 180L x 80W x 77H | Chair: 80L x 80W x 77H | Table: 115L x 65W x 41H (cm)"
   }
 ];
