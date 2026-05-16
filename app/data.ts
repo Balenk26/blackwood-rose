@@ -1260,7 +1260,7 @@ export const products = [
   {
     id: 49,
     name: "Adjustable Tractor Seat",
-    price: 125, // <-- Update this price to your actual retail price!
+    price: 125,
     category: "dining", 
     collection: "", 
     image: "/adjustable-tractor-seat-1.jpg", 
@@ -1281,5 +1281,32 @@ export const products = [
     sku: "19925", 
     material: "Sleek black metal",
     dimensions: "37L x 37W x 86H (cm)"
+  },
+
+  // --- 50. LIVE EDGE BENCH (UNBRANDED) ---
+  {
+    id: 50,
+    name: "Live Edge Acacia Wood Bench",
+    price: 295, 
+    category: "dining", 
+    collection: "", 
+    image: "/live-edge-bench-1.jpg", 
+    gallery: [
+      "/live-edge-bench-1.jpg", 
+      "/live-edge-bench-2.jpg",
+      "/live-edge-bench-3.jpg",
+      "/live-edge-bench-4.jpg",
+      "/live-edge-bench-5.jpg" // Added the 5th image here!
+    ],
+    description: "Bring the raw splendor of Indian acacia wood into your retail space with this remarkable bench, featuring an authentic live edge that tells a unique story in every piece. The natural grain patterns and organic contours create an arresting visual narrative, while the understated grey metal cross-leg frame provides an industrial contrast to the wood's rustic character. This bench embodies the minimal, earthy aesthetics that modern homes actively seek, making it a reliable and striking addition in both traditional and contemporary settings. Perfect for dining spaces or as a statement hallway piece. To create a cohesive display, pair this piece with organic refinement like potted orchids, faux pampas grass, or ceramic accent bowls to seamlessly enhance the bench's natural elements.",
+    features: [
+      "Authentic Live Edge: Every bench features completely individual organic contours and natural wood grain.",
+      "Earthy Minimalism: Beautiful Indian acacia wood brings a raw, handcrafted beauty to your space.",
+      "Industrial Contrast: Supported by an understated, sturdy grey metal cross-leg frame.",
+      "Versatile Styling: A reliable, striking centerpiece for dining rooms, hallways, or open-plan living areas."
+    ],
+    sku: "19744", 
+    material: "Indian acacia wood and grey metal frame",
+    dimensions: "40L x 180W x 45H (cm)"
   }
 ];
