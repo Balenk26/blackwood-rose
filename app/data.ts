@@ -1314,7 +1314,7 @@ export const products = [
   {
     id: 51,
     name: "Franklin Hardwood Shaped Bar Stool",
-    price: 135, // <-- Update this price to your actual retail price!
+    price: 135,
     category: "dining", 
     collection: "", 
     image: "/franklin-bar-stool-1.jpg", 
@@ -1334,5 +1334,31 @@ export const products = [
     sku: "19924", 
     material: "Hardwood seat and metal frame",
     dimensions: "35L x 40W x 75H (cm)"
+  },
+
+  // --- 52. BLOOM COLLECTION OUTDOOR SOFA ---
+  {
+    id: 52,
+    name: "Bloom Collection Outdoor Sofa",
+    price: 1495, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "bloom", 
+    image: "/bloom-outdoor-sofa-1.jpg", 
+    gallery: [
+      "/bloom-outdoor-sofa-1.jpg", 
+      "/bloom-outdoor-sofa-2.jpg",
+      "/bloom-outdoor-sofa-3.jpg",
+      "/bloom-outdoor-sofa-4.jpg"
+    ],
+    description: "Luxurious outdoor seating awaits with this sophisticated sofa that redefines contemporary garden living through its thoughtful design elements and superior construction. The piece showcases clean lines and modern proportions that create an inviting focal point for any outdoor space, whilst maintaining the refined aesthetic standards expected from the Bloom Collection. Rich textures and carefully selected materials combine to deliver a statement piece that seamlessly bridges indoor comfort with outdoor durability, making it an ideal choice for discerning customers seeking quality garden furniture. The sofa's generous proportions accommodate multiple guests comfortably, whilst its streamlined silhouette ensures it won't overwhelm smaller spaces, demonstrating remarkable adaptability across various garden settings. Weather-resistant fabrics and robust frame construction guarantee longevity in outdoor environments, providing retailers with confidence in product performance and customer satisfaction. The neutral colour palette allows for easy integration with existing garden schemes whilst providing the perfect backdrop for seasonal accessories and decorative elements. The piece's substantial presence commands attention whilst maintaining the understated sophistication that defines the Bloom Garden Furniture Range.",
+    features: [
+      "Contemporary Comfort: Combines comfort with modern design, perfect for sophisticated garden entertaining spaces.",
+      "Generous Proportions: Ample seating capacity accommodates multiple guests with ease.",
+      "Enduring Quality: Weather-resistant fabrics and robust frame construction guarantee longevity in outdoor environments.",
+      "Adaptable Styling: A neutral colour palette allows for easy integration with existing garden schemes."
+    ],
+    sku: "24517", 
+    material: "Weather-resistant fabric and robust frame",
+    dimensions: "108L x 202W x 72H (cm)"
   }
 ];
