@@ -1340,7 +1340,7 @@ export const products = [
   {
     id: 52,
     name: "Bloom Collection Outdoor Sofa",
-    price: 1495, // <-- Update this price to your actual retail price!
+    price: 1495,
     category: "outdoor", 
     collection: "bloom", 
     image: "/bloom-outdoor-sofa-1.jpg", 
@@ -1360,5 +1360,29 @@ export const products = [
     sku: "24517", 
     material: "Weather-resistant fabric and robust frame",
     dimensions: "108L x 202W x 72H (cm)"
+  },
+
+  // --- 53. PROVENCE COLLECTION OUTDOOR SUN LOUNGER SET ---
+  {
+    id: 53,
+    name: "Provence Collection Outdoor Sun Lounger Set",
+    price: 895, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "provence", 
+    image: "/provence-sun-lounger-1.jpg", 
+    gallery: [
+      "/provence-sun-lounger-1.jpg", 
+      "/provence-sun-lounger-2.jpg"
+    ],
+    description: "Bask in the ultimate outdoor luxury with this stunning sun lounger set, arriving Spring '25 as part of our coveted Provence Collection. Crafted with meticulous attention to detail, these loungers represent the perfect marriage of aesthetic appeal and resilient construction. The substantial 5mm round HDPE wicker weave delivers an authentic rattan appearance while offering superior weather resistance that ordinary garden furniture simply cannot match. The lightweight yet robust powder-coated aluminium frame ensures these pieces remain completely resistant to rust and corrosion, allowing them to withstand year-round exposure to the elements. When your customers seek furniture that maintains its pristine condition despite challenging weather conditions, these loungers deliver unmatched performance. The thoughtfully designed seat cushions, upholstered in grade 5 Olefin fabric, offer remarkable resistance to moisture, UV damage, and mildew while drying quickly after exposure to rain. This practical consideration means less maintenance and more enjoyment for end users. The included 60cm Acacia wood table adds a touch of natural beauty with its renowned strength and distinctive grain patterns. For retailers looking to create enticing visual displays, consider pairing this lounger set with complementary accessories from our Provence Collection, such as our weather-resistant outdoor cushions in coordinating coastal tones, our collection of marine-inspired lanterns, or our signature outdoor rugs that echo the sophisticated weave pattern of the loungers. The neutral palette and refined silhouette of these pieces make them incredibly desirable for consumers seeking to create an atmosphere of resort-style comfort in their own gardens or patios. When stocked alongside our matching planters and decorative outdoor lighting options, these loungers help customers visualise a complete outdoor living solution that promises comfort, style and durability for seasons to come.",
+    features: [
+      "Authentic Design: Luxurious sun loungers with authentic 5mm HDPE wicker and rust-resistant aluminium frames.",
+      "Low Maintenance Comfort: Quick-drying Olefin cushions provide supreme comfort with minimal maintenance.",
+      "Enduring Quality: Superior grade 5 Olefin fabric resists moisture and UV damage, remaining outdoors year-round.",
+      "Complete Set: Includes a matching 60cm Acacia wood side table for natural beauty and renowned strength."
+    ],
+    sku: "23911", 
+    material: "5mm HDPE wicker, aluminium frames, Olefin cushions, Acacia wood table",
+    dimensions: "164L x 77W x 87H (cm)"
   }
 ];
