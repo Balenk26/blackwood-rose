@@ -1519,7 +1519,7 @@ export const products = [
   {
     id: 59,
     name: "Bloom Collection Outdoor Large Lounge Chair",
-    price: 595, // <-- Update this price to your actual retail price!
+    price: 595, 
     category: "outdoor", 
     collection: "bloom", 
     image: "/bloom-lounge-chair-1.jpg", 
@@ -1540,5 +1540,35 @@ export const products = [
     sku: "24516", 
     material: "Weather-resistant fabric and robust frame construction",
     dimensions: "108L x 116W x 72H (cm)"
+  },
+
+  // --- 60. PROVENCE COLLECTION OUTDOOR 4 SEATER LOUNGE SET ---
+  {
+    id: 60,
+    name: "Provence Collection Outdoor 4 Seater Lounge Set",
+    price: 1295, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "provence", 
+    image: "/provence-lounge-set-1.jpg", 
+    gallery: [
+      "/provence-lounge-set-1.jpg", 
+      "/provence-lounge-set-2.jpg",
+      "/provence-lounge-set-3.jpg",
+      "/provence-lounge-set-4.jpg",
+      "/provence-lounge-set-5.jpg",
+      "/provence-lounge-set-6.jpg",
+      "/provence-lounge-set-7.jpg",
+      "/provence-lounge-set-8.jpg"
+    ],
+    description: "Outdoor relaxation reaches new heights with this four-seater lounge set that redefines comfort and style for contemporary garden spaces. The carefully proportioned seating arrangement creates an inviting social hub where conversations flow naturally, while the thoughtfully designed framework ensures durability against the elements without compromising on aesthetic appeal. Each piece within the Provence Collection demonstrates meticulous attention to detail, with clean lines and refined proportions that speak to modern sensibilities while maintaining the warmth and accessibility that makes outdoor living truly enjoyable. The neutral tones and understated finish allow this set to integrate seamlessly into diverse garden environments, from minimalist terraces to lush countryside settings, making it an ideal choice for retailers serving varied customer bases. The intelligent use of space means this configuration works beautifully in both intimate courtyards and expansive outdoor areas, offering flexibility that trade customers will appreciate when advising their own clients. Consider pairing this lounge set with coordinating outdoor cushions in complementary textures, stylish outdoor lanterns to create ambient lighting, and weather-resistant side tables that echo the collection's refined aesthetic. Decorative planters in matching tones would enhance the overall design concept, while outdoor rugs in natural fibres could define the seating area and add layers of comfort. The set's enduring appeal lies in its ability to serve as a foundation piece that retailers can build upon with seasonal accessories, creating complete outdoor living solutions that encourage repeat purchases and customer loyalty.",
+    features: [
+      "Social Configuration: Four-seater arrangement maximizes social interaction and comfort.",
+      "Enduring Durability: Weather-resistant construction ensures longevity against the elements.",
+      "Adaptable Styling: Neutral finish and refined proportions beautifully complement diverse garden styles.",
+      "Complete Solution: Thoughtfully designed framework that perfectly balances modern aesthetics with everyday accessibility."
+    ],
+    sku: "24513", 
+    material: "Weather-resistant framework and durable upholstery",
+    dimensions: "152L x 85W x 75H (cm)"
   }
 ];
