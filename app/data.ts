@@ -1606,7 +1606,7 @@ export const products = [
   {
     id: 62,
     name: "Provence Collection Outdoor Bistro Table",
-    price: 245, // <-- Update this price to your actual retail price!
+    price: 245, 
     category: "outdoor", 
     collection: "provence", 
     image: "/provence-bistro-table-1.jpg", 
@@ -1625,5 +1625,32 @@ export const products = [
     sku: "24515", 
     material: "Weather-resistant materials with a weathered finish",
     dimensions: "70L x 70W x 72H (cm)"
+  },
+
+  // --- 63. BLOOM COLLECTION OUTDOOR FOOTSTOOL ---
+  {
+    id: 63,
+    name: "Bloom Collection Outdoor Footstool",
+    price: 150, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "bloom", 
+    image: "/bloom-footstool-1.jpg", 
+    gallery: [
+      "/bloom-footstool-1.jpg", 
+      "/bloom-footstool-2.jpg",
+      "/bloom-footstool-3.jpg",
+      "/bloom-footstool-4.jpg",
+      "/bloom-footstool-5.jpg"
+    ],
+    description: "Relaxation takes centre stage with this outdoor footstool from the Bloom Collection, where contemporary style meets garden comfort in perfect harmony. The footstool's refined proportions and clean lines create an inviting presence that transforms any outdoor space into a sophisticated retreat. Its thoughtfully designed silhouette showcases modern aesthetics while maintaining practical functionality. The piece demonstrates superior construction quality, ensuring durability that withstands seasonal changes while retaining its visual appeal throughout years of use. Natural textures and carefully selected materials combine to create a surface that invites touch, while the neutral colour palette allows seamless integration with existing outdoor décor schemes. This footstool serves as both a functional seating addition and a decorative accent, offering ultimate flexibility. The Bloom Collection's cohesive design language ensures this piece works harmoniously with other elements from the range, creating beautifully coordinated outdoor living spaces. Pair it perfectly with outdoor cushions featuring botanical prints, woven storage baskets in natural fibres, and decorative planters that echo the collection's organic inspiration. Weather-resistant outdoor rugs in complementary tones provide the perfect foundation, while string lighting and lanterns create an atmospheric ambiance. The piece's compact dimensions make it ideal for smaller patios and balconies, offering luxury comfort even with limited outdoor space. Its low-maintenance requirements, fade-resistant properties, and timeless design guarantee continued enjoyment across changing seasons.",
+    features: [
+      "Contemporary Comfort: Combines style with comfort for modern garden spaces.",
+      "Space-Saving Profile: Compact proportions perfectly suit limited spaces like urban balconies.",
+      "Enduring Durability: Weather-resistant construction ensures longevity across changing seasons.",
+      "Cohesive Design: Seamlessly coordinates with other Bloom Collection pieces for a unified look."
+    ],
+    sku: "24519", 
+    material: "Weather-resistant fabric and frame",
+    dimensions: "55L x 77W x 27H (cm)"
   }
 ];
