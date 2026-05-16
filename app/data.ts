@@ -88,7 +88,7 @@ export const products = [
     dimensions: "32L x 163W x 127H (cm)"
   },
 
-  // --- 6. DELPHINE SLIDING GLASS DRESSER TOP ---
+  // --- 6. DELPHIDE SLIDING GLASS DRESSER TOP ---
   {
     id: 6,
     name: "Delphine Collection Sliding Glass Dresser Top",
@@ -104,7 +104,7 @@ export const products = [
       "Seamless Integration: Expertly designed to pair flawlessly with the Delphine Dresser Base for a cohesive, vertical storage tower.",
       "Premium Engineering: Durably constructed with robust tracking for reliable, quiet operation over decades of use."
     ],
-    sku: "24658", 
+    sku: "24568", 
     material: "Solid wood frame with muted finish and tempered glass paneling",
     dimensions: "38L x 126W x 120H (cm)",
     doors: "2 (Sliding Glass)"
@@ -505,7 +505,7 @@ export const products = [
       "/haldon-side-table-7.jpg",
       "/haldon-side-table-8.jpg"
     ],
-    description: "Compact in its footprint yet considered in its detail, the Haldon Collection 1-Drawer Side Table with Shelf offers a beautifully proportioned bedside or occasional table solution. It perfectly balances practical, concealed storage with open display. A single smooth-gliding drawer provides discreet access for everyday essentials, while the integrated shelf below offers an elegant platform for books, botanicals, or a statement lamp. Finished in the collection's signature quiet luxury, it integrates seamlessly into a variety of interior styles. Whether anchoring a reading corner or serving as a refined bedside companion, this piece brings a sense of serene organization and exceptional craftsmanship to spaces where efficiency and elegance are paramount.",
+    description: "Compact in its footprint yet considered in its detail, the Haldon Collection 1-Drawer Side Table with Shelf offers a beautifully proportioned bedside or occasional table solution. It perfectly balances practical, concealed storage with open display. A single smooth-gliding drawer provides discreet access for everyday essentials, while the integrated shelf below offers an elegant platform for books, botanicals, or a statement lamp. Finished in the collection's signature quiet luxury, it integrates seamlessly within a broader Haldon scheme or stands with quiet confidence as a singular accent piece. Directly built with durability in mind, it promises a lifetime of quiet sophistication and daily utility.",
     features: [
       "Discreet Storage: A single smooth-gliding drawer keeps personal everyday essentials neatly tucked away.",
       "Curated Display: An integrated lower shelf provides a perfect stage for oversized books, ceramics, or a reading lamp.",
@@ -695,9 +695,6 @@ export const products = [
   // --- 29. LENNOX BLACK 2-DOOR SMALL SIDEBOARD ---
   {
     id: 29,
-    name: "Lennox Black 2-Door Small SideBOARD ---
-  {
-    id: 29,
     name: "Lennox Black 2-Door Small Sideboard",
     price: 450, 
     category: "dining", 
@@ -788,7 +785,7 @@ export const products = [
   // --- 32. LENNOX BLACK FRAMED CONSOLE ---
   {
     id: 32,
-    name: "Lennox Black Framed Console",
+    name: "Lennox Black FRAMED CONSOLE",
     price: 595, 
     category: "living", 
     collection: "lennox", 
@@ -828,7 +825,7 @@ export const products = [
     ],
     description: "Contemporary urban design meets highly adaptable functionality in this pair of Lennox Black Framed Side Tables. Embodying the collection's refined aesthetic, these tables feature striking black frames that create a dramatic silhouette while maintaining an airy, open presence that never overwhelms a room. The industrial-inspired metal framework demonstrates precise engineering and geometric precision. The clever nesting design provides endless flexibility—keep them clustered together for a beautifully layered display, or separate them when hosting to offer convenient surfaces for drinks and styling. Their minimalist profile makes them an impeccable choice for contemporary spaces where understated refinement is paramount. Style them with abstract sculptures, metallic accents, or low atmospheric lighting to create a complete, cohesive modern narrative.",
     features: [
-      "Flexible Nesting Design: Two perfectly proportioned tables that can be rendered together or separated for entertaining.",
+      "Flexible Nesting Design: Two perfectly proportioned tables that can be layered together or separated for entertaining.",
       "Architectural Silhouette: Striking, clean-lined frames that deliver industrial-chic style with a visually light footprint.",
       "Matte Black Finish: A deep, sophisticated noir finish that grounds your space and highlights curated decor.",
       "Heirloom Durability: Precision-engineered with robust metal construction for unwavering stability and daily use."
@@ -1017,7 +1014,7 @@ export const products = [
   // --- 40. THE RUTLAND COLLECTION SQUARE SIDE TABLE ---
   {
     id: 40,
-    name: "The Rutland Collection Square Side Table",
+    name: "The Rutland Collection Side Table",
     price: 295, 
     category: "living", 
     collection: "rutland", 
@@ -1799,7 +1796,7 @@ export const products = [
   {
     id: 69,
     name: "Axis French Grey Carver Chair",
-    price: 225, // <-- Update this price to your actual retail price!
+    price: 225, 
     category: "outdoor", 
     collection: "axis", 
     image: "/axis-carver-chair-1.jpg", 
@@ -1818,5 +1815,31 @@ export const products = [
     sku: "24293", 
     material: "Weather-resistant materials with a French Grey finish",
     dimensions: "54L x 60W x 79H (cm)"
+  },
+
+  // --- 70. KYRA FRENCH GREY CHAIR ---
+  {
+    id: 70,
+    name: "Kyra French Grey Chair",
+    price: 165, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "", 
+    image: "/kyra-chair-1.jpg", 
+    gallery: [
+      "/kyra-chair-1.jpg", 
+      "/kyra-chair-2.jpg", 
+      "/kyra-chair-3.jpg", 
+      "/kyra-chair-4.jpg"
+    ],
+    description: "Crafted with a distinctive French Grey finish, this dining chair delivers a sophisticated appeal that transforms any patio or garden layout into a sanctuary of refined living. The carefully selected French Grey tone creates a calming, neutral backdrop that harmonises beautifully with both traditional and contemporary exterior design schemes, maintaining an elegant presence across changing seasons. This chair showcases meticulous attention to detail through its thoughtfully proportioned silhouette and an expertly applied finish that actively resists fading and weathering. Its neutral palette provides endless styling possibilities, allowing you to create inviting setups with textile accessories like coordinating outdoor cushions in sage green or warm terracotta. The chair's refined, compact proportions make it particularly perfect for compact outdoor areas, satisfying urban balconies or compact patio spaces where style and high-end functionality must seamlessly coexist.",
+    features: [
+      "French Grey Finish: Refined, classic palette that blends flawlessly into modern and traditional garden setups.",
+      "Weather-Resistant: Meticulously applied exterior coating resists fading, UV rays, and raw seasonal elements.",
+      "Compact Silhouette: Built with scaled-back structural dimensions to maximize seating layout efficiency in intimate spaces.",
+      "Versatile Accent: Acts as a premium backdrop that highlights colorful cushions, natural textures, or ambient lighting."
+    ],
+    sku: "24308", 
+    material: "Weather-resistant materials with a French Grey finish",
+    dimensions: "46L x 43W x 80H (cm)"
   }
 ];
