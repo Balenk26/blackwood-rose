@@ -1688,7 +1688,7 @@ export const products = [
   {
     id: 65,
     name: "Capri Collection Outdoor Foot Stool",
-    price: 195, // <-- Update this price to your actual retail price!
+    price: 195, 
     category: "outdoor", 
     collection: "capri", 
     image: "/capri-footstool-1.jpg", 
@@ -1710,5 +1710,30 @@ export const products = [
     sku: "22954", 
     material: "HDPE wicker, powder-coated aluminum frame, Olefin fabric cushion, acacia wood feet",
     dimensions: "56L x 81W x 24H (cm)"
+  },
+
+  // --- 66. PROVENCE COLLECTION OUTDOOR 4 SEATER DINING SET ---
+  {
+    id: 66,
+    name: "Provence Collection Outdoor 4 Seater Dining Set",
+    price: 1095, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "provence", 
+    image: "/provence-4-seater-dining-set-1.jpg", 
+    gallery: [
+      "/provence-4-seater-dining-set-1.jpg", 
+      "/provence-4-seater-dining-set-2.jpg",
+      "/provence-4-seater-dining-set-3.jpg"
+    ],
+    description: "Discover outdoor dining at its finest with this magnificent 4-Seater Dining Set from the Provence Collection. The harmonious blend of style and durability makes this set an irresistible addition to any garden space or patio area. Crafted with longevity as the cornerstone of its design, this outdoor furniture showcases a lightweight yet robust powder-coated aluminium frame that resists rust and corrosion, ensuring years of faithful service in varied weather conditions. The chunky 5mm round HDPE wicker weave creates an authentic rattan appearance while offering superior weather resistance compared to traditional materials. What sets this collection apart is its ability to remain outdoors year-round, though a protective covering will extend its lifespan further. The sumptuous seat cushions, upholstered in grade 5 Olefin fabric, maintain their vibrant appearance while offering remarkable shower and UV resistance. These cushions dry more swiftly than polyester alternatives, making them ideally suited for outdoor environments subject to occasional rain showers. Consider pairing this dining set with complementary accessories such as a lattice ceramic table lamp, which beautifully echoes the woven pattern of the furniture. A statement outdoor mirror offers a dramatic backdrop when displayed alongside the set, while floral stems provide lifelike botanical accents that enhance the outdoor living aesthetic. The clean lines and durable construction of the 5mm tempered glass tabletop offer both style and substance. As part of the wider Provence Garden Furniture Range, this dining set provides a beautifully coordinated outdoor living solution that combines everyday practicality with undeniable visual appeal.",
+    features: [
+      "Weatherproof Construction: Chunky 5mm round HDPE wicker and rust-proof aluminium frame withstands outdoor conditions year-round.",
+      "Premium Comfort: Shower-resistant, quick-drying cushions in fade-resistant grade 5 Olefin fabric.",
+      "Durable Tabletop: Features a sleek 5mm tempered glass surface offering thermal resistance and easy maintenance.",
+      "Authentic Aesthetics: Highly realistic woven texture that perfectly balances French provincial charm with modern durability."
+    ],
+    sku: "23908", 
+    material: "5mm HDPE wicker, powder-coated aluminium frame, Olefin fabric, 5mm tempered glass",
+    dimensions: "90L x 90W x 72H (cm)"
   }
 ];
