@@ -1741,7 +1741,7 @@ export const products = [
   {
     id: 67,
     name: "Amalfi Collection Outdoor Three Seater Sofa",
-    price: 1195, // <-- Update this price to your actual retail price!
+    price: 1195, 
     category: "outdoor", 
     collection: "amalfi", 
     image: "/capri-3-seater-sofa-1.jpg", 
@@ -1764,5 +1764,31 @@ export const products = [
     sku: "22955", 
     material: "HDPE wicker, powder-coated aluminum, acacia wood feet, Olefin fabric",
     dimensions: "92L x 215W x 70H (cm)"
+  },
+
+  // --- 68. ECHO FRENCH GREY CHAIR ---
+  {
+    id: 68,
+    name: "Echo French Grey Chair",
+    price: 185, // <-- Update this price to your actual retail price!
+    category: "outdoor", 
+    collection: "", 
+    image: "/echo-chair-1.jpg", 
+    gallery: [
+      "/echo-chair-1.jpg", 
+      "/echo-chair-2.jpg",
+      "/echo-chair-3.jpg",
+      "/echo-chair-4.jpg"
+    ],
+    description: "Rendered in a distinctive French Grey finish, this dining chair exemplifies refined outdoor living with its carefully curated aesthetic that bridges traditional charm with contemporary appeal. The weathered grey tone offers a sophisticated neutral palette that harmonises beautifully with natural garden settings whilst maintaining enough character to anchor modern patio arrangements. As part of The Outdoor Living Collection, this piece demonstrates meticulous attention to detail through its proportioned silhouette and durable construction that withstands seasonal elements without compromising visual appeal. The chair's clean lines and substantial frame provide both comfort and structural integrity, making it an ideal foundation piece for your patio or garden. This design seamlessly integrates with various complementary accessories, including coordinating outdoor cushions in neutral tones that enhance the chair's weathered finish, decorative lanterns that echo the grey palette, and textured throws that add seasonal warmth whilst maintaining a cohesive aesthetic. The French Grey finish develops a natural patina over time, creating an authentic weathered appearance that actually improves with age and exposure. This characteristic makes it particularly appealing if you are seeking low-maintenance outdoor furniture that gains character rather than deteriorating. The chair's proportions accommodate various body types whilst maintaining an unobtrusive profile that maximises spatial efficiency in smaller outdoor areas. Its neutral colourway serves as an excellent backdrop for seasonal styling changes, allowing you to refresh your outdoor spaces with different textile accessories throughout the year. The robust construction ensures longevity, whilst the timeless design transcends fleeting trends, making it a sound investment for your home.",
+    features: [
+      "Weather-Resistant: Durable construction maintains its structural integrity and appearance through changing seasons.",
+      "Natural Patina: The French Grey finish develops an authentic, weathered appearance that improves with age and exposure.",
+      "Spatial Efficiency: Proportioned design accommodates various body types while maximizing space in smaller outdoor areas.",
+      "Versatile Palette: Neutral tone provides an excellent backdrop for seasonal styling with textiles and accessories."
+    ],
+    sku: "24299", 
+    material: "Weather-resistant materials with a French Grey finish",
+    dimensions: "50L x 55W x 77H (cm)"
   }
 ];
