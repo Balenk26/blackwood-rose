@@ -38,23 +38,26 @@ export default function AdminImporter() {
       });
       
       const data = await res.json();
-      if (data.success) {
-        // Populate the form automatically with what the AI found and rewrote
+      
+      // Check if the server response status is in the successful 200-299 range
+      if (res.ok) {
+        // Populate the form automatically with the direct flat data returned by the AI
         setProductData({
           ...productData,
-          name: data.product.name,
-          sku: data.product.sku,
-          category: data.product.category || 'living',
-          price: data.product.price,
-          colour: data.product.colour || '',
-          material: data.product.material || '',
-          dimensions: data.product.dimensions || '',
-          description: data.product.description,
-          features: data.product.features || [''],
-          images: data.product.images || ['']
+          name: data.name || '',
+          sku: data.sku || '',
+          category: data.category?.toLowerCase() || 'living',
+          price: data.price || 0,
+          colour: data.colour || '',
+          material: data.material || '',
+          dimensions: data.dimensions || '',
+          description: data.description || '',
+          features: data.features || [''],
+          images: data.image ? [data.image] : ['']
         });
       } else {
-        alert('AI Scrape failed: ' + data.error);
+        // If the server rejected it, grab the actual string text instead of a nested property
+        alert('AI Scrape failed: ' + (data.error || data.message || 'Unknown network error.'));
       }
     } catch (err) {
       alert('An error occurred while connecting to the AI engine.');
