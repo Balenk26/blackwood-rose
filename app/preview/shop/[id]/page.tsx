@@ -97,7 +97,7 @@ export default function ProductDetailPage({ params }: PageProps) {
 
         {/* RIGHT COLUMN: Luxury Brand Copywriting & Specification Sheet */}
         <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '20px' }}>
-          <span style={{ fontSize: '10px', uppercase: 'true', letterSpacing: '0.2em', color: '#888', marginBottom: '8px', fontWeight: 'bold' }}>
+          <span style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#888', marginBottom: '8px', fontWeight: 'bold' }}>
             BLACKWOOD & ROSE • {product.category?.toUpperCase()}
           </span>
           <h1 style={{ fontSize: '28px', fontFamily: 'serif', letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 16px 0', lineHeight: '1.2' }}>
