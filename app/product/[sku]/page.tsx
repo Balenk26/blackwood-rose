@@ -1,4 +1,3 @@
-// app/product/[sku]/page.tsx
 import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
 
@@ -12,6 +11,9 @@ export default async function ProductPage({ params }: { params: { sku: string } 
   if (!product) {
     notFound();
   }
+
+  // Safe fallback if features array is empty or undefined
+  const featureList = Array.isArray(product.features) ? product.features : [];
 
   return (
     <div className="min-h-screen bg-white pt-20 pb-24">
@@ -40,11 +42,11 @@ export default async function ProductPage({ params }: { params: { sku: string } 
               <p>{product.description}</p>
             </div>
 
-            {/* AI-Generated Features List */}
+            {/* AI-Generated Features List (Fixed implicitly 'any' type error) */}
             <div className="border-t border-gray-200 pt-8 mb-8">
               <h3 className="text-sm font-medium text-gray-900 mb-4 uppercase tracking-wider">Product Features</h3>
               <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
-                {product.features.map((feature, index) => (
+                {featureList.map((feature: any, index: any) => (
                   <li key={index}>{feature}</li>
                 ))}
               </ul>
