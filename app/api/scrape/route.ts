@@ -1,3 +1,4 @@
+// Cache buster edit to force fresh Vercel environment loading
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
