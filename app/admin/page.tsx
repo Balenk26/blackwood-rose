@@ -7,7 +7,6 @@ export default function AdminImporter() {
   const [loading, setLoading] = useState(false);
   const [supplierUrl, setSupplierUrl] = useState('');
   
-  // Comprehensive product state tracking all your new options
   const [productData, setProductData] = useState({
     name: '',
     sku: '',
@@ -21,10 +20,9 @@ export default function AdminImporter() {
     dimensions: '',
     description: '',
     features: [''],
-    images: [''] // Array holding multiple image URLs
+    images: [''] 
   });
 
-  // Handle running the AI Scraper & Rewrite engine
   const handleAiImport = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!supplierUrl) return alert('Please paste a supplier link first.');
@@ -39,9 +37,8 @@ export default function AdminImporter() {
       
       const data = await res.json();
       
-      // Check if the server response status is in the successful 200-299 range
       if (res.ok) {
-        // Populate the form automatically with the direct flat data returned by the AI
+        // Direct assignment of the incoming images array configuration
         setProductData({
           ...productData,
           name: data.name || '',
@@ -53,11 +50,10 @@ export default function AdminImporter() {
           dimensions: data.dimensions || '',
           description: data.description || '',
           features: data.features || [''],
-          images: data.image ? [data.image] : ['']
+          images: data.images && data.images.length > 0 ? data.images : ['']
         });
       } else {
-        // If the server rejected it, grab the actual string text instead of a nested property
-        alert('AI Scrape failed: ' + (data.error || data.message || 'Unknown network error.'));
+        alert('AI Scrape failed: ' + (data.error || 'Unknown error.'));
       }
     } catch (err) {
       alert('An error occurred while connecting to the AI engine.');
@@ -66,7 +62,6 @@ export default function AdminImporter() {
     }
   };
 
-  // Handle saving the verified data straight to your live database
   const handleSaveProduct = async () => {
     try {
       const res = await fetch('/api/import-product', {
@@ -77,7 +72,6 @@ export default function AdminImporter() {
       const data = await res.json();
       if (data.success) {
         alert('✨ Masterpiece successfully published to Blackwood & Rose!');
-        // Reset form
         setSupplierUrl('');
       } else {
         alert('Database Error: ' + data.error);
@@ -87,7 +81,6 @@ export default function AdminImporter() {
     }
   };
 
-  // Helper to add/modify multiple images
   const handleImageChange = (index: number, value: string) => {
     const updatedImages = [...productData.images];
     updatedImages[index] = value;
@@ -100,7 +93,6 @@ export default function AdminImporter() {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 pb-24">
-      {/* Top Banner */}
       <div className="bg-black text-[#D4AF37] py-8 border-b border-gray-800 px-8 flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-serif tracking-wide uppercase">Automated Dropship Importer</h1>
@@ -112,14 +104,12 @@ export default function AdminImporter() {
       </div>
 
       <div className="max-w-5xl mx-auto px-4 mt-12">
-        
-        {/* SECTION 1: AI URL Scraper Input */}
         <div className="bg-white p-8 border border-gray-200 rounded-sm shadow-sm mb-8">
           <h2 className="text-sm font-medium uppercase tracking-wider text-gray-400 mb-4">1. Fetch From Supplier</h2>
           <form onSubmit={handleAiImport} className="flex gap-4">
             <input 
               type="url" 
-              placeholder="Paste Hill Interiors or supplier product URL here..."
+              placeholder="Paste supplier product URL here..."
               value={supplierUrl}
               onChange={(e) => setSupplierUrl(e.target.value)}
               className="flex-1 border border-gray-300 p-4 rounded-sm text-sm focus:outline-none focus:border-[#D4AF37]"
@@ -134,11 +124,9 @@ export default function AdminImporter() {
           </form>
         </div>
 
-        {/* SECTION 2: Comprehensive Form */}
         <div className="bg-white border border-gray-200 rounded-sm shadow-sm p-8 space-y-10">
           <h2 className="text-sm font-medium uppercase tracking-wider text-gray-400">2. Verify & Fine-Tune Listing</h2>
 
-          {/* Sub-Section: Core Logistics */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-gray-100">
             <div>
               <label className="block text-xs uppercase tracking-wider font-semibold mb-2">Product Title</label>
@@ -160,7 +148,6 @@ export default function AdminImporter() {
             </div>
           </div>
 
-          {/* Sub-Section: Financials & Logistics */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 pt-6 border-t border-gray-100">
             <div>
               <label className="block text-xs uppercase tracking-wider font-semibold mb-2">Retail Price (£)</label>
@@ -180,7 +167,6 @@ export default function AdminImporter() {
             </div>
           </div>
 
-          {/* Sub-Section: Luxury Brand Attributes */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-gray-100">
             <div>
               <label className="block text-xs uppercase tracking-wider font-semibold mb-2">Colour Palette</label>
@@ -196,7 +182,6 @@ export default function AdminImporter() {
             </div>
           </div>
 
-          {/* Sub-Section: Image Gallery Manager */}
           <div className="pt-6 border-t border-gray-100">
             <label className="block text-xs uppercase tracking-wider font-semibold mb-2">Product Image Gallery URLs</label>
             <div className="space-y-3">
@@ -225,7 +210,6 @@ export default function AdminImporter() {
             </button>
           </div>
 
-          {/* Sub-Section: Copywriting */}
           <div className="pt-6 border-t border-gray-100">
             <label className="block text-xs uppercase tracking-wider font-semibold mb-2">AI Premium Copy Description</label>
             <textarea 
@@ -236,7 +220,6 @@ export default function AdminImporter() {
             />
           </div>
 
-          {/* Master Submit Button */}
           <div className="pt-8 border-t border-gray-200 text-center">
             <button 
               type="button" 
@@ -246,9 +229,7 @@ export default function AdminImporter() {
               Publish Masterpiece to Storefront
             </button>
           </div>
-
         </div>
-
       </div>
     </div>
   );

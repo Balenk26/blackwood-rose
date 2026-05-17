@@ -29,30 +29,26 @@ export async function POST(req: Request) {
     
     const htmlContent = await res.text();
     
-    // 2. IMAGE EXTRACTOR: Capture all image URLs before stripping HTML code
+    // 2. Capture candidate image references
     const foundImages: string[] = [];
     
-    // Look for high-priority OpenGraph images (the main image social media uses)
     const ogMatch = htmlContent.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i) ||
                     htmlContent.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i);
     if (ogMatch && ogMatch[1]) {
       foundImages.push(ogMatch[1]);
     }
     
-    // Look for standard image tags on the page
     const imgRegex = /<img[^>]+src=["']([^"']+\.(?:jpg|jpeg|png|webp|avif))["']/gi;
     let match;
     let count = 0;
-    while ((match = imgRegex.exec(htmlContent)) !== null && count < 15) {
+    while ((match = imgRegex.exec(htmlContent)) !== null && count < 25) { // Expanded count to grab full galleries
       const imgUrl = match[1];
-      // Skip obvious small icons, logos, or loading graphics
       if (!imgUrl.includes('logo') && !imgUrl.includes('icon') && !imgUrl.includes('avatar') && !foundImages.includes(imgUrl)) {
         foundImages.push(imgUrl);
         count++;
       }
     }
 
-    // Convert any relative image paths (like /images/chair.jpg) into full absolute web links
     const absoluteImages = foundImages.map(img => {
       try {
         return new URL(img, url).href;
@@ -61,7 +57,7 @@ export async function POST(req: Request) {
       }
     });
 
-    // 3. TURBO CLEANER: Now safe to strip out all HTML tags for maximum speed
+    // 3. Strip HTML layout blocks for speed
     const cleanText = htmlContent
       .replace(/<script\b[^<]*>([\s\S]*?)<\/script>/gi, '')
       .replace(/<style\b[^<]*>([\s\S]*?)<\/style>/gi, '')
@@ -70,16 +66,17 @@ export async function POST(req: Request) {
       .trim()
       .slice(0, 12000);
 
-    // 4. Send both clean text and found image list to OpenAI
+    // 4. Request full gallery parsing from OpenAI
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       response_format: { type: 'json_object' },
-      temperature: 0.3,
+      temperature: 0.2,
       messages: [
         {
           role: 'system',
           content: `You are an expert product data extractor for Blackwood & Rose, a luxury furniture brand.
-          Analyze the clean text provided to extract the product details, and cross-reference it with the provided list of image URLs to select the absolute best matching main product image.
+          Analyze the clean text provided to extract the product details, and cross-reference it with the list of candidate image URLs.
+          Filter out any remaining logos, header icons, layout spacers, or unrelated brand assets. Return ALL valid images that belong specifically to this item or its alternative gallery views.
           
           Return a strict JSON object matching this schema exactly:
           {
@@ -89,12 +86,12 @@ export async function POST(req: Request) {
             "sku": "BR-SKU-STRING",
             "description": "An elegant, multi-paragraph product description written for high-end clientele.",
             "features": ["Specification bullet point 1", "Specification bullet point 2"],
-            "image": "Select the single absolute best main product image URL from the provided list. If none match or look like product images, return an empty string."
+            "images": ["Array containing all filtered absolute image URLs found, sorted with the main cover photo at index 0."]
           }`
         },
         {
           role: 'user',
-          content: `Here are the candidate Image URLs extracted from the page structure:\n${JSON.stringify(absoluteImages, null, 2)}\n\nExtract and match the product details from this text:\n\n${cleanText}`
+          content: `Candidate Image URLs:\n${JSON.stringify(absoluteImages, null, 2)}\n\nProduct text:\n\n${cleanText}`
         }
       ],
     });
@@ -104,9 +101,6 @@ export async function POST(req: Request) {
 
   } catch (error: any) {
     console.error('Scraper Error:', error);
-    return NextResponse.json(
-      { error: error.message, message: error.message, msg: error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
