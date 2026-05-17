@@ -1,33 +1,45 @@
-"use client";
+// app/page.tsx
+import { prisma } from '@/lib/prisma';
+import Link from 'next/link';
 
-import React from 'react';
-import Navbar from './components/Navbar';
-import Maintenance from './components/Maintenance';
-
-export default function Home() {
-  // TOGGLE THIS TO TRUE TO SHOW MAINTENANCE PAGE
-  const isMaintenanceMode = true; 
-
-  if (isMaintenanceMode) {
-    return <Maintenance />;
-  }
+export default async function Home() {
+  // Fetch ALL products directly from your live Vercel Database, newest first!
+  const liveProducts = await prisma.product.findMany({
+    orderBy: { createdAt: 'desc' }
+  });
 
   return (
     <main className="min-h-screen bg-white">
-      <Navbar />
-      
-      {/* Hero Section */}
-      <div className="pt-24 flex items-center justify-center h-[80vh] bg-gray-50">
-        <div className="text-center px-4">
-          <h1 className="text-5xl md:text-7xl font-serif text-gray-900 mb-6 tracking-tight">
-            The Art of Living.
-          </h1>
-          <p className="text-gray-500 text-lg md:text-xl max-w-lg mx-auto mb-8 font-light">
-            Timeless furniture, sourced for the discerning home.
-          </p>
-          <button className="bg-black text-white px-10 py-4 text-xs font-bold tracking-[0.2em] hover:bg-gray-800 transition-all uppercase">
-            View Collection
-          </button>
+      {/* Your Hero Section here... */}
+      <div className="py-20 bg-gray-50 text-center">
+        <h1 className="text-4xl font-serif text-gray-900">Blackwood & Rose</h1>
+        <p className="mt-4 text-gray-500">Curated Luxury Furniture</p>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          
+          {/* Loop through the LIVE database products */}
+          {liveProducts.map((product) => (
+            <Link href={`/product/${product.sku}`} key={product.id} className="group cursor-pointer">
+              <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+                {/* Standard img tag prevents Next.js external domain errors */}
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="h-full w-full object-cover object-center group-hover:opacity-75 transition-opacity"
+                />
+              </div>
+              <div className="mt-4 flex justify-between">
+                <div>
+                  <h3 className="text-sm text-gray-700 font-medium">{product.name}</h3>
+                  <p className="mt-1 text-sm text-gray-500">{product.category}</p>
+                </div>
+                <p className="text-sm font-medium text-gray-900">£{product.price.toFixed(2)}</p>
+              </div>
+            </Link>
+          ))}
+
         </div>
       </div>
     </main>

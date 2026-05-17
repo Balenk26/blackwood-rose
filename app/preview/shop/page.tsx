@@ -1,4 +1,3 @@
-// app/preview/shop/page.tsx
 "use client";
 
 import React, { useState, Suspense, useEffect } from 'react';
@@ -6,11 +5,10 @@ import Navbar from '../../components/Navbar';
 import { useCart } from '../../components/CartContext';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { products } from '../../data';
 
 export const dynamic = 'force-dynamic';
 
-function ProductCard({ product, addToCart, isFavorite, toggleFavorite }: { product: any, addToCart: any, isFavorite: boolean, toggleFavorite: (id: number) => void }) {
+function ProductCard({ product, addToCart, isFavorite, toggleFavorite }: { product: any, addToCart: any, isFavorite: boolean, toggleFavorite: (id: any) => void }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = product?.gallery?.length > 0 ? product.gallery : [product?.image];
 
@@ -31,7 +29,6 @@ function ProductCard({ product, addToCart, isFavorite, toggleFavorite }: { produ
         </button>
 
         <Link href={`/preview/shop/${product.id}`} style={{ display: 'block', width: '100%', height: '100%' }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={images[currentIndex]} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </Link>
         
@@ -48,7 +45,7 @@ function ProductCard({ product, addToCart, isFavorite, toggleFavorite }: { produ
       </div>
       <Link href={`/preview/shop/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
         <h3 style={{ fontSize: '12px', fontWeight: 'bold', letterSpacing: '0.1em', textTransform: 'uppercase', margin: '0 0 8px 0' }}>{product.name}</h3>
-        <p style={{ fontSize: '12px', fontWeight: 'bold', color: '#D4AF37', margin: 0 }}>£{product.price.toLocaleString()}</p>
+        <p style={{ fontSize: '12px', fontWeight: 'bold', color: '#D4AF37', margin: 0 }}>£{Number(product.price || 0).toLocaleString()}</p>
       </Link>
       <button onClick={() => addToCart(product)} style={{ marginTop: '16px', padding: '12px', backgroundColor: '#f5f5f5', border: '1px solid #eaeaea', fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', cursor: 'pointer', transition: 'background-color 0.3s' }} onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#eaeaea'} onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}>
         Add To Basket
@@ -63,16 +60,35 @@ function ShopContent() {
   const collectionFilter = searchParams.get('collection');
   const categoryFilter = searchParams.get('category');
 
-  const [favorites, setFavorites] = useState<number[]>([]);
+  const [products, setProducts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [favorites, setFavorites] = useState<any[]>([]);
 
+  // Fetch true live inventory on page load
   useEffect(() => {
+    async function fetchLiveInventory() {
+      try {
+        const res = await fetch('/api/products');
+        const data = await res.json();
+        if (data.success) {
+          setProducts(data.products);
+        }
+      } catch (err) {
+        console.error("Failed to load live database items", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchLiveInventory();
+
     const savedFavs = localStorage.getItem('favorites');
     if (savedFavs) {
       setFavorites(JSON.parse(savedFavs));
     }
   }, []);
 
-  const toggleFavorite = (productId: number) => {
+  const toggleFavorite = (productId: any) => {
     let updatedFavs = [...favorites];
     if (updatedFavs.includes(productId)) {
       updatedFavs = updatedFavs.filter(id => id !== productId);
@@ -83,22 +99,27 @@ function ShopContent() {
     localStorage.setItem('favorites', JSON.stringify(updatedFavs));
   };
 
-  let displayedProducts = products;
+  if (loading) {
+    return <div style={{ padding: '150px', textAlign: 'center', fontFamily: 'serif', color: '#D4AF37', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Curating Live Collection...</div>;
+  }
+
+  let displayedProducts = [...products];
   let pageTitle = "All Products";
 
-  if (collectionFilter === 'delphine') { displayedProducts = products.filter((p: any) => p.collection === 'delphine'); pageTitle = "Delphine Collection"; }
-  else if (collectionFilter === 'reed') { displayedProducts = products.filter((p: any) => p.collection === 'reed'); pageTitle = "Reed Collection"; }
-  else if (collectionFilter === 'haldon') { displayedProducts = products.filter((p: any) => p.collection === 'haldon'); pageTitle = "Haldon Collection"; }
-  else if (collectionFilter === 'lennox') { displayedProducts = products.filter((p: any) => p.collection === 'lennox'); pageTitle = "Lennox Collection"; }
-  else if (collectionFilter === 'rutland') { displayedProducts = products.filter((p: any) => p.collection === 'rutland'); pageTitle = "Rutland Collection"; }
-  else if (collectionFilter === 'camden') { displayedProducts = products.filter((p: any) => p.collection === 'camden'); pageTitle = "Camden Collection"; }
+  // Case-Insensitive Collection Filters
+  if (collectionFilter === 'delphine') { displayedProducts = products.filter((p: any) => p.collection?.toLowerCase() === 'delphine'); pageTitle = "Delphine Collection"; }
+  else if (collectionFilter === 'reed') { displayedProducts = products.filter((p: any) => p.collection?.toLowerCase() === 'reed'); pageTitle = "Reed Collection"; }
+  else if (collectionFilter === 'haldon') { displayedProducts = products.filter((p: any) => p.collection?.toLowerCase() === 'haldon'); pageTitle = "Haldon Collection"; }
+  else if (collectionFilter === 'lennox') { displayedProducts = products.filter((p: any) => p.collection?.toLowerCase() === 'lennox'); pageTitle = "Lennox Collection"; }
+  else if (collectionFilter === 'rutland') { displayedProducts = products.filter((p: any) => p.collection?.toLowerCase() === 'rutland'); pageTitle = "Rutland Collection"; }
+  else if (collectionFilter === 'camden') { displayedProducts = products.filter((p: any) => p.collection?.toLowerCase() === 'camden'); pageTitle = "Camden Collection"; }
 
-  // ADDED: Logic to filter for Outdoor products!
-  if (categoryFilter === 'living') { displayedProducts = products.filter((p: any) => p.category === 'living'); pageTitle = "Living Room"; }
-  else if (categoryFilter === 'dining') { displayedProducts = products.filter((p: any) => p.category === 'dining'); pageTitle = "Dining Room"; }
-  else if (categoryFilter === 'bedroom') { displayedProducts = products.filter((p: any) => p.category === 'bedroom'); pageTitle = "Bedroom"; }
-  else if (categoryFilter === 'upholstery') { displayedProducts = products.filter((p: any) => p.category === 'upholstery'); pageTitle = "Upholstery"; }
-  else if (categoryFilter === 'outdoor') { displayedProducts = products.filter((p: any) => p.category === 'outdoor'); pageTitle = "Outdoor Living"; }
+  // Case-Insensitive Category Filters
+  if (categoryFilter === 'living') { displayedProducts = products.filter((p: any) => p.category?.toLowerCase() === 'living'); pageTitle = "Living Room"; }
+  else if (categoryFilter === 'dining') { displayedProducts = products.filter((p: any) => p.category?.toLowerCase() === 'dining'); pageTitle = "Dining Room"; }
+  else if (categoryFilter === 'bedroom') { displayedProducts = products.filter((p: any) => p.category?.toLowerCase() === 'bedroom'); pageTitle = "Bedroom"; }
+  else if (categoryFilter === 'upholstery') { displayedProducts = products.filter((p: any) => p.category?.toLowerCase() === 'upholstery'); pageTitle = "Upholstery"; }
+  else if (categoryFilter === 'outdoor') { displayedProducts = products.filter((p: any) => p.category?.toLowerCase() === 'outdoor'); pageTitle = "Outdoor Living"; }
 
   return (
     <div style={{ backgroundColor: '#ffffff', color: '#000000', minHeight: '100vh', fontFamily: 'sans-serif' }}>
@@ -132,7 +153,7 @@ function ShopContent() {
              <ProductCard key={product.id} product={product} addToCart={addToCart} isFavorite={favorites.includes(product.id)} toggleFavorite={toggleFavorite} />
           ))}
           {displayedProducts.length === 0 && (
-            <p style={{ color: '#666', gridColumn: '1 / -1', textAlign: 'center', marginTop: '48px' }}>No products found in this collection yet. Check back soon!</p>
+            <p style={{ color: '#666', gridColumn: '1 / -1', textAlign: 'center', marginTop: '48px' }}>No products found in this configuration yet. Check back soon!</p>
           )}
         </div>
       </main>

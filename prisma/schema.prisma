@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Product {
+  // Original exact structure - KEEPING THIS UNTOUCHED
+  id          Int      @id @default(autoincrement())
+  sku         String   @unique
+  name        String
+  price       Float
+  category    String
+  collection  String?
+  image       String
+  gallery     String[]
+  description String
+  features    String[]
+  material    String?
+  dimensions  String?
+  doors       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Brand New Fields for the Automated Dropship Importer
+  images         String[] 
+  deliveryCharge Float    @default(0.0)
+  deliveryTime   String?
+  quantity       Int      @default(0)
+  colour         String?
+}

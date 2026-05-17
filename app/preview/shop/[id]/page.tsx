@@ -1,156 +1,165 @@
-// app/preview/shop/[id]/page.tsx
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
+import React, { useState, useEffect, use } from 'react';
 import Navbar from '../../../components/Navbar';
 import { useCart } from '../../../components/CartContext';
-import { products } from '../../../data';
+import Link from 'next/link';
 
-export default function ProductPage() {
-  const params = useParams();
+export const dynamic = 'force-dynamic';
+
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export default function ProductDetailPage({ params }: PageProps) {
+  // Safe unwrap of async params in Next.js
+  const resolvedParams = use(params);
+  const productId = resolvedParams.id;
+
   const { addToCart } = useCart();
   const [product, setProduct] = useState<any>(null);
-  const [mainImage, setMainImage] = useState('');
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Fetch product from the live database database on load
   useEffect(() => {
-    const id = parseInt(params.id as string);
-    const foundProduct = products.find(p => p.id === id);
-    
-    if (foundProduct) {
-      setProduct(foundProduct);
-      setMainImage(foundProduct.image || foundProduct.gallery?.[0]);
-
-      const savedFavs = localStorage.getItem('favorites');
-      if (savedFavs) {
-        const favsArray = JSON.parse(savedFavs);
-        if (favsArray.includes(foundProduct.id)) {
-          setIsFavorite(true);
+    async function loadProduct() {
+      try {
+        const res = await fetch('/api/products');
+        const data = await res.json();
+        if (data.success) {
+          // Robust case-insulated comparison to catch both Int and String IDs perfectly
+          const foundProduct = data.products.find(
+            (p: any) => String(p.id) === String(productId)
+          );
+          setProduct(foundProduct);
         }
+      } catch (err) {
+        console.error("Failed to fetch product details from Neon database", err);
+      } finally {
+        setLoading(false);
       }
-
-      const savedViews = localStorage.getItem('recentlyViewed');
-      let viewedArray = savedViews ? JSON.parse(savedViews) : [];
-      viewedArray = viewedArray.filter((p: any) => p.id !== foundProduct.id);
-      viewedArray.unshift(foundProduct);
-      if (viewedArray.length > 4) viewedArray.pop();
-      localStorage.setItem('recentlyViewed', JSON.stringify(viewedArray));
     }
-  }, [params.id]);
+    loadProduct();
+  }, [productId]);
 
-  const handleToggleFavorite = () => {
-    const savedFavs = localStorage.getItem('favorites');
-    let favsArray = savedFavs ? JSON.parse(savedFavs) : [];
-    
-    if (favsArray.includes(product.id)) {
-      favsArray = favsArray.filter((id: number) => id !== product.id);
-      setIsFavorite(false);
-    } else {
-      favsArray.push(product.id);
-      setIsFavorite(true);
-    }
-    localStorage.setItem('favorites', JSON.stringify(favsArray));
-  };
+  if (loading) {
+    return <div style={{ padding: '150px', textAlign: 'center', fontFamily: 'serif', color: '#D4AF37', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Unveiling Masterpiece...</div>;
+  }
 
-  if (!product) return (
-    <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', color: '#000' }}>
-      <Navbar />
-      <div style={{ padding: '100px', textAlign: 'center', fontFamily: 'sans-serif', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '11px' }}>Loading...</div>
-    </div>
-  );
+  if (!product) {
+    return (
+      <div style={{ backgroundColor: '#fff', minHeight: '100vh', color: '#000' }}>
+        <Navbar />
+        <div style={{ padding: '100px 24px', textAlign: 'center' }}>
+          <h1 style={{ fontFamily: 'serif', fontSize: '24px', marginBottom: '16px' }}>Asset Not Found</h1>
+          <p style={{ color: '#666', fontSize: '14px', marginBottom: '32px' }}>This item may have been curated out of the current collection.</p>
+          <Link href="/preview/shop" style={{ backgroundColor: '#000', color: '#fff', padding: '12px 24px', textDecoration: 'none', fontSize: '11px', fontWeight: 'bold', letterSpacing: '0.1em' }}>Return to Shop</Link>
+        </div>
+      </div>
+    );
+  }
+
+  // Support both legacy single images and your brand new multi-image array gallery structures
+  const productImages = product.images?.length > 0 ? product.images : (product.gallery?.length > 0 ? product.gallery : [product.image]);
 
   return (
-    <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', color: '#000', fontFamily: 'sans-serif' }}>
+    <div style={{ backgroundColor: '#ffffff', color: '#000000', minHeight: '100vh', fontFamily: 'sans-serif' }}>
       <Navbar />
-      
-      <style dangerouslySetInnerHTML={{__html: `
-        @media (max-width: 768px) {
-          .product-main { padding: 32px 16px 64px 16px !important; flex-direction: column !important; gap: 32px !important; }
-          .gallery-container { flex-direction: column-reverse !important; }
-          .thumb-list { flex-direction: row !important; width: 100% !important; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-          .thumb-item { width: 80px !important; flex-shrink: 0; }
-          .main-img-wrap { min-height: 400px !important; }
-          .product-title { font-size: 24px !important; }
-        }
-      `}} />
 
-      <main className="product-main" style={{ maxWidth: '1400px', margin: '0 auto', padding: '60px 24px', display: 'flex', flexWrap: 'wrap', gap: '64px' }}>
+      <main style={{ maxWidth: '1400px', margin: '0 auto', padding: '40px 24px 100px 24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', gap: '64px' }}>
         
-        {/* Gallery Section */}
-        <div className="gallery-container" style={{ flex: '1 1 500px', display: 'flex', gap: '16px', flexDirection: 'row' }}>
-          <div className="thumb-list" style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100px' }}>
-            {product.gallery?.map((img: string, index: number) => (
-              <img 
-                key={index} 
-                className="thumb-item"
-                src={img} 
-                alt="" 
-                onClick={() => setMainImage(img)} 
-                style={{ 
-                  width: '100%', 
-                  aspectRatio: '4/5', 
-                  objectFit: 'cover', 
-                  cursor: 'pointer', 
-                  border: mainImage === img ? '1px solid #000' : '1px solid transparent',
-                  opacity: mainImage === img ? 1 : 0.6,
-                  transition: 'all 0.2s'
-                }} 
-              />
-            ))}
+        {/* LEFT COLUMN: Premium Gallery Grid */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ width: '100%', aspectRatio: '4/5', backgroundColor: '#f9f9f9', overflow: 'hidden' }}>
+            <img 
+              src={productImages[currentImageIndex]} 
+              alt={product.name} 
+              style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'all 0.3s ease' }} 
+            />
           </div>
-          <div className="main-img-wrap" style={{ flex: 1, backgroundColor: '#f5f5f5' }}>
-            <img src={mainImage} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', minHeight: '600px' }} />
-          </div>
+          
+          {/* Multi-Image Micro Thumbnails */}
+          {productImages.length > 1 && (
+            <div style={{ display: 'flex', gap: '12px', overflowX: 'auto', paddingBottom: '8px' }}>
+              {productImages.map((imgUrl: string, idx: number) => (
+                <button 
+                  key={idx} 
+                  onClick={() => setCurrentImageIndex(idx)}
+                  style={{ width: '70px', height: '90px', border: currentImageIndex === idx ? '2px solid #D4AF37' : '1px solid #eaeaea', padding: 0, cursor: 'pointer', backgroundColor: '#fff', flexShrink: 0 }}
+                >
+                  <img src={imgUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* Product Info Section */}
-        <div style={{ flex: '1 1 400px', padding: '24px 0' }}>
-          <p style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#666', marginBottom: '16px' }}>{product.collection} Collection</p>
-          
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
-            <h1 className="product-title" style={{ fontSize: '32px', fontFamily: 'serif', letterSpacing: '0.05em', textTransform: 'uppercase', margin: 0, paddingRight: '24px' }}>{product.name}</h1>
-            <button onClick={handleToggleFavorite} style={{ background: 'none', border: 'none', cursor: 'pointer', color: isFavorite ? '#d9534f' : '#ccc', marginTop: '4px', padding: 0 }}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={isFavorite ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth={1.5} style={{ width: '28px', height: '28px', transition: 'color 0.2s' }}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-              </svg>
-            </button>
+        {/* RIGHT COLUMN: Luxury Brand Copywriting & Specification Sheet */}
+        <div style={{ display: 'flex', flexDirection: 'column', pt: '20px' }}>
+          <span style={{ fontSize: '10px', uppercase: 'true', letterSpacing: '0.2em', color: '#888', marginBottom: '8px', fontWeight: 'bold' }}>
+            BLACKWOOD & ROSE • {product.category?.toUpperCase()}
+          </span>
+          <h1 style={{ fontSize: '28px', fontFamily: 'serif', letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 16px 0', lineHeight: '1.2' }}>
+            {product.name}
+          </h1>
+          <p style={{ fontSize: '20px', fontFamily: 'serif', color: '#D4AF37', margin: '0 0 32px 0', fontWeight: 'bold' }}>
+            £{Number(product.price || 0).toLocaleString()}
+          </p>
+
+          <div style={{ borderTop: '1px solid #eaeaea', paddingTop: '24px', marginBottom: '32px' }}>
+            <h3 style={{ fontSize: '11px', fontWeight: 'bold', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 12px 0' }}>The Narrative</h3>
+            <p style={{ fontSize: '14px', color: '#444', lineHeight: '1.7', fontWeight: 300, margin: 0 }}>
+              {product.description}
+            </p>
           </div>
 
-          <p style={{ fontSize: '20px', fontWeight: 'bold', color: '#D4AF37', marginBottom: '32px' }}>£{product.price.toLocaleString()}</p>
-          
+          {/* Premium Architectural Bullet Points */}
+          {product.features?.length > 0 && (
+            <div style={{ marginBottom: '32px' }}>
+              <h3 style={{ fontSize: '11px', fontWeight: 'bold', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 12px 0' }}>Characteristics</h3>
+              <ul style={{ margin: 0, paddingLeft: '18px', fontSize: '13px', color: '#555', lineHeight: '1.8' }}>
+                {product.features.map((feature: string, i: number) => (
+                  <li key={i} style={{ marginBottom: '6px' }}>{feature}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* BRAND NEW: Luxury Specification Sheet */}
+          <div style={{ backgroundColor: '#fdfbf7', border: '1px solid #f2ece0', padding: '20px', marginBottom: '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <h3 style={{ fontSize: '10px', fontWeight: 'bold', letterSpacing: '0.2em', textTransform: 'uppercase', margin: '0 0 4px 0', color: '#8b7355' }}>Specification Sheet</h3>
+            
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', borderBottom: '1px solid #f2ece0', paddingBottom: '6px' }}>
+              <span style={{ color: '#777' }}>Dimensions</span>
+              <span style={{ fontWeight: 'bold' }}>{product.dimensions || 'Contact for details'}</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', borderBottom: '1px solid #f2ece0', paddingBottom: '6px' }}>
+              <span style={{ color: '#777' }}>Material / Composition</span>
+              <span style={{ fontWeight: 'bold' }}>{product.material || 'Premium Finish'}</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', borderBottom: '1px solid #f2ece0', paddingBottom: '6px' }}>
+              <span style={{ color: '#777' }}>Colour Profile</span>
+              <span style={{ fontWeight: 'bold' }}>{product.colour || 'As Photographed'}</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', borderBottom: '1px solid #f2ece0', paddingBottom: '6px' }}>
+              <span style={{ color: '#777' }}>Logistics Estimation</span>
+              <span style={{ fontWeight: 'bold', color: '#448b44' }}>{product.deliveryTime || '3-5 Business Days'}</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px' }}>
+              <span style={{ color: '#777' }}>White-Glove Shipping</span>
+              <span style={{ fontWeight: 'bold' }}>{product.deliveryCharge > 0 ? `£${product.deliveryCharge}` : 'Complimentary'}</span>
+            </div>
+          </div>
+
           <button 
             onClick={() => addToCart(product)} 
-            style={{ width: '100%', padding: '16px', backgroundColor: '#000', color: '#fff', textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: 'bold', fontSize: '12px', border: 'none', cursor: 'pointer', marginBottom: '48px', transition: 'background-color 0.3s' }}
-            onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#333'} 
-            onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#000'}
+            style={{ width: '100%', padding: '18px', backgroundColor: '#000000', color: '#ffffff', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em', border: 'none', cursor: 'pointer', transition: 'all 0.3s ease' }}
           >
-            Add to Basket
+            Secure This Masterpiece
           </button>
-
-          <div style={{ borderTop: '1px solid #eaeaea', paddingTop: '32px' }}>
-            <h3 style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 'bold', marginBottom: '16px' }}>Description</h3>
-            <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#444', marginBottom: '32px' }}>{product.description}</p>
-            
-            {product.features && (
-              <>
-                <h3 style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 'bold', marginBottom: '16px' }}>Key Features</h3>
-                <ul style={{ fontSize: '14px', color: '#444', lineHeight: '1.8', paddingLeft: '20px', marginBottom: '32px' }}>
-                  {product.features.map((feature: string, idx: number) => (
-                    <li key={idx} style={{ marginBottom: '8px' }}>{feature}</li>
-                  ))}
-                </ul>
-              </>
-            )}
-
-            <h3 style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 'bold', marginBottom: '16px' }}>Dimensions & Details</h3>
-            <ul style={{ fontSize: '14px', color: '#444', lineHeight: '1.8', paddingLeft: '20px' }}>
-              <li><strong>SKU:</strong> {product.sku}</li>
-              <li><strong>Dimensions:</strong> {product.dimensions}</li>
-              {product.material && <li><strong>Material:</strong> {product.material}</li>}
-            </ul>
-          </div>
         </div>
+
       </main>
     </div>
   );
