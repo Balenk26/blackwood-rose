@@ -1,89 +1,79 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
+// Initialize OpenAI strictly using the environment variable (Zero hardcoded keys)
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
 export async function POST(req: Request) {
   try {
-    const { url } = await req.json();
-    if (!url) {
-      return NextResponse.json({ error: "No URL provided" }, { status: 400 });
+    // Safety check to ensure Vercel has passed the variable down to the application layer
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error('OpenAI API key is completely missing from the live server configuration.');
     }
 
-    // 1. Fetch the raw HTML content from the supplier website
-    const response = await fetch(url, {
+    const { url } = await req.json();
+
+    if (!url) {
+      return NextResponse.json({ error: 'Product URL is required' }, { status: 400 });
+    }
+
+    // 1. Fetch the raw page data from the supplier website
+    const res = await fetch(url, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.5',
       },
-      cache: 'no-store'
     });
-
-    if (!response.ok) {
-      return NextResponse.json({ error: `Failed to fetch page. Status: ${response.status}` }, { status: 500 });
+    
+    if (!res.ok) {
+      throw new Error(`Failed to connect to supplier link. Server responded with status: ${res.status}`);
     }
+    
+    const htmlContent = await res.text();
+    
+    // Clean up bloated script tags to keep the text well within context limits
+    const cleanHtml = htmlContent
+      .replace(/<script\b[^<]*>(?:([\s\S]*?)<\/script>)?/gi, '')
+      .replace(/<style\b[^<]*>(?:([\s\S]*?)<\/style>)?/gi, '')
+      .slice(0, 60000);
 
-    const html = await response.text();
-
-    // 2. Optimization: Clean the HTML so we don't waste OpenAI token limits on junk code
-    const cleanedHtml = html
-      .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '') // Wipe out heavy Javascript
-      .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')   // Wipe out layout styling CSS
-      .replace(/<svg\b[^<]*(?:(?!<\/svg>)<[^<]*)*<\/svg>/gi, '')         // Wipe out heavy inline icons
-      .replace(/\s+/g, ' ')                                              // Collapse massive white spaces
-      .substring(0, 50000);                                              // Grab the most important structural chunk
-
-    // 3. Hand the raw text data over to OpenAI to surgically dissect the product attributes
-    const aiResponse = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+    // 2. Pass the text payload directly to OpenAI using JSON mode
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-4o-mini',
+      response_format: { type: 'json_object' },
       messages: [
         {
-          role: "system",
-          content: "You are a precise data extraction engine. Analyze the provided raw webpage text and extract specific product information. Return your answer strictly as a clean JSON object with no markdown formatting wraps."
+          role: 'system',
+          content: `You are an advanced AI scraper and master copywriter for Blackwood & Rose, a premium, luxury furniture and home accessories brand. 
+          Analyze the raw web layout data provided and extract product parameters. Then, completely rewrite all content to match a prestigious, sophisticated editorial tone.
+          
+          You must return a valid JSON structure matching this schema exactly:
+          {
+            "name": "Luxury rewritten name of the product",
+            "category": "Living, Dining, Bedroom, or Upholstery",
+            "price": 0.00, (extract price strictly as a raw number without currency symbols),
+            "sku": "A clean uppercase generated string like BR-SKU-NUMBER",
+            "description": "An elegant, multi-paragraph product description written for high-end clientele.",
+            "features": ["Exquisite specification bullet point 1", "Exquisite specification bullet point 2"],
+            "image": "Extract the absolute source URL for the main item image if found, else leave as an empty string"
+          }`
         },
         {
-          role: "user",
-          content: `Analyze this webpage content from a wholesale supplier and extract the core product details. Look specifically for main layout content, headers, data tables, and image source attributes.
-
-Webpage Content:
-${cleanedHtml}
-
-Return EXACTLY a JSON object matching this structure. Do not invent markdown or wraps around it:
-{
-  "name": "The extracted product title",
-  "sku": "The supplier item code or model number reference",
-  "price": 0.00 (The number value of the price found, ignore currency symbols),
-  "colour": "The product color if specified, else empty string",
-  "material": "The material/fabric details if specified, else empty string",
-  "dimensions": "The dimensions/size string if specified, else empty string",
-  "description": "The raw factory body text description",
-  "features": ["Feature bullet 1", "Feature bullet 2"],
-  "images": ["https://absolute-url-to-product-image1.jpg", "https://absolute-url-to-product-image2.jpg"]
-}`
+          role: 'user',
+          content: `Scrape and transform this raw web data:\n\n${cleanHtml}`
         }
       ],
-      temperature: 0.1, // Keep it highly factual and rigid
     });
 
-    // Clean up any edge-case markdown block decorations if the model slips up
-    let contentString = aiResponse.choices[0].message.content || '{}';
-    if (contentString.startsWith('```json')) {
-      contentString = contentString.replace(/```json\s?/, '').replace(/```$/, '');
-    }
+    const parsedOutput = JSON.parse(completion.choices[0]?.message?.content || '{}');
 
-    const extractedData = JSON.parse(contentString.trim());
-
-    // 4. Send the structured data cleanly back to your admin dashboard form
-    return NextResponse.json({
-      success: true,
-      product: extractedData
-    });
-
-  } catch (error) {
-    console.error("Scraper internal error: ", error);
-    return NextResponse.json({ error: String(error) }, { status: 500 });
+    return NextResponse.json(parsedOutput);
+  } catch (error: any) {
+    console.error('Production AI Scraper Error:', error);
+    return NextResponse.json(
+      { error: error.message || 'An unexpected error occurred during the live processing sequence.' },
+      { status: 500 }
+    );
   }
 }
