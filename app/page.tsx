@@ -20,7 +20,7 @@ export default async function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           
           {/* Loop through the LIVE database products */}
-          {liveProducts.map((product) => (
+          {liveProducts.map((product: any) => (
             <Link href={`/product/${product.sku}`} key={product.id} className="group cursor-pointer">
               <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                 {/* Standard img tag prevents Next.js external domain errors */}
