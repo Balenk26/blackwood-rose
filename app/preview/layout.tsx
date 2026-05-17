@@ -2,20 +2,18 @@ import '../globals.css';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blackwood & Rose',
+  title: 'Blackwood & Rose - Preview',
   description: 'Luxury Furniture & Home Accessories',
 };
 
-export default function RootLayout({
+export default function PreviewLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="bg-white text-black m-0 p-0 antialiased" suppressHydrationWarning>
-        {children}
-      </body>
-    </html>
+    <div className="preview-container">
+      {children}
+    </div>
   );
 }
