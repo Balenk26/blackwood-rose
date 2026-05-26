@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image'; // Added Next.js Image component
 import { useCart } from './CartContext';
 import { SignInButton, Show, UserButton, useUser } from '@clerk/nextjs';
 
@@ -36,13 +37,11 @@ export default function Navbar() {
     <>
       <style dangerouslySetInnerHTML={{__html: `
         @media (max-width: 768px) {
-          .nav-brand { font-size: 16px !important; letter-spacing: 0.05em !important; line-height: 1.2 !important; white-space: normal !important; text-align: center; }
-          .nav-sub { font-size: 6px !important; letter-spacing: 0.1em !important; display: block; margin-top: 2px !important; }
-          
+          .nav-logo-container { max-width: 160px !important; }
           .nav-top-container { display: flex !important; justify-content: center !important; position: relative !important; padding: 0 !important; }
           .nav-left-col { position: absolute !important; left: 16px !important; width: auto !important; }
-          .nav-right-col { position: absolute !important; right: 16px !important; width: auto !important; }
-          .nav-center-col { width: 60% !important; }
+          .nav-right-col { position: absolute !important; right: 16px !important; width: auto !important; position: relative !important; }
+          .nav-center-col { width: 50% !important; display: flex !important; justify-content: center !important; }
 
           /* Adjusted for 7 menu items */
           .mobile-bottom-row ul { 
@@ -94,13 +93,18 @@ export default function Navbar() {
             </button>
           </div>
 
-          <div className="nav-center-col" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-            <Link href="/preview" className="nav-brand" style={{ textDecoration: 'none', color: '#D4AF37', fontSize: '32px', fontFamily: 'serif', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-              Blackwood & Rose
+          {/* Optimized Center Logo Area */}
+          <div className="nav-center-col" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Link href="/preview" className="nav-logo-container" style={{ display: 'block', maxWidth: '240px', width: '100%' }}>
+              <Image 
+                src="/logo.png" // Points directly to public/logo.png
+                alt="Blackwood & Rose Logo" 
+                width={240} 
+                height={60} 
+                style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
+                priority // Tells Next.js to load the logo immediately without lazy-loading
+              />
             </Link>
-            <span className="nav-sub" style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.3em', color: '#aaaaaa', marginTop: '4px', fontWeight: 'bold' }}>
-              Furniture & Home Accessories
-            </span>
           </div>
 
           <div className="nav-right-col" style={{ width: '120px', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '16px', position: 'relative' }} ref={cartRef}>
