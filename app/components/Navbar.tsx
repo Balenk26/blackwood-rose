@@ -36,12 +36,12 @@ export default function Navbar() {
     <>
       <style dangerouslySetInnerHTML={{__html: `
         @media (max-width: 768px) {
-          .nav-logo-container { max-width: 280px !important; overflow: visible !important; }
-          .nav-logo-container img { transform: scale(2.2) !important; }
-          .nav-top-container { display: flex !important; justify-content: center !important; position: relative !important; padding: 0 !important; height: 140px !important; overflow: visible !important; }
+          .nav-logo-container { width: 200px !important; overflow: hidden !important; }
+          .nav-logo-container img { transform: scale(2.5) !important; mix-blend-mode: lighten !important; }
+          .nav-top-container { display: flex !important; justify-content: center !important; position: relative !important; padding: 0 !important; height: 120px !important; overflow: visible !important; }
           .nav-left-col { position: absolute !important; left: 16px !important; width: auto !important; z-index: 60; }
           .nav-right-col { position: absolute !important; right: 16px !important; width: auto !important; position: relative !important; z-index: 60; }
-          .nav-center-col { width: 55% !important; display: flex !important; justify-content: center !important; height: 100% !important; overflow: visible !important; }
+          .nav-center-col { width: 60% !important; display: flex !important; justify-content: center !important; height: 100% !important; overflow: visible !important; }
 
           /* Adjusted for 7 menu items */
           .mobile-bottom-row ul { 
@@ -59,7 +59,7 @@ export default function Navbar() {
           
           .cart-dropdown { 
             position: fixed !important;
-            top: 140px !important;
+            top: 120px !important;
             right: 0 !important;
             width: 100vw !important; 
             max-width: 100vw !important; 
@@ -69,7 +69,7 @@ export default function Navbar() {
           
           .collections-dropdown {
             position: fixed !important;
-            top: 195px !important;
+            top: 175px !important;
             left: 0 !important;
             width: 100vw !important;
             transform: none !important;
@@ -93,19 +93,20 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Absolute Overflow Center Container */}
           <div className="nav-center-col" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', overflow: 'visible' }}>
-            <Link href="/preview" className="nav-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'auto', height: '100%', overflow: 'visible' }}>
+            {/* ADDED OVERFLOW: HIDDEN TO ACT AS A COOKIE CUTTER FOR THE BLACK BOX */}
+            <Link href="/preview" className="nav-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '350px', height: '140px', overflow: 'hidden' }}>
               <img 
                 src="/logo.png" 
                 alt="Blackwood & Rose Logo" 
                 style={{ 
                   objectFit: 'contain', 
-                  height: '140px',          // Forces image frame to match header row height
+                  height: '140px', 
                   width: 'auto', 
                   display: 'block',
-                  transform: 'scale(3.2)',  // Hardware bypass: Multiplies the size by over 3x to crush empty margins
-                  transformOrigin: 'center'
+                  transform: 'scale(3.2)', 
+                  transformOrigin: 'center',
+                  mixBlendMode: 'lighten' // VAPORIZES THE BLACK BACKGROUND IN THE IMAGE
                 }} 
               />
             </Link>
