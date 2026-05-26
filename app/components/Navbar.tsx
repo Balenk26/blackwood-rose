@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useCart } from './CartContext';
-import { SignInButton, SignedIn, SignedOut, UserButton, useUser } from '@clerk/nextjs';
+import { SignInButton, Show, UserButton, useUser } from '@clerk/nextjs';
 
 export default function Navbar() {
   const { user } = useUser(); // Grab the logged-in user's details from Clerk
@@ -192,28 +192,27 @@ export default function Navbar() {
 
   function WithAuthGates() {
     return (
-      <>
-        <SignedOut>
+      <Show 
+        when="signed-in" 
+        fallback={
           <SignInButton mode="modal" fallbackRedirectUrl="/preview/account">
             <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 0 }}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
             </button>
           </SignInButton>
-        </SignedOut>
-        
-        <SignedIn>
-          <UserButton>
-            <UserButton.MenuItems>
-              {isAdmin && (
-                <UserButton.Link label="Admin Dashboard" href="/admin" labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" /></svg>} />
-              )}
-              <UserButton.Link label="Orders & Tracking" href="/preview/account?tab=orders" labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.25v10.5A2.25 2.25 0 0118 21H6a2.25 2.25 0 01-2.25-2.25V8.25M12 2.25v10.5m0 0l-3-3m3 3l3-3" /></svg>} />
-              <UserButton.Link label="Recently Viewed" href="/preview/account?tab=viewed" labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>} />
-              <UserButton.Link label="Saved Favourites" href="/preview/account?tab=favorites" labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>} />
-            </UserButton.MenuItems>
-          </UserButton>
-        </SignedIn>
-      </>
+        }
+      >
+        <UserButton>
+          <UserButton.MenuItems>
+            {isAdmin && (
+              <UserButton.Link label="Admin Dashboard" href="/admin" labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" /></svg>} />
+            )}
+            <UserButton.Link label="Orders & Tracking" href="/preview/account?tab=orders" labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.25v10.5A2.25 2.25 0 0118 21H6a2.25 2.25 0 01-2.25-2.25V8.25M12 2.25v10.5m0 0l-3-3m3 3l3-3" /></svg>} />
+            <UserButton.Link label="Recently Viewed" href="/preview/account?tab=viewed" labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>} />
+            <UserButton.Link label="Saved Favourites" href="/preview/account?tab=favorites" labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>} />
+          </UserButton.MenuItems>
+        </UserButton>
+      </Show>
     );
   }
 }
