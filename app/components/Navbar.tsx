@@ -37,11 +37,12 @@ export default function Navbar() {
     <>
       <style dangerouslySetInnerHTML={{__html: `
         @media (max-width: 768px) {
-          .nav-logo-container { max-width: 260px !important; height: 100% !important; }
+          .nav-logo-container { max-width: 140px !important; height: 100% !important; }
+          .nav-logo-container img { height: 110px !important; }
           .nav-top-container { display: flex !important; justify-content: center !important; position: relative !important; padding: 0 !important; height: 120px !important; }
           .nav-left-col { position: absolute !important; left: 16px !important; width: auto !important; }
           .nav-right-col { position: absolute !important; right: 16px !important; width: auto !important; position: relative !important; }
-          .nav-center-col { width: 60% !important; display: flex !important; justify-content: center !important; height: 100% !important; }
+          .nav-center-col { width: 55% !important; display: flex !important; justify-content: center !important; height: 100% !important; }
 
           /* Adjusted for 7 menu items */
           .mobile-bottom-row ul { 
@@ -83,7 +84,6 @@ export default function Navbar() {
 
       <header className="w-full fixed top-0 left-0 flex flex-col" style={{ backgroundColor: '#000000', color: '#D4AF37', zIndex: 50, borderBottom: '1px solid #333333' }}>
         
-        {/* Expanded Row Height to 140px */}
         <div className="nav-top-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', maxWidth: '1600px', margin: '0 auto', height: '140px', padding: '0 24px' }}>
           
           <div className="nav-left-col" style={{ width: '120px', display: 'flex', justifyContent: 'flex-start' }}>
@@ -94,15 +94,15 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Expanded Maximum Logo Frame Size */}
+          {/* Fully Unlocked & Scaled Crest Logo Container */}
           <div className="nav-center-col" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-            <Link href="/preview" className="nav-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', maxWidth: '450px', width: '100%', height: '100%' }}>
+            <Link href="/preview" className="nav-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'auto', height: '100%' }}>
               <Image 
                 src="/logo.png" 
                 alt="Blackwood & Rose Logo" 
-                width={450} 
-                height={120} 
-                style={{ objectFit: 'contain', maxWidth: '100%', maxHeight: '120px', width: 'auto', height: 'auto' }}
+                width={350} 
+                height={350} 
+                style={{ objectFit: 'contain', width: 'auto', height: '135px' }} // Explicitly forcing the emblem to stand tall inside the header
                 priority 
               />
             </Link>
@@ -191,7 +191,6 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Recalculated Spacer: 140px (top row) + 55px (bottom row) = 195px */}
       <div style={{ height: '195px', width: '100%', backgroundColor: '#ffffff' }}></div>
     </>
   );
