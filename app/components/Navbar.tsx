@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useCart } from './CartContext';
-import { SignInButton, Show, UserButton, useUser } from '@clerk/nextjs';
+import { SignInButton, UserButton, useUser } from '@clerk/nextjs';
 
 export default function Navbar() {
   const { user } = useUser(); // Grab the logged-in user's details from Clerk
@@ -39,9 +39,10 @@ export default function Navbar() {
           .nav-logo-container { width: 200px !important; overflow: hidden !important; }
           .nav-logo-container img { transform: scale(2.5) !important; mix-blend-mode: lighten !important; }
           .nav-top-container { display: flex !important; justify-content: center !important; position: relative !important; padding: 0 !important; height: 120px !important; overflow: visible !important; }
-          .nav-left-col { position: absolute !important; left: 16px !important; width: auto !important; z-index: 60; }
-          .nav-right-col { position: absolute !important; right: 16px !important; width: auto !important; position: relative !important; z-index: 60; }
-          .nav-center-col { width: 60% !important; display: flex !important; justify-content: center !important; height: 100% !important; overflow: visible !important; }
+          .nav-left-col { position: absolute !important; left: 16px !important; width: auto !important; z-index: 100; }
+          .nav-right-col { position: absolute !important; right: 16px !important; width: auto !important; position: relative !important; z-index: 100; }
+          .nav-center-col { width: 60% !important; display: flex !important; justify-content: center !important; height: 100% !important; overflow: visible !important; pointer-events: none; }
+          .nav-center-col a { pointer-events: auto; }
 
           /* Adjusted for 7 menu items */
           .mobile-bottom-row ul { 
@@ -85,7 +86,7 @@ export default function Navbar() {
         
         <div className="nav-top-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', maxWidth: '1600px', margin: '0 auto', height: '140px', padding: '0 24px', overflow: 'visible' }}>
           
-          <div className="nav-left-col" style={{ width: '120px', display: 'flex', justifyContent: 'flex-start' }}>
+          <div className="nav-left-col" style={{ width: '120px', display: 'flex', justifyContent: 'flex-start', zIndex: 100 }}>
             <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer' }}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -93,9 +94,8 @@ export default function Navbar() {
             </button>
           </div>
 
-          <div className="nav-center-col" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', overflow: 'visible' }}>
-            {/* ADDED OVERFLOW: HIDDEN TO ACT AS A COOKIE CUTTER FOR THE BLACK BOX */}
-            <Link href="/preview" className="nav-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '350px', height: '140px', overflow: 'hidden' }}>
+          <div className="nav-center-col" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', overflow: 'visible', pointerEvents: 'none' }}>
+            <Link href="/preview" className="nav-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '350px', height: '140px', overflow: 'hidden', pointerEvents: 'auto' }}>
               <img 
                 src="/logo.png" 
                 alt="Blackwood & Rose Logo" 
@@ -106,13 +106,14 @@ export default function Navbar() {
                   display: 'block',
                   transform: 'scale(3.2)', 
                   transformOrigin: 'center',
-                  mixBlendMode: 'lighten' // VAPORIZES THE BLACK BACKGROUND IN THE IMAGE
+                  mixBlendMode: 'lighten'
                 }} 
               />
             </Link>
           </div>
 
-          <div className="nav-right-col" style={{ width: '120px', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '16px', position: 'relative' }} ref={cartRef}>
+          {/* Elevated zIndex to 100 so the buttons sit on top of the giant logo box */}
+          <div className="nav-right-col" style={{ width: '120px', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '16px', position: 'relative', zIndex: 100 }} ref={cartRef}>
             
             <WithAuthGates />
             
@@ -199,18 +200,12 @@ export default function Navbar() {
     </>
   );
 
+  // Replaced problematic <Show> tags with native React conditionals
   function WithAuthGates() {
-    return (
-      <Show 
-        when="signed-in" 
-        fallback={
-          <SignInButton mode="modal" fallbackRedirectUrl="/preview/account">
-            <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 0 }}>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
-            </button>
-          </SignInButton>
-        }
-      >
+    if (!mounted) return <div style={{ width: '24px', height: '24px' }}></div>; // Prevents layout jumping
+
+    if (user) {
+      return (
         <UserButton>
           <UserButton.MenuItems>
             {isAdmin && (
@@ -221,7 +216,15 @@ export default function Navbar() {
             <UserButton.Link label="Saved Favourites" href="/preview/account?tab=favorites" labelIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={16} height={16}><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>} />
           </UserButton.MenuItems>
         </UserButton>
-      </Show>
+      );
+    }
+
+    return (
+      <SignInButton mode="modal" fallbackRedirectUrl="/preview/account">
+        <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 0 }}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+        </button>
+      </SignInButton>
     );
   }
 }
