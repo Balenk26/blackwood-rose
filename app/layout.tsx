@@ -1,8 +1,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import { ReactNode } from 'react';
 import { ClerkProvider } from '@clerk/nextjs';
 import { CartProvider } from './components/CartContext';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar'; // Fixed: Removed the curly braces to match default export
 
 export const metadata: Metadata = {
   title: 'Blackwood & Rose',
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <ClerkProvider>
