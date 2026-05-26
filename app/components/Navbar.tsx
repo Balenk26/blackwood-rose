@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image'; // Added Next.js Image component
+import Image from 'next/image';
 import { useCart } from './CartContext';
 import { SignInButton, Show, UserButton, useUser } from '@clerk/nextjs';
 
@@ -37,11 +37,11 @@ export default function Navbar() {
     <>
       <style dangerouslySetInnerHTML={{__html: `
         @media (max-width: 768px) {
-          .nav-logo-container { max-width: 160px !important; }
+          .nav-logo-container { max-width: 150px !important; height: 100% !important; }
           .nav-top-container { display: flex !important; justify-content: center !important; position: relative !important; padding: 0 !important; }
           .nav-left-col { position: absolute !important; left: 16px !important; width: auto !important; }
           .nav-right-col { position: absolute !important; right: 16px !important; width: auto !important; position: relative !important; }
-          .nav-center-col { width: 50% !important; display: flex !important; justify-content: center !important; }
+          .nav-center-col { width: 50% !important; display: flex !important; justify-content: center !important; height: 100% !important; }
 
           /* Adjusted for 7 menu items */
           .mobile-bottom-row ul { 
@@ -93,16 +93,16 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Optimized Center Logo Area */}
-          <div className="nav-center-col" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Link href="/preview" className="nav-logo-container" style={{ display: 'block', maxWidth: '240px', width: '100%' }}>
+          {/* Bulletproof Centered Logo Area */}
+          <div className="nav-center-col" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+            <Link href="/preview" className="nav-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', maxWidth: '240px', width: '100%', height: '100%' }}>
               <Image 
-                src="/logo.png" // Points directly to public/logo.png
+                src="/logo.png" 
                 alt="Blackwood & Rose Logo" 
                 width={240} 
-                height={60} 
-                style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
-                priority // Tells Next.js to load the logo immediately without lazy-loading
+                height={75} 
+                style={{ objectFit: 'contain', maxWidth: '100%', maxHeight: '75px', width: 'auto', height: 'auto' }}
+                priority 
               />
             </Link>
           </div>
