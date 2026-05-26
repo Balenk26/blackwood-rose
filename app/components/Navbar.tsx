@@ -37,11 +37,11 @@ export default function Navbar() {
     <>
       <style dangerouslySetInnerHTML={{__html: `
         @media (max-width: 768px) {
-          .nav-logo-container { max-width: 150px !important; height: 100% !important; }
+          .nav-logo-container { max-width: 190px !important; height: 100% !important; }
           .nav-top-container { display: flex !important; justify-content: center !important; position: relative !important; padding: 0 !important; }
           .nav-left-col { position: absolute !important; left: 16px !important; width: auto !important; }
           .nav-right-col { position: absolute !important; right: 16px !important; width: auto !important; position: relative !important; }
-          .nav-center-col { width: 50% !important; display: flex !important; justify-content: center !important; height: 100% !important; }
+          .nav-center-col { width: 55% !important; display: flex !important; justify-content: center !important; height: 100% !important; }
 
           /* Adjusted for 7 menu items */
           .mobile-bottom-row ul { 
@@ -83,7 +83,7 @@ export default function Navbar() {
 
       <header className="w-full fixed top-0 left-0 flex flex-col" style={{ backgroundColor: '#000000', color: '#D4AF37', zIndex: 50, borderBottom: '1px solid #333333' }}>
         
-        <div className="nav-top-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', maxWidth: '1600px', margin: '0 auto', height: '100px', padding: '0 24px' }}>
+        <div className="nav-top-container" style={{ display: 'flex', alignItems: 'center', justifycontent: 'space-between', width: '100%', maxWidth: '1600px', margin: '0 auto', height: '100px', padding: '0 24px' }}>
           
           <div className="nav-left-col" style={{ width: '120px', display: 'flex', justifyContent: 'flex-start' }}>
             <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer' }}>
@@ -93,15 +93,15 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Bulletproof Centered Logo Area */}
+          {/* Scaled-Up Centered Logo Area */}
           <div className="nav-center-col" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-            <Link href="/preview" className="nav-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', maxWidth: '240px', width: '100%', height: '100%' }}>
+            <Link href="/preview" className="nav-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', maxWidth: '300px', width: '100%', height: '100%' }}>
               <Image 
                 src="/logo.png" 
                 alt="Blackwood & Rose Logo" 
-                width={240} 
-                height={75} 
-                style={{ objectFit: 'contain', maxWidth: '100%', maxHeight: '75px', width: 'auto', height: 'auto' }}
+                width={300} 
+                height={88} 
+                style={{ objectFit: 'contain', maxWidth: '100%', maxHeight: '88px', width: 'auto', height: 'auto' }}
                 priority 
               />
             </Link>
