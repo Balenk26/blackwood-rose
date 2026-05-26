@@ -1,8 +1,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { ClerkProvider } from '@clerk/nextjs';
-import { CartProvider } from '@/components/CartContext';
-import Navbar from '@/components/Navbar';
+import { CartProvider } from './components/CartContext';
+import Navbar from './components/Navbar';
 
 export const metadata: Metadata = {
   title: 'Blackwood & Rose',
