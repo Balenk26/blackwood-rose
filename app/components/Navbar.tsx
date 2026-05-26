@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useCart } from './CartContext';
 import { SignInButton, Show, UserButton, useUser } from '@clerk/nextjs';
 
@@ -37,12 +36,12 @@ export default function Navbar() {
     <>
       <style dangerouslySetInnerHTML={{__html: `
         @media (max-width: 768px) {
-          .nav-logo-container { max-width: 140px !important; height: 100% !important; }
-          .nav-logo-container img { height: 110px !important; }
-          .nav-top-container { display: flex !important; justify-content: center !important; position: relative !important; padding: 0 !important; height: 120px !important; }
-          .nav-left-col { position: absolute !important; left: 16px !important; width: auto !important; }
-          .nav-right-col { position: absolute !important; right: 16px !important; width: auto !important; position: relative !important; }
-          .nav-center-col { width: 55% !important; display: flex !important; justify-content: center !important; height: 100% !important; }
+          .nav-logo-container { max-width: 280px !important; overflow: visible !important; }
+          .nav-logo-container img { transform: scale(2.2) !important; }
+          .nav-top-container { display: flex !important; justify-content: center !important; position: relative !important; padding: 0 !important; height: 140px !important; overflow: visible !important; }
+          .nav-left-col { position: absolute !important; left: 16px !important; width: auto !important; z-index: 60; }
+          .nav-right-col { position: absolute !important; right: 16px !important; width: auto !important; position: relative !important; z-index: 60; }
+          .nav-center-col { width: 55% !important; display: flex !important; justify-content: center !important; height: 100% !important; overflow: visible !important; }
 
           /* Adjusted for 7 menu items */
           .mobile-bottom-row ul { 
@@ -60,7 +59,7 @@ export default function Navbar() {
           
           .cart-dropdown { 
             position: fixed !important;
-            top: 120px !important;
+            top: 140px !important;
             right: 0 !important;
             width: 100vw !important; 
             max-width: 100vw !important; 
@@ -70,7 +69,7 @@ export default function Navbar() {
           
           .collections-dropdown {
             position: fixed !important;
-            top: 175px !important;
+            top: 195px !important;
             left: 0 !important;
             width: 100vw !important;
             transform: none !important;
@@ -82,9 +81,9 @@ export default function Navbar() {
         }
       `}} />
 
-      <header className="w-full fixed top-0 left-0 flex flex-col" style={{ backgroundColor: '#000000', color: '#D4AF37', zIndex: 50, borderBottom: '1px solid #333333' }}>
+      <header className="w-full fixed top-0 left-0 flex flex-col" style={{ backgroundColor: '#000000', color: '#D4AF37', zIndex: 50, borderBottom: '1px solid #333333', overflow: 'visible' }}>
         
-        <div className="nav-top-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', maxWidth: '1600px', margin: '0 auto', height: '140px', padding: '0 24px' }}>
+        <div className="nav-top-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', maxWidth: '1600px', margin: '0 auto', height: '140px', padding: '0 24px', overflow: 'visible' }}>
           
           <div className="nav-left-col" style={{ width: '120px', display: 'flex', justifyContent: 'flex-start' }}>
             <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer' }}>
@@ -94,16 +93,20 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Fully Unlocked & Scaled Crest Logo Container */}
-          <div className="nav-center-col" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-            <Link href="/preview" className="nav-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'auto', height: '100%' }}>
-              <Image 
+          {/* Absolute Overflow Center Container */}
+          <div className="nav-center-col" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', overflow: 'visible' }}>
+            <Link href="/preview" className="nav-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'auto', height: '100%', overflow: 'visible' }}>
+              <img 
                 src="/logo.png" 
                 alt="Blackwood & Rose Logo" 
-                width={350} 
-                height={350} 
-                style={{ objectFit: 'contain', width: 'auto', height: '135px' }} // Explicitly forcing the emblem to stand tall inside the header
-                priority 
+                style={{ 
+                  objectFit: 'contain', 
+                  height: '140px',          // Forces image frame to match header row height
+                  width: 'auto', 
+                  display: 'block',
+                  transform: 'scale(3.2)',  // Hardware bypass: Multiplies the size by over 3x to crush empty margins
+                  transformOrigin: 'center'
+                }} 
               />
             </Link>
           </div>
