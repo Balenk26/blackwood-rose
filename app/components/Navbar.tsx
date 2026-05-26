@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useCart } from './CartContext';
-import { SignInButton, UserButton, useUser } from '@clerk/nextjs';
+import { UserButton, useUser } from '@clerk/nextjs'; // Removed SignInButton to enforce direct page routing
 
 export default function Navbar() {
   const { user } = useUser(); // Grab the logged-in user's details from Clerk
@@ -112,7 +112,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Elevated zIndex to 100 so the buttons sit on top of the giant logo box */}
           <div className="nav-right-col" style={{ width: '120px', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '16px', position: 'relative', zIndex: 100 }} ref={cartRef}>
             
             <WithAuthGates />
@@ -200,7 +199,6 @@ export default function Navbar() {
     </>
   );
 
-  // Replaced problematic <Show> tags with native React conditionals
   function WithAuthGates() {
     if (!mounted) return <div style={{ width: '24px', height: '24px' }}></div>; // Prevents layout jumping
 
@@ -220,11 +218,12 @@ export default function Navbar() {
     }
 
     return (
-      <SignInButton mode="modal" fallbackRedirectUrl="/preview/account">
-        <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 0 }}>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
-        </button>
-      </SignInButton>
+      // Replaced modal pop-up with a direct link redirect
+      <Link href="/preview/account" style={{ color: '#D4AF37', display: 'flex', alignItems: 'center', padding: 0 }}>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '24px', height: '24px' }}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+        </svg>
+      </Link>
     );
   }
 }
