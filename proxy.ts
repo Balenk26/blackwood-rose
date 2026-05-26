@@ -4,9 +4,9 @@ export default clerkMiddleware();
 
 export const config = {
   matcher: [
-    // Next.js 16 strict-compliant explicit routing paths
     '/admin',
     '/admin/:path*',
     '/api/:path*',
+    '/__clerk/:path*', // Allows Clerk's internal system tokens to sync cleanly
   ],
 };
