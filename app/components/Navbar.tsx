@@ -83,7 +83,8 @@ export default function Navbar() {
 
       <header className="w-full fixed top-0 left-0 flex flex-col" style={{ backgroundColor: '#000000', color: '#D4AF37', zIndex: 50, borderBottom: '1px solid #333333' }}>
         
-        <div className="nav-top-container" style={{ display: 'flex', alignItems: 'center', justifycontent: 'space-between', width: '100%', maxWidth: '1600px', margin: '0 auto', height: '100px', padding: '0 24px' }}>
+        {/* Fixed: changed justifycontent to camelCase justifyContent */}
+        <div className="nav-top-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', maxWidth: '1600px', margin: '0 auto', height: '100px', padding: '0 24px' }}>
           
           <div className="nav-left-col" style={{ width: '120px', display: 'flex', justifyContent: 'flex-start' }}>
             <button style={{ color: '#D4AF37', background: 'transparent', border: 'none', cursor: 'pointer' }}>
@@ -93,7 +94,6 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Scaled-Up Centered Logo Area */}
           <div className="nav-center-col" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
             <Link href="/preview" className="nav-logo-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', maxWidth: '300px', width: '100%', height: '100%' }}>
               <Image 
